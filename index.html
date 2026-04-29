@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AutoApp — Four iPhone apps. No subscriptions. Verifiable privacy.</title>
+<meta name="description" content="Four iOS apps and an open-source orchestration toolkit, scaffolded and shipped end-to-end by one Claude Code agent. Offline-first. One-time IAP. Zero analytics SDKs.">
+<meta property="og:title" content="AutoApp — One AI agent. Four apps. Zero subscriptions.">
+<meta property="og:description" content="The orchestration layer that lets one Claude Code agent ship a multi-app iOS portfolio. Open source.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jiejuefuyou.github.io/">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg-card: #12121a;
+  --border: #1f1f2e;
+  --text: #e6e6f0;
+  --muted: #8a8a9a;
+  --accent: #6c4be0;
+  --accent-2: #9b6cf0;
+  --warn: #ffb547;
+  --good: #4ade80;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--text); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 60px 24px 80px; }
+header { padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+header h1 { font-size: 2.4rem; line-height: 1.15; letter-spacing: -.02em; background: linear-gradient(135deg, #6c4be0, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+header p { color: var(--muted); margin-top: 12px; font-size: 1.1rem; }
+nav { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 24px; font-size: .9rem; }
+nav a { padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; }
+section { margin-bottom: 56px; }
+h2 { font-size: 1.5rem; margin-bottom: 16px; letter-spacing: -.01em; }
+h3 { font-size: 1.1rem; margin: 20px 0 8px; color: var(--text); }
+.card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; margin-bottom: 12px; }
+.card h3 { margin-top: 0; }
+.card-row { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.tag { font-size: .75rem; padding: 2px 8px; border-radius: 999px; background: var(--border); color: var(--muted); }
+.tag.wip { background: rgba(255,181,71,.15); color: var(--warn); }
+.tag.live { background: rgba(74,222,128,.15); color: var(--good); }
+ul.bullets { list-style: none; padding: 0; }
+ul.bullets li { padding: 6px 0; padding-left: 18px; position: relative; }
+ul.bullets li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+code { background: var(--border); padding: 2px 6px; border-radius: 4px; font-size: .9em; }
+.cta { display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border-radius: 8px; font-weight: 600; margin-top: 16px; }
+.cta:hover { text-decoration: none; transform: translateY(-1px); }
+.muted { color: var(--muted); font-size: .9rem; }
+.privacy { background: rgba(108,75,224,.08); border: 1px solid rgba(108,75,224,.3); padding: 16px 20px; border-radius: 8px; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .85rem; }
+.privacy code { background: rgba(0,0,0,.4); padding: 0; }
+footer { margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--border); color: var(--muted); font-size: .9rem; text-align: center; }
+@media (max-width: 600px) {
+  .wrap { padding: 40px 18px 60px; }
+  header h1 { font-size: 1.8rem; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+<h1>AutoApp</h1>
+<p>Four iPhone apps. No subscriptions. Verifiable privacy. Built end-to-end by one Claude Code agent.</p>
+<nav>
+  <a href="#apps">apps</a>
+  <a href="#prompts">prompts</a>
+  <a href="#toolkit">toolkit</a>
+  <a href="#writing">writing</a>
+  <a href="https://github.com/jiejuefuyou">github</a>
+</nav>
+</header>
+
+<section id="apps">
+<h2>Four apps in flight</h2>
+<p class="muted" style="margin-bottom: 18px">All offline. All <strong>$2.99 one-time</strong>. Zero analytics SDKs. The Privacy Manifest declares zero data collection — and the binary backs it up (see <a href="#privacy-proof">below</a>).</p>
+
+<div class="card">
+  <div class="card-row"><h3>AutoChoice</h3><span class="tag wip">awaiting Apple Review</span></div>
+  <p>The decision wheel for when "you decide" isn't an option. Type your options, tap Spin, chance picks one.</p>
+  <p class="muted">Lifestyle · <a href="https://github.com/jiejuefuyou/autoapp-hello">source</a></p>
+</div>
+
+<div class="card">
+  <div class="card-row"><h3>AltitudeNow</h3><span class="tag wip">awaiting Apple Review</span></div>
+  <p>Live altitude + barometric pressure. Reads the iPhone's built-in sensor — no GPS, nothing leaves your phone.</p>
+  <p class="muted">Health & Fitness · <a href="https://github.com/jiejuefuyou/autoapp-altitude-now">source</a></p>
+</div>
+
+<div class="card">
+  <div class="card-row"><h3>DaysUntil</h3><span class="tag wip">awaiting Apple Review</span></div>
+  <p>Quiet countdown for the dates that matter. Birthdays, deadlines, anniversaries. No notifications, no calendar sync, no nudges.</p>
+  <p class="muted">Productivity · <a href="https://github.com/jiejuefuyou/autoapp-days-until">source</a></p>
+</div>
+
+<div class="card">
+  <div class="card-row"><h3>PromptVault</h3><span class="tag wip">awaiting Apple Review</span></div>
+  <p>Save the AI prompts you actually use. <code>{{variable}}</code> placeholders + tags + one-tap copy. 113 starter prompts bundled.</p>
+  <p class="muted">Productivity · <a href="https://github.com/jiejuefuyou/autoapp-prompt-vault">source</a> · <a href="prompts.html">try the web edition</a></p>
+</div>
+</section>
+
+<section id="prompts">
+<h2>PromptVault Web Edition</h2>
+<p>Don't want to wait for the iOS app? Use the same 113 prompts here, in your browser, right now.</p>
+<a class="cta" href="prompts.html">Open Prompt Library →</a>
+<p class="muted" style="margin-top:12px">Free. No login. No data leaves your browser. Variables get filled in, results copy to your clipboard with one click.</p>
+</section>
+
+<section id="toolkit">
+<h2>autoapp-toolkit (open source)</h2>
+<p>The orchestration layer that makes a single Claude Code agent operate a multi-app portfolio without losing context across sessions.</p>
+<ul class="bullets">
+  <li>32-check pre-submission verifier across N repos</li>
+  <li>One-command ASC API key + 4-repo secret bootstrapping</li>
+  <li>Memory templates for agent re-entry (token-economy aware)</li>
+  <li>Launch-day post generator (Reddit / HN / PH / 小红书 / 即刻)</li>
+  <li>3 walkthrough examples + production-grade governance docs</li>
+</ul>
+<a class="cta" href="https://github.com/jiejuefuyou/autoapp-toolkit">View on GitHub →</a>
+<p class="muted" style="margin-top:12px">MIT. Fork freely.</p>
+</section>
+
+<section id="writing">
+<h2>Writing</h2>
+<p>The series on shipping four iOS apps with one autonomous agent:</p>
+<ul class="bullets">
+  <li><a href="https://dev.to/snake_sun/i-let-one-ai-agent-ship-my-entire-ios-portfolio-heres-what-broke-38i">I Let One AI Agent Ship My Entire iOS Portfolio. Here's What Broke.</a></li>
+  <li><a href="https://dev.to/snake_sun/how-i-sniffed-xiaohongshus-collection-api-in-90-seconds-and-why-cors-made-me-rewrite-the-whole-2ebf">How I Sniffed Xiaohongshu's Collection API in 90 Seconds</a></li>
+  <li><span class="muted">Memory layers in a Claude Code agent (next)</span></li>
+  <li><span class="muted">32 hard requirements Apple checks (next)</span></li>
+  <li><span class="muted">decisions.md instead of Linear (next)</span></li>
+</ul>
+<p style="margin-top:18px">Long-form personal log: <a href="https://autoappnotes.substack.com">autoappnotes on Substack</a> — first-week emotional log + post-launch revenue data when the apps ship.</p>
+</section>
+
+<section id="privacy-proof">
+<h2>Verify the privacy claim</h2>
+<p>Privacy Manifest is a declaration. The binary is the proof. After downloading any app from the App Store:</p>
+<div class="privacy">
+$ nm -gU AutoChoice.app/AutoChoice | grep -iE 'URL|HTTP|Network'<br>
+<span class="muted"># (no output — no networking symbols in the binary)</span>
+</div>
+<p class="muted" style="margin-top:8px">All four apps. The Privacy Manifest declares zero data collected. The binary's symbol table backs it up.</p>
+</section>
+
+<footer>
+<p>Built by <a href="https://github.com/jiejuefuyou">Hao</a> with one autonomous Claude Code agent. <a href="https://dev.to/snake_sun">@snake_sun on dev.to</a></p>
+<p style="margin-top:6px">Source for this site: <a href="https://github.com/jiejuefuyou/jiejuefuyou.github.io">jiejuefuyou.github.io</a></p>
+</footer>
+
+</div>
+</body>
+</html>
