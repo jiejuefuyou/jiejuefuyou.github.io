@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 工作流 ROI 计算器 — 5 秒看到你团队能省多少</title>
+<meta name="description" content="输入你团队规模 + 当前流程耗时，立即算出搞 AI 工作流的真实 ROI。不收集任何数据，纯前端计算。">
+<meta property="og:title" content="AI 工作流 ROI 计算器 — 5 秒看到你团队能省多少">
+<meta property="og:description" content="不收集任何数据，纯前端计算。让真实数字告诉你做不做。">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg-card: #12121a;
+  --border: #1f1f2e;
+  --text: #e6e6f0;
+  --muted: #8a8a9a;
+  --accent: #6c4be0;
+  --accent-2: #9b6cf0;
+  --good: #4ade80;
+  --warn: #fbbf24;
+  --bad: #f87171;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--text); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
+.back { color: var(--muted); font-size: .9rem; margin-bottom: 24px; display: inline-block; }
+header { padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+header h1 { font-size: 2rem; line-height: 1.25; background: linear-gradient(135deg, #6c4be0, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+header p.lead { color: var(--text); margin-top: 12px; font-size: 1rem; }
+header p.muted { color: var(--muted); margin-top: 8px; font-size: .85rem; }
+.calculator { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+.field { margin-bottom: 18px; }
+.field label { display: block; color: var(--text); font-weight: 500; font-size: .95rem; margin-bottom: 6px; }
+.field .hint { color: var(--muted); font-size: .8rem; margin-top: 4px; }
+.field input[type="number"], .field input[type="range"], .field select { width: 100%; padding: 10px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; }
+.field input[type="number"]:focus, .field select:focus { border-color: var(--accent); outline: none; }
+.field input[type="range"] { padding: 0; cursor: pointer; }
+.range-display { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: .85rem; margin-top: 4px; }
+.range-display strong { color: var(--accent-2); font-size: 1rem; }
+.results { background: linear-gradient(135deg, rgba(108,75,224,.12), rgba(192,132,252,.04)); border: 1px solid rgba(108,75,224,.4); border-radius: 12px; padding: 24px; margin-top: 24px; }
+.results h2 { font-size: 1.2rem; margin-bottom: 16px; color: #fff; }
+.metric { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(108,75,224,.15); align-items: baseline; }
+.metric:last-child { border-bottom: 0; }
+.metric .label { color: var(--muted); font-size: .9rem; }
+.metric .value { font-size: 1.3rem; font-weight: 700; color: var(--accent-2); }
+.metric.savings .value { color: var(--good); font-size: 1.5rem; }
+.metric.payback .value { color: var(--warn); }
+.verdict { background: var(--bg); border-radius: 8px; padding: 16px; margin-top: 18px; border-left: 3px solid var(--good); }
+.verdict h3 { color: var(--good); margin-bottom: 6px; font-size: 1rem; }
+.verdict p { color: var(--text); font-size: .9rem; }
+.verdict.warn { border-left-color: var(--warn); }
+.verdict.warn h3 { color: var(--warn); }
+.verdict.bad { border-left-color: var(--bad); }
+.verdict.bad h3 { color: var(--bad); }
+.cta-box { background: linear-gradient(135deg, rgba(108,75,224,.15), rgba(192,132,252,.06)); border: 1px solid rgba(108,75,224,.3); padding: 24px; border-radius: 12px; margin-top: 32px; text-align: center; }
+.cta-box h3 { color: #fff; margin-bottom: 12px; font-size: 1.15rem; }
+.cta-btn { display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border-radius: 10px; font-weight: 600; margin: 8px 6px; text-decoration: none; }
+.cta-btn:hover { text-decoration: none; transform: translateY(-1px); }
+.cta-btn.secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+.assumption-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; margin-top: 24px; font-size: .85rem; }
+.assumption-box h4 { color: var(--accent-2); margin-bottom: 8px; font-size: .9rem; }
+.assumption-box ul { margin-left: 18px; color: var(--muted); }
+.assumption-box li { margin-bottom: 4px; }
+footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: .85rem; text-align: center; }
+@media (max-width: 600px) {
+  .wrap { padding: 40px 18px 60px; }
+  header h1 { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a href="services.html" class="back">← 返回 B 端咨询</a>
+
+<header>
+<h1>🧮 AI 工作流 ROI 计算器</h1>
+<p class="lead">输入你团队的真实数字，5 秒看到「搞 AI 工作流」的具体投入产出。</p>
+<p class="muted">⚠️ 完全本地计算 — 所有数字只在你浏览器里 — 我看不到任何输入。</p>
+</header>
+
+<form class="calculator" id="roi-form" onsubmit="return false;">
+
+<div class="field">
+  <label for="team-size">1. 团队规模（人数）</label>
+  <input type="number" id="team-size" min="1" max="500" value="10" oninput="calculate()">
+  <div class="hint">总人数（包括 owner 自己）</div>
+</div>
+
+<div class="field">
+  <label for="affected-people">2. 这个流程涉及多少人</label>
+  <input type="number" id="affected-people" min="1" max="500" value="3" oninput="calculate()">
+  <div class="hint">实际花时间在这个流程上的人数</div>
+</div>
+
+<div class="field">
+  <label for="hours-per-week">3. 每人每周花多少小时在这个流程上</label>
+  <input type="range" id="hours-per-week" min="1" max="40" value="20" oninput="updateRangeDisplay('hours-per-week', '小时'); calculate()">
+  <div class="range-display">
+    <span>1 hr</span>
+    <strong id="hours-per-week-display">20 小时</strong>
+    <span>40 hr</span>
+  </div>
+  <div class="hint">客服 / 内容 / 报表 / 销售 follow-up 等具体重复任务</div>
+</div>
+
+<div class="field">
+  <label for="hourly-rate">4. 团队人均时薪（¥/小时）</label>
+  <select id="hourly-rate" onchange="calculate()">
+    <option value="60">60 元（实习生 / 应届）</option>
+    <option value="100">100 元（初级 / 1-2 年经验）</option>
+    <option value="150" selected>150 元（中级 / 3-5 年经验）</option>
+    <option value="250">250 元（高级 / 5+ 年经验）</option>
+    <option value="400">400 元（专家 / Lead）</option>
+  </select>
+  <div class="hint">按团队主力人均算（月薪 ¥10k ≈ 时薪 ¥60，月薪 ¥25k ≈ 时薪 ¥150）</div>
+</div>
+
+<div class="field">
+  <label for="reduction">5. 你期望 AI 能压缩多少 %（保守建议 60-80%）</label>
+  <input type="range" id="reduction" min="20" max="90" value="70" oninput="updateRangeDisplay('reduction', '%'); calculate()">
+  <div class="range-display">
+    <span>20%</span>
+    <strong id="reduction-display">70%</strong>
+    <span>90%</span>
+  </div>
+  <div class="hint">「客服回复」「内容起草」类通常 70-80%；「数据分析」类 50-65%；「需要判断」类 40-50%</div>
+</div>
+
+<div class="field">
+  <label for="package">6. 你考虑的服务档</label>
+  <select id="package" onchange="calculate()">
+    <option value="99">启动包 ¥99（一次性，30 min 摸底）</option>
+    <option value="1500">月付 retainer ¥1500（极简版）</option>
+    <option value="3000" selected>月付 retainer ¥3000（标准版）</option>
+    <option value="8000">月付 retainer ¥8000（深度版）</option>
+    <option value="20000">项目制 ¥20000（一次性 1-3 月）</option>
+  </select>
+  <div class="hint">详细对比见 <a href="services.html#tiers">三档服务</a></div>
+</div>
+
+</form>
+
+<div class="results" id="results">
+<h2>💡 你的 ROI</h2>
+
+<div class="metric">
+  <span class="label">当前每月人力成本</span>
+  <span class="value" id="current-cost">--</span>
+</div>
+
+<div class="metric savings">
+  <span class="label">AI 后每月节省</span>
+  <span class="value" id="monthly-savings">--</span>
+</div>
+
+<div class="metric">
+  <span class="label">服务费（每月）</span>
+  <span class="value" id="service-cost">--</span>
+</div>
+
+<div class="metric">
+  <span class="label">净 ROI（每月）</span>
+  <span class="value" id="net-roi">--</span>
+</div>
+
+<div class="metric payback">
+  <span class="label">投资回本周期</span>
+  <span class="value" id="payback">--</span>
+</div>
+
+<div class="metric">
+  <span class="label">12 个月总收益</span>
+  <span class="value" id="yearly-total">--</span>
+</div>
+
+<div class="verdict" id="verdict">
+  <h3 id="verdict-title">--</h3>
+  <p id="verdict-text">--</p>
+</div>
+</div>
+
+<div class="assumption-box">
+<h4>📋 计算假设（透明展示，不藏猫腻）</h4>
+<ul>
+  <li>每月按 4.3 周 / 21.5 工作日算</li>
+  <li>团队人力成本 = 涉及人数 × 周时间 × 4.3 × 时薪</li>
+  <li>启动包按一次性算（不重复扣月费）；retainer 按月度扣</li>
+  <li>"AI 后节省" = 当前成本 × 压缩比例（保守估计）</li>
+  <li>未计入的隐藏 ROI: 招新人成本节省 / 错误率下降 / 员工流失下降</li>
+  <li>未计入的隐藏成本: 你团队学习时间 / OpenAI/Claude API 月调用费 (~¥100-500)</li>
+</ul>
+</div>
+
+<div class="cta-box">
+<h3 id="cta-title">🎯 你的数字看起来很有说服力</h3>
+<p id="cta-text">如果计算结果让你觉得"值得试一下"，下面 3 个动作任选其一：</p>
+<a href="mailto:jiejuefuyou@gmail.com?subject=30%20min%20%E6%91%B8%E5%BA%95%20%E2%80%94%20%5B%E4%BD%A0%E7%9A%84%E5%85%AC%E5%8F%B8%5D&body=Hi%20%E5%8D%B3%E5%86%B3%E5%AF%8C%E6%9C%89%EF%BC%8C%0A%0A%E6%88%91%E5%88%9A%E5%9C%A8%20ROI%20%E8%AE%A1%E7%AE%97%E5%99%A8%E7%AE%97%E7%9A%84%E6%95%B0%E5%AD%97%E5%A6%82%E4%B8%8B%EF%BC%9A%0A-%20%E5%9B%A2%E9%98%9F%5BN%5D%E4%BA%BA%2F%E6%B5%81%E7%A8%8B%E6%B6%89%E5%8F%8A%5BM%5D%E4%BA%BA%2F%E6%AF%8F%E5%91%A8%5BX%5D%E5%B0%8F%E6%97%B6%2F%E6%97%B6%E8%96%AA%5BY%5D%E5%85%83%2F%E6%9C%9F%E6%9C%9B%E5%8E%8B%E7%BC%A9%5BZ%5D%25%0A-%20%E6%9C%88%E8%8A%82%E7%9C%81%E7%BA%A6%5BX%5D%E5%85%83%0A%0A%E5%85%B7%E4%BD%93%E5%9C%BA%E6%99%AF%EF%BC%9A%5B%E5%AE%A2%E6%9C%8D%2F%E5%86%85%E5%AE%B9%2F%E6%8A%A5%E8%A1%A8%2F%E9%94%80%E5%94%AE%E2%80%A6%5D%0A%0A%E5%B8%8C%E6%9C%9B%E7%9A%84%2030%20min%20%E6%91%B8%E5%BA%95%E6%97%B6%E6%AE%B5%EF%BC%9A%5B%E5%91%A8%E4%BA%8C%E4%B8%8B%E5%8D%8814%3A00%5D%0A%0A%E8%B0%A2%E8%B0%A2" class="cta-btn">📬 30 min 免费摸底（已带 ROI 数字）</a>
+<a href="services.html" class="cta-btn secondary">查看完整服务详情</a>
+</div>
+
+<footer>
+<p>jiejuefuyou · 上海 · <a href="services.html">B 端咨询</a> · <a href="zh.html">中文首页</a> · <a href="https://github.com/jiejuefuyou">GitHub</a></p>
+</footer>
+
+</div>
+
+<script>
+function updateRangeDisplay(id, suffix) {
+  const el = document.getElementById(id);
+  document.getElementById(id + '-display').textContent = el.value + ' ' + suffix;
+}
+
+function fmt(n) {
+  if (n >= 10000) return '¥' + (n/10000).toFixed(1) + ' 万';
+  return '¥' + Math.round(n).toLocaleString('zh-CN');
+}
+
+function calculate() {
+  const teamSize = parseInt(document.getElementById('team-size').value) || 1;
+  const affected = parseInt(document.getElementById('affected-people').value) || 1;
+  const hoursPerWeek = parseFloat(document.getElementById('hours-per-week').value) || 0;
+  const hourlyRate = parseFloat(document.getElementById('hourly-rate').value) || 0;
+  const reduction = parseFloat(document.getElementById('reduction').value) / 100 || 0;
+  const packageSelect = document.getElementById('package');
+  const packageCost = parseFloat(packageSelect.value) || 0;
+  const packageText = packageSelect.options[packageSelect.selectedIndex].text;
+  const isOneTime = packageText.indexOf('一次性') !== -1 || packageText.indexOf('启动包') !== -1 || packageText.indexOf('项目制') !== -1;
+
+  // 当前每月人力成本 = 涉及人数 × 每周小时 × 4.3 周 × 时薪
+  const currentMonthlyCost = affected * hoursPerWeek * 4.3 * hourlyRate;
+
+  // AI 后每月节省 = 当前成本 × 压缩比例
+  const monthlySavings = currentMonthlyCost * reduction;
+
+  // 服务费 (一次性 vs 月付不同)
+  const monthlyServiceCost = isOneTime ? 0 : packageCost;
+  const oneTimeCost = isOneTime ? packageCost : 0;
+
+  // 净 ROI（月）
+  const netROI = monthlySavings - monthlyServiceCost;
+
+  // 投资回本周期（月）
+  let paybackText = '--';
+  if (oneTimeCost > 0 && monthlySavings > 0) {
+    const months = oneTimeCost / monthlySavings;
+    if (months < 1) paybackText = '不到 1 月';
+    else paybackText = months.toFixed(1) + ' 月';
+  } else if (monthlyServiceCost > 0 && monthlySavings > monthlyServiceCost) {
+    paybackText = '立即（每月净赚）';
+  } else if (monthlySavings <= 0) {
+    paybackText = '永远不回本';
+  } else {
+    paybackText = '比例不对，需调整';
+  }
+
+  // 12 个月总收益 = 12 × 月节省 - 12 × 月服务费 - 一次性
+  const yearlyTotal = 12 * monthlySavings - 12 * monthlyServiceCost - oneTimeCost;
+
+  // 显示
+  document.getElementById('current-cost').textContent = fmt(currentMonthlyCost);
+  document.getElementById('monthly-savings').textContent = fmt(monthlySavings);
+  document.getElementById('service-cost').textContent = (isOneTime ? '一次性 ' : '') + fmt(packageCost) + (isOneTime ? '' : '/月');
+  document.getElementById('net-roi').textContent = fmt(netROI) + '/月';
+  document.getElementById('payback').textContent = paybackText;
+  document.getElementById('yearly-total').textContent = fmt(yearlyTotal);
+
+  // verdict
+  const verdictEl = document.getElementById('verdict');
+  const titleEl = document.getElementById('verdict-title');
+  const textEl = document.getElementById('verdict-text');
+
+  if (yearlyTotal > 100000) {
+    verdictEl.className = 'verdict';
+    titleEl.textContent = '✅ 强烈推荐做';
+    textEl.textContent = '12 个月净收益 ' + fmt(yearlyTotal) + '——这是非常好的 ROI 区间。强烈建议预约 30 min 免费摸底进一步验证你的数字假设。';
+  } else if (yearlyTotal > 30000) {
+    verdictEl.className = 'verdict';
+    titleEl.textContent = '✅ 值得做';
+    textEl.textContent = '12 个月净收益 ' + fmt(yearlyTotal) + '。投入回本周期合理，建议至少试一下启动包（¥99）摸底，再决定是否升级 retainer。';
+  } else if (yearlyTotal > 0) {
+    verdictEl.className = 'verdict warn';
+    titleEl.textContent = '🟡 边际可做';
+    textEl.textContent = '12 个月净收益 ' + fmt(yearlyTotal) + '——有 ROI 但不大。建议先试启动包（¥99 一次性）验证，不要直接上 retainer。或者**降一档服务包**重算。';
+  } else {
+    verdictEl.className = 'verdict bad';
+    titleEl.textContent = '🔴 不划算';
+    textEl.textContent = '当前数字组合下，服务费 > 节省金额。可能因为：(a) 团队规模太小 / 流程太轻 (b) 你估的压缩比例太低 (c) 选了过高档服务。建议改启动包 ¥99 先摸底，或选更小流程做实验。';
+  }
+
+  // CTA 文案随 verdict 变
+  const ctaTitle = document.getElementById('cta-title');
+  const ctaText = document.getElementById('cta-text');
+  if (yearlyTotal > 100000) {
+    ctaTitle.textContent = '🎯 你的数字非常有说服力';
+    ctaText.textContent = '别犹豫了，30 min 免费摸底确认下方案合不合适。我会给你 1 页可转给老板看的 quote。';
+  } else if (yearlyTotal > 0) {
+    ctaTitle.textContent = '🎯 数字有 ROI 但需要 fine-tune';
+    ctaText.textContent = '建议先聊 30 min 免费摸底——可能调整服务档 OR 流程选择能让 ROI 翻倍。';
+  } else {
+    ctaTitle.textContent = '🤔 当前数字组合不划算 — 但别放弃';
+    ctaText.textContent = '可能是你估的数字过保守，或者选错了流程做实验。30 min 免费摸底我帮你重新评估——可能换个角度数字就好看了。';
+  }
+}
+
+// 页面加载时立即算一次
+calculate();
+</script>
+
+</body>
+</html>
