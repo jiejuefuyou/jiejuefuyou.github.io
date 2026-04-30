@@ -105,6 +105,7 @@ main { padding: 0 24px 80px; max-width: 900px; margin: 0 auto; }
     <div class="modal-body" id="modalBody"></div>
     <div class="modal-foot">
       <button class="btn btn-ghost" id="modalCancel">Cancel</button>
+      <button class="btn btn-ghost" id="modalShare" title="Copy a shareable link to this prompt">🔗 Share</button>
       <button class="btn btn-primary" id="modalCopy">Copy to clipboard</button>
     </div>
   </div>
@@ -291,7 +292,37 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && els.modalBg.classList.contains('open')) closeModal();
 });
 
+// Share button: copy a permalink that auto-opens this prompt on next visit.
+const shareBtn = document.getElementById('modalShare');
+if (shareBtn) {
+  shareBtn.addEventListener('click', async () => {
+    if (!activePrompt) return;
+    const slug = encodeURIComponent(activePrompt.title);
+    const url = `${location.origin}${location.pathname}?p=${slug}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      shareBtn.textContent = '✓ Link copied';
+      setTimeout(() => { shareBtn.textContent = '🔗 Share'; }, 1500);
+    } catch (e) {
+      prompt('Copy this URL:', url);
+    }
+  });
+}
+
+// On load: if URL has ?p=<title>, open that prompt's modal automatically.
+function openFromQueryString() {
+  const params = new URLSearchParams(location.search);
+  const title = params.get('p');
+  if (!title) return;
+  const decoded = decodeURIComponent(title);
+  const found = PROMPTS.find(p => p.title === decoded);
+  if (found) {
+    setTimeout(() => openModal(found), 100);
+  }
+}
+
 render();
+openFromQueryString();
 </script>
 </body>
 </html>
