@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 工作流成熟度测评 — 你的团队适合哪种服务？</title>
+<meta name="description" content="回答 5 个问题，90 秒知道你的团队适合买 prompt pack、启动包、还是 retainer。完全免费，完全本地计算，不留任何信息。">
+<meta property="og:title" content="AI 工作流成熟度测评 — 你的团队适合哪种服务？">
+<meta property="og:type" content="website">
+<style>
+:root{--bg:#0a0a0f;--bg-card:#12121a;--border:#1f1f2e;--text:#e6e6f0;--muted:#8a8a9a;--accent:#6c4be0;--accent-2:#9b6cf0;--good:#4ade80;--warn:#fbbf24}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font:16px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+a{color:var(--accent-2);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:640px;margin:0 auto;padding:60px 24px 80px}
+.back{color:var(--muted);font-size:.9rem;margin-bottom:32px;display:inline-block}
+header{padding-bottom:32px;border-bottom:1px solid var(--border);margin-bottom:40px;text-align:center}
+header h1{font-size:2rem;line-height:1.25;background:linear-gradient(135deg,#6c4be0,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+header p{color:var(--text);margin-top:14px;font-size:1.05rem}
+header p.muted{color:var(--muted);margin-top:8px;font-size:.85rem}
+.quiz-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:28px 24px;margin-bottom:20px}
+.q-num{color:var(--accent-2);font-size:.8rem;font-weight:600;letter-spacing:1px;margin-bottom:8px}
+.q-text{font-size:1.05rem;font-weight:500;margin-bottom:18px;line-height:1.5}
+.q-options{display:grid;gap:10px}
+.q-option{display:flex;align-items:center;padding:14px 16px;background:var(--bg);border:2px solid var(--border);border-radius:10px;cursor:pointer;font-size:.95rem;transition:border-color .15s,background .15s}
+.q-option:hover{border-color:var(--accent-2)}
+.q-option input{margin-right:12px;accent-color:var(--accent);transform:scale(1.2)}
+.q-option label{cursor:pointer;flex:1;line-height:1.4}
+.q-option:has(input:checked){border-color:var(--accent);background:rgba(108,75,224,.1)}
+.progress-bar{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;height:6px;margin-bottom:32px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .3s;border-radius:8px}
+.result{background:linear-gradient(135deg,rgba(108,75,224,.12),rgba(192,132,252,.04));border:2px solid rgba(108,75,224,.5);border-radius:16px;padding:32px 28px;text-align:center;display:none}
+.result.show{display:block}
+.result-tier{font-size:2.5rem;margin-bottom:8px}
+.result-title{font-size:1.4rem;font-weight:700;color:var(--accent-2);margin-bottom:10px}
+.result-score{color:var(--muted);font-size:.9rem;margin-bottom:20px}
+.result-desc{color:var(--text);font-size:.95rem;line-height:1.6;text-align:left;margin-bottom:20px}
+.result-desc strong{color:var(--accent-2)}
+.result-next{background:var(--bg);border-radius:8px;padding:16px 18px;text-align:left;margin-bottom:20px}
+.result-next h4{color:var(--accent-2);font-size:.9rem;margin-bottom:8px}
+.result-next ul{margin-left:18px;color:var(--text);font-size:.88rem}
+.result-next li{margin-bottom:5px}
+.result-cta{display:inline-block;padding:14px 28px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border-radius:10px;font-weight:600;font-size:1rem;margin-bottom:10px}
+.result-cta:hover{text-decoration:none;transform:translateY(-1px)}
+.result-alt{display:block;margin-top:16px;font-size:.88rem;color:var(--muted)}
+.tier-a{border-color:rgba(74,222,128,.4);background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(74,222,128,.02))}
+.tier-a .result-title{color:var(--good)}
+.tier-b{border-color:rgba(255,181,71,.4)}
+.tier-b .result-title{color:var(--warn)}
+.cta-box{background:linear-gradient(135deg,rgba(108,75,224,.15),rgba(192,132,252,.06));border:1px solid rgba(108,75,224,.3);padding:24px;border-radius:12px;margin-top:32px;text-align:center}
+.cta-box h3{color:#fff;margin-bottom:10px}
+.cta-box p{color:var(--muted);font-size:.9rem}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem;text-align:center}
+@media(max-width:600px){.wrap{padding:40px 16px 60px}header h1{font-size:1.6rem}.quiz-card{padding:20px 16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="services.html" class="back">← 返回 B 端咨询</a>
+<header>
+<h1>?? AI 工作流成熟度测评</h1>
+<p>回答 5 个问题，90 秒知道你适合哪种服务</p>
+<p class="muted">?? 完全本地计算 — 不收集任何数据，不发邮件，不留 cookie</p>
+</header>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
+<div class="quiz-card" id="quiz"></div>
+<div class="result" id="result"></div>
+<div class="cta-box" id="share-box" style="display:none">
+  <h3>这个测评帮到你了吗？</h3>
+  <p>转发给也在考虑 AI 工作流的同事 / 合伙人 — 他们可能也在找方向。</p>
+</div>
+<footer>
+<p>jiejuefuyou · <a href="services.html">B 端咨询</a> · <a href="zh.html">中文首页</a> · <a href="https://github.com/jiejuefuyou">GitHub</a></p>
+</footer>
+</div>
+<script>
+const QUESTIONS=[
+  {text:"你的团队现在有多少个「重复性任务」每天/每周都在做？",options:[
+    {label:"还没数过，感觉挺多，但没整理",value:0},
+    {label:"3-5 个，我知道大概是什么",value:1},
+    {label:"6 个以上，我列过清单",value:2}
+  ]},
+  {text:"你们团队有人在用 AI 工具处理工作吗？",options:[
+    {label:"没用过，不知道怎么上手",value:0},
+    {label:"有人用，但比较零散，没有系统化",value:1},
+    {label:"已经在用，效果不错，想扩展到更多场景",value:2}
+  ]},
+  {text:"你的团队每月在重复性人力任务上花多少钱？",options:[
+    {label:"不到 1 万（相当于不到 1 个全职）",value:0},
+    {label:"1-3 万（1 个全职或几个兼职）",value:1},
+    {label:"3 万以上（2 个以上全职在做重复任务）",value:2}
+  ]},
+  {text:"如果 AI 能帮你团队节省 50-70% 的时间，你最关心的是什么？",options:[
+    {label:"这个 AI 真的能理解我们行业的具体场景吗？",value:0},
+    {label:"怎么保证 AI 输出的内容质量，不能出错",value:1},
+    {label:"怎么让团队快速上手，不要几个月才落地",value:1},
+    {label:"多少钱，多快能见效",value:2}
+  ]},
+  {text:"你现在最想解决的问题是？",options:[
+    {label:"买一套好 prompt，先自己试试 AI 能干啥",value:0},
+    {label:"找人帮忙诊断一下我们团队适不适合做 AI 自动化",value:1},
+    {label:"已经决定要做，需要人帮我搭一套能用的工作流",value:2}
+  ]}
+];
+const TIERS=[
+  {min:0,max:3,tier:"?? Tier A",title:"先买 Prompt Pack，自己试",cssClass:"tier-a",scoreText:"成熟度得分：0-3 / 10",
+   desc:"你还在「了解 AI 能做什么」的阶段。直接买 retainer 为时过早——你需要<strong>先用起来</strong>。",
+   nextItems:["花 ￥75 买 Prompt Vault Master（160 条中英双语 prompt，永久更新）","先用这些 prompt 把你最痛的 1-2 个场景跑通","跑通了 1 个月，再回来考虑要不要请人搭系统"],
+   cta:"查看 Prompt Vault (.99)",ctaHref:"https://jiejuefuyou.gumroad.com/l/prompt-vault-master",
+   alt:"或者：先 <a href='quote-calculator.html' style='color:var(--accent-2)'>用报价计算器</a> 算一下你的具体场景值多少钱"},
+  {min:4,max:6,tier:"?? Tier B",title:"启动包 ￥99，先摸底再决定",cssClass:"tier-b",scoreText:"成熟度得分：4-6 / 10",
+   desc:"你已经在用 AI，但还没系统化。你需要一个<strong>懂行的外人</strong>帮你做一次诊断——30 分钟摸底通话 + 1 页诊断 PDF，告诉你「从哪里开始做 ROI 最高」。",
+   nextItems:["买 ￥99 启动包（首批半价，原 ￥499）","预约 30 分钟视频通话，我问 7 个问题，量化你的 ROI","拿到诊断 PDF 后，再决定是 DIY 还是上 retainer"],
+   cta:"预约 30 min 摸底 (￥99)",ctaHref:"mailto:jiejuefuyou@gmail.com?subject=%E5%90%AF%E5%8A%A8%E5%8C%85%20%E2%80%94%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84&body=Hi%20%E5%8D%B3%E5%86%B3%E5%AF%8C%E6%9C%89%EF%BC%8C%0A%0A%E6%88%91%E5%81%9A%E5%AE%8A%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84%EF%BC%8C%E5%BE%97%E5%88%B0%20Tier%20B%20%E7%BB%93%E6%9E%9C%EF%BC%9A%E5%90%AF%E5%8A%A8%E5%8C%85%20%C2%A599%20%E6%91%B8%E5%BA%95%E3%80%82%0A%0A%E6%88%91%E5%9B%A2%E9%98%9F%E8%A7%84%E6%A8%A1%EF%BC%9A%5B%E4%BA%BA%E6%95%B0%5D%0A%E6%9C%AC%E5%9C%B0%E9%97%B4%E5%9C%B0%EF%BC%9A%5B%E5%85%B3%E4%BD%95%E5%9C%BA%E6%99%AF%5D%0A%0A%E5%B8%8C%E6%9C%9B%E7%9A%84%E6%91%B8%E5%BA%95%E6%97%B6%E6%AE%B5%EF%BC%9A%5B%E5%91%A8%E4%B8%80%E4%B8%8B%E5%8D%8814%3A00%5D%0A%0A%E8%B0%A2%E8%B0%A2",
+   alt:"也可以先 <a href='roi-calculator.html' style='color:var(--accent-2)'>用 ROI 计算器</a> 算一下你团队的真实 ROI"},
+  {min:7,max:10,tier:"?? Tier C",title:"标准 Retainer，直接上系统",cssClass:"tier-c",scoreText:"成熟度得分：7-10 / 10",
+   desc:"你已经<strong>准备好了</strong>。有具体场景，有预算概念，知道 AI 能干啥——需要的是一个<strong>执行合伙人</strong>帮你从 0 到 1 搭起工作流。",
+   nextItems:["直接预约 30 分钟摸底通话（免费，不收费）","我们一起量化你的最高 ROI 场景","我出 1 页 quote（具体方案 + 工期 + 回本周期），你决定"],
+   cta:"30 min 免费摸底，直接聊",ctaHref:"mailto:jiejuefuyou@gmail.com?subject=30min%20%E6%91%B8%E5%BA%95%20%E2%80%94%20Tier%20C%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84&body=Hi%20%E5%8D%B3%E5%86%B3%E5%AF%8C%E6%9C%89%EF%BC%8C%0A%0A%E6%88%91%E5%81%9A%E5%AE%8A%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84%EF%BC%8C%E5%BE%97%E5%88%B0%20Tier%20C%20%E7%BB%93%E6%9E%9C%EF%BC%9A%E6%9C%83%E5%BF%85%E8%A6%81%E3%80%82%0A%0A%E6%88%91%E5%9B%A2%E9%98%9F%E8%A7%84%E6%A8%A1%EF%BC%9A%5B%E4%BA%BA%E6%95%B0%5D%0A%E6%9C%80%E6%83%B3%E8%A7%A3%E5%86%B3%E7%9A%84%E5%9C%BA%E6%99%AF%EF%BC%9A%5B%E5%AE%A2%E6%9C%8D%2F%E5%86%85%E5%AE%B9%2F%E6%8A%A5%E8%A1%A8%E2%80%A6%5D%0A%E9%A2%84%E7%AE%97%EF%BC%9A%5B%E5%85%83%5D%0A%0A%E6%88%91%E5%B8%8C%E6%9C%9B%E7%9A%8430%20min%20%E6%91%B8%E5%BA%95%E6%97%B6%E6%AE%B5%EF%BC%9A%5B%E5%91%A8%E4%B8%80%E4%B8%8B%E5%8D%8814%3A00%5D%0A%0A%E8%B0%A2%E8%B0%A2",
+   alt:"或者先用 <a href='quote-calculator.html' style='color:var(--accent-2)'>报价计算器</a> 拿到具体区间，再决定聊不聊"}
+];
+let currentQ=0,answers=[];
+function renderQuestion(){
+  const q=QUESTIONS[currentQ];
+  document.getElementById('progress').style.width=((currentQ/QUESTIONS.length)*100)+'%';
+  document.getElementById('quiz').innerHTML='<div class="q-num">问题 '+(currentQ+1)+' / '+QUESTIONS.length+'</div><div class="q-text">'+q.text+'</div><div class="q-options">'+q.options.map((o,i)=>'<div class="q-option"><input type="radio" name="q'+currentQ+'" id="q'+currentQ+'_'+i+'" value="'+o.value+'" onchange="selectAnswer('+o.value+')"><label for="q'+currentQ+'_'+i+'">'+o.label+'</label></div>').join('')+'</div>';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function selectAnswer(v){answers[currentQ]=v;setTimeout(()=>{currentQ<QUESTIONS.length?renderQuestion():showResult()},300);}
+function showResult(){
+  document.getElementById('progress').style.width='100%';
+  const total=answers.reduce((a,b)=>a+b,0);
+  const t=TIERS.find(x=>total>=x.min&&total<=x.max);
+  document.getElementById('quiz').style.display='none';
+  const el=document.getElementById('result');
+  el.className='result show '+t.cssClass;
+  el.innerHTML='<div class="result-tier">'+t.tier+'</div><div class="result-title">'+t.title+'</div><div class="result-score">'+t.scoreText+'</div><div class="result-desc">'+t.desc+'</div><div class="result-next"><h4>下一步</h4><ul>'+t.nextItems.map(i=>'<li>'+i+'</li>').join('')+'</ul></div><a href="'+t.ctaHref+'" class="result-cta" target="_blank" rel="noopener">'+t.cta+'</a><span class="result-alt">'+t.alt+'</span>';
+  document.getElementById('share-box').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderQuestion();
+</script>
+</body>
+</html>
