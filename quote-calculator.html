@@ -1,12 +1,12 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI 咨询报价计算器 — 30 秒拿到预估价 + 工期</title>
-<meta name="description" content="输入你的项目规模 + 复杂度，立即拿到 AI 咨询的预估报价区间 + 工期。不是最终报价但 80% 接近真值，省 1-2 次往返。">
-<meta property="og:title" content="AI 咨询报价计算器 — 30 秒拿到预估价 + 工期">
-<meta property="og:description" content="项目规模 → 预估价 → 工期 → mailto 预填咨询邮件 (含报价区间)。30 秒省 1-2 次往返。">
+<title>AI 鍜ㄨ鎶ヤ环璁＄畻鍣?鈥?30 绉掓嬁鍒伴浼颁环 + 宸ユ湡</title>
+<meta name="description" content="杈撳叆浣犵殑椤圭洰瑙勬ā + 澶嶆潅搴︼紝绔嬪嵆鎷垮埌 AI 鍜ㄨ鐨勯浼版姤浠峰尯闂?+ 宸ユ湡銆備笉鏄渶缁堟姤浠蜂絾 80% 鎺ヨ繎鐪熷€硷紝鐪?1-2 娆″線杩斻€?>
+<meta property="og:title" content="AI 鍜ㄨ鎶ヤ环璁＄畻鍣?鈥?30 绉掓嬁鍒伴浼颁环 + 宸ユ湡">
+<meta property="og:description" content="椤圭洰瑙勬ā 鈫?棰勪及浠?鈫?宸ユ湡 鈫?mailto 棰勫～鍜ㄨ閭欢 (鍚姤浠峰尯闂?銆?0 绉掔渷 1-2 娆″線杩斻€?>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jiejuefuyou.github.io/quote-calculator.html">
 <style>
@@ -78,126 +78,130 @@ footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border
 <body>
 <div class="wrap">
 
-<a href="services.html" class="back">← 返回 B 端咨询</a>
+<a href="services.html" class="back">鈫?杩斿洖 B 绔挩璇?/a>
 
 <header>
-<h1>💰 AI 咨询报价计算器</h1>
-<p class="lead">输入项目规模 + 复杂度，30 秒拿到预估价区间 + 工期 + 直接预填咨询邮件 (含报价)。</p>
-<p class="muted">⚠️ 完全本地计算 — 所有数字只在你浏览器里。我看不到。最终报价以 30 min 摸底通话为准。</p>
+<h1>馃挵 AI 鍜ㄨ鎶ヤ环璁＄畻鍣?/h1>
+<p class="lead">杈撳叆椤圭洰瑙勬ā + 澶嶆潅搴︼紝30 绉掓嬁鍒伴浼颁环鍖洪棿 + 宸ユ湡 + 鐩存帴棰勫～鍜ㄨ閭欢 (鍚姤浠?銆?/p>
+<p class="muted">鈿狅笍 瀹屽叏鏈湴璁＄畻 鈥?鎵€鏈夋暟瀛楀彧鍦ㄤ綘娴忚鍣ㄩ噷銆傛垜鐪嬩笉鍒般€傛渶缁堟姤浠蜂互 30 min 鎽稿簳閫氳瘽涓哄噯銆?/p>
 </header>
+<div style="background:linear-gradient(135deg,rgba(108,75,224,.1),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.3);border-radius:12px;padding:18px 20px;margin-bottom:28px;font-size:.9rem;line-height:1.7">
+<p style="margin-bottom:8px"><strong style="color:var(--accent-2)">Want to know which tier fits you before filling this in?</strong> Take the <a href="b2b-quiz.html" style="color:var(--accent-2)">90-second AI tool selector quiz</a> — it routes 70% to free advice, 20% to $25 toolkit, 10% to consulting.</p>
+<p style="color:var(--muted)">This calculator is for people who've already decided to get a formal quote. 5 fields → your price range + timeline + pre-filled email.</p>
+</div>
 
 <form class="calculator" id="quote-form" onsubmit="return false;">
 
 <div class="field">
-  <label>1. 项目类型</label>
+  <label>1. 椤圭洰绫诲瀷</label>
   <div class="radio-group">
-    <label><input type="radio" name="project-type" value="starter" checked onchange="calculate()"><span>启动包 (1-2 周)</span></label>
-    <label><input type="radio" name="project-type" value="retainer" onchange="calculate()"><span>月度 retainer</span></label>
-    <label><input type="radio" name="project-type" value="enterprise" onchange="calculate()"><span>企业包 (1-3 月)</span></label>
-    <label><input type="radio" name="project-type" value="custom" onchange="calculate()"><span>自定义</span></label>
+    <label><input type="radio" name="project-type" value="starter" checked onchange="calculate()"><span>鍚姩鍖?(1-2 鍛?</span></label>
+    <label><input type="radio" name="project-type" value="retainer" onchange="calculate()"><span>鏈堝害 retainer</span></label>
+    <label><input type="radio" name="project-type" value="enterprise" onchange="calculate()"><span>浼佷笟鍖?(1-3 鏈?</span></label>
+    <label><input type="radio" name="project-type" value="custom" onchange="calculate()"><span>鑷畾涔?/span></label>
   </div>
-  <div class="hint">没把握选什么？选「启动包」最低风险</div>
+  <div class="hint">娌℃妸鎻￠€変粈涔堬紵閫夈€屽惎鍔ㄥ寘銆嶆渶浣庨闄?/div>
 </div>
 
 <div class="field">
-  <label for="team-size">2. 团队规模 (人数)</label>
+  <label for="team-size">2. 鍥㈤槦瑙勬ā (浜烘暟)</label>
   <input type="number" id="team-size" min="1" max="500" value="10" oninput="calculate()">
-  <div class="hint">影响 onboarding / 培训 / 接口对接成本</div>
+  <div class="hint">褰卞搷 onboarding / 鍩硅 / 鎺ュ彛瀵规帴鎴愭湰</div>
 </div>
 
 <div class="field">
-  <label for="workflow-count">3. 要 AI 化的流程数</label>
+  <label for="workflow-count">3. 瑕?AI 鍖栫殑娴佺▼鏁?/label>
   <input type="number" id="workflow-count" min="1" max="20" value="2" oninput="calculate()">
-  <div class="hint">每个独立流程 (例: 客服回复 / 内容生成 / 销售 follow-up / 报表)</div>
+  <div class="hint">姣忎釜鐙珛娴佺▼ (渚? 瀹㈡湇鍥炲 / 鍐呭鐢熸垚 / 閿€鍞?follow-up / 鎶ヨ〃)</div>
 </div>
 
 <div class="field">
-  <label>4. 集成复杂度</label>
+  <label>4. 闆嗘垚澶嶆潅搴?/label>
   <div class="radio-group">
-    <label><input type="radio" name="complexity" value="simple" checked onchange="calculate()"><span>简单 (单一 SaaS)</span></label>
-    <label><input type="radio" name="complexity" value="medium" onchange="calculate()"><span>中等 (2-3 系统)</span></label>
-    <label><input type="radio" name="complexity" value="complex" onchange="calculate()"><span>复杂 (4+ 系统)</span></label>
+    <label><input type="radio" name="complexity" value="simple" checked onchange="calculate()"><span>绠€鍗?(鍗曚竴 SaaS)</span></label>
+    <label><input type="radio" name="complexity" value="medium" onchange="calculate()"><span>涓瓑 (2-3 绯荤粺)</span></label>
+    <label><input type="radio" name="complexity" value="complex" onchange="calculate()"><span>澶嶆潅 (4+ 绯荤粺)</span></label>
   </div>
-  <div class="hint">简单 = 单飞书 / 单 Notion / 单 Slack；复杂 = ERP + CRM + 自研系统多向同步</div>
+  <div class="hint">绠€鍗?= 鍗曢涔?/ 鍗?Notion / 鍗?Slack锛涘鏉?= ERP + CRM + 鑷爺绯荤粺澶氬悜鍚屾</div>
 </div>
 
 <div class="field">
-  <label>5. 时间紧迫度</label>
+  <label>5. 鏃堕棿绱ц揩搴?/label>
   <div class="radio-group">
-    <label><input type="radio" name="urgency" value="standard" checked onchange="calculate()"><span>标准</span></label>
-    <label><input type="radio" name="urgency" value="rush" onchange="calculate()"><span>加急 (+30%)</span></label>
+    <label><input type="radio" name="urgency" value="standard" checked onchange="calculate()"><span>鏍囧噯</span></label>
+    <label><input type="radio" name="urgency" value="rush" onchange="calculate()"><span>鍔犳€?(+30%)</span></label>
   </div>
-  <div class="hint">标准工期：启动包 1-2 周 / retainer 月度 / 企业包 4-12 周</div>
+  <div class="hint">鏍囧噯宸ユ湡锛氬惎鍔ㄥ寘 1-2 鍛?/ retainer 鏈堝害 / 浼佷笟鍖?4-12 鍛?/div>
 </div>
 
 <div class="field">
-  <label>6. 是否需要培训交付</label>
+  <label>6. 鏄惁闇€瑕佸煿璁氦浠?/label>
   <div class="radio-group">
-    <label><input type="radio" name="training" value="none" checked onchange="calculate()"><span>不需要</span></label>
-    <label><input type="radio" name="training" value="basic" onchange="calculate()"><span>基础 (+¥2k)</span></label>
-    <label><input type="radio" name="training" value="full" onchange="calculate()"><span>全员 (+¥5k)</span></label>
+    <label><input type="radio" name="training" value="none" checked onchange="calculate()"><span>涓嶉渶瑕?/span></label>
+    <label><input type="radio" name="training" value="basic" onchange="calculate()"><span>鍩虹 (+楼2k)</span></label>
+    <label><input type="radio" name="training" value="full" onchange="calculate()"><span>鍏ㄥ憳 (+楼5k)</span></label>
   </div>
-  <div class="hint">基础 = 1 次 1.5 hr workshop；全员 = 2 次 + SOP 文档 + 1 个月 follow-up</div>
+  <div class="hint">鍩虹 = 1 娆?1.5 hr workshop锛涘叏鍛?= 2 娆?+ SOP 鏂囨。 + 1 涓湀 follow-up</div>
 </div>
 
 </form>
 
 <div class="results">
-<h2 id="result-title">📋 预估报价</h2>
+<h2 id="result-title">馃搵 棰勪及鎶ヤ环</h2>
 <div class="metric price">
-  <span class="label">报价区间 (含税)</span>
-  <span class="value" id="price-range">¥6,000 — ¥9,000</span>
+  <span class="label">鎶ヤ环鍖洪棿 (鍚◣)</span>
+  <span class="value" id="price-range">楼6,000 鈥?楼9,000</span>
 </div>
 <div class="metric timeline">
-  <span class="label">预计工期</span>
-  <span class="value" id="timeline">1-2 周</span>
+  <span class="label">棰勮宸ユ湡</span>
+  <span class="value" id="timeline">1-2 鍛?/span>
 </div>
 <div class="metric">
-  <span class="label">付款方式</span>
-  <span class="value" id="payment">50% 启动 / 50% 验收</span>
+  <span class="label">浠樻鏂瑰紡</span>
+  <span class="value" id="payment">50% 鍚姩 / 50% 楠屾敹</span>
 </div>
 
 <div class="tier-box" id="tier-detail">
-  <h3 id="tier-name">💼 启动包 (推荐)</h3>
-  <p id="tier-desc">最低风险入门 — 30 min 摸底 + 1 流程实施 + 1 月稳定保障</p>
+  <h3 id="tier-name">馃捈 鍚姩鍖?(鎺ㄨ崘)</h3>
+  <p id="tier-desc">鏈€浣庨闄╁叆闂?鈥?30 min 鎽稿簳 + 1 娴佺▼瀹炴柦 + 1 鏈堢ǔ瀹氫繚闅?/p>
   <ul id="tier-includes">
-    <li>30 min 免费摸底通话</li>
-    <li>1 个流程的 AI 化实施</li>
-    <li>验收交付物 + SOP 文档</li>
-    <li>30 天稳定保障</li>
+    <li>30 min 鍏嶈垂鎽稿簳閫氳瘽</li>
+    <li>1 涓祦绋嬬殑 AI 鍖栧疄鏂?/li>
+    <li>楠屾敹浜や粯鐗?+ SOP 鏂囨。</li>
+    <li>30 澶╃ǔ瀹氫繚闅?/li>
   </ul>
 </div>
 
-<div class="disclaimer" id="disclaimer">⚠️ 这是基于公开 rate card 的估算，最终报价以 30 min 摸底通话为准。如项目复杂度需要调整，会先告知再调整。</div>
+<div class="disclaimer" id="disclaimer">鈿狅笍 杩欐槸鍩轰簬鍏紑 rate card 鐨勪及绠楋紝鏈€缁堟姤浠蜂互 30 min 鎽稿簳閫氳瘽涓哄噯銆傚椤圭洰澶嶆潅搴﹂渶瑕佽皟鏁达紝浼氬厛鍛婄煡鍐嶈皟鏁淬€?/div>
 </div>
 
 <div class="cta-box">
-<h3>📧 把这个报价直接发给我</h3>
-<p>下面按钮会自动用你的邮箱客户端预填咨询邮件 (含上面的报价区间)。我会在 24 小时内回复并约 30 min 摸底通话。</p>
-<a id="mailto-btn" class="cta-btn" href="#">📨 发咨询邮件 (含报价)</a>
-<a class="cta-btn secondary" href="services.html">看完整服务详情</a><a id="copy-quote-btn" class="cta-btn secondary" href="#" onclick="copyQuoteInfo(); return false;">📋 复制报价信息</a>
-<p class="muted" style="margin-top: 12px; font-size: .8rem;">或微信 / 即刻 / 知乎 私信 jiejuefuyou (主页见 <a href="index.html">index</a>)</p>
+<h3>馃摟 鎶婅繖涓姤浠风洿鎺ュ彂缁欐垜</h3>
+<p>涓嬮潰鎸夐挳浼氳嚜鍔ㄧ敤浣犵殑閭瀹㈡埛绔濉挩璇㈤偖浠?(鍚笂闈㈢殑鎶ヤ环鍖洪棿)銆傛垜浼氬湪 24 灏忔椂鍐呭洖澶嶅苟绾?30 min 鎽稿簳閫氳瘽銆?/p>
+<a id="mailto-btn" class="cta-btn" href="#">馃摠 鍙戝挩璇㈤偖浠?(鍚姤浠?</a>
+<a class="cta-btn secondary" href="services.html">鐪嬪畬鏁存湇鍔¤鎯?/a><a id="copy-quote-btn" class="cta-btn secondary" href="#" onclick="copyQuoteInfo(); return false;">馃搵 澶嶅埗鎶ヤ环淇℃伅</a>
+<p class="muted" style="margin-top: 12px; font-size: .8rem;">鎴栧井淇?/ 鍗冲埢 / 鐭ヤ箮 绉佷俊 jiejuefuyou (涓婚〉瑙?<a href="index.html">index</a>)</p>
 </div>
 
 <div class="assumption-box">
-<h4>📊 计算口径 (透明公开)</h4>
+<h4>馃搳 璁＄畻鍙ｅ緞 (閫忔槑鍏紑)</h4>
 <ul>
-  <li><strong>启动包基价</strong>: ¥6k-9k (1 流程 / 1-2 周 / 50%-50% 付款)</li>
-  <li><strong>月度 retainer</strong>: ¥3k-8k/月 (按流程数 + 团队规模阶梯)</li>
-  <li><strong>企业包基价</strong>: ¥15k-30k (3+ 流程 / 4-12 周 / 30%-40%-30% 付款)</li>
-  <li><strong>团队规模乘数</strong>: 5 人以下 ×1.0 / 5-20 人 ×1.1 / 20-50 人 ×1.3 / 50+ ×1.5</li>
-  <li><strong>流程数乘数</strong>: 第 1 流程 ¥6k / 第 2 流程 ¥4k / 第 3 流程 ¥3k / 4+ 阶梯递减</li>
-  <li><strong>复杂度</strong>: 简单 ×1.0 / 中等 ×1.4 / 复杂 ×2.0</li>
-  <li><strong>加急</strong>: ×1.3 (工期压缩 30%)</li>
-  <li><strong>培训</strong>: 基础 +¥2k / 全员 +¥5k</li>
-  <li><strong>付款方式</strong>: 启动包 50%-50% / retainer 月初付 / 企业包 30%-40%-30%</li>
-  <li><strong>含税</strong>: 个人发票 6% / 公司发票 13% (按需开具)</li>
+  <li><strong>鍚姩鍖呭熀浠?/strong>: 楼6k-9k (1 娴佺▼ / 1-2 鍛?/ 50%-50% 浠樻)</li>
+  <li><strong>鏈堝害 retainer</strong>: 楼3k-8k/鏈?(鎸夋祦绋嬫暟 + 鍥㈤槦瑙勬ā闃舵)</li>
+  <li><strong>浼佷笟鍖呭熀浠?/strong>: 楼15k-30k (3+ 娴佺▼ / 4-12 鍛?/ 30%-40%-30% 浠樻)</li>
+  <li><strong>鍥㈤槦瑙勬ā涔樻暟</strong>: 5 浜轰互涓?脳1.0 / 5-20 浜?脳1.1 / 20-50 浜?脳1.3 / 50+ 脳1.5</li>
+  <li><strong>娴佺▼鏁颁箻鏁?/strong>: 绗?1 娴佺▼ 楼6k / 绗?2 娴佺▼ 楼4k / 绗?3 娴佺▼ 楼3k / 4+ 闃舵閫掑噺</li>
+  <li><strong>澶嶆潅搴?/strong>: 绠€鍗?脳1.0 / 涓瓑 脳1.4 / 澶嶆潅 脳2.0</li>
+  <li><strong>鍔犳€?/strong>: 脳1.3 (宸ユ湡鍘嬬缉 30%)</li>
+  <li><strong>鍩硅</strong>: 鍩虹 +楼2k / 鍏ㄥ憳 +楼5k</li>
+  <li><strong>浠樻鏂瑰紡</strong>: 鍚姩鍖?50%-50% / retainer 鏈堝垵浠?/ 浼佷笟鍖?30%-40%-30%</li>
+  <li><strong>鍚◣</strong>: 涓汉鍙戠エ 6% / 鍏徃鍙戠エ 13% (鎸夐渶寮€鍏?</li>
 </ul>
 </div>
 
 <footer>
-<p>报价计算完全本地。完整服务条款见 <a href="services.html">services.html</a> · 真实开发产出见 <a href="https://github.com/jiejuefuyou">GitHub</a></p>
-<p style="margin-top: 8px;">© 2026 jiejuefuyou · <a href="index.html">jiejuefuyou.github.io</a></p>
+<p>鎶ヤ环璁＄畻瀹屽叏鏈湴銆傚畬鏁存湇鍔℃潯娆捐 <a href="services.html">services.html</a> 路 鐪熷疄寮€鍙戜骇鍑鸿 <a href="https://github.com/jiejuefuyou">GitHub</a></p>
+<p style="margin-top: 8px;">漏 2026 jiejuefuyou 路 <a href="index.html">jiejuefuyou.github.io</a></p>
 </footer>
 
 </div>
@@ -226,7 +230,7 @@ function calculate() {
   // Training add-on
   const trainingAdd = { none: 0, basic: 2000, full: 5000 }[training];
 
-  // Workflow count base — diminishing returns
+  // Workflow count base 鈥?diminishing returns
   let workflowBase = 0;
   const stepCosts = [6000, 4000, 3000, 2500, 2000];
   for (let i = 0; i < workflowCount && i < stepCosts.length; i++) workflowBase += stepCosts[i];
@@ -237,58 +241,58 @@ function calculate() {
   if (projectType === 'starter') {
     lowBase = workflowCount === 1 ? 6000 : workflowBase * 0.85;
     highBase = workflowCount === 1 ? 9000 : workflowBase * 1.15;
-    timeline = '1-2 周';
-    paymentTerms = '50% 启动 / 50% 验收';
-    tierName = '💼 启动包 (推荐)';
-    tierDesc = '最低风险入门 — 30 min 摸底 + 1-2 流程实施 + 1 月稳定保障';
+    timeline = '1-2 鍛?;
+    paymentTerms = '50% 鍚姩 / 50% 楠屾敹';
+    tierName = '馃捈 鍚姩鍖?(鎺ㄨ崘)';
+    tierDesc = '鏈€浣庨闄╁叆闂?鈥?30 min 鎽稿簳 + 1-2 娴佺▼瀹炴柦 + 1 鏈堢ǔ瀹氫繚闅?;
     tierIncludes = [
-      '30 min 免费摸底通话',
-      `${workflowCount} 个流程的 AI 化实施`,
-      '验收交付物 + SOP 文档',
-      '30 天稳定保障 (bug 免费修)'
+      '30 min 鍏嶈垂鎽稿簳閫氳瘽',
+      `${workflowCount} 涓祦绋嬬殑 AI 鍖栧疄鏂絗,
+      '楠屾敹浜や粯鐗?+ SOP 鏂囨。',
+      '30 澶╃ǔ瀹氫繚闅?(bug 鍏嶈垂淇?'
     ];
   } else if (projectType === 'retainer') {
     lowBase = 3000 + workflowCount * 1500;
     highBase = 8000 + workflowCount * 2500;
-    timeline = '月度持续 (建议 ≥ 3 月)';
-    paymentTerms = '月初付 / 季付 9.5 折';
-    tierName = '🔁 月度 retainer';
-    tierDesc = '持续优化 + 监控 + 应急响应,适合已有 1 流程跑通后扩展';
+    timeline = '鏈堝害鎸佺画 (寤鸿 鈮?3 鏈?';
+    paymentTerms = '鏈堝垵浠?/ 瀛ｄ粯 9.5 鎶?;
+    tierName = '馃攣 鏈堝害 retainer';
+    tierDesc = '鎸佺画浼樺寲 + 鐩戞帶 + 搴旀€ュ搷搴?閫傚悎宸叉湁 1 娴佺▼璺戦€氬悗鎵╁睍';
     tierIncludes = [
-      `每月 ${Math.max(2, workflowCount * 2)} 次 1-on-1 优化会`,
-      '7×24 紧急响应 (4 hr 内)',
-      '每月新流程 1 个或现有优化',
-      '月度 ROI 报告 + KPI 跟踪',
-      '客户工作空间 (Notion / 飞书) 持续维护'
+      `姣忔湀 ${Math.max(2, workflowCount * 2)} 娆?1-on-1 浼樺寲浼歚,
+      '7脳24 绱ф€ュ搷搴?(4 hr 鍐?',
+      '姣忔湀鏂版祦绋?1 涓垨鐜版湁浼樺寲',
+      '鏈堝害 ROI 鎶ュ憡 + KPI 璺熻釜',
+      '瀹㈡埛宸ヤ綔绌洪棿 (Notion / 椋炰功) 鎸佺画缁存姢'
     ];
   } else if (projectType === 'enterprise') {
     lowBase = 15000 + workflowCount * 3500;
     highBase = 30000 + workflowCount * 6000;
-    timeline = '4-12 周 (按 workflow 数)';
-    paymentTerms = '30% 启动 / 40% 中期 / 30% 验收';
-    tierName = '🏢 企业包';
-    tierDesc = '3+ 流程整合 + 多系统对接 + 全员培训 + 6 月技术支持';
+    timeline = '4-12 鍛?(鎸?workflow 鏁?';
+    paymentTerms = '30% 鍚姩 / 40% 涓湡 / 30% 楠屾敹';
+    tierName = '馃彚 浼佷笟鍖?;
+    tierDesc = '3+ 娴佺▼鏁村悎 + 澶氱郴缁熷鎺?+ 鍏ㄥ憳鍩硅 + 6 鏈堟妧鏈敮鎸?;
     tierIncludes = [
       'Kickoff workshop (3 hr)',
-      `${workflowCount} 个流程的端到端实施`,
-      '多系统对接 (CRM / ERP / 飞书 / Notion 等)',
-      '完整 SOP 文档 + 内训材料',
-      '6 个月技术支持',
-      '验收报告 + ROI 度量'
+      `${workflowCount} 涓祦绋嬬殑绔埌绔疄鏂絗,
+      '澶氱郴缁熷鎺?(CRM / ERP / 椋炰功 / Notion 绛?',
+      '瀹屾暣 SOP 鏂囨。 + 鍐呰鏉愭枡',
+      '6 涓湀鎶€鏈敮鎸?,
+      '楠屾敹鎶ュ憡 + ROI 搴﹂噺'
     ];
   } else {
     // custom
     lowBase = workflowBase;
     highBase = workflowBase * 1.4;
-    timeline = '需 30 min 摸底后定';
-    paymentTerms = '可协商 (按里程碑)';
-    tierName = '🎯 自定义方案';
-    tierDesc = '不确定哪个 tier 合适 — 30 min 摸底后量身定制';
+    timeline = '闇€ 30 min 鎽稿簳鍚庡畾';
+    paymentTerms = '鍙崗鍟?(鎸夐噷绋嬬)';
+    tierName = '馃幆 鑷畾涔夋柟妗?;
+    tierDesc = '涓嶇‘瀹氬摢涓?tier 鍚堥€?鈥?30 min 鎽稿簳鍚庨噺韬畾鍒?;
     tierIncludes = [
-      '30 min 免费需求摸底',
-      '量身定制方案书 (24 hr 内交付)',
-      '透明报价分项明细',
-      '可分阶段执行 / 风险共担'
+      '30 min 鍏嶈垂闇€姹傛懜搴?,
+      '閲忚韩瀹氬埗鏂规涔?(24 hr 鍐呬氦浠?',
+      '閫忔槑鎶ヤ环鍒嗛」鏄庣粏',
+      '鍙垎闃舵鎵ц / 椋庨櫓鍏辨媴'
     ];
   }
 
@@ -301,7 +305,7 @@ function calculate() {
   high = Math.round(high / 500) * 500;
 
   // Display
-  document.getElementById('price-range').textContent = `¥${low.toLocaleString('zh-CN')} — ¥${high.toLocaleString('zh-CN')}`;
+  document.getElementById('price-range').textContent = `楼${low.toLocaleString('zh-CN')} 鈥?楼${high.toLocaleString('zh-CN')}`;
   document.getElementById('timeline').textContent = timeline;
   document.getElementById('payment').textContent = paymentTerms;
   document.getElementById('tier-name').textContent = tierName;
@@ -315,24 +319,24 @@ function calculate() {
   });
 
   // Update mailto
-  const subject = encodeURIComponent(`[咨询] ${tierName.replace(/[💼🔁🏢🎯] /, '')} 询价 — 团队 ${teamSize} 人 / ${workflowCount} 流程`);
+  const subject = encodeURIComponent(`[鍜ㄨ] ${tierName.replace(/[馃捈馃攣馃彚馃幆] /, '')} 璇环 鈥?鍥㈤槦 ${teamSize} 浜?/ ${workflowCount} 娴佺▼`);
   const body = encodeURIComponent(
-    `你好 jiejuefuyou,\n\n` +
-    `刚在 quote-calculator.html 上算了下我们的需求,预估报价区间 ¥${low.toLocaleString('zh-CN')}-¥${high.toLocaleString('zh-CN')}, 工期 ${timeline}.\n\n` +
-    `项目情况:\n` +
-    `- 项目类型: ${tierName.replace(/[💼🔁🏢🎯] /, '')}\n` +
-    `- 团队规模: ${teamSize} 人\n` +
-    `- 要 AI 化的流程数: ${workflowCount}\n` +
-    `- 集成复杂度: ${ {simple:'简单 (单系统)', medium:'中等 (2-3 系统)', complex:'复杂 (4+ 系统)'}[complexity] }\n` +
-    `- 时间紧迫度: ${ {standard:'标准', rush:'加急 (+30%)'}[urgency] }\n` +
-    `- 培训需求: ${ {none:'不需要', basic:'基础 +¥2k', full:'全员 +¥5k'}[training] }\n\n` +
-    `想约个 30 min 摸底通话,介绍下具体场景看看可行性 + 校准报价.\n\n` +
-    `(我的)\n` +
-    `公司/行业:\n` +
-    `当前最痛的流程:\n` +
-    `期望开始时间:\n` +
-    `联系方式 (微信/电话):\n\n` +
-    `谢谢!\n`
+    `浣犲ソ jiejuefuyou,\n\n` +
+    `鍒氬湪 quote-calculator.html 涓婄畻浜嗕笅鎴戜滑鐨勯渶姹?棰勪及鎶ヤ环鍖洪棿 楼${low.toLocaleString('zh-CN')}-楼${high.toLocaleString('zh-CN')}, 宸ユ湡 ${timeline}.\n\n` +
+    `椤圭洰鎯呭喌:\n` +
+    `- 椤圭洰绫诲瀷: ${tierName.replace(/[馃捈馃攣馃彚馃幆] /, '')}\n` +
+    `- 鍥㈤槦瑙勬ā: ${teamSize} 浜篭n` +
+    `- 瑕?AI 鍖栫殑娴佺▼鏁? ${workflowCount}\n` +
+    `- 闆嗘垚澶嶆潅搴? ${ {simple:'绠€鍗?(鍗曠郴缁?', medium:'涓瓑 (2-3 绯荤粺)', complex:'澶嶆潅 (4+ 绯荤粺)'}[complexity] }\n` +
+    `- 鏃堕棿绱ц揩搴? ${ {standard:'鏍囧噯', rush:'鍔犳€?(+30%)'}[urgency] }\n` +
+    `- 鍩硅闇€姹? ${ {none:'涓嶉渶瑕?, basic:'鍩虹 +楼2k', full:'鍏ㄥ憳 +楼5k'}[training] }\n\n` +
+    `鎯崇害涓?30 min 鎽稿簳閫氳瘽,浠嬬粛涓嬪叿浣撳満鏅湅鐪嬪彲琛屾€?+ 鏍″噯鎶ヤ环.\n\n` +
+    `(鎴戠殑)\n` +
+    `鍏徃/琛屼笟:\n` +
+    `褰撳墠鏈€鐥涚殑娴佺▼:\n` +
+    `鏈熸湜寮€濮嬫椂闂?\n` +
+    `鑱旂郴鏂瑰紡 (寰俊/鐢佃瘽):\n\n` +
+    `璋㈣阿!\n`
   );
   document.getElementById('mailto-btn').href = `mailto:jiejuefuyou@gmail.com?subject=${subject}&body=${body}`;
 }
@@ -346,8 +350,8 @@ function copyQuoteInfo(){
   var timelineText = timelineEl ? timelineEl.textContent : '';
   var tierText = tierNameEl ? tierNameEl.textContent : '';
   var paymentText = paymentEl ? paymentEl.textContent : '';
-  var text = '项目报价信息（来源：jiejuefuyou.github.io/quote-calculator.html）\n\n报价范围：\u00a5' + priceText + '\n预计工期：' + timelineText + '\n推荐方案：' + tierText + '\n付款方式：' + paymentText + '\n\n详细需求请回复邮件或加微信私聊 jiejuefuyou (首页 index 有联系方式)。';
-  navigator.clipboard.writeText(text).then(function(){ alert('已复制到剪贴板，可直接粘贴到邮件或微信'); });
+  var text = '椤圭洰鎶ヤ环淇℃伅锛堟潵婧愶細jiejuefuyou.github.io/quote-calculator.html锛塡n\n鎶ヤ环鑼冨洿锛歕u00a5' + priceText + '\n棰勮宸ユ湡锛? + timelineText + '\n鎺ㄨ崘鏂规锛? + tierText + '\n浠樻鏂瑰紡锛? + paymentText + '\n\n璇︾粏闇€姹傝鍥炲閭欢鎴栧姞寰俊绉佽亰 jiejuefuyou (棣栭〉 index 鏈夎仈绯绘柟寮?銆?;
+  navigator.clipboard.writeText(text).then(function(){ alert('宸插鍒跺埌鍓创鏉匡紝鍙洿鎺ョ矘璐村埌閭欢鎴栧井淇?); });
 }
 calculate();
 </script>
