@@ -6,7 +6,9 @@
 <title>AI 工具选型测试 — 90秒判断你该买提示词还是找顾问</title>
 <meta name="description" content="回答5道题，90秒知道你该买 prompt pack、找顾问、还是自己DIY。全部免费，无需注册，不用cookie">
 <meta property="og:title" content="AI 工具选型测试 — 90秒判断你该买提示词还是找顾问">
+<meta property="og:description" content="90秒知道你该买 prompt pack ($9.99)、约 ¥99 咨询启动包、还是直接上 retainer。免费，不用注册。">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://jiejuefuyou.github.io/b2b-quiz.html">
 <style>
 :root{--bg:#0a0a0f;--bg-card:#12121a;--border:#1f1f2e;--text:#e6e6f0;--muted:#8a8a9a;--accent:#6c4be0;--accent-2:#9b6cf0;--good:#4ade80;--warn:#fbbf24}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -19,6 +21,12 @@ header{padding-bottom:32px;border-bottom:1px solid var(--border);margin-bottom:4
 header h1{font-size:2rem;line-height:1.25;background:linear-gradient(135deg,#6c4be0,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 header p{color:var(--text);margin-top:14px;font-size:1.05rem}
 header p.muted{color:var(--muted);margin-top:8px;font-size:.85rem}
+.en-intro{background:linear-gradient(135deg,rgba(108,75,224,.1),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.3);border-radius:12px;padding:20px 22px;margin-bottom:32px;font-size:.92rem;line-height:1.7;color:var(--text)}
+.en-intro p{margin-bottom:10px}
+.en-intro p:last-child{margin-bottom:0}
+.en-intro strong{color:var(--accent-2)}
+.en-intro .cta-row{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+.en-intro .cta-pill{padding:8px 16px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border-radius:8px;font-size:.85rem;font-weight:600}
 .quiz-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:28px 24px;margin-bottom:20px}
 .q-num{color:var(--accent-2);font-size:.8rem;font-weight:600;letter-spacing:1px;margin-bottom:8px}
 .q-text{font-size:1.05rem;font-weight:500;margin-bottom:18px;line-height:1.5}
@@ -46,8 +54,24 @@ header p.muted{color:var(--muted);margin-top:8px;font-size:.85rem}
 .result-alt{display:block;margin-top:16px;font-size:.88rem;color:var(--muted)}
 .tier-a{border-color:rgba(74,222,128,.4);background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(74,222,128,.02))}
 .tier-a .result-title{color:var(--good)}
-.tier-b{border-color:rgba(255,181,71,.4)}
+.tier-b{border-color:rgba(255,181,71,.4);background:linear-gradient(135deg,rgba(255,181,71,.08),rgba(255,181,71,.02))}
 .tier-b .result-title{color:var(--warn)}
+.tier-c{border-color:rgba(192,132,252,.5);background:linear-gradient(135deg,rgba(192,132,252,.12),rgba(108,75,224,.04))}
+.tier-c .result-title{color:#c084fc}
+.trust-bar{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;padding:14px 18px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px}
+.trust-item{font-size:.8rem;color:var(--muted);display:flex;align-items:center;gap:5px}
+.trust-item .icon{font-size:1rem}
+.results-breakdown{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-top:28px}
+.results-breakdown h3{color:var(--accent-2);font-size:.95rem;margin-bottom:14px}
+.breakdown-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:500px){.breakdown-grid{grid-template-columns:1fr}}
+.b-item{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 10px;text-align:center}
+.b-item .b-tier{font-size:.75rem;font-weight:700;letter-spacing:.5px;margin-bottom:4px}
+.b-item .b-title{font-size:.82rem;color:var(--text);font-weight:500;margin-bottom:4px}
+.b-item .b-cta{font-size:.75rem;color:var(--accent-2);display:block;margin-top:4px}
+.b-item.tier-a .b-tier{color:var(--good)}
+.b-item.tier-b .b-tier{color:var(--warn)}
+.b-item.tier-c .b-tier{color:#c084fc}
 .cta-box{background:linear-gradient(135deg,rgba(108,75,224,.15),rgba(192,132,252,.06));border:1px solid rgba(108,75,224,.3);padding:24px;border-radius:12px;margin-top:32px;text-align:center}
 .cta-box h3{color:#fff;margin-bottom:10px}
 .cta-box p{color:var(--muted);font-size:.9rem}
@@ -56,7 +80,7 @@ header p.muted{color:var(--muted);margin-top:8px;font-size:.85rem}
 .share-btn:hover{opacity:1}
 .share-btn.x{background:#000}.share-btn.linkedin{background:#0a66a2}.share-btn.copy{background:var(--bg-card);border:1px solid var(--border);color:var(--text)}
 footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem;text-align:center}
-@media(max-width:600px){.wrap{padding:40px 16px 60px}header h1{font-size:1.6rem}.quiz-card{padding:20px 16px}}
+@media(max-width:600px){.wrap{padding:40px 16px 60px}header h1{font-size:1.6rem}.quiz-card{padding:20px 16px}.en-intro{padding:16px 16px}}
 </style>
 </head>
 <body>
@@ -67,16 +91,54 @@ footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border);color
 <p>回答5道题，90秒知道你该买什么</p>
 <p class="muted">免费 · 不用注册 · 不用 cookie</p>
 </header>
+
+<div class="en-intro">
+<p><strong>Built this after sending 200+ cold emails.</strong> Most people who came to my site didn't know if they needed a $9.99 prompt pack, a ¥99 diagnostic call, or a ¥3-8k/month retainer.</p>
+<p>This quiz answers that in 90 seconds — and tells you to <em>not</em> buy from me 70% of the time.</p>
+<div class="cta-row">
+<span class="cta-pill">5 questions · 90 seconds · free</span>
+</div>
+</div>
+
+<div class="trust-bar">
+<span class="trust-item"><span class="icon">No login required</span></span>
+<span class="trust-item"><span class="icon">No cookies</span></span>
+<span class="trust-item"><span class="icon">Mobile-friendly</span></span>
+<span class="trust-item"><span class="icon">Tells you NOT to buy 70% of the time</span></span>
+</div>
+
 <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
 <div class="quiz-card" id="quiz"></div>
 <div class="result" id="result"></div>
+
+<div class="results-breakdown" id="breakdown">
+<h3>📊 你的分数对应哪档？</h3>
+<div class="breakdown-grid">
+<div class="b-item tier-a">
+<div class="b-tier">Tier A · 0-3 分</div>
+<div class="b-title">买 Prompt Pack，自己搞定</div>
+<a href="https://jiejuefuyou.gumroad.com/l/prompt-vault-master" class="b-cta" target="_blank" rel="noopener">$9.99 →</a>
+</div>
+<div class="b-item tier-b">
+<div class="b-tier">Tier B · 4-6 分</div>
+<div class="b-title">¥99 启动包，搞定核心问题</div>
+<a href="mailto:jiejuefuyou@gmail.com?subject=%E5%90%AF%E5%8A%A8%E5%8C%85%20%E2%80%94%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84&body=Hi%20%E5%8D%B3%E5%86%B3%E5%AF%8C%E6%9C%89%EF%BC%8C%0A%0A%E6%88%91%E5%81%9A%E5%AE%8A%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84%EF%BC%8C%E5%BE%97%E5%88%B0%20Tier%20B%20%E7%BB%93%E6%9E%9C%E3%80%82%0A%0A%E6%88%91%E5%9B%A2%E9%98%9F%E8%A7%84%E6%A8%A1%EF%BC%9A%5B%E4%BA%BA%E6%95%B0%5D%0A%E6%9C%AC%E5%9C%B0%E9%97%B4%E5%9C%B0%EF%BC%9A%5B%E5%85%B3%E4%BD%93%E5%9C%BA%E6%99%AF%5D%0A%0A%E5%B8%8C%E6%9C%9B%E7%9A%84%E6%91%B8%E5%BA%95%E6%97%B6%E6%AE%B5%EF%BC%9A%5B%E5%91%A8%E4%B8%80%E4%B8%8B%E5%8D%8814%3A00%5D%0A%0A%E8%B0%A2%E8%B0%A2" class="b-cta">¥99 启动 →</a>
+</div>
+<div class="b-item tier-c">
+<div class="b-tier">Tier C · 7-10 分</div>
+<div class="b-title">上 Retainer，系统化提效</div>
+<a href="mailto:jiejuefuyou@gmail.com?subject=30min%20%E6%91%B8%E5%BA%95%20%E2%80%94%20Tier%20C%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84&body=Hi%20%E5%8D%B3%E5%86%B3%E5%AF%8C%E6%9C%89%EF%BC%8C%0A%0A%E6%88%91%E5%81%9A%E5%AE%8A%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84%EF%BC%8C%E5%BE%97%E5%88%B0%20Tier%20C%20%E7%BB%93%E6%9E%9C%EF%BC%9A%E6%9C%89%E5%BF%85%E8%A6%81%E3%80%82%0A%0A%E6%88%91%E5%9B%A2%E9%98%9F%E8%A7%84%E6%A8%A1%EF%BC%9A%5B%E4%BA%BA%E6%95%B5%5D%0A%E6%9C%80%E6%83%B3%E8%A7%A3%E5%86%B3%E7%9A%84%E5%9C%BA%E6%99%AF%EF%BC%9A%5B%E5%AE%A2%E6%9C%8D%2F%E5%86%85%E5%AE%B9%2F%E6%8A%A5%E8%A1%A8%E2%80%A6%5D%0A%E9%A2%84%E7%AE%97%EF%BC%9A%5B%E5%85%83%5D%0A%0A%E6%88%91%E5%B8%8C%E6%9C%9B%E7%9A%8430%20min%20%E6%91%B8%E5%BA%95%E6%97%B6%E6%AE%B5%EF%BC%9A%5B%E5%91%A8%E4%B8%80%E4%B8%8B%E5%8D%8814%3A00%5D%0A%0A%E8%B0%A2%E8%B0%A2" class="b-cta">30min 诊断 →</a>
+</div>
+</div>
+</div>
+
 <div class="cta-box" id="share-box" style="display:none">
   <h3>你的选型结果已生成</h3>
   <p>转发给也在困惑的同事 / 朋友圈 · 或帮他们也测一下</p>
   <div class="share-row">
-    <button class="share-btn x" onclick="shareX()">𝕏 分享</button>
+    <button class="share-btn x" onclick="shareX()">X 分享</button>
     <button class="share-btn linkedin" onclick="shareLinkedIn()">LinkedIn</button>
-    <button class="share-btn copy" onclick="copyResult()">📋 复制结果</button>
+    <button class="share-btn copy" onclick="copyResult()">复制结果</button>
   </div>
 </div>
 <footer>
@@ -113,7 +175,7 @@ const QUESTIONS=[
 ];
 const TIERS=[
   {min:0,max:3,tier:"Tier A",title:"买 Prompt Pack，自己搞定",cssClass:"tier-a",scoreText:"你的得分：0-3 / 10",
-   desc:"你还在"了解 AI 能做什么"的初级阶段。先买 prompt 为时过早，找 retainer 又太贵。你现在最需要<strong>试错和验证</strong>。",
+   desc:"你还在「了解 AI 能做什么」的初级阶段。先买 prompt 为时过早，找 retainer 又太贵。你现在最需要<strong>试错和验证</strong>。",
    nextItems:["先拿 ¥75 的 Prompt Vault Master（160+ 条英双语 prompt）练手","把这些 prompt 用在 1-2 个日常场景（写邮件/发朋友圈）","通过 1 次实践后，再决定要不要系统化"],
    cta:"查看 Prompt Vault ($9.99)",ctaHref:"https://jiejuefuyou.gumroad.com/l/prompt-vault-master",
    alt:"或者，用 <a href='quote-calculator.html' style='color:var(--accent-2)'>报价计算器</a> 算一下你的真实 ROI 值多少钱"},
@@ -125,7 +187,7 @@ const TIERS=[
   {min:7,max:10,tier:"Tier C",title:"上 Retainer，系统化提效",cssClass:"tier-c",scoreText:"你的得分：7-10 / 10",
    desc:"你已经<strong>准备好了</strong>。需要的是执行和方法论，先把预算定下来，知道 AI 能帮你干什么，然后找一个<strong>执行合伙人</strong>。从 0 到 1 最难的阶段已经过了。",
    nextItems:["直接预约 30 分钟通话（免费答疑，不收费）","预约一个完整诊断，了解你的真实 ROI","找一份报价单，搞清流程 + 时间框架 + 交付物"],
-   cta:"30 min 诊断预约，直入主题",ctaHref:"mailto:jiejuefuyou@gmail.com?subject=30min%20%E6%91%B8%E5%BA%95%20%E2%80%94%20Tier%20C%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84&body=Hi%20%E5%8D%B3%E5%86%B3%E5%AF%8C%E6%9C%89%EF%BC%8C%0A%0A%E6%88%91%E5%81%9A%E5%AE%8A%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84%EF%BC%8C%E5%BE%97%E5%88%B0%20Tier%20C%20%E7%BB%93%E6%9E%9C%EF%BC%9A%E6%9C%89%E5%BF%85%E8%A6%81%E3%80%82%0A%0A%E6%88%91%E5%9B%A2%E9%98%9F%E8%A7%84%E6%A8%A1%EF%BC%9A%5B%E4%BA%BA%E6%95%B0%5D%0A%E6%9C%80%E6%83%B3%E8%A7%A3%E5%86%B3%E7%9A%84%E5%9C%BA%E6%99%AF%EF%BC%9A%5B%E5%AE%A2%E6%9C%8D%2F%E5%86%85%E5%AE%B9%2F%E6%8A%A5%E8%A1%A8%E2%80%A6%5D%0A%E9%A2%84%E7%AE%97%EF%BC%9A%5B%E5%85%83%5D%0A%0A%E6%88%91%E5%B8%8C%E6%9C%9B%E7%9A%8430%20min%20%E6%91%B8%E5%BA%95%E6%97%B6%E6%AE%B5%EF%BC%9A%5B%E5%91%A8%E4%B8%80%E4%B8%8B%E5%8D%8814%3A00%5D%0A%0A%E8%B0%A2%E8%B0%A2",
+   cta:"30 min 诊断预约，直入主题",ctaHref:"mailto:jiejuefuyou@gmail.com?subject=30min%20%E6%91%B8%E5%BA%95%20%E2%80%94%20Tier%20C%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84&body=Hi%20%E5%8D%B3%E5%86%B3%E5%AF%8C%E6%9C%89%EF%BC%8C%0A%0A%E6%88%91%E5%81%9A%E5%AE%8A%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84%EF%BC%8C%E5%BE%97%E5%88%B0%20Tier%20C%20%E7%BB%93%E6%9E%9C%EF%BC%9A%E6%9C%89%E5%BF%85%E8%A6%81%E3%80%82%0A%0A%E6%88%91%E5%9B%A2%E9%98%9F%E8%A7%84%E6%A8%A1%EF%BC%9A%5B%E4%BA%BA%E6%95%B5%5D%0A%E6%9C%80%E6%83%B3%E8%A7%A3%E5%86%B3%E7%9A%84%E5%9C%BA%E6%99%AF%EF%BC%9A%5B%E5%AE%A2%E6%9C%8D%2F%E5%86%85%E5%AE%B9%2F%E6%8A%A5%E8%A1%A8%E2%80%A6%5D%0A%E9%A2%84%E7%AE%97%EF%BC%9A%5B%E5%85%83%5D%0A%0A%E6%88%91%E5%B8%8C%E6%9C%9B%E7%9A%8430%20min%20%E6%91%B8%E5%BA%95%E6%97%B6%E6%AE%B5%EF%BC%9A%5B%E5%91%A8%E4%B8%80%E4%B8%8B%E5%8D%8814%3A00%5D%0A%0A%E8%B0%A2%E8%B0%A2",
    alt:"也可以先拿 <a href='quote-calculator.html' style='color:var(--accent-2)'>报价计算器</a> 算出大概范围"}
 ];
 let currentQ=0,answers=[];
@@ -145,6 +207,7 @@ function showResult(){
   el.className='result show '+t.cssClass;
   el.innerHTML='<div class="result-tier">'+t.tier+'</div><div class="result-title">'+t.title+'</div><div class="result-score">'+t.scoreText+'</div><div class="result-desc">'+t.desc+'</div><div class="result-next"><h4>下一步</h4><ul>'+t.nextItems.map(i=>'<li>'+i+'</li>').join('')+'</ul></div><a href="'+t.ctaHref+'" class="result-cta" target="_blank" rel="noopener">'+t.cta+'</a><span class="result-alt">'+t.alt+'</span>';
   document.getElementById('share-box').style.display='block';
+  document.getElementById('breakdown').style.display='none';
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function getResultText(){
