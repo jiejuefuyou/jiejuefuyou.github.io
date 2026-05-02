@@ -175,7 +175,7 @@ footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border
 <h3>📧 把这个报价直接发给我</h3>
 <p>下面按钮会自动用你的邮箱客户端预填咨询邮件 (含上面的报价区间)。我会在 24 小时内回复并约 30 min 摸底通话。</p>
 <a id="mailto-btn" class="cta-btn" href="#">📨 发咨询邮件 (含报价)</a>
-<a class="cta-btn secondary" href="services.html">看完整服务详情</a>
+<a class="cta-btn secondary" href="services.html">看完整服务详情</a><a id="copy-quote-btn" class="cta-btn secondary" href="#" onclick="copyQuoteInfo(); return false;">📋 复制报价信息</a>
 <p class="muted" style="margin-top: 12px; font-size: .8rem;">或微信 / 即刻 / 知乎 私信 jiejuefuyou (主页见 <a href="index.html">index</a>)</p>
 </div>
 
@@ -337,6 +337,18 @@ function calculate() {
   document.getElementById('mailto-btn').href = `mailto:jiejuefuyou@gmail.com?subject=${subject}&body=${body}`;
 }
 
+function copyQuoteInfo(){
+  var priceEl = document.getElementById('price-range');
+  var timelineEl = document.getElementById('timeline');
+  var tierNameEl = document.getElementById('tier-name');
+  var paymentEl = document.getElementById('payment');
+  var priceText = priceEl ? priceEl.textContent : '';
+  var timelineText = timelineEl ? timelineEl.textContent : '';
+  var tierText = tierNameEl ? tierNameEl.textContent : '';
+  var paymentText = paymentEl ? paymentEl.textContent : '';
+  var text = '项目报价信息（来源：jiejuefuyou.github.io/quote-calculator.html）\n\n报价范围：\u00a5' + priceText + '\n预计工期：' + timelineText + '\n推荐方案：' + tierText + '\n付款方式：' + paymentText + '\n\n详细需求请回复邮件或加微信私聊 jiejuefuyou (首页 index 有联系方式)。';
+  navigator.clipboard.writeText(text).then(function(){ alert('已复制到剪贴板，可直接粘贴到邮件或微信'); });
+}
 calculate();
 </script>
 </body>

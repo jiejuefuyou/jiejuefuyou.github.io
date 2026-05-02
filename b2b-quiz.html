@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI ¹¤×÷Á÷³ÉÊì¶È²âÆÀ ¡ª ÄãµÄÍÅ¶ÓÊÊºÏÄÄÖÖ·şÎñ£¿</title>
-<meta name="description" content="»Ø´ğ 5 ¸öÎÊÌâ£¬90 ÃëÖªµÀÄãµÄÍÅ¶ÓÊÊºÏÂò prompt pack¡¢Æô¶¯°ü¡¢»¹ÊÇ retainer¡£ÍêÈ«Ãâ·Ñ£¬ÍêÈ«±¾µØ¼ÆËã£¬²»ÁôÈÎºÎĞÅÏ¢¡£">
-<meta property="og:title" content="AI ¹¤×÷Á÷³ÉÊì¶È²âÆÀ ¡ª ÄãµÄÍÅ¶ÓÊÊºÏÄÄÖÖ·şÎñ£¿">
+<title>AI å·¥å…·é€‰å‹æµ‹è¯• â€” 90ç§’åˆ¤æ–­ä½ è¯¥ä¹°æç¤ºè¯è¿˜æ˜¯æ‰¾é¡¾é—®</title>
+<meta name="description" content="å›ç­”5é“é¢˜ï¼Œ90ç§’çŸ¥é“ä½ è¯¥ä¹° prompt packã€æ‰¾é¡¾é—®ã€è¿˜æ˜¯è‡ªå·±DIYã€‚å…¨éƒ¨å…è´¹ï¼Œæ— éœ€æ³¨å†Œï¼Œä¸ç”¨cookie">
+<meta property="og:title" content="AI å·¥å…·é€‰å‹æµ‹è¯• â€” 90ç§’åˆ¤æ–­ä½ è¯¥ä¹°æç¤ºè¯è¿˜æ˜¯æ‰¾é¡¾é—®">
 <meta property="og:type" content="website">
 <style>
 :root{--bg:#0a0a0f;--bg-card:#12121a;--border:#1f1f2e;--text:#e6e6f0;--muted:#8a8a9a;--accent:#6c4be0;--accent-2:#9b6cf0;--good:#4ade80;--warn:#fbbf24}
@@ -51,80 +51,88 @@ header p.muted{color:var(--muted);margin-top:8px;font-size:.85rem}
 .cta-box{background:linear-gradient(135deg,rgba(108,75,224,.15),rgba(192,132,252,.06));border:1px solid rgba(108,75,224,.3);padding:24px;border-radius:12px;margin-top:32px;text-align:center}
 .cta-box h3{color:#fff;margin-bottom:10px}
 .cta-box p{color:var(--muted);font-size:.9rem}
+.share-row{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.share-btn{padding:8px 16px;border-radius:8px;font-size:.85rem;font-weight:500;cursor:pointer;border:none;color:white;opacity:.85;transition:opacity .15s}
+.share-btn:hover{opacity:1}
+.share-btn.x{background:#000}.share-btn.linkedin{background:#0a66a2}.share-btn.copy{background:var(--bg-card);border:1px solid var(--border);color:var(--text)}
 footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem;text-align:center}
 @media(max-width:600px){.wrap{padding:40px 16px 60px}header h1{font-size:1.6rem}.quiz-card{padding:20px 16px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<a href="services.html" class="back">¡û ·µ»Ø B ¶Ë×ÉÑ¯</a>
+<a href="services.html" class="back">â† æœåŠ¡ B å¥—é¤å’¨è¯¢</a>
 <header>
-<h1>?? AI ¹¤×÷Á÷³ÉÊì¶È²âÆÀ</h1>
-<p>»Ø´ğ 5 ¸öÎÊÌâ£¬90 ÃëÖªµÀÄãÊÊºÏÄÄÖÖ·şÎñ</p>
-<p class="muted">?? ÍêÈ«±¾µØ¼ÆËã ¡ª ²»ÊÕ¼¯ÈÎºÎÊı¾İ£¬²»·¢ÓÊ¼ş£¬²»Áô cookie</p>
+<h1>ä½ çš„ AI å·¥å…·é€‰å‹æµ‹è¯•</h1>
+<p>å›ç­”5é“é¢˜ï¼Œ90ç§’çŸ¥é“ä½ è¯¥ä¹°ä»€ä¹ˆ</p>
+<p class="muted">å…è´¹ Â· ä¸ç”¨æ³¨å†Œ Â· ä¸ç”¨ cookie</p>
 </header>
 <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
 <div class="quiz-card" id="quiz"></div>
 <div class="result" id="result"></div>
 <div class="cta-box" id="share-box" style="display:none">
-  <h3>Õâ¸ö²âÆÀ°ïµ½ÄãÁËÂğ£¿</h3>
-  <p>×ª·¢¸øÒ²ÔÚ¿¼ÂÇ AI ¹¤×÷Á÷µÄÍ¬ÊÂ / ºÏ»ïÈË ¡ª ËûÃÇ¿ÉÄÜÒ²ÔÚÕÒ·½Ïò¡£</p>
+  <h3>ä½ çš„é€‰å‹ç»“æœå·²ç”Ÿæˆ</h3>
+  <p>è½¬å‘ç»™ä¹Ÿåœ¨å›°æƒ‘çš„åŒäº‹ / æœ‹å‹åœˆ Â· æˆ–å¸®ä»–ä»¬ä¹Ÿæµ‹ä¸€ä¸‹</p>
+  <div class="share-row">
+    <button class="share-btn x" onclick="shareX()">ğ• åˆ†äº«</button>
+    <button class="share-btn linkedin" onclick="shareLinkedIn()">LinkedIn</button>
+    <button class="share-btn copy" onclick="copyResult()">ğŸ“‹ å¤åˆ¶ç»“æœ</button>
+  </div>
 </div>
 <footer>
-<p>jiejuefuyou ¡¤ <a href="services.html">B ¶Ë×ÉÑ¯</a> ¡¤ <a href="zh.html">ÖĞÎÄÊ×Ò³</a> ¡¤ <a href="https://github.com/jiejuefuyou">GitHub</a></p>
+<p>jiejuefuyou Â· <a href="services.html">B å¥—é¤å’¨è¯¢</a> Â· <a href="zh.html">ä¸­æ–‡å®˜ç½‘</a> Â· <a href="https://github.com/jiejuefuyou">GitHub</a></p>
 </footer>
 </div>
 <script>
 const QUESTIONS=[
-  {text:"ÄãµÄÍÅ¶ÓÏÖÔÚÓĞ¶àÉÙ¸ö¡¸ÖØ¸´ĞÔÈÎÎñ¡¹Ã¿Ìì/Ã¿ÖÜ¶¼ÔÚ×ö£¿",options:[
-    {label:"»¹Ã»Êı¹ı£¬¸Ğ¾õÍ¦¶à£¬µ«Ã»ÕûÀí",value:0},
-    {label:"3-5 ¸ö£¬ÎÒÖªµÀ´ó¸ÅÊÇÊ²Ã´",value:1},
-    {label:"6 ¸öÒÔÉÏ£¬ÎÒÁĞ¹ıÇåµ¥",value:2}
+  {text:"ä½ çš„å›¢é˜Ÿæœ‰å¤šå°‘äººæ¯å‘¨å¤„ç†é‡å¤æ€§ä»»åŠ¡/æ–‡æ¡ˆï¼Ÿ",options:[
+    {label:"æ²¡æ€ä¹ˆå¤„ç†ï¼Œå…¨é æ‰‹é€Ÿ",value:0},
+    {label:"3-5äººçŸ¥é“ç”¨ AIï¼Œå…¶ä»–äººä¸çŸ¥é“",value:1},
+    {label:"6äººä»¥ä¸Šï¼Œæœ‰æ¸…å•æµç¨‹",value:2}
   ]},
-  {text:"ÄãÃÇÍÅ¶ÓÓĞÈËÔÚÓÃ AI ¹¤¾ß´¦Àí¹¤×÷Âğ£¿",options:[
-    {label:"Ã»ÓÃ¹ı£¬²»ÖªµÀÔõÃ´ÉÏÊÖ",value:0},
-    {label:"ÓĞÈËÓÃ£¬µ«±È½ÏÁãÉ¢£¬Ã»ÓĞÏµÍ³»¯",value:1},
-    {label:"ÒÑ¾­ÔÚÓÃ£¬Ğ§¹û²»´í£¬ÏëÀ©Õ¹µ½¸ü¶à³¡¾°",value:2}
+  {text:"ä½ çš„å…¬å¸ç›®å‰å¯¹ AI å·¥å…·çš„é›†æˆç¨‹åº¦ï¼Ÿ",options:[
+    {label:"æ²¡æ€ä¹ˆç”¨ï¼Œä¸çŸ¥é“æ€ä¹ˆåš",value:0},
+    {label:"è‡ªå·±æ­è¿‡ï¼Œå¯¹æ¯”è¿‡å¸‚é¢æ–¹æ¡ˆ",value:1},
+    {label:"å·²ç»é›†æˆï¼Œä¸šåŠ¡æµç¨‹æ·±åº¦å®šåˆ¶",value:2}
   ]},
-  {text:"ÄãµÄÍÅ¶ÓÃ¿ÔÂÔÚÖØ¸´ĞÔÈËÁ¦ÈÎÎñÉÏ»¨¶àÉÙÇ®£¿",options:[
-    {label:"²»µ½ 1 Íò£¨Ïàµ±ÓÚ²»µ½ 1 ¸öÈ«Ö°£©",value:0},
-    {label:"1-3 Íò£¨1 ¸öÈ«Ö°»ò¼¸¸ö¼æÖ°£©",value:1},
-    {label:"3 ÍòÒÔÉÏ£¨2 ¸öÒÔÉÏÈ«Ö°ÔÚ×öÖØ¸´ÈÎÎñ£©",value:2}
+  {text:"æ¯æ¬¡æ–‡æ¡ˆäº§å‡ºå¹³å‡éœ€è¦å¤šå°‘æ—¶é—´æŠ•å…¥ï¼Ÿ",options:[
+    {label:"æ¯æ¬¡ 1 å°æ—¶ç›¸å½“äºä¸èŠ±é’±",value:0},
+    {label:"1-3 å°æ—¶ï¼Œæ¯”æ‹›äººä¾¿å®œä¸€ç‚¹",value:1},
+    {label:"3 å°æ—¶ä»¥ä¸Šï¼Œ2ä¸ªäººçš„å·¥ä½œé‡",value:2}
   ]},
-  {text:"Èç¹û AI ÄÜ°ïÄãÍÅ¶Ó½ÚÊ¡ 50-70% µÄÊ±¼ä£¬Äã×î¹ØĞÄµÄÊÇÊ²Ã´£¿",options:[
-    {label:"Õâ¸ö AI ÕæµÄÄÜÀí½âÎÒÃÇĞĞÒµµÄ¾ßÌå³¡¾°Âğ£¿",value:0},
-    {label:"ÔõÃ´±£Ö¤ AI Êä³öµÄÄÚÈİÖÊÁ¿£¬²»ÄÜ³ö´í",value:1},
-    {label:"ÔõÃ´ÈÃÍÅ¶Ó¿ìËÙÉÏÊÖ£¬²»Òª¼¸¸öÔÂ²ÅÂäµØ",value:1},
-    {label:"¶àÉÙÇ®£¬¶à¿ìÄÜ¼ûĞ§",value:2}
+  {text:"å¦‚æœ AI èƒ½å¸®ä½ çœ 50-70% çš„æ—¶é—´ï¼Œä½ æ‹…å¿ƒçš„ç‚¹æ˜¯ï¼Ÿ",options:[
+    {label:"ç”¨äº† AI ç”Ÿæˆçš„æ–‡æ¡ˆå®¢æˆ·ä¸æ¥å—",value:0},
+    {label:"æ€ä¹ˆä¿è¯ AI ç”Ÿæˆè´¨é‡ç¨³å®šé è°±",value:1},
+    {label:"æ€ä¹ˆè¯æ˜ ROIï¼Œä»¥åŠè€æ¿å®¡æ‰¹é—®é¢˜",value:2}
   ]},
-  {text:"ÄãÏÖÔÚ×îÏë½â¾öµÄÎÊÌâÊÇ£¿",options:[
-    {label:"ÂòÒ»Ì×ºÃ prompt£¬ÏÈ×Ô¼ºÊÔÊÔ AI ÄÜ¸ÉÉ¶",value:0},
-    {label:"ÕÒÈË°ïÃ¦Õï¶ÏÒ»ÏÂÎÒÃÇÍÅ¶ÓÊÊ²»ÊÊºÏ×ö AI ×Ô¶¯»¯",value:1},
-    {label:"ÒÑ¾­¾ö¶¨Òª×ö£¬ĞèÒªÈË°ïÎÒ´îÒ»Ì×ÄÜÓÃµÄ¹¤×÷Á÷",value:2}
+  {text:"ä½ çš„å…¬å¸è§„æ¨¡å’Œæ‰€å¤„é˜¶æ®µæ˜¯ï¼Ÿ",options:[
+    {label:"ä¸€äººå…¬å¸ï¼ŒAI åªèƒ½å¸®ä½ æ‰“ä¸‹æ‰‹",value:0},
+    {label:"å‡ ä¸ªäººå°å›¢é˜Ÿï¼ŒAI å¸®ä½ æ‰©å¤§æœåŠ¡é‡",value:1},
+    {label:"å·²ç»æœ‰ä¸€å®šè§„æ¨¡ï¼Œéœ€è¦ç³»ç»ŸåŒ–è¿ä½œ",value:2}
   ]}
 ];
 const TIERS=[
-  {min:0,max:3,tier:"?? Tier A",title:"ÏÈÂò Prompt Pack£¬×Ô¼ºÊÔ",cssClass:"tier-a",scoreText:"³ÉÊì¶ÈµÃ·Ö£º0-3 / 10",
-   desc:"Äã»¹ÔÚ¡¸ÁË½â AI ÄÜ×öÊ²Ã´¡¹µÄ½×¶Î¡£Ö±½ÓÂò retainer ÎªÊ±¹ıÔç¡ª¡ªÄãĞèÒª<strong>ÏÈÓÃÆğÀ´</strong>¡£",
-   nextItems:["»¨ £¤75 Âò Prompt Vault Master£¨160 ÌõÖĞÓ¢Ë«Óï prompt£¬ÓÀ¾Ã¸üĞÂ£©","ÏÈÓÃÕâĞ© prompt °ÑÄã×îÍ´µÄ 1-2 ¸ö³¡¾°ÅÜÍ¨","ÅÜÍ¨ÁË 1 ¸öÔÂ£¬ÔÙ»ØÀ´¿¼ÂÇÒª²»ÒªÇëÈË´îÏµÍ³"],
-   cta:"²é¿´ Prompt Vault (.99)",ctaHref:"https://jiejuefuyou.gumroad.com/l/prompt-vault-master",
-   alt:"»òÕß£ºÏÈ <a href='quote-calculator.html' style='color:var(--accent-2)'>ÓÃ±¨¼Û¼ÆËãÆ÷</a> ËãÒ»ÏÂÄãµÄ¾ßÌå³¡¾°Öµ¶àÉÙÇ®"},
-  {min:4,max:6,tier:"?? Tier B",title:"Æô¶¯°ü £¤99£¬ÏÈÃşµ×ÔÙ¾ö¶¨",cssClass:"tier-b",scoreText:"³ÉÊì¶ÈµÃ·Ö£º4-6 / 10",
-   desc:"ÄãÒÑ¾­ÔÚÓÃ AI£¬µ«»¹Ã»ÏµÍ³»¯¡£ÄãĞèÒªÒ»¸ö<strong>¶®ĞĞµÄÍâÈË</strong>°ïÄã×öÒ»´ÎÕï¶Ï¡ª¡ª30 ·ÖÖÓÃşµ×Í¨»° + 1 Ò³Õï¶Ï PDF£¬¸æËßÄã¡¸´ÓÄÄÀï¿ªÊ¼×ö ROI ×î¸ß¡¹¡£",
-   nextItems:["Âò £¤99 Æô¶¯°ü£¨Ê×Åú°ë¼Û£¬Ô­ £¤499£©","Ô¤Ô¼ 30 ·ÖÖÓÊÓÆµÍ¨»°£¬ÎÒÎÊ 7 ¸öÎÊÌâ£¬Á¿»¯ÄãµÄ ROI","ÄÃµ½Õï¶Ï PDF ºó£¬ÔÙ¾ö¶¨ÊÇ DIY »¹ÊÇÉÏ retainer"],
-   cta:"Ô¤Ô¼ 30 min Ãşµ× (£¤99)",ctaHref:"mailto:jiejuefuyou@gmail.com?subject=%E5%90%AF%E5%8A%A8%E5%8C%85%20%E2%80%94%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84&body=Hi%20%E5%8D%B3%E5%86%B3%E5%AF%8C%E6%9C%89%EF%BC%8C%0A%0A%E6%88%91%E5%81%9A%E5%AE%8A%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84%EF%BC%8C%E5%BE%97%E5%88%B0%20Tier%20B%20%E7%BB%93%E6%9E%9C%EF%BC%9A%E5%90%AF%E5%8A%A8%E5%8C%85%20%C2%A599%20%E6%91%B8%E5%BA%95%E3%80%82%0A%0A%E6%88%91%E5%9B%A2%E9%98%9F%E8%A7%84%E6%A8%A1%EF%BC%9A%5B%E4%BA%BA%E6%95%B0%5D%0A%E6%9C%AC%E5%9C%B0%E9%97%B4%E5%9C%B0%EF%BC%9A%5B%E5%85%B3%E4%BD%95%E5%9C%BA%E6%99%AF%5D%0A%0A%E5%B8%8C%E6%9C%9B%E7%9A%84%E6%91%B8%E5%BA%95%E6%97%B6%E6%AE%B5%EF%BC%9A%5B%E5%91%A8%E4%B8%80%E4%B8%8B%E5%8D%8814%3A00%5D%0A%0A%E8%B0%A2%E8%B0%A2",
-   alt:"Ò²¿ÉÒÔÏÈ <a href='roi-calculator.html' style='color:var(--accent-2)'>ÓÃ ROI ¼ÆËãÆ÷</a> ËãÒ»ÏÂÄãÍÅ¶ÓµÄÕæÊµ ROI"},
-  {min:7,max:10,tier:"?? Tier C",title:"±ê×¼ Retainer£¬Ö±½ÓÉÏÏµÍ³",cssClass:"tier-c",scoreText:"³ÉÊì¶ÈµÃ·Ö£º7-10 / 10",
-   desc:"ÄãÒÑ¾­<strong>×¼±¸ºÃÁË</strong>¡£ÓĞ¾ßÌå³¡¾°£¬ÓĞÔ¤Ëã¸ÅÄî£¬ÖªµÀ AI ÄÜ¸ÉÉ¶¡ª¡ªĞèÒªµÄÊÇÒ»¸ö<strong>Ö´ĞĞºÏ»ïÈË</strong>°ïÄã´Ó 0 µ½ 1 ´îÆğ¹¤×÷Á÷¡£",
-   nextItems:["Ö±½ÓÔ¤Ô¼ 30 ·ÖÖÓÃşµ×Í¨»°£¨Ãâ·Ñ£¬²»ÊÕ·Ñ£©","ÎÒÃÇÒ»ÆğÁ¿»¯ÄãµÄ×î¸ß ROI ³¡¾°","ÎÒ³ö 1 Ò³ quote£¨¾ßÌå·½°¸ + ¹¤ÆÚ + »Ø±¾ÖÜÆÚ£©£¬Äã¾ö¶¨"],
-   cta:"30 min Ãâ·ÑÃşµ×£¬Ö±½ÓÁÄ",ctaHref:"mailto:jiejuefuyou@gmail.com?subject=30min%20%E6%91%B8%E5%BA%95%20%E2%80%94%20Tier%20C%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84&body=Hi%20%E5%8D%B3%E5%86%B3%E5%AF%8C%E6%9C%89%EF%BC%8C%0A%0A%E6%88%91%E5%81%9A%E5%AE%8A%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84%EF%BC%8C%E5%BE%97%E5%88%B0%20Tier%20C%20%E7%BB%93%E6%9E%9C%EF%BC%9A%E6%9C%83%E5%BF%85%E8%A6%81%E3%80%82%0A%0A%E6%88%91%E5%9B%A2%E9%98%9F%E8%A7%84%E6%A8%A1%EF%BC%9A%5B%E4%BA%BA%E6%95%B0%5D%0A%E6%9C%80%E6%83%B3%E8%A7%A3%E5%86%B3%E7%9A%84%E5%9C%BA%E6%99%AF%EF%BC%9A%5B%E5%AE%A2%E6%9C%8D%2F%E5%86%85%E5%AE%B9%2F%E6%8A%A5%E8%A1%A8%E2%80%A6%5D%0A%E9%A2%84%E7%AE%97%EF%BC%9A%5B%E5%85%83%5D%0A%0A%E6%88%91%E5%B8%8C%E6%9C%9B%E7%9A%8430%20min%20%E6%91%B8%E5%BA%95%E6%97%B6%E6%AE%B5%EF%BC%9A%5B%E5%91%A8%E4%B8%80%E4%B8%8B%E5%8D%8814%3A00%5D%0A%0A%E8%B0%A2%E8%B0%A2",
-   alt:"»òÕßÏÈÓÃ <a href='quote-calculator.html' style='color:var(--accent-2)'>±¨¼Û¼ÆËãÆ÷</a> ÄÃµ½¾ßÌåÇø¼ä£¬ÔÙ¾ö¶¨ÁÄ²»ÁÄ"}
+  {min:0,max:3,tier:"Tier A",title:"ä¹° Prompt Packï¼Œè‡ªå·±æå®š",cssClass:"tier-a",scoreText:"ä½ çš„å¾—åˆ†ï¼š0-3 / 10",
+   desc:"ä½ è¿˜åœ¨"äº†è§£ AI èƒ½åšä»€ä¹ˆ"çš„åˆçº§é˜¶æ®µã€‚å…ˆä¹° prompt ä¸ºæ—¶è¿‡æ—©ï¼Œæ‰¾ retainer åˆå¤ªè´µã€‚ä½ ç°åœ¨æœ€éœ€è¦<strong>è¯•é”™å’ŒéªŒè¯</strong>ã€‚",
+   nextItems:["å…ˆæ‹¿ Â¥75 çš„ Prompt Vault Masterï¼ˆ160+ æ¡è‹±åŒè¯­ promptï¼‰ç»ƒæ‰‹","æŠŠè¿™äº› prompt ç”¨åœ¨ 1-2 ä¸ªæ—¥å¸¸åœºæ™¯ï¼ˆå†™é‚®ä»¶/å‘æœ‹å‹åœˆï¼‰","é€šè¿‡ 1 æ¬¡å®è·µåï¼Œå†å†³å®šè¦ä¸è¦ç³»ç»ŸåŒ–"],
+   cta:"æŸ¥çœ‹ Prompt Vault (.99)",ctaHref:"https://jiejuefuyou.gumroad.com/l/prompt-vault-master",
+   alt:"æˆ–è€…ï¼Œç”¨ <a href='quote-calculator.html' style='color:var(--accent-2)'>æŠ¥ä»·è®¡ç®—å™¨</a> ç®—ä¸€ä¸‹ä½ çš„çœŸå® ROI å€¼å¤šå°‘é’±"},
+  {min:4,max:6,tier:"Tier B",title:"å¯åŠ¨åŒ… Â¥99ï¼Œæå®šæ ¸å¿ƒé—®é¢˜",cssClass:"tier-b",scoreText:"ä½ çš„å¾—åˆ†ï¼š4-6 / 10",
+   desc:"ä½ å·²ç»äº†è§£ AIï¼Œä½†ç¼ºå°‘ä¸€ä¸ª<strong>æ ¸å¿ƒçš„æ–¹æ³•è®º</strong>ã€‚éœ€è¦ä¸€ä¸ª30 åˆ†é’Ÿè§†é¢‘é€šæ¡ˆ + 1 ä»½ PDFï¼Œå¸®ä½ è¿ˆå‡ºç¬¬ä¸€æ­¥ã€‚ROI æ˜æ˜¾ã€‚",
+   nextItems:["æ‹¿ Â¥99 å¯åŠ¨åŒ…ï¼ˆå«è§†é¢‘é€šæ¡ˆï¼ŒåŸä»· Â¥499ï¼‰","é¢„çº¦ 30 åˆ†é’Ÿè§†é¢‘é€šè¯ï¼Œæå®š 7 ä¸ªæ ¸å¿ƒé—®é¢˜ï¼Œç®—æ¸… ROI","æ‹¿å†…éƒ¨ PDF å¼€å§‹ DIYï¼Œå¯¹æ¯”åæ‰¾ retainer"],
+   cta:"é¢„çº¦ 30 min å’¨è¯¢ (Â¥99)",ctaHref:"mailto:jiejuefuyou@gmail.com?subject=%E5%90%AF%E5%8A%A8%E5%8C%85%20%E2%80%94%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84&body=Hi%20%E5%8D%B3%E5%86%B3%E5%AF%8C%E6%9C%89%EF%BC%8C%0A%0A%E6%88%91%E5%81%9A%E5%AE%8A%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84%EF%BC%8C%E5%BE%97%E5%88%B0%20Tier%20B%20%E7%BB%93%E6%9E%9C%EF%BC%9A%E5%90%AF%E5%8A%A8%E5%8C%85%20%C2%A599%20%E6%91%B8%E5%BA%95%E3%80%82%0A%0A%E6%88%91%E5%9B%A2%E9%98%9F%E8%A7%84%E6%A8%A1%EF%BC%9A%5B%E4%BA%BA%E6%95%B0%5D%0A%E6%9C%AC%E5%9C%B0%E9%97%B4%E5%9C%B0%EF%BC%9A%5B%E5%85%B3%E4%BD%93%E5%9C%BA%E6%99%AF%5D%0A%0A%E5%B8%8C%E6%9C%9B%E7%9A%84%E6%91%B8%E5%BA%95%E6%97%B6%E6%AE%B5%EF%BC%9A%5B%E5%91%A8%E4%B8%80%E4%B8%8B%E5%8D%8814%3A00%5D%0A%0A%E8%B0%A2%E8%B0%A2",
+   alt:"ä¹Ÿå¯ä»¥ç”¨ <a href='roi-calculator.html' style='color:var(--accent-2)'>ROI è®¡ç®—å™¨</a> ç®—ä¸€ä¸‹ä½ çš„çœŸå® ROI"},
+  {min:7,max:10,tier:"Tier C",title:"ä¸Š Retainerï¼Œç³»ç»ŸåŒ–ææ•ˆ",cssClass:"tier-c",scoreText:"ä½ çš„å¾—åˆ†ï¼š7-10 / 10",
+   desc:"ä½ å·²ç»<strong>å‡†å¤‡å¥½äº†</strong>ã€‚éœ€è¦çš„æ˜¯æ‰§è¡Œå’Œæ–¹æ³•è®ºï¼Œå…ˆæŠŠé¢„ç®—å®šä¸‹æ¥ï¼ŒçŸ¥é“ AI èƒ½å¸®ä½ å¹²ä»€ä¹ˆï¼Œç„¶åæ‰¾ä¸€ä¸ª<strong>æ‰§è¡Œåˆä¼™äºº</strong>ã€‚ä» 0 åˆ° 1 æœ€éš¾çš„é˜¶æ®µå·²ç»è¿‡äº†ã€‚",
+   nextItems:["ç›´æ¥é¢„çº¦ 30 åˆ†é’Ÿé€šè¯ï¼ˆå…è´¹ç­”ç–‘ï¼Œä¸æ”¶è´¹ï¼‰","é¢„çº¦ä¸€ä¸ªå®Œæ•´è¯Šæ–­ï¼Œäº†è§£ä½ çš„çœŸå® ROI","æ‰¾ä¸€ä»½æŠ¥ä»·å•ï¼Œææ¸…æµç¨‹ + æ—¶é—´æ¡†æ¶ + äº¤ä»˜ç‰©"],
+   cta:"30 min è¯Šæ–­é¢„çº¦ï¼Œç›´å…¥ä¸»é¢˜",ctaHref:"mailto:jiejuefuyou@gmail.com?subject=30min%20%E6%91%B8%E5%BA%95%20%E2%80%94%20Tier%20C%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84&body=Hi%20%E5%8D%B3%E5%86%B3%E5%AF%8C%E6%9C%89%EF%BC%8C%0A%0A%E6%88%91%E5%81%9A%E5%AE%8A%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%88%90%E7%86%B5%E6%B5%8B%E8%AF%84%EF%BC%8C%E5%BE%97%E5%88%B0%20Tier%20C%20%E7%BB%93%E6%9E%9C%EF%BC%9A%E6%9C%89%E5%BF%85%E8%A6%81%E3%80%82%0A%0A%E6%88%91%E5%9B%A2%E9%98%9F%E8%A7%84%E6%A8%A1%EF%BC%9A%5B%E4%BA%BA%E6%95%B0%5D%0A%E6%9C%80%E6%83%B3%E8%A7%A3%E5%86%B3%E7%9A%84%E5%9C%BA%E6%99%AF%EF%BC%9A%5B%E5%AE%A2%E6%9C%8D%2F%E5%86%85%E5%AE%B9%2F%E6%8A%A5%E8%A1%A8%E2%80%A6%5D%0A%E9%A2%84%E7%AE%97%EF%BC%9A%5B%E5%85%83%5D%0A%0A%E6%88%91%E5%B8%8C%E6%9C%9B%E7%9A%8430%20min%20%E6%91%B8%E5%BA%95%E6%97%B6%E6%AE%B5%EF%BC%9A%5B%E5%91%A8%E4%B8%80%E4%B8%8B%E5%8D%8814%3A00%5D%0A%0A%E8%B0%A2%E8%B0%A2",
+   alt:"ä¹Ÿå¯ä»¥å…ˆæ‹¿ <a href='quote-calculator.html' style='color:var(--accent-2)'>æŠ¥ä»·è®¡ç®—å™¨</a> ç®—å‡ºå¤§æ¦‚èŒƒå›´"}
 ];
 let currentQ=0,answers=[];
 function renderQuestion(){
   const q=QUESTIONS[currentQ];
   document.getElementById('progress').style.width=((currentQ/QUESTIONS.length)*100)+'%';
-  document.getElementById('quiz').innerHTML='<div class="q-num">ÎÊÌâ '+(currentQ+1)+' / '+QUESTIONS.length+'</div><div class="q-text">'+q.text+'</div><div class="q-options">'+q.options.map((o,i)=>'<div class="q-option"><input type="radio" name="q'+currentQ+'" id="q'+currentQ+'_'+i+'" value="'+o.value+'" onchange="selectAnswer('+o.value+')"><label for="q'+currentQ+'_'+i+'">'+o.label+'</label></div>').join('')+'</div>';
+  document.getElementById('quiz').innerHTML='<div class="q-num">é—®é¢˜ '+(currentQ+1)+' / '+QUESTIONS.length+'</div><div class="q-text">'+q.text+'</div><div class="q-options">'+q.options.map((o,i)=>'<div class="q-option"><input type="radio" name="q'+currentQ+'" id="q'+currentQ+'_'+i+'" value="'+o.value+'" onchange="selectAnswer('+o.value+')"><label for="q'+currentQ+'_'+i+'">'+o.label+'</label></div>').join('')+'</div>';
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function selectAnswer(v){answers[currentQ]=v;setTimeout(()=>{currentQ<QUESTIONS.length?renderQuestion():showResult()},300);}
@@ -135,9 +143,25 @@ function showResult(){
   document.getElementById('quiz').style.display='none';
   const el=document.getElementById('result');
   el.className='result show '+t.cssClass;
-  el.innerHTML='<div class="result-tier">'+t.tier+'</div><div class="result-title">'+t.title+'</div><div class="result-score">'+t.scoreText+'</div><div class="result-desc">'+t.desc+'</div><div class="result-next"><h4>ÏÂÒ»²½</h4><ul>'+t.nextItems.map(i=>'<li>'+i+'</li>').join('')+'</ul></div><a href="'+t.ctaHref+'" class="result-cta" target="_blank" rel="noopener">'+t.cta+'</a><span class="result-alt">'+t.alt+'</span>';
+  el.innerHTML='<div class="result-tier">'+t.tier+'</div><div class="result-title">'+t.title+'</div><div class="result-score">'+t.scoreText+'</div><div class="result-desc">'+t.desc+'</div><div class="result-next"><h4>ä¸‹ä¸€æ­¥</h4><ul>'+t.nextItems.map(i=>'<li>'+i+'</li>').join('')+'</ul></div><a href="'+t.ctaHref+'" class="result-cta" target="_blank" rel="noopener">'+t.cta+'</a><span class="result-alt">'+t.alt+'</span>';
   document.getElementById('share-box').style.display='block';
   window.scrollTo({top:0,behavior:'smooth'});
+}
+function getResultText(){
+  const total=answers.reduce((a,b)=>a+b,0);
+  const t=TIERS.find(x=>total>=x.min&&total<=x.max);
+  return 'AIå·¥å…·é€‰å‹æµ‹è¯•ç»“æœï¼š'+t.tier+' â€” '+t.title+' ('+t.scoreText+') | å…è´¹æµ‹è¯•ï¼šjiejuefuyou.github.io/b2b-quiz.html';
+}
+function copyResult(){
+  navigator.clipboard.writeText(getResultText()).then(()=>{alert('å·²å¤åˆ¶åˆ°å‰ªè´´æ¿');});
+}
+function shareX(){
+  const text=encodeURIComponent(getResultText());
+  window.open('https://x.com/intent/tweet?text='+text,'_blank');
+}
+function shareLinkedIn(){
+  const text=encodeURIComponent(getResultText());
+  window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent('https://jiejuefuyou.github.io/b2b-quiz.html'),'_blank');
 }
 renderQuestion();
 </script>
