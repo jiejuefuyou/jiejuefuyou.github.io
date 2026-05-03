@@ -153,8 +153,11 @@ footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border);color
   <div class="share-row">
     <button class="share-btn x" onclick="shareX()">Share on X</button>
     <button class="share-btn linkedin" onclick="shareLinkedIn()">LinkedIn</button>
+    <button class="share-btn" style="background:#ff4500" onclick="shareReddit()">Reddit</button>
+    <button class="share-btn" style="background:#ff6600" onclick="shareHN()">Hacker News</button>
     <button class="share-btn copy" onclick="copyResult()">Copy result</button>
   </div>
+  <p style="font-size:.75rem;color:var(--muted);margin-top:14px;text-align:center">Found this useful? Share it with one founder/operator who's stuck on AI workflow questions. Each share gets us 0.5% closer to making this free forever.</p>
 </div>
 <footer>
 <p>jiejuefuyou &nbsp;|&nbsp; <a href="services.html">B2B Consulting</a> &nbsp;|&nbsp; <a href="zh.html">Chinese Site</a> &nbsp;|&nbsp; <a href="https://github.com/jiejuefuyou">GitHub</a></p>
@@ -265,6 +268,16 @@ function shareX(){
 }
 function shareLinkedIn(){
   window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent('https://jiejuefuyou.github.io/b2b-quiz.html'),'_blank');
+}
+function shareReddit(){
+  var url='https://jiejuefuyou.github.io/b2b-quiz.html';
+  var title=getResultText();
+  window.open('https://reddit.com/submit?url='+encodeURIComponent(url)+'&title='+encodeURIComponent(title.split('\n')[0]),'_blank');
+}
+function shareHN(){
+  var url='https://jiejuefuyou.github.io/b2b-quiz.html';
+  var title='Free 5-question AI workflow quiz (90 sec, no signup) - tells you which tier of help your team needs';
+  window.open('https://news.ycombinator.com/submitlink?u='+encodeURIComponent(url)+'&t='+encodeURIComponent(title),'_blank');
 }
 renderQuestion();
 </script>

@@ -195,6 +195,10 @@ footer a { color: var(--muted); margin: 0 8px; }
     Click below to send the quote details + 30-min call request. I'll reply within 4 hrs JST with a price confirmation and 3 time slots.
   </p>
   <a id="mailtoLink" class="mailto-btn" href="mailto:jiejuefuyou+quote@gmail.com?subject=B2B%20AI%20quote%20request">Email this quote &rarr;</a>
+  <p style="color: var(--muted); margin-top: 16px; font-size: .85rem;">
+    Mailto not opening on mobile? <button onclick="copyQuoteToClipboard()" style="background:transparent;color:var(--accent-2);border:none;padding:0;font-size:.85rem;cursor:pointer;text-decoration:underline">Copy quote details</button> and email <a href="mailto:jiejuefuyou+quote@gmail.com" style="color:var(--accent-2)">jiejuefuyou+quote@gmail.com</a> directly.
+  </p>
+  <p id="copySuccess" style="display:none;color:var(--good);font-size:.85rem;margin-top:8px">Copied to clipboard</p>
   <p style="color: var(--muted); margin-top: 20px; font-size: .85rem;">
     Prefer not to email? <a href="services.html">View full pricing tiers</a>.
   </p>
@@ -319,6 +323,47 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   }[c]));
+}
+
+function copyQuoteToClipboard() {
+  // Decode the mailto URL body+subject so user can paste into any email app
+  var link = document.getElementById('mailtoLink');
+  var href = link.href;
+  var subj = decodeURIComponent((href.match(/subject=([^&]*)/) || [,''])[1]);
+  var body = decodeURIComponent((href.match(/body=([^&]*)/) || [,''])[1]);
+  var text = 'TO: jiejuefuyou+quote@gmail.com\nSUBJECT: ' + subj + '\n\n' + body;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() {
+      var el = document.getElementById('copySuccess');
+      el.style.display = 'block';
+      el.textContent = 'Copied to clipboard';
+      setTimeout(function() { el.style.display = 'none'; }, 4000);
+    }).catch(function() {
+      legacyCopy(text);
+    });
+  } else {
+    legacyCopy(text);
+  }
+}
+
+function legacyCopy(text) {
+  // Fallback for older mobile browsers
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    document.execCommand('copy');
+    var el = document.getElementById('copySuccess');
+    el.style.display = 'block';
+    el.textContent = 'Copied to clipboard';
+    setTimeout(function() { el.style.display = 'none'; }, 4000);
+  } catch (e) {
+    alert('Could not copy. Please screenshot and email us at jiejuefuyou+quote@gmail.com');
+  }
+  document.body.removeChild(ta);
 }
 </script>
 
