@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What shipped — public changelog (real, no fluff)</title>
+<meta name="description" content="Public changelog of what shipped on autoapp. Updated weekly. Real numbers, real commits, real decisions.">
+<meta property="og:title" content="autoapp — public changelog (real velocity)">
+<meta property="og:description" content="What shipped this week. Real numbers, real commits. Updated weekly.">
+<meta property="og:url" content="https://jiejuefuyou.github.io/changelog-public.html">
+<meta property="og:image" content="https://jiejuefuyou.github.io/assets/og-default.png">
+<meta name="twitter:card" content="summary">
+<style>
+:root {
+  --bg: #0a0a0f; --bg-card: #12121a; --border: #1f1f2e;
+  --text: #e6e6f0; --muted: #8a8a9a; --accent: #6c4be0; --accent-2: #9b6cf0;
+  --good: #4ade80; --warn: #fbbf24; --bad: #f87171;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--text); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 800px; margin: 0 auto; padding: 50px 24px 80px; }
+.back { color: var(--muted); font-size: .9rem; margin-bottom: 20px; display: inline-block; }
+header { padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+header h1 { font-size: 2.1rem; line-height: 1.2; background: linear-gradient(135deg, #6c4be0, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+header .sub { color: var(--muted); margin-top: 12px; font-size: 1rem; }
+
+.banner { background: rgba(108,75,224,.08); border: 1px solid rgba(108,75,224,.3); border-radius: 10px; padding: 16px 20px; margin: 20px 0 28px; font-size: .9rem; }
+.banner strong { color: var(--accent-2); }
+
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0 28px; }
+@media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+.stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; text-align: center; }
+.stat-card .num { font-size: 1.6rem; font-weight: 700; color: var(--accent-2); line-height: 1; }
+.stat-card .label { color: var(--muted); font-size: .78rem; margin-top: 4px; text-transform: uppercase; letter-spacing: .04em; }
+
+.tick { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; margin-bottom: 18px; }
+.tick h2 { color: var(--accent-2); font-size: 1.15rem; margin-bottom: 4px; }
+.tick .date { color: var(--muted); font-size: .85rem; margin-bottom: 12px; }
+.tick ul { list-style: none; padding: 0; margin-top: 8px; }
+.tick li { padding: 4px 0; padding-left: 20px; position: relative; font-size: .9rem; line-height: 1.5; }
+.tick li::before { content: "+"; color: var(--good); font-weight: bold; position: absolute; left: 0; }
+.tick li.fix::before { content: "→"; color: var(--warn); }
+.tick li.remove::before { content: "-"; color: var(--bad); }
+.tick .summary { color: var(--muted); font-size: .9rem; margin-top: 4px; padding-top: 10px; border-top: 1px solid var(--border); font-style: italic; }
+.tick .commit { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .78rem; color: var(--muted); }
+
+.cta-box { background: linear-gradient(135deg, rgba(108,75,224,.15), rgba(192,132,252,.06)); border: 1px solid rgba(108,75,224,.3); padding: 22px 24px; border-radius: 12px; margin: 32px 0; text-align: center; }
+.cta-box h3 { font-size: 1.1rem; margin-bottom: 10px; color: #fff; }
+.cta-btn { display: inline-block; padding: 12px 22px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border-radius: 8px; font-weight: 600; margin: 6px 4px; text-decoration: none; font-size: .9rem; }
+.cta-btn:hover { text-decoration: none; transform: translateY(-1px); }
+.cta-btn.secondary { background: var(--bg-card); border: 1px solid var(--border); color: var(--text); }
+
+footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: .85rem; text-align: center; }
+footer a { color: var(--muted); margin: 0 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a href="index.html" class="back">&larr; AutoApp</a>
+
+<header>
+  <h1>What shipped — public changelog</h1>
+  <p class="sub">Real velocity log. Updated weekly. No "v1.0.0 — bug fixes" filler — actual decisions + numbers.</p>
+</header>
+
+<div class="banner">
+  <strong>Why this page exists</strong>: B2B prospects ask "are you still actively building?" all the time.
+  This is the answer. <a href="https://github.com/jiejuefuyou">All commits public on GitHub</a> for verification.
+</div>
+
+<div class="stats-grid">
+  <div class="stat-card"><div class="num">14</div><div class="label">days since launch</div></div>
+  <div class="stat-card"><div class="num">54</div><div class="label">Python lib modules</div></div>
+  <div class="stat-card"><div class="num">1027</div><div class="label">tests passing</div></div>
+  <div class="stat-card"><div class="num">17</div><div class="label">live site pages</div></div>
+</div>
+
+<div class="tick">
+  <h2>tick #78 — memory dedupe + 2 new lib + B2B funnel deepening</h2>
+  <div class="date">2026-05-04 02:00 JST · 2hr autoiter</div>
+  <ul>
+    <li><strong>lib/post_buy_email.py</strong> — Gumroad post-buy 3-touch email queue (T+3/10/14)</li>
+    <li><strong>lib/outreach_tracker.py</strong> — typed B2B outreach funnel CSV (replaces manual md tracker)</li>
+    <li><strong>site/book-call.html</strong> — dedicated $99 strategy call landing page</li>
+    <li><strong>case-studies.html</strong> — 6th case (autoapp 14-day dogfood, VERIFIED)</li>
+    <li>5 new B2B archetypes (HR/local-SaaS/newsletter/EdTech/AI-agency)</li>
+    <li>Gumroad bundle cross-promo paste-ready for 7 channels</li>
+    <li class="fix">Memory dedupe: trimmed `feedback_ios_testflight_pricing` 321→116 lines (-64%)</li>
+    <li class="fix">Rewrote `project_autoapp.md` to reflect current state (was stuck on "Phase 0")</li>
+  </ul>
+  <div class="summary">+38 tests · +2 CLI subcommands · 1 site page LIVE (commit ff9324b)</div>
+</div>
+
+<div class="tick">
+  <h2>tick #76 — lead magnets + INBOX cleanup + refer-a-friend</h2>
+  <div class="date">2026-05-03 23:36 JST</div>
+  <ul>
+    <li><strong>site/free-ai-audit.html</strong> — 47-question scoring audit, no email gate</li>
+    <li><strong>site/free-templates.html</strong> — catalog of 12 B2B templates</li>
+    <li><strong>site/refer-a-friend.html</strong> — $50/$50 referral program</li>
+    <li><strong>site/sales-sheet.html</strong> — 1-page printable PDF for in-person handouts</li>
+    <li><strong>quick-quote.html</strong> mobile mailto fix (clipboard fallback)</li>
+    <li><strong>b2b-quiz.html</strong> — Reddit + HN share buttons</li>
+    <li><strong>lib/lead_magnet.py</strong> — funnel CSV tracker (land/click/email/convert)</li>
+    <li class="fix">INBOX cleanup: 13 stale docs archived</li>
+  </ul>
+  <div class="summary">+19 tests · 4 new pages LIVE · 5 paste-ready content pieces (commits c8ce669, 9391e70, be0adda)</div>
+</div>
+
+<div class="tick">
+  <h2>tick #74 — http_base extraction + 7 new lib modules</h2>
+  <div class="date">2026-05-03 22:14 JST · 3hr autoiter</div>
+  <ul>
+    <li><strong>lib/http_base.py</strong> — RetryHTTPClient ABC; ~150 LOC duplication removed across 5 clients</li>
+    <li><strong>lib/asc_diagnostics.py</strong> — TF install failure diagnosis (codifies 5/3 lessons)</li>
+    <li><strong>lib/substack.py</strong> — RSS + publication API client</li>
+    <li><strong>lib/wechat_mp.py</strong> — WeChat MP version state tracker</li>
+    <li><strong>lib/aso_rank.py</strong> — iTunes Search API rank tracker (CSV time-series)</li>
+    <li><strong>lib/agreement_watcher.py</strong> — Apple agreement state monitor</li>
+    <li><strong>lib/revenue_aggregator.py</strong> — cross-channel rollup (16 paths)</li>
+    <li><strong>site/quick-quote.html</strong> + <strong>pricing-ab-test.html</strong></li>
+  </ul>
+  <div class="summary">+176 tests · 5 new CLI subcommands · 2 new B2B funnel pages</div>
+</div>
+
+<div class="tick">
+  <h2>tick #73 — B2B funnel + newsletter mojibake fix</h2>
+  <div class="date">2026-05-03 21:05 JST</div>
+  <ul>
+    <li><strong>site/agent-setup-consult.html</strong> — Claude Code 24/7 service line</li>
+    <li><strong>site/newsletter.html</strong> — full mojibake fix from clean UTF-8 source</li>
+    <li>Site nav: linked from index.html + services.html</li>
+  </ul>
+  <div class="summary">2 LIVE commits to jiejuefuyou.github.io</div>
+</div>
+
+<div class="tick">
+  <h2>tick #72 — Full-spectrum re-planning</h2>
+  <div class="date">2026-05-03 20:30 JST</div>
+  <ul>
+    <li>Master plan v2: 16 monetization paths × 4 phases × per-path metrics</li>
+    <li>+11 new scheduled tasks (xiaobaotong reports / affiliate / Substack #3-9 / WeChat MP / Zhihu / dev.to)</li>
+    <li class="fix">Found I'd narrowed planning to 6 channels; rewrote to cover full surface</li>
+  </ul>
+  <div class="summary">Master plan now in INBOX/90-DAY-MONETIZATION-ROADMAP.md</div>
+</div>
+
+<div class="tick">
+  <h2>tick #63 — orchestrator wave 1-4 (15 lib modules + 312 tests)</h2>
+  <div class="date">2026-05-03 13:10-16:10 JST · 4hr autoiter</div>
+  <ul>
+    <li>15 new lib modules: affiliate / funnel / utm / customer_journey / revenue_forecast / coupon / ab_test / email_capture / refund_tracker / cohort / pricing / landing_page_audit / launch_calendar / social_post_tracker / recurring_revenue</li>
+    <li>+15 CLI subcommands</li>
+    <li>+312 tests</li>
+    <li>dashboard.html LIVE upgrade F→A grade</li>
+  </ul>
+  <div class="summary">lib v0.5.0 → v0.9.0 in single autoiter session</div>
+</div>
+
+<div class="cta-box">
+  <h3>Like the velocity? Want me to do this for your team?</h3>
+  <p style="color:var(--text);font-size:.9rem;margin-bottom:12px">Same approach (Claude Code + structured library + measurable outputs) applied to YOUR specific AI workflow gap.</p>
+  <a class="cta-btn" href="book-call.html">📞 Book $99 strategy call</a>
+  <a class="cta-btn secondary" href="free-ai-audit.html">🆓 47-q audit first</a>
+  <a class="cta-btn secondary" href="https://github.com/jiejuefuyou">🔗 GitHub source</a>
+</div>
+
+<footer>
+<p>Updated weekly. Source: <a href="https://github.com/jiejuefuyou">github.com/jiejuefuyou</a> commit history + INBOX/STATUS.md</p>
+<p style="margin-top:8px"><a href="index.html">Home</a> &middot; <a href="services.html">B2B Consulting</a> &middot; <a href="transparency.html">Real numbers</a> &middot; <a href="https://autoappnotes.substack.com">Substack</a></p>
+</footer>
+
+</div>
+</body>
+</html>
