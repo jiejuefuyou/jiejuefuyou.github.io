@@ -152,5 +152,10 @@ footer a { color: var(--muted); margin: 0 8px; }
 </footer>
 
 </div>
+<script>
+(function(){
+  var btns = document.querySelectorAll(".cta-btn"); btns.forEach(function(b){b.addEventListener("click",function(){fetch("http://localhost:8787/capture",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({source:"book-call",tier:"direct",tier_label:"$99 strategy call"})}).catch(function(){})});});
+})();
+</script>
 </body>
 </html>
