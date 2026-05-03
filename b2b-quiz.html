@@ -225,6 +225,7 @@ function showResult(){
   document.getElementById('progress').style.width='100%';
   var total=0;
   for(var i=0;i<answers.length;i++){total+=answers[i];}
+  window._quizScore=total;
   var t=null;
   for(var j=0;j<TIERS.length;j++){if(total>=TIERS[j].min&&total<=TIERS[j].max){t=TIERS[j];break;}}
   document.getElementById('quiz').style.display='none';
@@ -245,6 +246,7 @@ function showResult(){
 function getResultText(){
   var total=0;
   for(var i=0;i<answers.length;i++){total+=answers[i];}
+  window._quizScore=total;
   var t=null;
   for(var j=0;j<TIERS.length;j++){if(total>=TIERS[j].min&&total<=TIERS[j].max){t=TIERS[j];break;}}
   return 'AI Workflow Quiz Result: '+t.tier+' - '+t.title+' ('+t.scoreText+') | Take the quiz: jiejuefuyou.github.io/b2b-quiz.html';
@@ -255,13 +257,14 @@ function copyResult(){
 function submitEmail(){
   var email=document.getElementById("quiz-email").value;
   if(!email||!email.includes("@")){alert("Please enter a valid email");return;}
-  var resultText=getResultText();
   var tierText=document.querySelector(".result-tier")?document.querySelector(".result-tier").textContent:"";
-  var mailto="mailto:jiejuefuyou@gmail.com?subject=AI+Roadmap+Request&body="+encodeURIComponent("Hi,\n\nI took the B2B quiz and got: "+tierText+"\n\nMy email: "+email+"\n\nCould you send me the free roadmap?\n\nQuiz result: "+resultText);
-  window.location.href=mailto;
+  var tier="tier_b";
+  if(window._quizScore!==undefined){tier=window._quizScore<=3?"tier_a":window._quizScore<=6?"tier_b":"tier_c";}
+  var payload={source:"b2b-quiz",email:email,tier:tier,tier_label:tierText,score:window._quizScore||null,utm_source:"b2b-quiz-page",utm_medium:"email-capture"};
   document.getElementById("email-success").style.display="block";
   document.getElementById("quiz-email").disabled=true;
   document.querySelector(".email-capture button").disabled=true;
+  fetch("http://localhost:8787/capture",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).catch(function(){});
 }
 function shareX(){
   window.open('https://x.com/intent/tweet?text='+encodeURIComponent(getResultText()),'_blank');
