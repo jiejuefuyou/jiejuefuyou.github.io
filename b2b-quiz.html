@@ -78,6 +78,11 @@ header p.muted{color:var(--muted);margin-top:8px;font-size:.85rem}
 .share-row{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap}
 .share-btn{padding:8px 16px;border-radius:8px;font-size:.85rem;font-weight:500;cursor:pointer;border:none;color:white;opacity:.85;transition:opacity .15s}
 .share-btn:hover{opacity:1}
+.email-capture{background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(74,222,128,.02));border:1px solid rgba(74,222,128,.3);border-radius:12px;padding:20px 22px;margin-top:20px;text-align:left}
+.email-capture p{color:var(--text)}
+.email-capture input[type="email"]{width:100%;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.9rem;margin-bottom:10px;box-sizing:border-box;display:block}
+.email-capture button{width:100%;padding:10px 16px;background:linear-gradient(135deg,var(--good),#22c55e);color:#000;border:none;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;display:block}
+.email-success{color:var(--good);font-size:.88rem;padding:10px;text-align:center}
 .share-btn.x{background:#000}.share-btn.linkedin{background:#0a66a2}.share-btn.copy{background:var(--bg-card);border:1px solid var(--border);color:var(--text)}
 footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem;text-align:center}
 @media(max-width:600px){.wrap{padding:40px 16px 60px}header h1{font-size:1.6rem}.quiz-card{padding:20px 16px}.en-intro{padding:16px 16px}}
@@ -132,7 +137,16 @@ footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border);color
 </div>
 </div>
 
-<div class="cta-box" id="share-box" style="display:none">
+<div class="email-capture" id="email-capture" style="display:none">
+<p style="margin-bottom:8px"><strong style="color:var(--good)">Get your free 3-step AI roadmap</strong></p>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px">Based on your answers, I'll send a personalized plan. No sales pitch.</p>
+<input type="email" id="quiz-email" placeholder="your@email.com" style="display:block;width:100%;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.9rem;margin-bottom:10px;box-sizing:border-box">
+<button onclick="submitEmail()" style="display:block;width:100%;padding:10px 16px;background:linear-gradient(135deg,var(--good),#22c55e);color:#000;border:none;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;margin-bottom:8px">Send my roadmap &#x2192;</button>
+<p id="email-success" class="email-success" style="display:none">Sent! Check your inbox.</p>
+<p style="color:var(--muted);font-size:.75rem">No spam. Unsubscribe anytime.</p>
+</div>
+
+<div class="cta-box" id="share-box"  style="display:none">
   <h3>你的选型结果已生成</h3>
   <p>转发给也在困惑的同事 / 朋友圈 · 或帮他们也测一下</p>
   <div class="share-row">
@@ -208,6 +222,7 @@ function showResult(){
   el.innerHTML='<div class="result-tier">'+t.tier+'</div><div class="result-title">'+t.title+'</div><div class="result-score">'+t.scoreText+'</div><div class="result-desc">'+t.desc+'</div><div class="result-next"><h4>下一步</h4><ul>'+t.nextItems.map(i=>'<li>'+i+'</li>').join('')+'</ul></div><a href="'+t.ctaHref+'" class="result-cta" target="_blank" rel="noopener">'+t.cta+'</a><span class="result-alt">'+t.alt+'</span>';
   document.getElementById('share-box').style.display='block';
   document.getElementById('breakdown').style.display='none';
+  document.getElementById('email-capture').style.display='block';
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function getResultText(){
@@ -217,6 +232,18 @@ function getResultText(){
 }
 function copyResult(){
   navigator.clipboard.writeText(getResultText()).then(()=>{alert('已复制到剪贴板');});
+}
+function submitEmail(){
+  var email = document.getElementById("quiz-email").value;
+  if(!email || !email.includes("@")){alert("Please enter a valid email");return;}
+  var resultText = getResultText();
+  var tierText = document.querySelector(".result-tier") ? document.querySelector(".result-tier").textContent : "";
+  var mailto = "mailto:jiejuefuyou@gmail.com?subject=AI+Roadmap+Request&body=" +
+    encodeURIComponent("Hi,\n\nI took the B2B quiz and got: " + tierText + "\n\nMy email: " + email + "\n\nCould you send me the free roadmap?\n\nQuiz result: " + resultText);
+  window.location.href = mailto;
+  document.getElementById("email-success").style.display = "block";
+  document.getElementById("quiz-email").disabled = true;
+  document.querySelector(".email-capture button").disabled = true;
 }
 function shareX(){
   const text=encodeURIComponent(getResultText());
