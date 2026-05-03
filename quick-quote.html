@@ -318,6 +318,11 @@ function submitQuote(event) {
   return false;
 }
 
+  // Capture lead to b2b_lead pipeline via webhook
+  var tierMap={starter:"starter",monthly:"retainer",enterprise:"enterprise"};
+  var wTier=tierMap[tier]||tier;
+  var payload={source:"quick-quote",email:answers.email||"",tier:wTier,tier_label:tier,tier_price:price,utm_source:"quick-quote-page",utm_medium:"form-capture",company:answers.company||"",pain_point:answers["primary-pain"]||"",team_size:answers["team-size"]||"",budget:answers.budget||""};
+  fetch("http://localhost:8787/capture",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).catch(function(){});
 function escapeHtml(s) {
   if (!s) return '';
   return String(s).replace(/[&<>"']/g, c => ({
