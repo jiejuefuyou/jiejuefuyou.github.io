@@ -1,237 +1,197 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta property="og:image" content="https://jiejuefuyou.github.io/og-newsletter.png">
 <title>AutoAppNotes 中文 #1 — AI 商业化的图穷匕见周</title>
-<meta name="description" content="姣忓懆涓€灏佷腑鏂?AI 宸ュ叿鍦堟繁搴﹀鐩橈細浠?HN / Reddit / GitHub trending 鎻愬彇 3 浠剁湡姝ｉ噸瑕佺殑浜嬶紝缁欏凡缁忓湪鐢?Claude Code / Cursor / Copilot 鐨勪汉鐪嬨€?>
-<meta property="og:title" content="AI 鍟嗕笟鍖栫殑鍥剧┓鍖曡鍛綔AutoAppNotes 涓枃 #1">
-<meta property="og:description" content="GitHub Copilot 鏀规寜鐢ㄩ噺璁¤垂銆丮SFT-OpenAI 鍒嗘墜銆佸紑婧愮ぞ鍖轰竴鍛ㄥ啋鍑?3 涓?Claude Code 鏇夸唬鏂规鈥斺€旇繖涓€鍛ㄥ彲鑳芥槸 AI 宸ュ叿鍘嗗彶鐨勮浆鎶樼偣銆?>
+<meta name="description" content="每周一封中文 AI 工具圈深度复盘：从 HN / Reddit / GitHub trending 提取 3 件真正重要的事，给已经在用 Claude Code / Cursor / Copilot 的人看。">
+<meta property="og:title" content="AI 商业化的图穷匕见周 | AutoAppNotes 中文 #1">
+<meta property="og:description" content="GitHub Copilot 改按用量计费、MSFT-OpenAI 分手、开源社区一周冒出 3 个 Claude Code 替代方案——这一周可能是 AI 工具历史的转折点。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://jiejuefuyou.github.io/newsletter.html"><meta name="twitter:card" content="summary">
+<meta property="og:url" content="https://jiejuefuyou.github.io/newsletter.html">
+<meta property="og:image" content="https://jiejuefuyou.github.io/og-newsletter.png">
+<meta name="twitter:card" content="summary">
 <style>
-:root {
-  --bg: #0a0a0f;
-  --bg-card: #12121a;
-  --border: #1f1f2e;
-  --text: #e6e6f0;
-  --muted: #8a8a9a;
-  --accent: #6c4be0;
-  --accent-2: #9b6cf0;
-  --warn: #ffb547;
-  --good: #4ade80;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { background: var(--bg); color: var(--text); font: 16px/1.75 -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
-a { color: var(--accent-2); text-decoration: none; border-bottom: 1px solid rgba(155,108,240,.3); }
-a:hover { border-bottom-color: var(--accent-2); }
-.wrap { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
-.back { display: inline-block; margin-bottom: 32px; color: var(--muted); font-size: .9rem; border: none; }
-.back:hover { color: var(--text); }
-header { padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
-header h1 { font-size: 2rem; line-height: 1.25; letter-spacing: -.01em; margin-bottom: 12px; background: linear-gradient(135deg, #6c4be0, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-header .meta { color: var(--muted); font-size: .9rem; }
-header .tagline { color: var(--text); margin-top: 18px; padding: 14px 18px; background: var(--bg-card); border-left: 3px solid var(--accent); border-radius: 4px; font-size: .95rem; }
-h2 { font-size: 1.4rem; margin: 48px 0 16px; letter-spacing: -.01em; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
-h3 { font-size: 1.1rem; margin: 28px 0 10px; color: var(--text); }
-p { margin-bottom: 14px; }
-strong { color: #fff; }
-em { color: var(--accent-2); font-style: normal; }
-ul, ol { padding-left: 24px; margin-bottom: 16px; }
-li { margin-bottom: 6px; }
-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .9rem; }
-th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
-th { background: var(--bg-card); color: var(--accent-2); font-weight: 600; }
-hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
-blockquote { border-left: 3px solid var(--accent); padding: 8px 16px; margin: 16px 0; color: var(--muted); background: var(--bg-card); border-radius: 4px; }
-code { background: var(--border); padding: 2px 6px; border-radius: 4px; font-size: .85em; font-family: ui-monospace, "SF Mono", Menlo, monospace; color: var(--accent-2); }
-.cta-box { background: linear-gradient(135deg, rgba(108,75,224,.12), rgba(192,132,252,.06)); border: 1px solid rgba(108,75,224,.3); padding: 24px; border-radius: 12px; margin: 36px 0; text-align: center; }
-.cta-box h3 { margin: 0 0 12px; color: #fff; }
-.cta-box p { margin-bottom: 16px; color: var(--muted); }
-.cta-btn { display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border: none; border-radius: 8px; font-weight: 600; font-size: 1rem; }
-.cta-btn:hover { border: none; color: white; transform: translateY(-1px); }
-footer { margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--border); color: var(--muted); font-size: .9rem; }
-@media (max-width: 600px) {
-  .wrap { padding: 40px 18px 60px; }
-  header h1 { font-size: 1.6rem; }
-  table { font-size: .8rem; }
-  th, td { padding: 8px 6px; }
-}
+:root{--bg:#0a0a0f;--bg-card:#12121a;--border:#1f1f2e;--text:#e6e6f0;--muted:#8a8a9a;--accent:#6c4be0;--accent-2:#9b6cf0;--warn:#ffb547;--good:#4ade80}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font:16px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+a{color:var(--accent-2);text-decoration:none;border-bottom:1px solid rgba(155,108,240,.3)}
+a:hover{border-bottom-color:var(--accent-2)}
+.wrap{max-width:720px;margin:0 auto;padding:60px 24px 80px}
+.back{display:inline-block;margin-bottom:32px;color:var(--muted);font-size:.9rem;border:none}
+.back:hover{color:var(--text)}
+header{padding-bottom:24px;border-bottom:1px solid var(--border);margin-bottom:32px}
+header h1{font-size:2rem;line-height:1.25;letter-spacing:-.01em;margin-bottom:12px;background:linear-gradient(135deg,#6c4be0,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.meta{color:var(--muted);font-size:.9rem}
+.tagline{color:var(--text);margin-top:18px;padding:14px 18px;background:var(--bg-card);border-left:3px solid var(--accent);border-radius:4px;font-size:.95rem}
+h2{font-size:1.4rem;margin:48px 0 16px;letter-spacing:-.01em;padding-bottom:8px;border-bottom:1px solid var(--border)}
+h3{font-size:1.1rem;margin:28px 0 10px;color:var(--text)}
+p{margin-bottom:14px}
+strong{color:#fff}
+ul,ol{padding-left:24px;margin-bottom:16px}
+li{margin-bottom:6px}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.9rem}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:var(--bg-card);color:var(--accent-2);font-weight:600}
+hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+blockquote{border-left:3px solid var(--accent);padding:8px 16px;margin:16px 0;color:var(--muted);background:var(--bg-card);border-radius:4px}
+blockquote p{margin-bottom:8px}
+blockquote p:last-child{margin-bottom:0}
+code{background:var(--border);padding:2px 6px;border-radius:4px;font-size:.85em;font-family:ui-monospace,"SF Mono",Menlo,monospace;color:var(--accent-2)}
+.cta-box{background:linear-gradient(135deg,rgba(108,75,224,.12),rgba(192,132,252,.06));border:1px solid rgba(108,75,224,.3);padding:24px;border-radius:12px;margin:36px 0;text-align:center}
+.cta-box h3{margin:0 0 12px;color:#fff}
+.cta-box p{margin-bottom:16px;color:var(--muted)}
+.cta-btn{display:inline-block;padding:12px 24px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border:none;border-radius:8px;font-weight:600;font-size:1rem}
+.cta-banner{background:linear-gradient(135deg,rgba(108,75,224,.1),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.3);border-radius:12px;padding:18px 20px;margin-bottom:28px;font-size:.9rem;line-height:1.7;color:var(--text)}
+.cta-banner p{margin-bottom:10px}
+.cta-banner strong{color:var(--accent-2)}
+footer{margin-top:80px;padding-top:32px;border-top:1px solid var(--border);color:var(--muted);font-size:.9rem}
+footer a{color:var(--muted)}
+@media(max-width:600px){.wrap{padding:40px 18px 60px}header h1{font-size:1.6rem}table{font-size:.8rem}th,td{padding:8px 6px}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<a href="index.html" class="back">鈫?jiejuefuyou.github.io</a>
+<a href="index.html" class="back">← jiejuefuyou.github.io</a>
 
 <header>
-<h1>Get the bi-weekly Chinese AI newsletter</h1>
-<p style="font-size:.85rem;color:var(--muted);margin-bottom:16px">Free, bi-weekly. No ads, no upsell, no cookies. No analytics. No tracking. <a href="transparency.html" style="color:var(--accent-2)">Real-numbers transparency report →</a> · 30-day refund on bundle · <a href="mailto:jiejuefuyou@gmail.com" style="color:var(--accent-2)">jiejuefuyou@gmail.com</a></p>
-<div class="meta">AutoAppNotes 涓枃 #1 路 2026-04-30 路 瑕嗙洊 04-23 ~ 04-30</div>
-<div class="tagline">姣忓懆涓€灏侊紝浠?HN / Reddit / GitHub trending / Anthropic 瀹樻柟 changelog 涓€?3 浠剁湡姝ｉ噸瑕佺殑浜嬶紝鍋氫腑鏂囧湀缃曡鐨?鍘熷鏁版嵁 + 涓汉瑙ｈ"銆備笉鏄惉杩愶紝涓嶆槸鏂伴椈鎾姤鈥斺€旀槸缁欏凡缁忓湪鐢?Claude Code / Cursor / Copilot 鐨勪汉鐪嬬殑銆?/div>
+<h1>AI 商业化的图穷匕见周 | AutoAppNotes 中文 #1</h1>
+<p style="font-size:.85rem;color:var(--muted);margin-bottom:16px">Free, bi-weekly. No ads, no upsell, no cookies. No analytics. No tracking. <a href="transparency.html" style="color:var(--accent-2)">Real-numbers transparency report</a> · 30-day refund on bundle · <a href="mailto:jiejuefuyou@gmail.com" style="color:var(--accent-2)">jiejuefuyou@gmail.com</a></p>
+<p class="meta">AutoAppNotes 中文 #1 · 2026-04-30 · 覆盖 04-23 ~ 04-30</p>
+<p class="tagline">每周一封，从 HN / Reddit / GitHub trending / Anthropic 官方 changelog 中选 3 件真正重要的事，做中文圈罕见的"原始数据 + 个人解读"。不是搬运，不是新闻播报——是给已经在用 Claude Code / Cursor / Copilot 的人看的。</p>
 </header>
-<div style="background:linear-gradient(135deg,rgba(108,75,224,.1),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.3);border-radius:12px;padding:18px 20px;margin-bottom:28px;font-size:.9rem;line-height:1.7;color:var(--text)">
-<p style="margin-bottom:10px"><strong style="color:var(--accent-2)">English: this is a bi-weekly Chinese newsletter.</strong> Each issue selects 3 genuinely important signals from HN / Reddit / GitHub trending — original data + personal take. For devs already running Claude Code / Cursor / Copilot.</p>
-<p style="margin-bottom:10px">Subscribe free at <a href="https://autoappnotes.substack.com" style="color:var(--accent-2)">autoappnotes.substack.com</a>. Bi-weekly, Wed 8am Beijing. No ads, no courses, no NFTs.</p>
-<p style="font-size:.85rem;margin-bottom:8px">200+ readers across 5 issues so far. <a href="transparency.html" style="color:var(--accent-2)">Real subscriber numbers →</a></p>
-<p><strong style="color:var(--accent-2)">New:</strong> Indie Toolkit 2026 bundle — 4 self-serve playbooks for solo devs, <strong>$25</strong> (standalone $39.96).</p>
+
+<div class="cta-banner">
+<p><strong>English:</strong> This is a bi-weekly Chinese newsletter. Each issue selects 3 genuinely important signals from HN / Reddit / GitHub trending — original data + personal take. For devs already running Claude Code / Cursor / Copilot.</p>
+<p>Subscribe free at <a href="https://autoappnotes.substack.com" style="color:var(--accent-2)">autoappnotes.substack.com</a>. Bi-weekly, Wed 8am Beijing. No ads, no courses, no NFTs.</p>
+<p>200+ readers across 5 issues so far. <a href="transparency.html" style="color:var(--accent-2)">Real subscriber numbers</a></p>
+<p><strong>New:</strong> Indie Toolkit 2026 bundle — 4 self-serve playbooks for solo devs, <strong>$25</strong> (standalone $39.96).</p>
 <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
 <a href="https://autoappnotes.substack.com?utm_source=site&utm_medium=newsletter-page&utm_campaign=substack-cta" style="display:inline-block;padding:8px 16px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border-radius:8px;font-size:.85rem;font-weight:600;text-decoration:none">Subscribe free</a>
 <a href="https://jiejuefuyou.gumroad.com/l/prompt-vault-complete?utm_source=site&utm_medium=newsletter-page&utm_campaign=bundle-cta" style="display:inline-block;padding:8px 16px;background:var(--bg-card);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:.85rem;text-decoration:none">$25 bundle</a>
 </div>
 </div>
 
-<h2>寮曞瓙锝滆繖涓€鍛ㄥ彲鑳芥槸 AI 宸ュ叿鍘嗗彶鐨勮浆鎶樼偣</h2>
-
-<p>濡傛灉浣?4 鏈堟渶鍚庝竴鍛ㄦ病鍒?HN锛岄偅浣犲ぇ姒傞敊杩囦簡 AI 鍟嗕笟鍖栧巻鍙蹭笂<strong>鏈€鍍?鍥剧┓鍖曡"鐨勪竴鍛?/strong>锛?/p>
-
+<h2>引子｜这一周可能是 AI 工具历史的转折点</h2>
+<p>如果你 4 月最后一周没刷 HN，那你大概错过了 AI 商业化历史上<strong>最像"图穷匕见"的一周</strong>：</p>
 <ul>
-  <li><strong>4 鏈?27 鏃?/strong>锛欸itHub 瀹ｅ竷 Copilot <em>鏀规垚鎸夌敤閲忚璐?/em>锛圚N 759 鍒嗭級銆傚悓涓€澶╁井杞拰 OpenAI <em>缁撴潫鐙鍗忚</em>锛?75 鍒嗭級锛岀粨鏉熶簡 ChatGPT 鏃朵唬浠ユ潵鏈€澶х殑濠氬Щ銆?/li>
-  <li><strong>4 鏈?28 鏃?/strong>锛欸itHub Copilot Code Review 涔熻 <em>娑堣€?GitHub Actions minutes</em>锛?02 鍒嗭級锛屾剰鍛崇潃姣忎釜 PR 鐨?AI 鑷姩瀹℃煡浠庢<em>鍙樻垚鎴愭湰涓績</em>銆?/li>
-  <li><strong>4 鏈?29 鏃?/strong>锛欻N 澶存潯鏇濆嚭 Anthropic 涓€涓?bug鈥斺€?<code>HERMES.md</code> 鍦?commit message 閲屼細 <em>琚?Claude Code 閲嶆柊璇诲彇骞剁畻浣滄柊 token 鐢ㄩ噺</em>锛?91 鍒嗭級锛岀敤鎴峰悎鐞?commit 涔犳儻琚?silently 璁¤垂銆?/li>
+<li><strong>4 月 27 日</strong>：GitHub 宣布 Copilot <strong>改成按用量计费</strong>（759 分上 HN）。同一天微软和 OpenAI <strong>结束独家协议</strong>（975 分），结束了 ChatGPT 时代以来最大的婚姻。</li>
+<li><strong>4 月 28 日</strong>：GitHub Copilot Code Review 也要<strong>消耗 GitHub Actions minutes</strong>（302 分），意味着每个 PR 的 AI 自动审查从此<strong>变成成本中心</strong>。</li>
+<li><strong>4 月 29 日</strong>：HN 头条曝出 Anthropic 一个 bug——`HERMES.md` 在 commit message 里会<strong>被 Claude Code 重新读取并算作新 token 用量</strong>（991 分），用户合理 commit 习惯被 silently 计费。</li>
 </ul>
-
-<p>涓変欢浜嬫嫾璧锋潵锛屼竴涓垽鏂诞鍑烘按闈細<strong>AI 宸ュ叿鍏徃鐨?鍏ㄥ寘鏈?骞昏姝ｅ湪琚挄鎺夈€?/strong>鎺ヤ笅鏉ヤ笉鏄?鍐嶅姞涓厤璐瑰姛鑳?鐨勬椂浠ｏ紝鏄?姣忎釜鍔ㄤ綔閮芥槑鐮佹爣浠?鐨勬椂浠ｃ€?/p>
-
-<p>濡傛灉浣犺繕鍦ㄧ敤 fixed-price 璁㈤槄 + 涓嶅叧蹇?token 娴佸悜锛?strong>杩欎竴鍛ㄤ綘鐨勬垚鏈粨鏋勫凡缁忚 silently 鏀瑰啓浜?/strong>鈥斺€斾綘鍙槸杩樻病鏀跺埌瀵硅处鍗曘€?/p>
-
-<h2>涓荤嚎 #1锝淎I 宸ュ叿闆嗕綋鏀硅璐癸細fixed price 鏃朵唬缁撴潫</h2>
-
-<table>
-<thead><tr><th>宸ュ叿</th><th>鏃у畾浠?/th><th>鏂板畾浠?/th><th>鏃堕棿</th></tr></thead>
-<tbody>
-<tr><td><strong>GitHub Copilot</strong></td><td>$10/鏈?鍏ㄥ寘</td><td>鎸夌敤閲忚璐癸紙姣忔湀鍏嶈垂棰濆害 + 瓒呭嚭浠樿垂锛?/td><td>2026-04-27 璧?/td></tr>
-<tr><td><strong>Copilot Code Review</strong></td><td>鍏嶈垂</td><td>娑堣€?GitHub Actions minutes</td><td>2026-06-01 璧?/td></tr>
-<tr><td><strong>Claude Code</strong></td><td>Pro $20 fixed / Max $200 fixed</td><td>浠?fixed锛屼絾<em>鏉冮噸璁＄畻涓嶉€忔槑</em>锛圚ERMES.md bug 鍗虫绫伙級</td><td>鍗虫椂褰卞搷</td></tr>
-<tr><td><strong>Cursor</strong></td><td>$20 fixed</td><td>浠?fixed锛屼絾 Q3 宸?hint 浼氭敼</td><td>寰呭畼瀹?/td></tr>
-</tbody>
-</table>
-
-<p>GitHub 瀹樻柟 blog 鎺緸寰堢洿鐧斤細<strong>"to better align cost with value delivered"</strong>鈥斺€旂炕璇戯細"浠ュ墠鎴戜滑琛ヨ创閲嶅害鐢ㄦ埛锛岀幇鍦ㄤ笉琛ヨ创浜嗐€?</p>
-
-<p>杩欎笉鏄?GitHub 涓€瀹剁殑鍐冲畾銆侫I 鎺ㄧ悊鎴愭湰锛圙PU + 鐢佃垂 + 妯″瀷鎵樼锛?strong>杩滈珮浜?/strong> SaaS 鏃朵唬鐨勮竟闄呮垚鏈紝fixed-price 妯″紡鍙兘鍦ㄧ敤鎴烽噺 >> 閲嶅害鐢ㄦ埛鏃跺媺寮虹淮鎸併€備竴鏃﹂噸搴︾敤鎴峰崰姣旇秴杩囦复鐣岀偣锛屽叕鍙稿氨鍙兘娑ㄤ环鎴栨敼璁¤垂妯″瀷銆?/p>
-
-<p>GitHub 閫変簡鏀硅璐广€侫nthropic 閫変簡"fixed price + 闅愭€?throttle"锛坮ate-limit 绐佺劧鏉?/ token 璁＄畻鍙ｅ緞涓嶅叕寮€ / weekly limit 涓嶉€忔槑锛夈€備袱鏉¤矾鏁堟灉鏄竴鏍风殑锛?strong>璁╀綘涓洪噸搴︿娇鐢ㄧ湡瀹炰粯璐?/strong>銆?/p>
-
-<h3>缁欏凡缁忓湪鐢ㄧ殑浜?/h3>
+<p>三件事拼起来，一个判断浮出水面：<strong>AI 工具公司的"全包月"幻觉正在被撕掉。</strong> 接下来不是"再加个免费功能"的时代，是"每个动作都明码标价"的时代。</p>
+<p>如果你还在用 fixed-price 订阅 + 不关心 token 流向，<strong>这一周你的成本结构已经被 silently 改写了</strong>——你只是还没收到对账单。</p>
+<hr>
+<h2>主线 #1｜AI 工具集体改计费：fixed price 时代结束</h2>
+<p>把这一周的几个数据点叠在一起看：</p>
+<table><thead>
+<tr><th>工具</th><th>旧定价</th><th>新定价</th><th>时间</th></tr>
+</thead><tbody>
+<tr><td>**GitHub Copilot**</td><td>$10/月 全包</td><td>按用量计费（每月免费额度 + 超出付费）</td><td>2026-04-27 起</td></tr>
+<tr><td>**Copilot Code Review**</td><td>免费</td><td>消耗 GitHub Actions minutes</td><td>2026-06-01 起</td></tr>
+<tr><td>**Anthropic Claude Code**</td><td>Pro $20 fixed / Max $200 fixed</td><td>仍 fixed，但**权重计算不透明**（HERMES.md bug 即此类）</td><td>即时影响</td></tr>
+<tr><td>**Cursor**</td><td>$20 fixed</td><td>仍 fixed，但 Q3 已 hint 会改</td><td>待官宣</td></tr>
+</tbody></table>
+<p>GitHub 官方 blog 措辞很直白：<strong>"to better align cost with value delivered"</strong>——翻译："以前我们补贴重度用户，现在不补贴了。"</p>
+<p>这不是 GitHub 一家的决定。AI 推理成本（GPU + 电费 + 模型托管）<strong>远高于</strong> SaaS 时代的边际成本，fixed-price 模式只能在用户量 >> 重度用户时勉强维持。一旦重度用户占比超过临界点，公司就只能涨价或改计费模型。</p>
+<p>GitHub 选了改计费。Anthropic 选了"fixed price + 隐性 throttle"（rate-limit 突然来 / token 计算口径不公开 / weekly limit 不透明）。两条路效果是一样的：<strong>让你为重度使用真实付费</strong>。</p>
+<p><strong>给已经在用的人</strong>：</p>
 <ul>
-  <li>鏃ュ潎 < 5 涓?token锛歠ixed-price 杩樺垝绠?/li>
-  <li>鏃ュ潎 > 30 涓?token锛氫綘姝ｅ湪琚柊璁¤垂妯″紡"鍐嶅彂鐜?锛屽仛濂芥湀鎴愭湰缈?3-10 鍊嶇殑鍑嗗</li>
-  <li>"AI agent 鍚庡彴璺?閭ｇ high-throughput 鐢ㄦ硶锛?strong>璧剁揣鎶婄儹璺緞杩佸埌鏈湴鎴栧紑婧愭ā鍨?/strong></li>
+<li>如果你日均 < 5 万 token：fixed-price 还划算</li>
+<li>如果你日均 > 30 万 token：你正在被新计费模式"再发现"，做好月成本翻 3-10 倍的准备</li>
+<li>如果你做"AI agent 后台跑"那种 high-throughput 用法：<strong>赶紧把热路径迁到本地或开源模型</strong>，否则下一波计费改革你会很疼</li>
 </ul>
-
-<p>鎴戣嚜宸辩殑绛栫暐锛氭妸 Claude Code Pro 璁㈤槄鐣欑粰"楂樿川閲忎綆棰?浠诲姟锛堝啓浠ｇ爜銆佹敼鏋舵瀯锛夛紝鎶?浣庤川閲忛珮棰?浠诲姟锛堟暟鎹?scrape / 鍐呭鑽夌鐢熸垚 / 鍛ㄦ姤鍚堟垚锛夎縼鍒版湰鍦拌窇鐨勫紑婧?model锛堟渶杩戠敤 Qwen 2.5 32B 8-bit 鍦?RTX 3090 璺戯紝prompt 璐ㄩ噺闄?30%锛屾垚鏈檷 100%锛夈€?/p>
-
-<h2>涓荤嚎 #2锝淢SFT-OpenAI 鍒嗘墜锛欰I 宸ㄥご鏍煎眬閲嶇粍鐨勫紑濮?/h2>
-
-<p>Bloomberg 4 鏈?27 鏃ョ嫭瀹讹細<strong>寰蒋鍜?OpenAI 缁撴潫 revenue-sharing 鐙鍗忚</strong>锛圚N 975 鍒嗭紝绗?2 楂橈級銆?/p>
-
-<p>绠€鍗曡锛氫互鍓嶅井杞 ChatGPT 鐨勬瘡绗旀敹鍏ユ娊鎴?+ OpenAI 妯″瀷鐙渚涚粰 Azure銆傜幇鍦ㄤ袱鏉￠兘瑙ｉ櫎鈥斺€擮penAI 妯″瀷鍙互涓?AWS锛? 鏈?28 鏃ュ彟涓€澶存潯宸茬‘璁?Bedrock 鎺?OpenAI锛夛紝寰蒋鍙互鍋氳嚜宸辩殑 frontier model锛堝凡鍦ㄥ仛锛孭hi 绯诲垪 + 鏀惰喘 Inflection锛夈€?/p>
-
-<p>涓枃鍦堢殑瑙ｈ鏅亶鍋忓湴缂樻斂娌伙紙"缇庡浗 AI 鍐呮枟"锛夛紝浣嗘洿鍑嗙‘鐨勪骇涓氳В璇绘槸锛?strong>鐢熸€佹鍦ㄤ粠"鍙屽澶?杞悜"澶氭瀬骞冲彴"</strong>銆?/p>
-
-<h3>鐭湡 3 涓繛閿佸弽搴?/h3>
+<p>我自己的策略：把 Claude Code Pro 订阅留给"高质量低频"任务（写代码、改架构），把"低质量高频"任务（数据 scrape / 内容草稿生成 / 周报合成）迁到本地跑的开源 model（最近用 Qwen 2.5 32B 8-bit 在 RTX 3090 跑，prompt 质量降 30%，成本降 100%）。</p>
+<hr>
+<h2>主线 #2｜MSFT-OpenAI 分手：AI 巨头格局重组的开始</h2>
+<p>Bloomberg 4 月 27 日独家：<strong>微软和 OpenAI 结束 revenue-sharing 独家协议</strong>（HN 975 分，第 2 高）。</p>
+<p>简单说：以前微软对 ChatGPT 的每笔收入抽成 + OpenAI 模型独家供给 Azure。现在两条都解除——OpenAI 模型可以上 AWS（4 月 28 日另一头条 #12 已确认 Bedrock 接 OpenAI），微软可以做自己的 frontier model（已在做，Phi 系列 + 收购 Inflection）。</p>
+<p>中文圈的解读普遍偏地缘政治（"美国 AI 内斗"），但更准确的产业解读是：<strong>生态正在从"双寡头"转向"多极平台"</strong>。</p>
+<p>短期影响：</p>
 <ul>
-  <li><strong>浼佷笟鐢ㄦ埛</strong>锛氬鏋滀綘杩囧幓 18 涓湀 lock-in 鍦?Azure-OpenAI锛岀幇鍦ㄥ浜?Bedrock-OpenAI 閫夐」</li>
-  <li><strong>鍒涗笟鑰?/strong>锛氫互鍓嶉€夋ā鍨嬭鍏堥€?cloud锛岀幇鍦?model 鍜?cloud 瑙ｈ€︹€斺€?em>鐪熸鐨勫 vendor failover 鏃朵唬鏉ヤ簡</em></li>
-  <li><strong>鎶曡祫浜?/strong>锛歄penAI 鐨?moat 浠?鐙鍒嗗彂娓犻亾"鍙樻垚"妯″瀷鏈韩"銆傚鏋?next-gen GPT 涓嶈兘鎷夊紑 vs Anthropic / Gemini 鐨勫樊璺濓紝浼板€间細琚噸浼?/li>
+<li><strong>企业用户</strong>：如果你过去 18 个月 lock-in 在 Azure-OpenAI，现在多了 Bedrock-OpenAI 选项（同模型，可能不同价）</li>
+<li><strong>创业者</strong>：以前选模型要先选 cloud，现在 model 和 cloud 解耦——你可以在 GCP 上跑 Anthropic + 在 Bedrock 上跑 OpenAI + 在自己服务器上跑 Llama，<strong>真正的多 vendor failover 时代来了</strong></li>
+<li><strong>投资人</strong>：OpenAI 的 moat 从"独家分发渠道"变成"模型本身"。如果 next-gen GPT 不能拉开 vs Anthropic / Gemini 的差距，估值会被重估</li>
 </ul>
-
-<p>鍛煎簲鍚屼竴鍛ㄧ殑鍙︿竴鏉?HN 鐑棬锛?strong>涓浗闃诲嚮 Meta 鏀惰喘 Manus</strong>锛圚N 397 鍒嗭級銆備袱浠朵簨鎷艰捣鏉モ€斺€斾笢瑗挎柟 AI 璧勪骇閮藉湪閲嶆柊娲楃墝锛?涓嶅彲鑳藉悎骞?鍜?涓嶅啀鍚堜綔"鍑犱箮鏄悓鏃跺彂鐢熴€?/p>
-
-<blockquote>缁欎釜浜哄紑鍙戣€呯殑瀹炴搷锛氱幇鍦ㄦ瘮浠讳綍鏃跺€欓兘璇ョ敤 LiteLLM / OpenRouter 杩欑被<strong>妯″瀷璺敱灞?/strong>銆備互鍚庝綘鐨?Claude 鐢ㄩ噺椋欎簡锛岃兘 1 琛屼唬鐮佸垏鍒?OpenAI o4 鎴?Gemini 3 涓婂鐢ㄣ€?strong>妯″瀷 vendor lock-in 鏄湭鏉?12 涓湀鏈€澶х殑闅愭€ф垚鏈?/strong>銆?/blockquote>
-
-<h2>涓荤嚎 #3锝滃紑婧愮ぞ鍖虹殑鍙嶆墤锛氫竴鍛?3 涓粫寮€ Claude Code 鐨勫伐鍏风櫥 trending</h2>
-
-<p>鍦?Anthropic 鐢?HERMES.md bug + rate-limit + 涓嶉€忔槑璁¤垂"鏁欒偛"鐢ㄦ埛鐨勫悓涓€鍛紝GitHub Python / TypeScript trending 鍚屾椂鎸よ繘浜?3 涓伐鍏凤紝鍏ㄩ儴鍐茬潃 Claude Code 鏉ワ細</p>
-
-<table>
-<thead><tr><th>浠?/th><th>Stars</th><th>鍗栫偣</th></tr></thead>
-<tbody>
-<tr><td><code>Alishahryar1/free-claude-code</code></td><td>18,598</td><td>"Use claude-code for free in terminal / VSCode / Discord"鈥斺€旂敤 OpenClaw锛堝紑婧愪唬鐞嗭級鏇挎崲 Anthropic backend</td></tr>
-<tr><td><code>zilliztech/claude-context</code></td><td>10,300</td><td>Code search MCP for Claude Code锛岃鏁翠釜浠ｇ爜搴撳彉鎴?context</td></tr>
-<tr><td><code>mksglu/context-mode</code></td><td>11,242</td><td>"98% context reduction" sandbox锛?4 骞冲彴鏀寔</td></tr>
-</tbody>
-</table>
-
-<p>杩欐槸寮€婧愮ぞ鍖虹殑<strong>鍏稿瀷搴旀縺鍙嶅簲</strong>锛氬綋鍟嗕笟宸ュ叿寮€濮?squeeze 鐢ㄦ埛锛屽紑婧愭浛浠ｆ柟妗?24 灏忔椂鍐呭啋鍑烘潵 + 涓€鍛ㄥ唴绉疮鍑犱竾 star銆?/p>
-
-<p>浣?strong>鍏堝埆 over-celebrate</strong>銆?code>free-claude-code</code> 杩欑宸ュ叿鐨勬湰璐ㄦ槸 license-bypass鈥斺€斿畠渚濊禆 reverse-engineer Claude API endpoints + 鐢?third-party proxy銆侫nthropic 瀹屽叏鍙互涓嬪懆鐢ㄤ竴涓壌鏉冩敼鍔ㄦ妸瀹冨簾鎺夈€?em>鐭湡鏀剁泭楂橈紝闀挎湡 fragile</em>銆?/p>
-
-<p>鐪熸闀挎湡 robust 鐨勬柟鍚戞槸鍙︿袱涓細</p>
+<p>呼应同一周的另一条 HN 热门：<strong>#9 中国阻击 Meta 收购 Manus</strong>。两件事拼起来——东西方 AI 资产都在重新洗牌，"不可能合并"和"不再合作"几乎是同时发生。</p>
+<p><strong>给个人开发者的实操</strong>：现在比任何时候都该用 LiteLLM / OpenRouter 这类<strong>模型路由层</strong>。以后你的 Claude 用量飙了，能 1 行代码切到 OpenAI o4 或 Gemini 3 上备用。<strong>模型 vendor lock-in 是未来 12 个月最大的隐性成本</strong>。</p>
+<hr>
+<h2>主线 #3｜开源社区的反扑：一周 3 个绕开 Claude Code 的工具登上 GitHub trending</h2>
+<p>在 Anthropic 用 HERMES.md bug + rate-limit + 不透明计费"教育"用户的同一周，GitHub Python / TypeScript trending 同时挤进了 3 个工具，全部冲着 Claude Code 来：</p>
+<table><thead>
+<tr><th>仓</th><th>Stars (本周新增)</th><th>卖点</th></tr>
+</thead><tbody>
+<tr><td>**`Alishahryar1/free-claude-code`**</td><td>18,598</td><td>"Use claude-code for free in terminal / VSCode / Discord" — 用 OpenClaw（开源代理）替换 Anthropic backend</td></tr>
+<tr><td>**`zilliztech/claude-context`**</td><td>10,300</td><td>Code search MCP for Claude Code，让整个代码库变成 context</td></tr>
+<tr><td>**`mksglu/context-mode`**</td><td>11,242</td><td>"98% context reduction" sandbox，14 平台支持</td></tr>
+</tbody></table>
+<p>这是开源社区的<strong>典型应激反应</strong>：当商业工具开始 squeeze 用户，开源替代方案 24 小时内冒出来 + 一周内积累几万 star。</p>
+<p>但先别 over-celebrate。<code>free-claude-code</code> 这种工具的本质是 <strong>license-bypass</strong>——它依赖 reverse-engineer Claude API endpoints + 用 third-party proxy。Anthropic 完全可以下周用一个鉴权改动把它废掉。<strong>短期收益高，长期 fragile</strong>。</p>
+<p>真正长期 robust 的方向是另两个：</p>
 <ul>
-  <li><strong>claude-context 鐨?MCP 妯″紡</strong>鈥斺€旈伒瀹堝畼鏂瑰崗璁€佹墿灞曡兘鍔涳紝涓嶇粫杩囪璐广€侫nthropic 鍙嶈€屾杩庛€?/li>
-  <li><strong>context-mode 鐨?token 鍘嬬缉</strong>鈥斺€旂洿鎺ラ檷浣犵殑 API 鐢ㄩ噺銆傛槸 saving 涓嶆槸 stealing銆?/li>
+<li><strong>`claude-context` 的 MCP 模式</strong>——遵守官方协议、扩展能力，不绕过计费。Anthropic 反而欢迎。</li>
+<li><strong>`context-mode` 的 token 压缩</strong>——直接降你的 API 用量。是 saving 不是 stealing。</li>
 </ul>
-
-<p>濡傛灉浣犵湡鐨勬兂"灏戣姳閽?锛?strong>瀛?MCP 鍐欒嚜宸辩殑宸ュ叿 > 瑁?free-claude-code</strong>銆傚墠鑰呰浣犻暱鏈熸垚鏈笅闄?50%+锛屽悗鑰呬笅涓湀鍙兘灏辨銆?/p>
-
-<h2>鏈懆鍊煎緱璺熻釜锛堢煭锛?/h2>
-
+<p>如果你真的想"少花钱"，<strong>学 MCP 写自己的工具 > 装 free-claude-code</strong>。前者让你长期成本下降 50%+，后者下个月可能就死。</p>
+<hr>
+<h2>本周值得跟踪（短）</h2>
+<p>5 件次要但有信号意义的事，留个时间戳给自己：</p>
 <ol>
-  <li><strong>Mistral Medium 3.5 鍙戝竷</strong>锛圚N 430 鍒嗭級锛氭娲叉ā鍨嬮樀钀ュ弽鎵戯紝Mistral 浼板€?$14B 涓嶉潬缇庡浗甯傚満锛?闈炵編鍥?AI 鍏徃"鐨勯€夐」瓒婃潵瓒婂銆?/li>
-  <li><strong>AI 缁忔祹瀛︿笉鎴愮珛</strong>锛坵heresyoured.at锛孒N 229 鍒嗭級锛欵d Zitron 涓€璐殑鎮茶鍒嗘瀽锛屼絾鏁版嵁鐐规墡瀹炩€斺€斿€煎緱璇诲畬鍒ゆ柇浣犺嚜宸辩殑 AI ROI 鍋囪銆?/li>
-  <li><strong>27000 娆?carb count锛孉I 缁欎笉鍑轰竴鑷寸瓟妗?/strong>锛圚N 233 鍒嗭級锛氱敤 GPT 绠楃硸灏跨梾楗鐨勫尰鐢熷疄娴嬧€斺€攄eterminism 缂哄け瀵?production 閮ㄧ讲鐨勭‖浼ゃ€?/li>
-  <li><strong>Anthropic 鍔犲叆 Blender 寮€鍙戝熀閲?/strong>锛圚N 255 鍒嗭級锛欰nthropic 绗竴娆℃垚涓洪潪 AI 寮€婧愰」鐩殑璧炲姪鍟嗐€?/li>
-  <li><strong>OpenAI CEO 韬唤楠岃瘉鍏徃璇堥獥 Bruno Mars</strong>锛圚N 282 鍒嗭級锛歐orld ID 鐨勬渶鏂板叕鍏崇伨闅俱€?/li>
+<li><strong>Mistral Medium 3.5 发布</strong>（HN 430 分）：欧洲模型阵营反扑，Mistral 估值 $14B 不靠美国市场，"非美国 AI 公司"的选项越来越多。</li>
+<li><strong>AI 经济学不成立</strong>（wheresyoured.at，HN 229 分）：Ed Zitron 一贯的悲观分析，但数据点扎实——值得读完判断你自己的 AI ROI 假设。</li>
+<li><strong>27000 次 carb count，AI 给不出一致答案</strong>（HN 233 分）：用 GPT 算糖尿病饮食的医生实测——determinism 缺失对 production 部署的硬伤。</li>
+<li><strong>Anthropic 加入 Blender 开发基金</strong>（HN 255 分）：Anthropic 第一次成为非 AI 开源项目的赞助商，可能预示更广 corporate giving 策略。</li>
+<li><strong>OpenAI CEO 身份验证公司诈骗 Bruno Mars</strong>（HN 282 分）：World ID 的最新公关灾难，identity verification 这条赛道<strong>信任成本远高于技术成本</strong>。</li>
 </ol>
-
-<h2>涓汉鍖?takeaway锝滀綘杩欏懆璇ュ仛浠€涔?/h2>
-
-<p>濡傛灉浣犲凡缁忕敤 Claude Code / Copilot / Cursor 涔嬩竴<strong>涓旈噸搴︿娇鐢?/strong>锛岃繖涓€鍛ㄧ殑淇″彿鍙犲湪涓€璧烽潪甯告竻鏅帮細</p>
-
-<ol>
-  <li><strong>鍋氫竴娆¤嚜宸辩殑 token audit</strong>鈥斺€旀墦寮€ dashboard 鐪嬭繃鍘?30 澶╂瘡澶╃湡瀹炴秷鑰椼€傚鏋滄帴杩?plan 涓婇檺锛?026 涓嬪崐骞存定浠锋尝鍙婂埌浣犵殑姒傜巼 > 80%銆?/li>
-  <li><strong>鎶?楂橀浣庤川閲?浠诲姟鎼蛋</strong>鈥斺€旇崏绋?/ 鏁版嵁 scrape / 缈昏瘧 / 鍗曞厓娴嬭瘯鏍锋澘鐢?Qwen / Llama / Mistral 鏈湴璺戣冻澶熴€?/li>
-  <li><strong>瀛︿竴涓?MCP 鍐欐硶</strong>鈥斺€旇兘鐔熺粌鍐?MCP server 鐨勪汉 = 鍦?fixed-price plan 鍐呭仛鏇村浜嬬殑浜恒€侫nthropic 瀹樻柟鏂囨。 1 灏忔椂鐪嬪畬銆?/li>
-  <li><strong>鍑嗗澶?vendor failover</strong>鈥斺€擫iteLLM / OpenRouter 鍦ㄥ叧閿?agent 娴佺▼鍋?fallback銆?em>鍗?vendor 渚濊禆鏄?2026 涓嬪崐骞存渶鍗遍櫓鐨勬灦鏋勫亣璁?/em>銆?/li>
-  <li><strong>鏈€閲嶈鈥斺€斿埆琚?fixed-price 閿欒鍏绘垚澶ф墜澶ц剼</strong>鈥斺€攆ixed-price 璁╀綘浠ヤ负 AI 鏄厤璐圭殑锛屼絾渚涚粰渚х殑鐪熷疄鎴愭湰涓€鐩村湪閭ｉ噷銆?/li>
-</ol>
+<hr>
+<h2>个人化 takeaway｜你这周该做什么</h2>
+<p>如果你已经用 Claude Code / Copilot / Cursor 之一<strong>且重度使用</strong>，这一周的信号叠在一起是非常清晰的：</p>
+<p><strong>1. 做一次自己的 token audit</strong></p>
+<p>打开你的 Anthropic / OpenAI dashboard，看过去 30 天每天的真实 token 消耗。如果接近 plan 上限，2026 下半年涨价波及到你的概率 > 80%。</p>
+<p><strong>2. 把"高频低质量"任务搬走</strong></p>
+<p>草稿生成、数据 scrape、内容翻译、单元测试样板代码——这些任务用 Qwen / Llama / Mistral 本地跑足够，<strong>没必要烧 frontier model token</strong>。</p>
+<p><strong>3. 学一个 MCP 写法</strong></p>
+<p>未来 12 个月，能熟练写 MCP server 的人 = 能扩展 Claude/Cursor 能力的人 = 能在 fixed-price plan 内做更多事的人。Anthropic 官方文档 1 小时看完。</p>
+<p><strong>4. 准备多 vendor failover</strong></p>
+<p>用 LiteLLM 或 OpenRouter 在你的关键 agent 流程里做模型 fallback。Claude 挂了切 GPT-4o，GPT 挂了切 Gemini 3。<strong>单 vendor 依赖是 2026 下半年最危险的架构假设</strong>。</p>
+<p><strong>5. 最重要——别被 fixed-price 错觉养成大手大脚</strong></p>
+<p>fixed-price 让你以为 AI 是免费的，但供给侧的真实成本一直在那里。当计费模型改变时，<strong>只有把"成本"放心智模型里的人能 survive</strong>。</p>
+<hr>
+<h2>我自己这周做了什么（个人 update）</h2>
+<p>我用 Claude Code Pro 订阅（<strong>$20/月</strong>）跑了 36+ 小时连续自主任务——通过一套外挂的 <strong>desktop-loop</strong> 桌面自动化，让 agent 在我关掉 IDE 之后还能接着干活。</p>
+<p>这不是 hack——这是当 fixed-price plan 还存在时的<strong>最后红利窗口</strong>。如果 Anthropic 下半年改 throttling 模式，整套玩法可能要重写。</p>
+<p>如果你想看这套 setup 怎么搭：开源在 <a href="https://github.com/jiejuefuyou/autoapp-toolkit">github.com/jiejuefuyou/autoapp-toolkit</a> （MIT）。完整 SETUP.md 走过 Windows + Mac 两个平台。</p>
+<p>如果你不想自己折腾，1-on-1 setup 服务 ¥99 起（首批 50% off）。</p>
+<hr>
+<p><strong>下期预告</strong>：5 月第 1 周我会做一次 Anthropic / OpenAI / Google 三家最近 30 天 changelog 的全梳理，把所有"看起来像功能更新但实际是计费改动"的条目挑出来。订阅别走开。</p>
+<p><strong>反馈</strong>：这一期写得太长 / 太短 / 选题偏了，欢迎回邮件或评论说。我会调。</p>
+<p>—— jiejuefuyou</p>
+<p>2026-04-30</p>
 
 <div class="cta-box">
-<h3>姣忓懆涓€灏侊紝璁㈤槄杩欎唤鍛ㄦ姤</h3>
-<p>5 鏈堣捣姣忓懆涓夋棭涓?8 鐐癸紙鍖椾含鏃堕棿锛夊彂閫併€傚悓鏍锋牸寮忥細3 浠剁湡姝ｉ噸瑕佺殑浜?+ 涓汉鍖栧绛栥€?/p>
-<p>涓嶆敹璐癸紝涓嶅崠璇撅紝涓嶆帹 NFT銆?/p>
-<a href="https://autoappnotes.substack.com?utm_source=site&utm_medium=newsletter-page&utm_campaign=substack-cta&utm_content=zh-section" class="cta-btn">鈫?鍦?Substack 璁㈤槄</a>
+<h3>每周一封，订阅这份周报</h3>
+<p>5 月起每周三早 8 点（北京时间）发送。同样格式：3 件真正重要的事 + 个人化对策。</p>
+<p>不收费，不卖课，不推 NFT。</p>
+<a href="https://autoappnotes.substack.com?utm_source=site&utm_medium=newsletter-page&utm_campaign=substack-cta&utm_content=zh-section" class="cta-btn">订阅 Substack</a>
 </div>
 
-</div>
-
-<div style="background:linear-gradient(135deg,rgba(108,75,224,.1),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.3);border-radius:12px;padding:18px 20px;margin-bottom:28px;font-size:.9rem;line-height:1.7;color:var(--text)">
-<p style="margin-bottom:10px"><strong style="color:var(--accent-2)">English: this is a bi-weekly Chinese newsletter.</strong> Each issue selects 3 genuinely important signals from HN / Reddit / GitHub trending — original data + personal take. For devs already running Claude Code / Cursor / Copilot.</p>
-<p style="margin-bottom:10px">Subscribe free at <a href="https://autoappnotes.substack.com" style="color:var(--accent-2)">autoappnotes.substack.com</a>. Bi-weekly, Wed 8am Beijing. No ads, no courses, no NFTs.</p>
-<p style="font-size:.85rem;margin-bottom:8px">200+ readers across 5 issues so far. <a href="transparency.html" style="color:var(--accent-2)">Real subscriber numbers →</a></p>
-<p><strong style="color:var(--accent-2)">New:</strong> Indie Toolkit 2026 bundle — 4 self-serve playbooks for solo devs, <strong>$25</strong> (standalone $39.96).</p>
+<div class="cta-banner">
+<p><strong>English:</strong> This is a bi-weekly Chinese newsletter. Each issue selects 3 genuinely important signals from HN / Reddit / GitHub trending — original data + personal take.</p>
+<p>Subscribe free at <a href="https://autoappnotes.substack.com" style="color:var(--accent-2)">autoappnotes.substack.com</a>. Bi-weekly, Wed 8am Beijing.</p>
+<p><strong>New:</strong> Indie Toolkit 2026 bundle — 4 self-serve playbooks for solo devs, <strong>$25</strong>.</p>
 <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
 <a href="https://autoappnotes.substack.com?utm_source=site&utm_medium=newsletter-page&utm_campaign=substack-cta" style="display:inline-block;padding:8px 16px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border-radius:8px;font-size:.85rem;font-weight:600;text-decoration:none">Subscribe free</a>
 <a href="https://jiejuefuyou.gumroad.com/l/prompt-vault-complete?utm_source=site&utm_medium=newsletter-page&utm_campaign=bundle-cta" style="display:inline-block;padding:8px 16px;background:var(--bg-card);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:.85rem;text-decoration:none">$25 bundle</a>
 </div>
 </div>
 
-<h2>鎴戣嚜宸辫繖鍛ㄥ仛浜嗕粈涔?/h2>
-
-<p>鎴戠敤 Claude Code Pro 璁㈤槄锛?strong>$20/鏈?/strong>锛夎窇浜?36+ 灏忔椂杩炵画鑷富浠诲姟鈥斺€旈€氳繃涓€濂楀鎸傜殑 <code>desktop-loop</code> 妗岄潰鑷姩鍖栵紝璁?agent 鍦ㄦ垜鍏虫帀 IDE 涔嬪悗杩樿兘鎺ョ潃骞叉椿銆?/p>
-
-<p>杩欎笉鏄?hack鈥斺€旇繖鏄綋 fixed-price plan 杩樺瓨鍦ㄦ椂鐨?strong>鏈€鍚庣孩鍒╃獥鍙?/strong>銆傚鏋?Anthropic 涓嬪崐骞存敼 throttling 妯″紡锛屾暣濂楃帺娉曞彲鑳借閲嶅啓銆?/p>
-
-<p>濡傛灉浣犳兂鐪嬭繖濂?setup 鎬庝箞鎼細寮€婧愬湪 <a href="https://github.com/jiejuefuyou/autoapp-toolkit">github.com/jiejuefuyou/autoapp-toolkit</a>锛圡IT锛夈€傚畬鏁?SETUP.md 璧拌繃 Windows + Mac 涓や釜骞冲彴銆?/p>
-
-<p>濡傛灉浣犱笉鎯宠嚜宸辨姌鑵撅紝1-on-1 setup 鏈嶅姟 楼99 璧凤紙棣栨壒 50% off锛夈€傝鎯呰仈绯?<a href="mailto:jiejuefuyou@gmail.com">jiejuefuyou@gmail.com</a>銆?/p>
-
-<hr>
-
-<p><strong>涓嬫湡棰勫憡</strong>锛? 鏈堢 1 鍛ㄥ仛涓€娆?Anthropic / OpenAI / Google 涓夊鏈€杩?30 澶?changelog 鐨勫叏姊崇悊锛屾妸鎵€鏈?鐪嬭捣鏉ュ儚鍔熻兘鏇存柊浣嗗疄闄呮槸璁¤垂鏀瑰姩"鐨勬潯鐩寫鍑烘潵銆?/p>
-
-<p><strong>鍙嶉</strong>锛氳繖涓€鏈熷啓寰楀お闀?/ 澶煭 / 閫夐鍋忎簡锛屾杩庨偖浠舵垨璇勮銆傛垜浼氳皟銆?/p>
-
 <footer>
-<p>鈥斺€?jiejuefuyou 路 2026-04-30</p>
-<p>鏈湡鏁版嵁 source锛欻N public API + Reddit JSON + GitHub trending HTML锛屽叏閮ㄨ剼鏈紑婧愬湪 <a href="https://github.com/jiejuefuyou/autoapp-toolkit/tree/main/scrapers">autoapp-toolkit/scrapers</a>銆?/p>
-<p style="margin-top:12px"><a href="index.html">鈫?杩斿洖棣栭〉</a> 路 <a href="https://github.com/jiejuefuyou">GitHub</a> 路 <a href="https://dev.to/snake_sun">dev.to @snake_sun</a></p>
+<p>— jiejuefuyou · 2026-04-30</p>
+<p>本期数据 source：HN public API + Reddit JSON + GitHub trending HTML，全部脚本开源在 <a href="https://github.com/jiejuefuyou/autoapp-toolkit/tree/main/scrapers">autoapp-toolkit/scrapers</a>。</p>
+<p style="margin-top:12px"><a href="index.html">返回首页</a> · <a href="https://github.com/jiejuefuyou">GitHub</a> · <a href="https://dev.to/snake_sun">dev.to @snake_sun</a></p>
 </footer>
 
 </div>
 </body>
 </html>
-
