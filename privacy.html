@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — jiejuefuyou apps + services</title>
+<meta name="description" content="Privacy policy for AutoChoice / DaysUntil / PromptVault / AltitudeNow iOS apps + jiejuefuyou.github.io services. We collect zero analytics, zero tracking, zero data from these apps.">
+<meta property="og:title" content="Privacy Policy — jiejuefuyou apps">
+<meta property="og:description" content="Zero data collection. Zero analytics. Zero tracking. The binary backs it up.">
+<meta property="og:url" content="https://jiejuefuyou.github.io/privacy.html">
+<style>
+:root {
+  --bg: #0a0a0f; --bg-card: #12121a; --border: #1f1f2e;
+  --text: #e6e6f0; --muted: #8a8a9a; --accent: #6c4be0; --accent-2: #9b6cf0;
+  --good: #4ade80;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--text); font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 740px; margin: 0 auto; padding: 50px 24px 80px; }
+.back { color: var(--muted); font-size: .9rem; margin-bottom: 20px; display: inline-block; }
+header { padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+header h1 { font-size: 2rem; line-height: 1.2; background: linear-gradient(135deg, #6c4be0, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+header .sub { color: var(--muted); margin-top: 12px; font-size: 1rem; }
+.tldr { background: linear-gradient(135deg, rgba(74,222,128,.12), rgba(34,197,94,.04)); border: 1px solid rgba(74,222,128,.35); border-radius: 10px; padding: 18px 22px; margin: 20px 0 32px; font-size: .95rem; line-height: 1.6; }
+.tldr strong { color: var(--good); }
+section { margin-bottom: 32px; }
+h2 { font-size: 1.3rem; color: var(--accent-2); margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--text); margin: 16px 0 8px; }
+p { margin-bottom: 12px; }
+ul { margin-left: 20px; margin-bottom: 12px; }
+li { padding: 4px 0; }
+code { background: var(--border); padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .9em; }
+footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: .85rem; text-align: center; }
+footer a { color: var(--muted); margin: 0 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a href="index.html" class="back">&larr; AutoApp</a>
+
+<header>
+  <h1>Privacy Policy</h1>
+  <p class="sub">Last updated: 2026-05-04 · Applies to all jiejuefuyou iOS apps + jiejuefuyou.github.io site + B2B services.</p>
+</header>
+
+<div class="tldr">
+<p><strong>TL;DR</strong>: <strong>Zero analytics. Zero tracking. Zero data collection from the iOS apps</strong>. Your iPhone never tells me anything you do in AutoChoice / DaysUntil / PromptVault / AltitudeNow. The Privacy Manifest in each app declares this and the binary backs it up.</p>
+<p style="margin-bottom:0">For the website + B2B consulting services: I store the email you voluntarily send me + your message. That's it.</p>
+</div>
+
+<section>
+<h2>1. iOS Apps (AutoChoice / DaysUntil / PromptVault / AltitudeNow)</h2>
+
+<h3>What we collect: nothing</h3>
+<p>None of these 4 apps collect, transmit, or share any personal data. They are 100% offline. Specifically:</p>
+<ul>
+  <li><strong>No analytics SDKs</strong> (no Firebase, no Mixpanel, no Amplitude, no Apple App Analytics opt-in)</li>
+  <li><strong>No crash reporting</strong> (no Sentry, no Bugsnag, no Crashlytics)</li>
+  <li><strong>No advertising IDs</strong> (no IDFA collection, no IDFV, no tracking permission requests)</li>
+  <li><strong>No network calls</strong> to any server we control. The apps work entirely offline after install.</li>
+  <li><strong>No iCloud sync</strong> by default (PromptVault Pro adds opt-in iCloud sync; data goes only to YOUR iCloud, never to us)</li>
+  <li><strong>No third-party SDKs</strong> beyond Apple's StoreKit 2 (for in-app purchase, handled by Apple)</li>
+</ul>
+
+<h3>How to verify</h3>
+<p>The apps' source is public on GitHub:</p>
+<ul>
+  <li><a href="https://github.com/jiejuefuyou/autoapp-hello">github.com/jiejuefuyou/autoapp-hello</a> (AutoChoice)</li>
+  <li><a href="https://github.com/jiejuefuyou/autoapp-days-until">github.com/jiejuefuyou/autoapp-days-until</a> (DaysUntil)</li>
+  <li><a href="https://github.com/jiejuefuyou/autoapp-prompt-vault">github.com/jiejuefuyou/autoapp-prompt-vault</a> (PromptVault)</li>
+  <li><a href="https://github.com/jiejuefuyou/autoapp-altitude-now">github.com/jiejuefuyou/autoapp-altitude-now</a> (AltitudeNow)</li>
+</ul>
+<p>You can run <code>nm -gU AutoChoice.app/AutoChoice | grep -E "URLSession|HTTPS"</code> to confirm no networking imports beyond Apple's required StoreKit endpoints.</p>
+
+<h3>In-App Purchase data</h3>
+<p>Purchases are processed by Apple's StoreKit 2 framework. Apple handles all payment data; we never see your credit card or billing info. We only receive a transaction ID + the SKU you bought.</p>
+
+<h3>Hardware sensor data (AltitudeNow only)</h3>
+<p>AltitudeNow reads the iPhone's built-in barometric pressure sensor to compute altitude. This data stays entirely on your device. It is never transmitted, logged, or stored beyond the active session.</p>
+</section>
+
+<section>
+<h2>2. Website (jiejuefuyou.github.io)</h2>
+
+<p>The site is hosted on GitHub Pages. GitHub may collect standard server logs (IP address, user agent, requested URL). We have no access to these logs and cannot read them.</p>
+
+<p>The site has zero JavaScript analytics. No Google Analytics, no Plausible, no Fathom. We don't know how many visitors you are.</p>
+
+<p>The site does NOT set cookies. Forms (b2b-quiz / quick-quote / book-call / refer-a-friend) use <code>mailto:</code> links — clicking them opens YOUR email client. We never see what you type unless you click Send.</p>
+
+<p>The pricing-ab-test page uses <code>localStorage</code> to remember which A/B variant you saw. This data lives in your browser only.</p>
+</section>
+
+<section>
+<h2>3. B2B Consulting Services</h2>
+
+<p>If you email me directly (jiejuefuyou@gmail.com or any +alias), I receive your email content + sender address. I store these emails in Gmail. I read every reply.</p>
+
+<p>If you book a paid call ($14 starter / $99 strategy / retainer), I keep:</p>
+<ul>
+  <li>Your name + email + company</li>
+  <li>Your written context (team size, AI workflow gap, etc.)</li>
+  <li>Call recording (only if you consent — I ask before recording)</li>
+  <li>Invoice + payment record (via Wise / Stripe / USDC / bank — they keep their own records per their policies)</li>
+</ul>
+<p>I do NOT share your data with any third party. No CRM resale. No mailing list rental. No "would you like to be on a launch list" without explicit opt-in.</p>
+
+<p>You can request deletion of all your data at any time by emailing <a href="mailto:jiejuefuyou+privacy@gmail.com">jiejuefuyou+privacy@gmail.com</a>. I respond within 4 hours JST (Mon-Fri).</p>
+</section>
+
+<section>
+<h2>4. Newsletter (Substack)</h2>
+
+<p>If you subscribe to <a href="https://autoappnotes.substack.com">autoappnotes.substack.com</a>, Substack stores your email address per their privacy policy. I can see subscriber count + email open rates aggregate. Individual reading habits are NOT visible to me beyond Substack's standard analytics.</p>
+
+<p>Unsubscribe: every email has a one-click unsubscribe link at the bottom. Or email me and I'll remove you manually.</p>
+</section>
+
+<section>
+<h2>5. Gumroad Purchases</h2>
+
+<p>If you buy a prompt pack via <a href="https://jiejuefuyou.gumroad.com">jiejuefuyou.gumroad.com</a>, Gumroad stores your purchase + email address per their privacy policy. I can see your email + product purchased + amount. I use this to send post-buy emails (walkthrough at T+3 days, survey at T+10, optional upsell at T+14). Reply STOP to any of those to opt out.</p>
+</section>
+
+<section>
+<h2>6. Children's Privacy</h2>
+
+<p>None of my apps or services are directed at children under 13. None collect data that could identify a child (we collect no data at all from the apps). All apps are rated 4+ which means safe for all ages, but they are not specifically targeted at the children's market.</p>
+</section>
+
+<section>
+<h2>7. Changes to This Policy</h2>
+
+<p>If I change this policy, the "Last updated" date at the top will reflect that. Material changes will also be announced in the next Substack issue. The full change history is in the public Git history of <code>site/privacy.html</code> on GitHub.</p>
+</section>
+
+<section>
+<h2>8. Contact</h2>
+
+<p>Privacy questions: <a href="mailto:jiejuefuyou+privacy@gmail.com">jiejuefuyou+privacy@gmail.com</a></p>
+<p>General contact: <a href="mailto:jiejuefuyou@gmail.com">jiejuefuyou@gmail.com</a></p>
+<p>Mailing address: available on request via email (I'm a sole operator in Tokyo, Japan)</p>
+</section>
+
+<footer>
+<p><a href="index.html">Home</a> &middot; <a href="services.html">B2B Services</a> &middot; <a href="https://github.com/jiejuefuyou">GitHub</a></p>
+<p style="margin-top:8px">This is a plain-English privacy policy. No legalese. If you want a lawyer's version, write me — I'll work with you to provide one for your audit.</p>
+</footer>
+
+</div>
+</body>
+</html>
