@@ -9,6 +9,7 @@
 <meta property="og:description" content="Answer 5 questions. 90% told NOT to buy my $9.99 pack, $99 coaching, or retainer. Free DIY quiz. No signup.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jiejuefuyou.github.io/b2b-quiz.html">
+<meta property="og:image" content="https://jiejuefuyou.github.io/assets/og-default.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AI Workflow Quiz -- 90% told not to buy from me">
 <meta name="twitter:description" content="90% told not to buy. 5-question quiz for SaaS teams. Free, no signup.">
@@ -152,8 +153,11 @@ footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border);color
   <div class="share-row">
     <button class="share-btn x" onclick="shareX()">Share on X</button>
     <button class="share-btn linkedin" onclick="shareLinkedIn()">LinkedIn</button>
+    <button class="share-btn" style="background:#ff4500" onclick="shareReddit()">Reddit</button>
+    <button class="share-btn" style="background:#ff6600" onclick="shareHN()">Hacker News</button>
     <button class="share-btn copy" onclick="copyResult()">Copy result</button>
   </div>
+  <p style="font-size:.75rem;color:var(--muted);margin-top:14px;text-align:center">Found this useful? Share it with one founder/operator who's stuck on AI workflow questions. Each share gets us 0.5% closer to making this free forever.</p>
 </div>
 <footer>
 <p>jiejuefuyou &nbsp;|&nbsp; <a href="services.html">B2B Consulting</a> &nbsp;|&nbsp; <a href="zh.html">Chinese Site</a> &nbsp;|&nbsp; <a href="https://github.com/jiejuefuyou">GitHub</a></p>
@@ -221,6 +225,7 @@ function showResult(){
   document.getElementById('progress').style.width='100%';
   var total=0;
   for(var i=0;i<answers.length;i++){total+=answers[i];}
+  window._quizScore=total;
   var t=null;
   for(var j=0;j<TIERS.length;j++){if(total>=TIERS[j].min&&total<=TIERS[j].max){t=TIERS[j];break;}}
   document.getElementById('quiz').style.display='none';
@@ -241,6 +246,7 @@ function showResult(){
 function getResultText(){
   var total=0;
   for(var i=0;i<answers.length;i++){total+=answers[i];}
+  window._quizScore=total;
   var t=null;
   for(var j=0;j<TIERS.length;j++){if(total>=TIERS[j].min&&total<=TIERS[j].max){t=TIERS[j];break;}}
   return 'AI Workflow Quiz Result: '+t.tier+' - '+t.title+' ('+t.scoreText+') | Take the quiz: jiejuefuyou.github.io/b2b-quiz.html';
@@ -251,13 +257,19 @@ function copyResult(){
 function submitEmail(){
   var email=document.getElementById("quiz-email").value;
   if(!email||!email.includes("@")){alert("Please enter a valid email");return;}
-  var resultText=getResultText();
   var tierText=document.querySelector(".result-tier")?document.querySelector(".result-tier").textContent:"";
-  var mailto="mailto:jiejuefuyou@gmail.com?subject=AI+Roadmap+Request&body="+encodeURIComponent("Hi,\n\nI took the B2B quiz and got: "+tierText+"\n\nMy email: "+email+"\n\nCould you send me the free roadmap?\n\nQuiz result: "+resultText);
-  window.location.href=mailto;
+  var tier="tier_b";
+  if(window._quizScore!==undefined){tier=window._quizScore<=3?"tier_a":window._quizScore<=6?"tier_b":"tier_c";}
+  var payload={source:"b2b-quiz",email:email,tier:tier,tier_label:tierText,score:window._quizScore||null,utm_source:"b2b-quiz-page",utm_medium:"email-capture"};
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || "http://localhost:8787/capture").trim();
+  fetch(webhookUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).catch(function(){});
   document.getElementById("email-success").style.display="block";
   document.getElementById("quiz-email").disabled=true;
   document.querySelector(".email-capture button").disabled=true;
+  if(webhookUrl.indexOf("localhost") !== -1 || webhookUrl.indexOf("127.0.0.1") !== -1){
+    var tierMailto="mailto:jiejuefuyou%40gmail.com?subject=B2B%20Quiz%20result%20(Tier%20"+encodeURIComponent(tier)+")&body=Hi%2C%0A%0AI%20just%20took%20the%20B2B%20quiz%20and%20scored%20"+encodeURIComponent(window._quizScore||"?")+".%0A%0ATier%3A%20"+encodeURIComponent(tierText||tier)+"%0A%0AWhat%27s%20the%20next%20step%3F";
+    document.getElementById("email-success").innerHTML+=' <a href="'+tierMailto+'" style="color:var(--muted);font-size:.85rem;text-decoration:underline">or email us directly</a>';
+  }
 }
 function shareX(){
   window.open('https://x.com/intent/tweet?text='+encodeURIComponent(getResultText()),'_blank');
@@ -265,7 +277,18 @@ function shareX(){
 function shareLinkedIn(){
   window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent('https://jiejuefuyou.github.io/b2b-quiz.html'),'_blank');
 }
+function shareReddit(){
+  var url='https://jiejuefuyou.github.io/b2b-quiz.html';
+  var title=getResultText();
+  window.open('https://reddit.com/submit?url='+encodeURIComponent(url)+'&title='+encodeURIComponent(title.split('\n')[0]),'_blank');
+}
+function shareHN(){
+  var url='https://jiejuefuyou.github.io/b2b-quiz.html';
+  var title='Free 5-question AI workflow quiz (90 sec, no signup) - tells you which tier of help your team needs';
+  window.open('https://news.ycombinator.com/submitlink?u='+encodeURIComponent(url)+'&t='+encodeURIComponent(title),'_blank');
+}
 renderQuestion();
 </script>
 </body>
 </html>
+
