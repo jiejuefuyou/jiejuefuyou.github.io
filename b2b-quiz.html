@@ -272,19 +272,19 @@ function submitEmail(){
   }
 }
 function shareX(){
-  window.open('https://x.com/intent/tweet?text='+encodeURIComponent(getResultText()),'_blank');
+  window.open('https://x.com/intent/tweet?text='+encodeURIComponent(getResultText())+'&amp;url='+encodeURIComponent('https://jiejuefuyou.github.io/b2b-quiz.html?utm_source=share&amp;medium=x'),'_blank');
 }
 function shareLinkedIn(){
-  window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent('https://jiejuefuyou.github.io/b2b-quiz.html'),'_blank');
+  window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent('https://jiejuefuyou.github.io/b2b-quiz.html?utm_source=share&amp;medium=linkedin'),'_blank');
 }
 function shareReddit(){
-  var url='https://jiejuefuyou.github.io/b2b-quiz.html';
+  var url='https://jiejuefuyou.github.io/b2b-quiz.html?utm_source=share&amp;medium=reddit';
   var title=getResultText();
   window.open('https://reddit.com/submit?url='+encodeURIComponent(url)+'&title='+encodeURIComponent(title.split('\n')[0]),'_blank');
 }
 function shareHN(){
-  var url='https://jiejuefuyou.github.io/b2b-quiz.html';
-  var title='Free 5-question AI workflow quiz (90 sec, no signup) - tells you which tier of help your team needs';
+  var url='https://jiejuefuyou.github.io/b2b-quiz.html?utm_source=share&amp;medium=hn';
+  var title="I just took the AI Workflow Quiz -- here's my result: " + getResultText().split('\n')[0];
   window.open('https://news.ycombinator.com/submitlink?u='+encodeURIComponent(url)+'&t='+encodeURIComponent(title),'_blank');
 }
 renderQuestion();
