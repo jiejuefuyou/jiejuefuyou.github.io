@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Refer a Friend — $50 to you, $50 off them</title>
@@ -140,6 +141,15 @@ footer a { color: var(--muted); margin: 0 8px; }
 <div class="cta-box">
   <h3>Got someone in mind?</h3>
   <p style="color:var(--text);font-size:.95rem;margin-bottom:8px">Send me their name + 1-line context. I take it from there.</p>
+
+  <div id="refer-email-capture" style="margin:16px 0;padding:14px 16px;background:rgba(108,75,224,.1);border:1px solid rgba(108,75,224,.3);border-radius:10px;text-align:left">
+    <p style="margin-bottom:8px;font-size:.88rem"><strong style="color:var(--accent-2)">Before you email -- leave your email</strong></p>
+    <p style="color:var(--muted);font-size:.8rem;margin-bottom:10px">I will track your referral so you see when your friend converts.</p>
+    <input type="email" id="refer-email" placeholder="your@email.com" style="width:100%;padding:9px 12px;background:var(--bg);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.88rem;margin-bottom:8px;box-sizing:border-box;display:block">
+    <button onclick="submitReferLead()" style="width:100%;padding:9px 14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border:none;border-radius:7px;font-size:.88rem;font-weight:600;cursor:pointer">Get my referral link</button>
+    <p id="refer-success" style="display:none;color:var(--good);font-size:.85rem;margin-top:6px">Got it! Check your inbox for your tracking link.</p>
+  </div>
+
   <a class="cta-btn" href="mailto:jiejuefuyou+refer@gmail.com?subject=Referral%20introduction&body=Hi%20Sun%2C%0A%0AReferring%20a%20friend.%0A%0AMy%20name%3A%20%5BYour%20name%5D%0AFriend's%20name%3A%20%5BTheir%20name%5D%0AFriend's%20email%3A%20%5Btheir%40email.com%5D%0AContext%3A%20%5BWhat%20they%20do%2C%20what%20they%20need%5D%0A%0AThanks!">Email me their info &rarr;</a>
 </div>
 
