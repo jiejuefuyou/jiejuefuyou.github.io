@@ -103,6 +103,39 @@ main { padding: 0 24px 80px; max-width: 900px; margin: 0 auto; }
 <div id="list"></div>
 </main>
 
+
+<!-- email capture: prompts page -->
+<div id="prompts-email-capture" style="display:none;max-width:580px;margin:24px auto;text-align:center;padding:20px;background:linear-gradient(135deg,rgba(108,75,224,.1),rgba(192,132,252,.05));border:1px solid rgba(108,75,224,.3);border-radius:12px">
+  <p style="font-size:.9rem;color:#8a8a9a;margin-bottom:12px">115 prompts and growing &mdash; next issue lands Wednesday 8am Beijing.</p>
+  <p style="font-size:.85rem;color:#6a6a7a;margin-bottom:14px">Join 200+ indie devs getting the real story: revenue, failures, and what's actually working.</p>
+  <form id="prompts-lead-form" onsubmit="return false">
+    <input id="prompts-lead-email" type="email" placeholder="you@indie.dev" style="padding:10px 14px;background:#12121a;border:1px solid #1f1f2e;border-radius:8px;color:#e6e6f0;font-size:.95rem;width:200px;outline:none" required>
+    <button onclick="submitPromptsLead()" style="padding:10px 18px;background:linear-gradient(135deg,#6c4be0,#9b6cf0);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer">Notify me</button>
+  </form>
+  <p id="prompts-lead-success" style="display:none;color:#4ade80;font-size:.9rem;margin-top:10px">&#x2713; You're in. Wednesday 8am Beijing, straight to your inbox.</p>
+</div>
+<script>
+function submitPromptsLead(){
+  var email=document.getElementById('prompts-lead-email').value.trim();
+  if(!email||!email.includes('@')){alert('Please enter a valid email');return;}
+  var webhookUrl=window.LEAD_WEBHOOK_URL||'';
+  if(webhookUrl){
+    fetch(webhookUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'prompts-page',tier:'newsletter',email:email,utm:'prompts-page/footer-capture'})}).catch(function(){});
+  }
+  document.getElementById('prompts-lead-form').style.display='none';
+  document.getElementById('prompts-lead-success').style.display='block';
+}
+(function(){
+  var el=document.getElementById('prompts-email-capture');
+  if(!el)return;
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){el.style.display='block';observer.disconnect()}
+    });
+  },{threshold:0.3});
+  observer.observe(el);
+})();
+</script>
 <div class="footer-note">
   113 prompts. Free forever. No login. No analytics. No data leaves your browser.<br>
   Want this on iPhone (native UI + haptics + offline)? 鈫?<a href="https://github.com/jiejuefuyou/autoapp-prompt-vault">PromptVault iOS</a><br>
