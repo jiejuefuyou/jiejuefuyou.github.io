@@ -54,7 +54,7 @@ footer { margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--border
 </style>
 </head>
 <body>
-<div class="wrap">
+<script>var LEAD_WEBHOOK_URL=window.LEAD_WEBHOOK_URL||"";</script>
 
 <a href="index.html" class="back">← AutoApp</a>
 
@@ -169,6 +169,7 @@ footer { margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--border
 <a href="https://jiejuefuyou.substack.com" class="cta-btn">📧 订阅 Substack</a>
 <a href="https://github.com/jiejuefuyou" class="cta-btn" style="background: var(--bg-card); color: var(--text); border: 1px solid var(--border);">📊 GitHub 看完整账本</a>
 </div>
+<div id="trans-email-capture" style="background:linear-gradient(135deg,rgba(108,75,224,.1),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.3);border-radius:12px;padding:18px 22px;margin:24px 0;text-align:left;display:none"><p style="color:var(--text);font-size:.92rem;margin-bottom:4px"><strong style="color:var(--accent-2)">Want the real numbers in your inbox?</strong></p><p style="color:var(--muted);font-size:.82rem;margin-bottom:10px">Monthly transparency update — every revenue channel, every decision, no spin. 200+ readers.</p><form id="trans-form" onsubmit="submitTransLead(event)" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><input type="email" id="trans-email" placeholder="your@email.com" style="flex:1;min-width:180px;padding:9px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.88rem;box-sizing:border-box"><button type="submit" style="padding:9px 16px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border:none;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer">Subscribe</button></form><p id="trans-success" style="display:none;color:var(--good);font-size:.82rem;margin-top:6px">Done - first update on the 1st of next month.</p><p style="color:var(--muted);font-size:.75rem;margin-top:6px">Free. No spam. Unsubscribe anytime.</p></div><script>function submitTransLead(e){e.preventDefault();var email=document.getElementById("trans-email").value;var webhookUrl=window.LEAD_WEBHOOK_URL||"";if(!email)return;var payload={source:"transparency-page",tier:"warm",email:email,page:"transparency.html",context:"footer-capture"};if(webhookUrl){fetch(webhookUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).catch(function(){})}document.getElementById("trans-form").style.display="none";document.getElementById("trans-success").style.display="block"}window.addEventListener("scroll",function(){var el=document.getElementById("trans-email-capture");if(el&&el.style.display==="none"){var rect=el.getBoundingClientRect();if(rect.top<window.innerHeight){el.style.display="block"}}})</script>
 
 <footer>
 <p>本页所有数据真实, 月度更新, 公开可验证. 找数字算错的地方? <a href="mailto:jiejuefuyou@gmail.com">jiejuefuyou@gmail.com</a></p>
