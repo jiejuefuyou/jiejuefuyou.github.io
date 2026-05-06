@@ -27,7 +27,7 @@
   "areaServed": "Global",
   "priceRange": "$99 - $30000",
   "offers": [
-    {"@type": "Offer", "name": "Starter", "price": "14", "priceCurrency": "USD"},
+    {"@type": "Offer", "name": "Starter", "price": "99", "priceCurrency": "USD"},
     {"@type": "Offer", "name": "Standard Retainer", "price": "500", "priceCurrency": "USD", "priceValidUntil": "2027-04-30"},
     {"@type": "Offer", "name": "Enterprise", "price": "2500", "priceCurrency": "USD"}
   ]
@@ -247,6 +247,15 @@ footer { margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--border
 <p class="muted" style="margin-top: 12px;"><strong>Typical cycle</strong>: First reply to first payment averages 5-10 days. &gt;14 day leads 70% don't close — I respect your time, won't hard push.</p>
 </section>
 
+<div class="email-capture" style="background:linear-gradient(135deg,rgba(108,75,224,.1),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.3);border-radius:12px;padding:20px 22px;margin:24px 0;text-align:left">
+  <p style="color:var(--text);font-size:.92rem;margin-bottom:8px"><strong style="color:var(--accent-2)">Before you email — leave your email</strong></p>
+  <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px">Get a 3-question prep doc while you decide if discovery call is worth it. No spam.</p>
+  <input type="email" id="svc-email" placeholder="your@email.com" style="width:100%;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.9rem;margin-bottom:10px;box-sizing:border-box;display:block">
+  <button onclick="submitSvcEmail()" style="width:100%;padding:10px 16px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border:none;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;margin-bottom:8px">Send prep doc</button>
+  <p id="svc-email-success" style="display:none;color:var(--good);font-size:.85rem;padding:8px;text-align:center">Sent! Check your inbox.</p>
+  <p style="color:var(--muted);font-size:.75rem">No spam. Reply anytime to unsubscribe.</p>
+</div>
+
 <div class="cta-box">
 <h3>30 min free discovery, available today</h3>
 <p>Email / WeChat / WeChat Work — reply within 24 hours.<br>
@@ -269,6 +278,18 @@ Completely free, no contracts. I'll tell you directly if AI can solve your speci
 </footer>
 
 </div>
+<script>
+function submitSvcEmail(){
+  var email = document.getElementById("svc-email").value;
+  if(!email || !email.includes("@")){ alert("Please enter a valid email"); return; }
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || "http://localhost:8787/capture").trim();
+  var payload = {source:"services",tier:"direct",tier_label:"free discovery call",email:email,utm_source:"services-page",utm_medium:"email-capture"};
+  fetch(webhookUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).catch(function(){});
+  document.getElementById("svc-email-success").style.display = "block";
+  document.getElementById("svc-email").disabled = true;
+  document.querySelector(".email-capture button").disabled = true;
+}
+</script>
 </body>
 </html>
 

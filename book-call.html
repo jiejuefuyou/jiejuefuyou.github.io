@@ -113,14 +113,23 @@ footer a { color: var(--muted); margin: 0 8px; }
   </div>
 </section>
 
+<div class="email-capture" id="email-capture">
+  <p><strong style="color:var(--accent-2)">Before you email -- leave your email</strong></p>
+  <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px">I will send you a 3-question prep doc while you decide if the call is right. No spam.</p>
+  <input type="email" id="bc-email" placeholder="your@email.com" style="width:100%;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.9rem;margin-bottom:10px;box-sizing:border-box;display:block">
+  <button onclick="submitBcEmail()" style="width:100%;padding:10px 16px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border:none;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;margin-bottom:8px">Send prep doc</button>
+  <p id="bc-email-success" style="display:none;color:var(--good);font-size:.88rem;padding:8px;text-align:center">Sent! Check your inbox.</p>
+  <p style="color:var(--muted);font-size:.75rem">No spam. Reply anytime to unsubscribe.</p>
+</div>
+
 <div class="cta-box">
   <h2>Ready to book?</h2>
   <div class="price-orig">$199 list</div>
   <div class="price">$99</div>
-  <p style="color:var(--muted);font-size:.9rem">First 10 clients. 30-day money-back if call doesn't deliver value.</p>
-  <a class="cta-btn" href="mailto:jiejuefuyou+strategycall@gmail.com?subject=$99%20strategy%20call%20booking&body=Hi%20Hao%2C%0A%0AI'd%20like%20to%20book%20the%20%2499%20strategy%20call.%0A%0AMy%20context%3A%0A%5BTeam%20size%5D%3A%20%0A%5BIndustry%5D%3A%20%0A%5BMain%20AI%20workflow%20gap%5D%3A%20%0A%0A3%20time%20slots%20that%20work%20for%20me%20(JST%20preferred)%3A%0A1.%20%5Bdate%20%2B%20time%5D%0A2.%20%5Bdate%20%2B%20time%5D%0A3.%20%5Bdate%20%2B%20time%5D%0A%0APayment%20method%20pref%20(Wise%20%2F%20Stripe%20%2F%20USDC%20%2F%20bank)%3A%20%0A%0AThanks!">Book the call &rarr;</a>
+  <p style="color:var(--muted);font-size:.9rem">First 10 clients. 30-day money-back if call does not deliver value.</p>
+  <a id="book-call-btn" class="cta-btn" href="mailto:jiejuefuyou+strategycall@gmail.com?subject=$99%20strategy%20call%20booking&body=Hi%20Hao%2C%0A%0AI'd%20like%20to%20book%20the%20%2499%20strategy%20call.%0A%0AMy%20context%3A%0A%5BTeam%20size%5D%3A%20%0A%5BIndustry%5D%3A%20%0A%5BMain%20AI%20workflow%20gap%5D%3A%20%0A%0A3%20time%20slots%20that%20work%20for%20me%20(JST%20preferred)%3A%0A1.%20%5Bdate%20%2B%20time%5D%0A2.%20%5Bdate%20%2B%20time%5D%0A3.%20%5Bdate%20%2B%20time%5D%0A%0APayment%20method%20pref%20(Wise%20%2F%20Stripe%20%2F%20USDC%20%2F%20bank)%3A%20%0A%0AThanks!">Book the call</a>
   <a class="cta-btn secondary" href="quick-quote.html">Take 60-sec quote first</a>
-  <p class="guarantee">30-day money-back guarantee. If call doesn't give 1 actionable win, full refund.</p>
+  <p class="guarantee">30-day money-back guarantee. If call does not give 1 actionable win, full refund.</p>
 </div>
 
 <section style="margin-top: 36px;">
@@ -154,8 +163,24 @@ footer a { color: var(--muted); margin: 0 8px; }
 
 </div>
 <script>
+function submitBcEmail(){
+  var email = document.getElementById("bc-email").value;
+  if(!email || !email.includes("@")){ alert("Please enter a valid email"); return; }
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || "http://localhost:8787/capture").trim();
+  var payload = {source:"book-call",tier:"direct",tier_label:"$99 strategy call",email:email,utm_source:"book-call-page",utm_medium:"email-capture"};
+  fetch(webhookUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).catch(function(){});
+  document.getElementById("bc-email-success").style.display = "block";
+  document.getElementById("bc-email").disabled = true;
+  document.querySelector(".email-capture button").disabled = true;
+}
 (function(){
-  var btns = document.querySelectorAll(".cta-btn"); btns.forEach(function(b){b.addEventListener("click",function(){var webhookUrl = (window.LEAD_WEBHOOK_URL || "http://localhost:8787/capture").trim(); fetch(webhookUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({source:"book-call",tier:"direct",tier_label:"$99 strategy call"})}).catch(function(){})});});
+  var btns = document.querySelectorAll(".cta-btn");
+  btns.forEach(function(b){
+    b.addEventListener("click",function(){
+      var webhookUrl = (window.LEAD_WEBHOOK_URL || "http://localhost:8787/capture").trim();
+      fetch(webhookUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({source:"book-call",tier:"direct",tier_label:"$99 strategy call",intent:"cta-click"})}).catch(function(){});
+    });
+  });
 })();
 </script>
 </body>
