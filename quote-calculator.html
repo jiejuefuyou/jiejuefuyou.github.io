@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI Consulting Quote Calculator -- Get Your Estimate in 30 Seconds</title>
 <meta name="description" content="Input your project size + complexity. Get an AI consulting estimate range + timeline + pre-filled inquiry email. 80% accurate, 1-2 exchanges.">
@@ -206,6 +207,17 @@ footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border);color
 <a id="copy-quote-btn" class="cta-btn secondary" href="#" onclick="copyQuoteInfo(); return false;">Copy quote info</a>
 </div>
 
+
+<!-- Email capture: triggered when user scrolls past CTA box -->
+<div id="quote-email-capture" style="display:none;margin-top:24px;padding:20px 22px;background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(74,222,128,.02));border:1px solid rgba(74,222,128,.3);border-radius:12px;text-align:left">
+  <p style="margin-bottom:8px"><strong style="color:var(--good)">Get your quote saved to email</strong></p>
+  <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px">I'll follow up within 24h with next steps + a free mini-audit of your top workflow.</p>
+  <input type="email" id="quote-lead-email" placeholder="your@email.com" style="display:block;width:100%;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.9rem;margin-bottom:10px;box-sizing:border-box">
+  <button onclick="submitQuoteLead()" style="display:block;width:100%;padding:10px 16px;background:linear-gradient(135deg,var(--good),#22c55e);color:#000;border:none;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;margin-bottom:8px">Send me my quote + next steps</button>
+  <p id="quote-email-success" style="display:none;color:var(--good);font-size:.88rem;padding:8px;text-align:center">Sent! Check your inbox for your personalized next steps.</p>
+  <p style="color:var(--muted);font-size:.75rem">No spam. Inquiry only -- I'll email you within 24h.</p>
+</div>
+
 <div class="trust-strip">
 <span class="trust-item">No spam -- inquiry only</span>
 <span class="trust-item">30-day post-delivery guarantee</span>
@@ -261,7 +273,7 @@ function calculate() {
   // Training add-on
   const trainingAdd = { none: 0, basic: 2000, full: 5000 }[training];
 
-  // Workflow count base 鈥?diminishing returns
+  // Workflow count base -- diminishing returns
   let workflowBase = 0;
   const stepCosts = [6000, 4000, 3000, 2500, 2000];
   for (let i = 0; i < workflowCount && i < stepCosts.length; i++) workflowBase += stepCosts[i];
@@ -272,58 +284,58 @@ function calculate() {
   if (projectType === 'starter') {
     lowBase = workflowCount === 1 ? 6000 : workflowBase * 0.85;
     highBase = workflowCount === 1 ? 9000 : workflowBase * 1.15;
-    timeline = '1-2 鍛?;
-    paymentTerms = '50% 鍚姩 / 50% 楠屾敹';
-    tierName = '馃捈 鍚姩鍖?(鎺ㄨ崘)';
-    tierDesc = '鏈€浣庨闄╁叆闂?鈥?30 min 鎽稿簳 + 1-2 娴佺▼瀹炴柦 + 1 鏈堢ǔ瀹氫繚闅?;
+    timeline = '1-2 months';
+    paymentTerms = '50% upfront / 50% acceptance';
+    tierName = 'Starter (Recommended)';
+    tierDesc = 'Lowest-risk entry: 30-min diagnostic + 1-2 workflow implementation + 1-month stability guarantee.';
     tierIncludes = [
-      '30 min 鍏嶈垂鎽稿簳閫氳瘽',
-      `${workflowCount} 涓祦绋嬬殑 AI 鍖栧疄鏂絗,
-      '楠屾敹浜や粯鐗?+ SOP 鏂囨。',
-      '30 澶╃ǔ瀹氫繚闅?(bug 鍏嶈垂淇?'
+      '30-min free diagnostic call',
+      `${workflowCount} workflow AI implementation`,
+      'Acceptance delivery + SOP doc',
+      '30-day stability guarantee (bug fixes free)'
     ];
   } else if (projectType === 'retainer') {
     lowBase = 3000 + workflowCount * 1500;
     highBase = 8000 + workflowCount * 2500;
-    timeline = '鏈堝害鎸佺画 (寤鸿 鈮?3 鏈?';
-    paymentTerms = '鏈堝垵浠?/ 瀛ｄ粯 9.5 鎶?;
-    tierName = '馃攣 鏈堝害 retainer';
-    tierDesc = '鎸佺画浼樺寲 + 鐩戞帶 + 搴旀€ュ搷搴?閫傚悎宸叉湁 1 娴佺▼璺戦€氬悗鎵╁睍';
+    timeline = 'Monthly ongoing (recommend 3+ months)';
+    paymentTerms = 'Monthly upfront / quarterly 9.5% off';
+    tierName = 'Monthly Retainer';
+    tierDesc = 'Ongoing optimization + monitoring + emergency response. Best for teams with 1+ workflows already running.';
     tierIncludes = [
-      `姣忔湀 ${Math.max(2, workflowCount * 2)} 娆?1-on-1 浼樺寲浼歚,
-      '7脳24 绱ф€ュ搷搴?(4 hr 鍐?',
-      '姣忔湀鏂版祦绋?1 涓垨鐜版湁浼樺寲',
-      '鏈堝害 ROI 鎶ュ憡 + KPI 璺熻釜',
-      '瀹㈡埛宸ヤ綔绌洪棿 (Notion / 椋炰功) 鎸佺画缁存姢'
+      `${Math.max(2, workflowCount * 2)}x 1-on-1 optimization sessions/month`,
+      '7x24 emergency response (4 hr SLA)',
+      '1 new workflow or existing optimization/month',
+      'Monthly ROI report + KPI tracking',
+      'Client workspace (Notion/Feishu) ongoing maintenance'
     ];
   } else if (projectType === 'enterprise') {
     lowBase = 15000 + workflowCount * 3500;
     highBase = 30000 + workflowCount * 6000;
-    timeline = '4-12 鍛?(鎸?workflow 鏁?';
-    paymentTerms = '30% 鍚姩 / 40% 涓湡 / 30% 楠屾敹';
-    tierName = '馃彚 浼佷笟鍖?;
-    tierDesc = '3+ 娴佺▼鏁村悎 + 澶氱郴缁熷鎺?+ 鍏ㄥ憳鍩硅 + 6 鏈堟妧鏈敮鎸?;
+    timeline = '4-12 months (depends on workflow count)';
+    paymentTerms = '30% upfront / 40% mid / 30% acceptance';
+    tierName = 'Enterprise';
+    tierDesc = '3+ workflow integration + multi-system connectivity + full team training + 6-month tech support.';
     tierIncludes = [
       'Kickoff workshop (3 hr)',
-      `${workflowCount} 涓祦绋嬬殑绔埌绔疄鏂絗,
-      '澶氱郴缁熷鎺?(CRM / ERP / 椋炰功 / Notion 绛?',
-      '瀹屾暣 SOP 鏂囨。 + 鍐呰鏉愭枡',
-      '6 涓湀鎶€鏈敮鎸?,
-      '楠屾敹鎶ュ憡 + ROI 搴﹂噺'
+      `${workflowCount} workflows end-to-end implementation`,
+      'Multi-system connectivity (CRM/ERP/Feishu/Notion)',
+      'Complete SOP documentation + training materials',
+      '6 months tech support',
+      'Acceptance report + ROI metrics'
     ];
   } else {
     // custom
     lowBase = workflowBase;
     highBase = workflowBase * 1.4;
-    timeline = '闇€ 30 min 鎽稿簳鍚庡畾';
-    paymentTerms = '鍙崗鍟?(鎸夐噷绋嬬)';
-    tierName = '馃幆 鑷畾涔夋柟妗?;
-    tierDesc = '涓嶇‘瀹氬摢涓?tier 鍚堥€?鈥?30 min 鎽稿簳鍚庨噺韬畾鍒?;
+    timeline = 'TBD after 30-min diagnostic';
+    paymentTerms = 'Negotiable (by milestone)';
+    tierName = 'Custom';
+    tierDesc = "Not sure which tier fits? Let's define it together in a 30-min diagnostic.";
     tierIncludes = [
-      '30 min 鍏嶈垂闇€姹傛懜搴?,
-      '閲忚韩瀹氬埗鏂规涔?(24 hr 鍐呬氦浠?',
-      '閫忔槑鎶ヤ环鍒嗛」鏄庣粏',
-      '鍙垎闃舵鎵ц / 椋庨櫓鍏辨媴'
+      '30-min free needs assessment',
+      'Tailored solution proposal (24 hr delivery)',
+      'Transparent price breakdown',
+      'Phased execution / shared risk'
     ];
   }
 
@@ -336,7 +348,7 @@ function calculate() {
   high = Math.round(high / 500) * 500;
 
   // Display
-  document.getElementById('price-range').textContent = `楼${low.toLocaleString('zh-CN')} 鈥?楼${high.toLocaleString('zh-CN')}`;
+  document.getElementById('price-range').textContent = `\u00a5${low.toLocaleString()} - \u00a5${high.toLocaleString()}`;
   document.getElementById('timeline').textContent = timeline;
   document.getElementById('payment').textContent = paymentTerms;
   document.getElementById('tier-name').textContent = tierName;
@@ -350,26 +362,30 @@ function calculate() {
   });
 
   // Update mailto
-  const subject = encodeURIComponent(`[鍜ㄨ] ${tierName.replace(/[馃捈馃攣馃彚馃幆] /, '')} 璇环 鈥?鍥㈤槦 ${teamSize} 浜?/ ${workflowCount} 娴佺▼`);
+  const subject = encodeURIComponent(`[Inquiry] ${tierName} Quote -- Team ${teamSize} / ${workflowCount} workflows`);
   const body = encodeURIComponent(
-    `浣犲ソ jiejuefuyou,\n\n` +
-    `鍒氬湪 quote-calculator.html 涓婄畻浜嗕笅鎴戜滑鐨勯渶姹?棰勪及鎶ヤ环鍖洪棿 楼${low.toLocaleString('zh-CN')}-楼${high.toLocaleString('zh-CN')}, 宸ユ湡 ${timeline}.\n\n` +
-    `椤圭洰鎯呭喌:\n` +
-    `- 椤圭洰绫诲瀷: ${tierName.replace(/[馃捈馃攣馃彚馃幆] /, '')}\n` +
-    `- 鍥㈤槦瑙勬ā: ${teamSize} 浜篭n` +
-    `- 瑕?AI 鍖栫殑娴佺▼鏁? ${workflowCount}\n` +
-    `- 闆嗘垚澶嶆潅搴? ${ {simple:'绠€鍗?(鍗曠郴缁?', medium:'涓瓑 (2-3 绯荤粺)', complex:'澶嶆潅 (4+ 绯荤粺)'}[complexity] }\n` +
-    `- 鏃堕棿绱ц揩搴? ${ {standard:'鏍囧噯', rush:'鍔犳€?(+30%)'}[urgency] }\n` +
-    `- 鍩硅闇€姹? ${ {none:'涓嶉渶瑕?, basic:'鍩虹 +楼2k', full:'鍏ㄥ憳 +楼5k'}[training] }\n\n` +
-    `鎯崇害涓?30 min 鎽稿簳閫氳瘽,浠嬬粛涓嬪叿浣撳満鏅湅鐪嬪彲琛屾€?+ 鏍″噯鎶ヤ环.\n\n` +
-    `(鎴戠殑)\n` +
-    `鍏徃/琛屼笟:\n` +
-    `褰撳墠鏈€鐥涚殑娴佺▼:\n` +
-    `鏈熸湜寮€濮嬫椂闂?\n` +
-    `鑱旂郴鏂瑰紡 (寰俊/鐢佃瘽):\n\n` +
-    `璋㈣阿!\n`
+    `Hi jiejuefuyou,\n\n` +
+    `I just used the quote calculator and got an estimate of \u00a5${low.toLocaleString()}-\u00a5${high.toLocaleString()}, timeline: ${timeline}.\n\n` +
+    `Project details:\n` +
+    `- Type: ${tierName}\n` +
+    `- Team size: ${teamSize} people\n` +
+    `- Workflows to automate: ${workflowCount}\n` +
+    `- Complexity: ${ {simple:'Simple (single system)', medium:'Medium (2-3 systems)', complex:'Complex (4+ systems)'}[complexity] }\n` +
+    `- Urgency: ${ {standard:'Standard', rush:'Rush (+30%)'}[urgency] }\n` +
+    `- Training: ${ {none:'None', basic:'Basic +\u00a52k', full:'Full team +\u00a55k'}[training] }\n\n` +
+    `I'd like to book a 30-min diagnostic call to discuss feasibility and get an accurate quote.\n\n` +
+    `My background:\n` +
+    `Company/Industry:\n` +
+    `Most painful workflow:\n` +
+    `Desired start:\n` +
+    `Contact (WeChat/phone):\n\n` +
+    `Thanks!\n`
   );
   document.getElementById('mailto-btn').href = `mailto:jiejuefuyou@gmail.com?subject=${subject}&body=${body}`;
+
+  // Show email capture after calculation updates
+  var capture = document.getElementById('quote-email-capture');
+  if (capture) capture.style.display = 'block';
 }
 function copyQuoteInfo(){
   var priceEl = document.getElementById('price-range');
@@ -380,8 +396,31 @@ function copyQuoteInfo(){
   var timelineText = timelineEl ? timelineEl.textContent : '';
   var tierText = tierNameEl ? tierNameEl.textContent : '';
   var paymentText = paymentEl ? paymentEl.textContent : '';
-  var text = '椤圭洰鎶ヤ环淇℃伅锛堟潵婧愶細jiejuefuyou.github.io/quote-calculator.html锛塡n\n鎶ヤ环鑼冨洿锛歕u00a5' + priceText + '\n棰勮宸ユ湡锛? + timelineText + '\n鎺ㄨ崘鏂规锛? + tierText + '\n浠樻鏂瑰紡锛? + paymentText + '\n\n璇︾粏闇€姹傝鍥炲閭欢鎴栧姞寰俊绉佽亰 jiejuefuyou (棣栭〉 index 鏈夎仈绯绘柟寮?銆?;
-  navigator.clipboard.writeText(text).then(function(){ alert('宸插鍒跺埌鍓创鏉匡紝鍙洿鎺ョ矘璐村埌閭欢鎴栧井淇?); });
+  var text = 'Project quote info (source: jiejuefuyou.github.io/quote-calculator.html)\n\nQuote range: ' + priceText + '\nTimeline: ' + timelineText + '\nRecommended tier: ' + tierText + '\nPayment terms: ' + paymentText + '\n\nReply to this email or add WeChat jiejuefuyou (index page has contact info).';
+  navigator.clipboard.writeText(text).then(function(){ alert('Copied to clipboard - paste into email or WeChat.'); });
+}
+
+function submitQuoteLead(){
+  var email = document.getElementById('quote-lead-email').value;
+  if(!email || !email.includes('@')){ alert('Please enter a valid email'); return; }
+  var tierNameEl = document.getElementById('tier-name');
+  var priceEl = document.getElementById('price-range');
+  var payload = {
+    source: 'quote-calculator',
+    email: email,
+    tier: tierNameEl ? tierNameEl.textContent : '',
+    quote_range: priceEl ? priceEl.textContent : '',
+    team_size: document.getElementById('team-size') ? document.getElementById('team-size').value : '',
+    workflow_count: document.getElementById('workflow-count') ? document.getElementById('workflow-count').value : '',
+    complexity: document.querySelector('input[name="complexity"]:checked') ? document.querySelector('input[name="complexity"]:checked').value : '',
+    utm_source: 'quote-calculator-page',
+    utm_medium: 'email-capture'
+  };
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || 'http://localhost:8787/capture').trim();
+  fetch(webhookUrl, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)}).catch(function(){});
+  document.getElementById('quote-email-success').style.display = 'block';
+  document.getElementById('quote-lead-email').disabled = true;
+  document.querySelector('#quote-email-capture button').disabled = true;
 }
 calculate();
 </script>
