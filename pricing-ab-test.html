@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -57,7 +57,7 @@ header p { color: var(--muted); margin-top: 12px; font-size: 1.05rem; }
 .tier li.no::before { content: "-"; color: var(--bad); }
 .tier .cta { display: block; padding: 11px 16px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border-radius: 8px; font-weight: 600; text-align: center; margin-top: 16px; font-size: .9rem; }
 .tier .cta.secondary { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
-
+<script>var LEAD_WEBHOOK_URL=window.LEAD_WEBHOOK_URL||"";</script>
 .section { margin-top: 48px; }
 .section h2 { font-size: 1.5rem; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
 .section p { color: var(--muted); margin-bottom: 12px; }
@@ -250,6 +250,7 @@ body:not(.variant-b) #variantB-pricing { display: none; }
   </div>
 </div>
 
+<div id="pab-email-capture" style="background:linear-gradient(135deg,rgba(108,75,224,.1),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.3);border-radius:12px;padding:18px 22px;margin:24px 0;text-align:left;display:none"><p style="color:var(--text);font-size:.92rem;margin-bottom:4px"><strong style="color:var(--accent-2)">Not sure which tier fits your team?</strong></p><p style="color:var(--muted);font-size:.82rem;margin-bottom:10px">Get a 3-question self-qualification guide + a custom recommendation based on your team size. Free.</p><form id="pab-capture-form" onsubmit="submitPabLead(event)" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><input type="email" id="pab-email" placeholder="your@email.com" style="flex:1;min-width:180px;padding:9px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.88rem;box-sizing:border-box"><button type="submit" style="padding:9px 16px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border:none;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer">Send guide</button></form><p id="pab-success" style="display:none;color:var(--good);font-size:.82rem;margin-top:6px">Sent! Check your inbox.</p><p style="color:var(--muted);font-size:.75rem;margin-top:6px">No spam. Unsubscribe anytime.</p></div><script>function submitPabLead(e){e.preventDefault();var email=document.getElementById("pab-email").value;var webhookUrl=window.LEAD_WEBHOOK_URL||"";if(!email)return;var payload={source:"pricing-ab-test",tier:"warm",email:email,page:"pricing-ab-test.html",context:"pricing-tier-selection"};if(webhookUrl){fetch(webhookUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).catch(function(){})}document.getElementById("pab-capture-form").style.display="none";document.getElementById("pab-success").style.display="block"}window.addEventListener("scroll",function(){var el=document.getElementById("pab-email-capture");if(el&&el.style.display==="none"){var rect=el.getBoundingClientRect();if(rect.top<window.innerHeight){el.style.display="block"}}})</script>
 <footer>
   <a href="index.html">Home</a>&nbsp;&middot;&nbsp;
   <a href="services.html">B2B Services</a>&nbsp;&middot;&nbsp;
