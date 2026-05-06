@@ -25,6 +25,16 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://jiejuefuyou.github.io/sales.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://jiejuefuyou.github.io/faq.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://jiejuefuyou.github.io/b2b-quiz.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
