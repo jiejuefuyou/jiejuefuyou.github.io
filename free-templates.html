@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -209,11 +209,29 @@ footer a { color: var(--muted); margin: 0 8px; }
   <a class="cta-btn secondary" href="b2b-quiz.html">🎯 Take 90-sec tier quiz</a>
 </div>
 
+<!-- LEAD CAPTURE START -->
+<div id="templates-email-capture" style="display:none;background:linear-gradient(135deg,rgba(108,75,224,.12),rgba(192,132,252,.05));border:1px solid rgba(108,75,224,.25);padding:20px 24px;border-radius:12px;margin:20px 0;text-align:center">
+  <p style="color:var(--accent-2);font-weight:600;margin-bottom:6px;font-size:.95rem">Get notified when we add new templates</p>
+  <p style="color:var(--muted);font-size:.82rem;margin-bottom:12px">12 templates are just the start. Drop your email for occasional updates 鈥?no spam, reply to unsubscribe.</p>
+  <input type="email" id="templates-email" placeholder="your@email.com" style="width:100%;max-width:300px;padding:9px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.88rem;margin-bottom:10px;box-sizing:border-box;display:inline-block">
+  <button onclick="submitTemplatesEmail()" style="padding:9px 18px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border:none;border-radius:8px;font-size:.88rem;font-weight:600;cursor:pointer">Notify me</button>
+  <p id="templates-email-success" style="display:none;color:var(--good);font-size:.85rem;margin-top:8px">You're in! We'll only email when new templates drop.</p>
+</div>
+<!-- LEAD CAPTURE END -->
 <footer>
 <p><a href="index.html">Home</a> &middot; <a href="services.html">B2B Services</a> &middot; <a href="pricing.html">Pricing</a> &middot; <a href="refer-a-friend.html">$50 referral</a> &middot; <a href="https://github.com/jiejuefuyou/autoapp-toolkit">GitHub</a></p>
 <p style="margin-top:8px">All templates MIT-licensed. Suggest improvements: <a href="https://github.com/jiejuefuyou/autoapp-toolkit/issues">open an issue</a> or email <a href="mailto:jiejuefuyou+templates@gmail.com">jiejuefuyou+templates@gmail.com</a></p>
 </footer>
 
 </div>
+
+<script>
+function submitTemplatesEmail(){var e=document.getElementById("templates-email").value;if(!e||!e.includes("@")){alert("Please enter a valid email");return;}var w=(window.LEAD_WEBHOOK_URL||"http://localhost:8787/capture").trim();var p={source:"free-templates",tier:"newsletter",tier_label:"Newsletter subscriber",score:0,email:e,utm_source:"free-templates",utm_medium:"email-capture"};fetch(w,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(p)}).catch(function(){});document.getElementById("templates-email-success").style.display="block";document.getElementById("templates-email").disabled=true;document.querySelector("#templates-email-capture button").disabled=true;}
+var cta=document.querySelector(".cta-box");if(cta){var o=new IntersectionObserver(function(entries){entries.forEach(function(r){if(r.isIntersecting){document.getElementById("templates-email-capture").style.display="block";}});},{threshold:0.3});o.observe(cta);}
+</script>
+<script>
+function submitTemplatesEmail(){var e=document.getElementById("templates-email").value;if(!e||!e.includes("@")){alert("Please enter a valid email");return;}var w=(window.LEAD_WEBHOOK_URL||"http://localhost:8787/capture").trim();var p={source:"free-templates",tier:"newsletter",tier_label:"Newsletter subscriber",score:0,email:e,utm_source:"free-templates",utm_medium:"email-capture"};fetch(w,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(p)}).catch(function(){});document.getElementById("templates-email-success").style.display="block";document.getElementById("templates-email").disabled=true;document.querySelector("#templates-email-capture button").disabled=true;}
+var cta=document.querySelector(".cta-box");if(cta){var o=new IntersectionObserver(function(entries){entries.forEach(function(r){if(r.isIntersecting){document.getElementById("templates-email-capture").style.display="block";}});},{threshold:0.3});o.observe(cta);}
+</script>
 </body>
 </html>
