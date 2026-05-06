@@ -56,6 +56,14 @@ footer { margin-top: 80px; padding-top: 28px; border-top: 1px solid var(--border
   .wrap { padding: 40px 18px 60px; }
   header h1 { font-size: 1.8rem; }
 }
+<script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
+#just-published-email-capture{display:none;background:linear-gradient(135deg,rgba(108,75,224,.12),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.35);border-radius:12px;padding:20px 24px;margin:24px 0;text-align:center;}
+#just-published-email-capture.visible{display:block;}
+#just-published-email-capture p{color:var(--text);font-size:.9rem;margin-bottom:12px;}
+#just-published-email-capture input[type=email]{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:.9rem;width:220px;margin-right:8px;}
+#just-published-email-capture button{padding:10px 18px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:.88rem;}
+#just-published-email-capture button:hover{opacity:.9;}
+#just-published-email-success{display:none;color:var(--good);font-weight:600;font-size:.9rem;}
 </style>
 </head>
 <body>
@@ -257,6 +265,10 @@ footer { margin-top: 80px; padding-top: 28px; border-top: 1px solid var(--border
 <p><a href="index.html">← Back to home</a> · Built by <a href="https://github.com/jiejuefuyou">Hao</a> · 60-day indie experiment</p>
 </footer>
 
+
+<div id="just-published-email-capture"><p>Get the latest updates + offers delivered to your inbox.</p><input type="email" id="just-published-email" placeholder="your@email.com"><button onclick="submitJust-PublishedLead()">Notify me</button><span id="just-published-email-success">Sent - check your inbox!</span></div>
 </div>
-</body>
+<script>
+function submitJust-PublishedLead(){var e=document.getElementById('just-published-email').value;if(!e||!e.includes('@')){alert('Please enter a valid email');return;}var w=(window.LEAD_WEBHOOK_URL||'http://localhost:8787/capture').trim();var p={source:'just-published',tier:'newsletter',tier_label:'Newsletter subscriber',score:0,email:e,utm_source:'just-published',utm_medium:'email-capture'};fetch(w,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}).catch(function(){});document.getElementById('just-published-email-success').style.display='inline';document.getElementById('just-published-email').disabled=true;document.querySelector('#just-published-email-capture button').disabled=true;}(function(){var el=document.getElementById('just-published-email-capture');var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)el.classList.add('visible');});},{threshold:0.1});obs.observe(document.querySelector('.wrap'));})();
+</script></body>
 </html>

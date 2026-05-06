@@ -31,6 +31,14 @@ h2.section { font-size: 1.4rem; margin: 36px 0 14px; padding-bottom: 6px; border
 .contact-box h3 { color: var(--accent-2); margin-bottom: 8px; }
 footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: .85rem; text-align: center; }
 @media (max-width: 600px) { .wrap { padding: 40px 18px 60px; } h1 { font-size: 1.75rem; } }
+<script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
+#faq-email-capture{display:none;background:linear-gradient(135deg,rgba(108,75,224,.12),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.35);border-radius:12px;padding:20px 24px;margin:24px 0;text-align:center;}
+#faq-email-capture.visible{display:block;}
+#faq-email-capture p{color:var(--text);font-size:.9rem;margin-bottom:12px;}
+#faq-email-capture input[type=email]{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:.9rem;width:220px;margin-right:8px;}
+#faq-email-capture button{padding:10px 18px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:.88rem;}
+#faq-email-capture button:hover{opacity:.9;}
+#faq-email-success{display:none;color:var(--good);font-weight:600;font-size:.9rem;}
 </style>
 </head>
 <body>
@@ -196,6 +204,10 @@ footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border
 <p><a href="index.html">← Home</a> · <a href="just-published.html">Latest launches</a> · <a href="press-kit.html">Press kit</a> · <a href="sales.html">All products</a></p>
 </footer>
 
+
+<div id="faq-email-capture"><p>Get the latest updates + offers delivered to your inbox.</p><input type="email" id="faq-email" placeholder="your@email.com"><button onclick="submitFaqLead()">Notify me</button><span id="faq-email-success">Sent - check your inbox!</span></div>
 </div>
-</body>
+<script>
+function submitFaqLead(){var e=document.getElementById('faq-email').value;if(!e||!e.includes('@')){alert('Please enter a valid email');return;}var w=(window.LEAD_WEBHOOK_URL||'http://localhost:8787/capture').trim();var p={source:'faq',tier:'newsletter',tier_label:'Newsletter subscriber',score:0,email:e,utm_source:'faq',utm_medium:'email-capture'};fetch(w,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}).catch(function(){});document.getElementById('faq-email-success').style.display='inline';document.getElementById('faq-email').disabled=true;document.querySelector('#faq-email-capture button').disabled=true;}(function(){var el=document.getElementById('faq-email-capture');var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)el.classList.add('visible');});},{threshold:0.1});obs.observe(document.querySelector('.wrap'));})();
+</script></body>
 </html>

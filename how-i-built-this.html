@@ -45,6 +45,14 @@ footer { margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border
   .wrap { padding: 40px 18px 60px; }
   h1 { font-size: 1.75rem; }
 }
+<script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
+#how-i-built-this-email-capture{display:none;background:linear-gradient(135deg,rgba(108,75,224,.12),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.35);border-radius:12px;padding:20px 24px;margin:24px 0;text-align:center;}
+#how-i-built-this-email-capture.visible{display:block;}
+#how-i-built-this-email-capture p{color:var(--text);font-size:.9rem;margin-bottom:12px;}
+#how-i-built-this-email-capture input[type=email]{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:.9rem;width:220px;margin-right:8px;}
+#how-i-built-this-email-capture button{padding:10px 18px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:.88rem;}
+#how-i-built-this-email-capture button:hover{opacity:.9;}
+#how-i-built-this-email-success{display:none;color:var(--good);font-weight:600;font-size:.9rem;}
 </style>
 </head>
 <body>
@@ -152,6 +160,10 @@ footer { margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border
 <p><a href="index.html">← Home</a> · <a href="transparency.html">Transparency dashboard</a> · <a href="https://github.com/jiejuefuyou">github.com/jiejuefuyou</a></p>
 </footer>
 
+
+<div id="how-i-built-this-email-capture"><p>Get the latest updates + offers delivered to your inbox.</p><input type="email" id="how-i-built-this-email" placeholder="your@email.com"><button onclick="submitHow-I-Built-ThisLead()">Notify me</button><span id="how-i-built-this-email-success">Sent - check your inbox!</span></div>
 </div>
-</body>
+<script>
+function submitHow-I-Built-ThisLead(){var e=document.getElementById('how-i-built-this-email').value;if(!e||!e.includes('@')){alert('Please enter a valid email');return;}var w=(window.LEAD_WEBHOOK_URL||'http://localhost:8787/capture').trim();var p={source:'how-i-built-this',tier:'newsletter',tier_label:'Newsletter subscriber',score:0,email:e,utm_source:'how-i-built-this',utm_medium:'email-capture'};fetch(w,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}).catch(function(){});document.getElementById('how-i-built-this-email-success').style.display='inline';document.getElementById('how-i-built-this-email').disabled=true;document.querySelector('#how-i-built-this-email-capture button').disabled=true;}(function(){var el=document.getElementById('how-i-built-this-email-capture');var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)el.classList.add('visible');});},{threshold:0.1});obs.observe(document.querySelector('.wrap'));})();
+</script></body>
 </html>
