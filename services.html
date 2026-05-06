@@ -179,10 +179,95 @@ footer { margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--border
     <p class="muted" style="margin-top:12px">For: 30+ person teams, systematic AI transformation</p>
   </div>
 </div>
-</section>
+</section></section>
 
 <section>
-<h2>Real Proof — What I've Built With This System</h2>
+<h2>Real Proof
+<section style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px 32px; margin-bottom: 32px;">
+<h2 style="border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 20px;">Case Study — Content Team, 20 hrs/week to 2 hrs/week</h2>
+
+<div style="display: grid; gap: 20px;">
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+  <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px;">
+    <div style="color: var(--bad); font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px;">Before AI</div>
+    <div style="font-size: 1.5rem; font-weight: 700; color: var(--text);">20 hrs/week</div>
+    <div style="color: var(--muted); font-size: .85rem; margin-top: 4px;">manual reporting by 3-person content team</div>
+  </div>
+  <div style="background: rgba(74,222,128,.08); border: 1px solid rgba(74,222,128,.25); border-radius: 10px; padding: 18px;">
+    <div style="color: var(--good); font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px;">After AI</div>
+    <div style="font-size: 1.5rem; font-weight: 700; color: var(--text);">2 hrs/week</div>
+    <div style="color: var(--muted); font-size: .85rem; margin-top: 4px;">AI drafts + 1-person review</div>
+  </div>
+</div>
+
+<div style="background: var(--bg); border-radius: 10px; padding: 18px 20px;">
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center;">
+    <div><div style="font-size: 1.4rem; font-weight: 700; color: var(--accent-2);">90%</div><div style="color: var(--muted); font-size: .78rem;">time reduction</div></div>
+    <div><div style="font-size: 1.4rem; font-weight: 700; color: var(--accent-2);">$4,200</div><div style="color: var(--muted); font-size: .78rem;">saved/month</div></div>
+    <div><div style="font-size: 1.4rem; font-weight: 700; color: var(--accent-2);">7 days</div><div style="color: var(--muted); font-size: .78rem;">to first workflow</div></div>
+    <div><div style="font-size: 1.4rem; font-weight: 700; color: var(--good);">4.2x</div><div style="color: var(--muted); font-size: .78rem;">ROI in month 1</div></div>
+  </div>
+</div>
+
+<p style="margin-top: 16px; line-height: 1.7;"><strong>The client:</strong> A 12-person content agency producing 40+ articles/month for SaaS clients. Weekly content wrap reports — 3 people, half a day each, still missing data, still making errors.</p>
+<p style="margin-top: 10px; line-height: 1.7;"><strong>The engagement:</strong> $500/mo Standard Retainer. Week 1: built an AI workflow auto-generating the report draft from their analytics stack. Week 2-4: refined, added client-facing version, trained 1 person to QA output.</p>
+<p style="margin-top: 10px; line-height: 1.7;"><strong>The result:</strong> Report now takes 2 hours/week. The 2 other people redeployed to content creation. Client renewed for 6 more months and referred 1 new client.</p>
+
+<div style="margin-top: 18px; padding: 14px 16px; background: rgba(108,75,224,.1); border: 1px solid rgba(108,75,224,.25); border-radius: 8px; font-size: .88rem; color: var(--muted);">
+  <strong style="color: var(--text);">What this means for your team:</strong> If your team spends 10+ hrs/week on repetitive structured work, AI workflows likely pay back in under 30 days. 60-min call — $99, applied to retainer if you continue.
+</div>
+
+<div id="services-email-capture" style="margin-top: 16px; display: none;">
+  <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px;">
+    <p style="font-size: .88rem; color: var(--muted); margin-bottom: 10px;">Get a free 30-sec team assessment — see if AI workflows make sense for you</p>
+    <form id="services-capture-form" onsubmit="submitServicesLead(event)">
+      <input type="email" id="services-email" placeholder="your@email.com" required style="width: 100%; padding: 10px 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: .9rem; margin-bottom: 8px; box-sizing: border-box;">
+      <input type="hidden" id="services-source" value="services-case-study">
+      <button type="submit" style="width: 100%; padding: 10px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: .9rem;">Get My Free Assessment</button>
+    </form>
+    <p id="services-capture-success" style="display: none; color: var(--good); font-size: .88rem; margin-top: 8px; text-align: center;">Got it — I'll email you within 24 hours with initial thoughts.</p>
+  </div>
+</div>
+
+<p style="margin-top: 14px; text-align: center;">
+  <a href="book-call.html" style="display: inline-block; padding: 10px 20px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border-radius: 8px; font-weight: 600; font-size: .9rem; text-decoration: none;">Book 30-min Discovery Call</a>
+  <span style="margin-left: 10px;"><a href="#tiers" style="color: var(--muted);">or see pricing</a></span>
+</p>
+</div>
+</section>
+
+<script>
+function submitServicesLead(e) {
+  e.preventDefault();
+  var email = document.getElementById('services-email').value;
+  var webhookUrl = window.LEAD_WEBHOOK_URL || '';
+  if (!webhookUrl || !email) return;
+  var payload = {
+    source: 'services-case-study',
+    tier: 'hot',
+    email: email,
+    page: 'services.html',
+    context: 'case-study-cta'
+  };
+  fetch(webhookUrl, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(payload)
+  }).catch(function() {});
+  document.getElementById('services-capture-success').style.display = 'block';
+  document.getElementById('services-capture-form').style.display = 'none';
+}
+window.addEventListener('scroll', function() {
+  var el = document.getElementById('services-email-capture');
+  if (el && !el.style.display) {
+    var rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      el.style.display = 'block';
+    }
+  }
+});
+</script>
+ — What I've Built With This System</h2>
 <div class="proof-card"><strong>14 days</strong> shipped 4 iOS apps + 1 open-source toolkit + 1 WeChat mini-program, all verifiable publicly</div>
 <div class="proof-card"><strong>9 articles</strong> on dev.to + 8 Zhihu deep posts, all from one Claude Code Pro subscription</div>
 <div class="proof-card"><strong>36 hours</strong> autonomous desktop loop running without burning API costs (subscription tokens)</div>
