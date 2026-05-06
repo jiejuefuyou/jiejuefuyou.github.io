@@ -273,7 +273,10 @@ function submitEmail(){
   document.getElementById("email-success").style.display="block";
   document.getElementById("quiz-email").disabled=true;
   document.querySelector(".email-capture button").disabled=true;
-  if(webhookUrl.indexOf("localhost") !== -1 || webhookUrl.indexOf("127.0.0.1") !== -1){
+  // Tier A gets bundle upsell inline after roadmap confirmation
+  if(tier==="tier_a"){
+    document.getElementById("email-success").innerHTML="Sent! Check your inbox for your free roadmap.<br><span style=\"font-size:.82rem;color:var(--muted)\">Also: save 30% with the Complete Bundle &mdash; 344 prompts, all 4 packs for <strong>$25</strong> vs $36 bought separately.</span><br><a href=\"https://jiejuefuyou.gumroad.com/l/prompt-vault-complete?utm_source=site\&utm_medium=b2b-quiz\&campaign=tier-a-bundle\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--good);font-size:.85rem;font-weight:600\">See bundle &rarr;</a>";
+  } else if(webhookUrl.indexOf("localhost") !== -1 || webhookUrl.indexOf("127.0.0.1") !== -1){
     var tierMailto="mailto:jiejuefuyou%40gmail.com?subject=B2B%20Quiz%20result%20(Tier%20"+encodeURIComponent(tier)+")&body=Hi%2C%0A%0AI%20just%20took%20the%20B2B%20quiz%20and%20scored%20"+encodeURIComponent(window._quizScore||"?")+".%0A%0ATier%3A%20"+encodeURIComponent(tierText||tier)+"%0A%0AWhat%27s%20the%20next%20step%3F";
     document.getElementById("email-success").innerHTML+=' <a href="'+tierMailto+'" style="color:var(--muted);font-size:.85rem;text-decoration:underline">or email us directly</a>';
   }
