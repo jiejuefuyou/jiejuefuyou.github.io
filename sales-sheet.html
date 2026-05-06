@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>B2B AI Workflow Consulting -- One-Page Sales Sheet (PDF-ready)</title>
@@ -118,6 +119,21 @@ h2 {
   padding: 8px 10px; font-size: 11px;
 }
 .faq-card strong { color: var(--accent); display: block; margin-bottom: 3px; font-size: 11.5px; }
+
+.email-capture { display: none; background: linear-gradient(135deg, #f0f4ff, #f8f8fc); border: 1px solid #c4b5fd; border-radius: 8px; padding: 16px 18px; margin-top: 16px; } .email-capture h3 { font-size: 14px; font-weight: 700; color: #6c4be0; margin-bottom: 4px; } .email-capture p { font-size: 11.5px; color: #555; margin-bottom: 8px; } .email-capture .row { display: flex; gap: 6px; align-items: center; } .email-capture input[type=email] { flex: 1; padding: 7px 10px; border: 1px solid #e5e7eb; border-radius: 6px; font-size: 12px; background: white; color: #0a0a0f; } .email-capture button { padding: 7px 14px; background: linear-gradient(135deg, #6c4be0, #9b6cf0); color: white; border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; } .email-success { color: #16a34a; font-size: 11px; margin-top: 6px; } .email-capture {
+  display: none;
+  background: linear-gradient(135deg, #f0f4ff, #f8f8fc);
+  border: 1px solid #c4b5fd;
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.email-capture h3 { font-size: 14px; font-weight: 700; color: #6c4be0; margin-bottom: 4px; }
+.email-capture p { font-size: 11.5px; color: #555; margin-bottom: 8px; }
+.email-capture .row { display: flex; gap: 6px; align-items: center; }
+.email-capture input[type=email] { flex: 1; padding: 7px 10px; border: 1px solid #e5e7eb; border-radius: 6px; font-size: 12px; background: white; color: #0a0a0f; }
+.email-capture button { padding: 7px 14px; background: linear-gradient(135deg, #6c4be0, #9b6cf0); color: white; border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.email-success { color: #16a34a; font-size: 11px; margin-top: 6px; }
 
 .cta {
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
@@ -247,6 +263,15 @@ footer {
   </div>
 </div>
 
+<div class="email-capture" id="ss-email-capture">
+  <h3>Get the PDF + sample workflow doc sent to your inbox</h3>
+  <p>No sales pitch. Just a PDF of this sheet + a 1-page AI workflow template. Leave your email and I will send both within 24 hrs.</p>
+  <div class="row">
+    <input type="email" id="ss-email" placeholder="your@email.com" autocomplete="email">
+    <button onclick="ssSubmitEmail()">Send it to me</button>
+  </div>
+  <div class="email-success" id="ss-email-success" style="display:none">Sent! Check your inbox (or spam). I send within 24 hrs.</div>
+</div>
 <div class="cta">
   <h3>3 ways to get started (5 minutes)</h3>
   <p>Take a quick assessment first or jump to a quote</p>
@@ -264,5 +289,39 @@ footer {
 </footer>
 
 </div>
-</body>
+<script>
+function ssSubmitEmail() {
+  var email = document.getElementById("ss-email").value;
+  if (!email || !email.includes("@")) { alert("Please enter a valid email."); return; }
+  var payload = {
+    source: "sales-sheet",
+    email: email,
+    tier: "warm",
+    utm_source: "sales-sheet-digital",
+    utm_medium: "email-capture"
+  };
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || "http://localhost:8787/capture").trim();
+  fetch(webhookUrl, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(payload)}).catch(function() {});
+  document.getElementById("ss-email-success").style.display = "block";
+  document.getElementById("ss-email").disabled = true;
+  document.querySelector("#ss-email-capture button").disabled = true;
+}
+
+// Show email capture after user scrolls to FAQ section (warm signal)
+(function() {
+  var el = document.getElementById("ss-email-capture");
+  if (!el) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        el.style.display = "block";
+        observer.disconnect();
+      }
+    });
+  }, {threshold: 0.1});
+  var marker = document.querySelector(".faq-grid") || document.querySelector(".tier-grid");
+  if (marker) observer.observe(marker);
+})();
+</script>
+
 </html>
