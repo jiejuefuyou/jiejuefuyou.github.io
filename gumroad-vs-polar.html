@@ -253,6 +253,32 @@ At $300k/year, Gumroad 10% costs <strong>$12,060 more</strong> than Polar. If yo
 </ul>
 </section>
 
+
+<div class="email-capture" style="display:none;max-width:620px;margin:32px auto;text-align:center;padding:20px;background:linear-gradient(135deg,rgba(108,75,224,.1),rgba(192,132,252,.05));border:1px solid rgba(108,75,224,.3);border-radius:12px">
+  <p style="font-size:.9rem;color:#8a8a9a;margin-bottom:10px">Get the next issue in your inbox 鈥?1x/week, no fluff.</p>
+  <form id="ec-form" onsubmit="return false">
+    <input id="ec-email" type="email" placeholder="you@indie.dev" style="padding:10px 14px;background:#12121a;border:1px solid #1f1f2e;border-radius:8px;color:#e6e6f0;font-size:.95rem;width:200px;outline:none" required>
+    <button onclick="submitEC()" style="padding:10px 18px;background:linear-gradient(135deg,#6c4be0,#9b6cf0);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer">Subscribe</button>
+  </form>
+  <p id="ec-success" style="display:none;color:#4ade80;font-size:.9rem;margin-top:10px">You're in. Weekly, every Wednesday 8am Beijing.</p>
+</div>
+<script>
+function submitEC(){
+  var email=document.getElementById('ec-email').value.trim();
+  if(!email||!email.includes('@')){alert('Please enter a valid email');return;}
+  var wh=window.LEAD_WEBHOOK_URL||'';
+  if(wh){fetch(wh,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'changelog-public',tier:'newsletter',email:email,utm:'changelog-public/footer-capture'})}).catch(function(){})}
+  document.getElementById('ec-form').style.display='none';
+  document.getElementById('ec-success').style.display='block';
+}
+(function(){
+  var el=document.querySelector('.email-capture');
+  if(!el)return;
+  var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){el.style.display='block';obs.disconnect()}})},{threshold:0.3});
+  obs.observe(el);
+})();
+</script>
+
 <footer>
 <p>Written 2026-05 by <a href="https://github.com/jiejuefuyou">Hao</a> · <a href="https://dev.to/snake_sun">@snake_sun on dev.to</a></p>
 <p style="margin-top:6px">Source for this page: <a href="https://github.com/jiejuefuyou/jiejuefuyou.github.io">jiejuefuyou.github.io</a> — fork it freely (MIT)</p>
