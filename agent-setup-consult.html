@@ -1,6 +1,7 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
+<script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Claude Code 24/7 Setup Consulting — Let Me Teach You in 30 Min</title>
@@ -62,6 +63,26 @@ ul.bullets li strong{color:var(--accent-2)}
 @media(min-width:600px){.why-grid{grid-template-columns:1fr 1fr}}
 .why-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px 18px;font-size:.9rem}
 .why-card strong{color:var(--accent-2);display:block;margin-bottom:4px;font-size:.92rem}
+
+.email-capture {
+  background: linear-gradient(135deg, rgba(108,75,224,.1), rgba(192,132,252,.04));
+  border: 1px solid rgba(108,75,224,.3);
+  border-radius: 12px;
+  padding: 20px 22px;
+  margin: 28px 0;
+}
+.email-capture h3 { color: var(--accent-2); font-size: 1rem; margin-bottom: 6px; }
+.email-capture p { color: var(--muted); font-size: .88rem; margin-bottom: 10px; }
+.email-capture .row { display: flex; gap: 8px; align-items: center; }
+.email-capture input[type=email] {
+  flex: 1; padding: 9px 12px; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; font-size: .9rem; color: var(--text);
+}
+.email-capture button {
+  padding: 9px 16px; background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white; border: none; border-radius: 8px; font-size: .9rem; font-weight: 600; cursor: pointer; white-space: nowrap;
+}
+.email-success { color: var(--good); font-size: .88rem; margin-top: 8px; }
 .cta-box{background:linear-gradient(135deg,rgba(108,75,224,.12),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.3);padding:26px;border-radius:12px;margin:32px 0;text-align:center}
 .cta-box h3{color:#fff;margin-top:0;font-size:1.15rem}
 .cta-box p{color:var(--muted);margin-bottom:16px}
@@ -213,7 +234,18 @@ Active / Conservative / Recovery tiers -- auto-degrades on rate-limit, never bur
 <div class="faq-item"><h4>Can I resell this service to my clients?</h4><p>Starter/Professional: no. Enterprise includes a commercial license for internal deployment, but you cannot offer "Claude Code 24/7 consulting" as a service to others.</p></div>
 </section>
 
+<div class="email-capture" id="agent-email-capture">
+  <h3>Get the free Claude Code Readiness Checklist first</h3>
+  <p>6 questions to answer before the call -- tells you if $99 Starter, $499 Professional, or DIY is right for your setup. Sent within 24 hrs, no spam.</p>
+  <div class="row">
+    <input type="email" id="agent-email" placeholder="your@email.com" autocomplete="email">
+    <button onclick="submitAgentEmail()">Send checklist</button>
+  </div>
+  <div class="email-success" id="agent-email-success" style="display:none">Sent! Check your inbox.</div>
+</div>
+
 <div class="cta-box">
+
 <h3>GitHub is free. This service is not.</h3>
 <p>The full toolkit is MIT open source at <a href="https://github.com/jiejuefuyou/autoapp-toolkit">github.com/jiejuefuyou/autoapp-toolkit</a> -- read it, fork it, build it yourself.<br>
 What you are paying for is the 14 days of debugging I already did so you do not have to.</p>
@@ -231,5 +263,34 @@ What you are paying for is the 14 days of debugging I already did so you do not 
 </footer>
 
 </div>
-</body>
+<script>
+function submitAgentEmail() {
+  var email = document.getElementById("agent-email").value;
+  if (!email || !email.includes("@")) { alert("Please enter a valid email."); return; }
+  var payload = {
+    source: "agent-setup-consult",
+    email: email,
+    tier: "warm",
+    utm_source: "agent-setup-page",
+    utm_medium: "email-capture"
+  };
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || "http://localhost:8787/capture").trim();
+  fetch(webhookUrl, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(payload)}).catch(function() {});
+  document.getElementById("agent-email-success").style.display = "block";
+  document.getElementById("agent-email").disabled = true;
+  document.querySelector("#agent-email-capture button").disabled = true;
+}
+(function() {
+  var el = document.getElementById("agent-email-capture");
+  if (!el) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { el.style.display = "block"; observer.disconnect(); }
+    });
+  }, {threshold: 0.15});
+  var marker = document.querySelector(".faq-item:last-of-type") || document.querySelector(".tier-grid");
+  if (marker) observer.observe(marker);
+})();
+</script>
+
 </html>
