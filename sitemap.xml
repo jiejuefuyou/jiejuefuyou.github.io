@@ -34,6 +34,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- Dashboard SKU + ASC Toolkit are external Gumroad URLs, not site/ pages -->
+
   <url>
     <loc>https://jiejuefuyou.github.io/b2b-quiz.html</loc>
     <changefreq>weekly</changefreq>
