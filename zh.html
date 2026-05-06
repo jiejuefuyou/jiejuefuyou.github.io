@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
@@ -12,9 +12,7 @@
 
 </head>
 
-<body>
-<div class="wrap">
-
+<body><script>var LEAD_WEBHOOK_URL=window.LEAD_WEBHOOK_URL||"";</script>
 <header>
 <a href="index.html" class="lang-switch">English →</a>
 <h1>AutoApp 中文</h1>
@@ -213,7 +211,9 @@
 <p style="margin-top:18px; color:var(--muted); font-size:.9rem">联系方式：<a href="mailto:jiejuefuyou@gmail.com">jiejuefuyou@gmail.com</a> · 即刻 / 知乎私信 @即决富有</p>
 <p style="color:var(--muted); font-size:.9rem">⚠️ 首批 10 名半价，过了恢复原价。</p>
 </section>
+<script>var LEAD_WEBHOOK_URL=window.LEAD_WEBHOOK_URL||"";</script>
 
+<div id="zh-email-capture" style="background:linear-gradient(135deg,rgba(108,75,224,.1),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.3);border-radius:12px;padding:18px 22px;margin:24px 0;text-align:left;display:none"><p style="color:var(--text);font-size:.92rem;margin-bottom:4px"><strong style="color:var(--accent-2)">AutoAppNotes 中文周报 — 下期周三发</strong></p><p style="color:var(--muted);font-size:.82rem;margin-bottom:10px">HN/Reddit/GitHub trending 信号解读 + 个人实战复盘。200+ 读者。每周三早上 8 点（北京时间）。</p><form id="zh-form" onsubmit="submitZhLead(event)" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><input type="email" id="zh-email" placeholder="your@email.com" style="flex:1;min-width:180px;padding:9px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.88rem;box-sizing:border-box"><button type="submit" style="padding:9px 16px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border:none;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer">订阅周报</button></form><p id="zh-success" style="display:none;color:var(--good);font-size:.82rem;margin-top:6px">收到 - 下期周报直接发你邮箱。</p><p style="color:var(--muted);font-size:.75rem;margin-top:6px">免费。随时退订。</p></div><script>function submitZhLead(e){e.preventDefault();var email=document.getElementById("zh-email").value;var webhookUrl=window.LEAD_WEBHOOK_URL||"";if(!email)return;var payload={source:"zh-page",tier:"warm",email:email,page:"zh.html",context:"newsletter-section"};if(webhookUrl){fetch(webhookUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).catch(function(){})}document.getElementById("zh-form").style.display="none";document.getElementById("zh-success").style.display="block"}window.addEventListener("scroll",function(){var el=document.getElementById("zh-email-capture");if(el&&el.style.display==="none"){var rect=el.getBoundingClientRect();if(rect.top<window.innerHeight){el.style.display="block"}}})</script>
 <footer>
 <p>本页所有内容 / 工具 / 报告 © 2026 jiejuefuyou. 工具 + scripts MIT 许可。</p>
 <p style="margin-top:6px">English version: <a href="index.html">index.html</a> · GitHub: <a href="https://github.com/jiejuefuyou">@jiejuefuyou</a></p>
