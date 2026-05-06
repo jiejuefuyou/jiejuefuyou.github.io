@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -60,6 +60,14 @@ header p.muted{color:var(--muted);margin-top:8px;font-size:.85rem}
 .verdict.warn h3{color:var(--warn)}
 .verdict.bad{border-left-color:var(--bad)}
 .verdict.bad h3{color:var(--bad)}
+.roi-email-capture{background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(74,222,128,.04));border:1px solid rgba(74,222,128,.3);border-radius:12px;padding:20px;margin-top:20px;text-align:center}
+.roi-email-capture p.val{color:var(--good);font-size:.85rem;font-weight:700;margin-bottom:4px}
+.roi-email-capture p.tagline{color:var(--text);font-size:.92rem;margin-bottom:14px}
+.roi-email-capture .input-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;align-items:center}
+.roi-email-capture input[type=email]{padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.95rem;width:220px}
+.roi-email-capture button{padding:10px 18px;background:linear-gradient(135deg,#4ade80,#22c55e);color:#0a0a0f;border:none;border-radius:8px;font-weight:600;font-size:.9rem;cursor:pointer}
+.roi-email-capture button:hover{opacity:.9}
+.roi-email-capture .success{color:var(--good);font-size:.85rem;margin-top:10px}
 .cta-box{background:linear-gradient(135deg,rgba(108,75,224,.15),rgba(192,132,252,.06));border:1px solid rgba(108,75,224,.3);padding:24px;border-radius:12px;margin-top:32px;text-align:center}
 .cta-box h3{color:#fff;margin-bottom:12px;font-size:1.15rem}
 .cta-box p{color:var(--muted);font-size:.9rem}
@@ -216,6 +224,16 @@ footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border);color
 </div>
 </div>
 
+<div class="roi-email-capture" id="roi-email-capture" style="display:none">
+  <p class="val">Your numbers show positive ROI</p>
+  <p class="tagline">Get your personalized AI automation playbook + ROI report. Save your numbers instantly.</p>
+  <div class="input-row">
+    <input type="email" id="roi-email" placeholder="your@email.com">
+    <button onclick="submitRoiEmail()">Save My Report</button>
+  </div>
+  <p class="success" id="roi-email-success" style="display:none">Saved! Check your inbox for the playbook.</p>
+</div>
+
 <div class="assumption-box">
 <h4>Calculation assumptions (transparent)</h4>
 <ul>
@@ -251,101 +269,140 @@ footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border);color
 </div>
 
 <script>
+window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";
 
 function updateRangeDisplay(id, suffix) {
-  const el = document.getElementById(id);
+  var el = document.getElementById(id);
   document.getElementById(id + '-display').textContent = el.value + ' ' + suffix;
 }
 
 function fmt(n) {
-  if (n >= 10000) return '楼' + (n/10000).toFixed(1) + ' 涓?;
-  return '楼' + Math.round(n).toLocaleString();
+  if (n >= 10000) return '\u00a5' + (n/10000).toFixed(1) + 'w';
+  return '\u00a5' + Math.round(n).toLocaleString();
 }
 
 function calculate() {
-  const teamSize = parseInt(document.getElementById('team-size').value) || 1;
-  const affected = parseInt(document.getElementById('affected-people').value) || 1;
-  const hoursPerWeek = parseFloat(document.getElementById('hours-per-week').value) || 0;
-  const hourlyRate = parseFloat(document.getElementById('hourly-rate').value) || 0;
-  const reduction = parseFloat(document.getElementById('reduction').value) / 100 || 0;
-  const packageSelect = document.getElementById('package');
-  const packageCost = parseFloat(packageSelect.value) || 0;
-  const packageText = packageSelect.options[packageSelect.selectedIndex].text;
-  const isOneTime = packageText.indexOf('涓€娆℃€?) !== -1 || packageText.indexOf('鍚姩鍖?) !== -1 || packageText.indexOf('椤圭洰鍒?) !== -1;
+  var teamSize = parseInt(document.getElementById('team-size').value) || 1;
+  var affected = parseInt(document.getElementById('affected-people').value) || 1;
+  var hoursPerWeek = parseFloat(document.getElementById('hours-per-week').value) || 0;
+  var hourlyRate = parseFloat(document.getElementById('hourly-rate').value) || 0;
+  var reduction = parseFloat(document.getElementById('reduction').value) / 100 || 0;
+  var packageSelect = document.getElementById('package');
+  var packageCost = parseFloat(packageSelect.value) || 0;
+  var packageText = packageSelect.options[packageSelect.selectedIndex].text;
+  var isOneTime = packageText.indexOf('one-time') !== -1 || packageText.indexOf('\u30b9\u30c8\u30fc\u30c8') !== -1 || packageText.indexOf('\u30d7\u30ed\u30b8\u30a7\u30af\u30c8') !== -1;
 
-  // 褰撳墠姣忔湀浜哄姏鎴愭湰 = 娑夊強浜烘暟 脳 姣忓懆灏忔椂 脳 4.3 鍛?脳 鏃惰柂
-  const currentMonthlyCost = affected * hoursPerWeek * 4.3 * hourlyRate;
+  var currentMonthlyCost = affected * hoursPerWeek * 4.3 * hourlyRate;
+  var monthlySavings = currentMonthlyCost * reduction;
+  var monthlyServiceCost = isOneTime ? 0 : packageCost;
+  var oneTimeCost = isOneTime ? packageCost : 0;
+  var netROI = monthlySavings - monthlyServiceCost;
 
-  // AI 鍚庢瘡鏈堣妭鐪?= 褰撳墠鎴愭湰 脳 鍘嬬缉姣斾緥
-  const monthlySavings = currentMonthlyCost * reduction;
-
-  // 鏈嶅姟璐?(涓€娆℃€?vs 鏈堜粯涓嶅悓)
-  const monthlyServiceCost = isOneTime ? 0 : packageCost;
-  const oneTimeCost = isOneTime ? packageCost : 0;
-
-  // 鍑€ ROI锛堟湀锛?  const netROI = monthlySavings - monthlyServiceCost;
-
-  // 鎶曡祫鍥炴湰鍛ㄦ湡锛堟湀锛?  let paybackText = '--';
+  var paybackText = '--';
   if (oneTimeCost > 0 && monthlySavings > 0) {
-    const months = oneTimeCost / monthlySavings;
-    if (months < 1) paybackText = '涓嶅埌 1 鏈?;
-    else paybackText = months.toFixed(1) + ' 鏈?;
+    var months = oneTimeCost / monthlySavings;
+    paybackText = months < 1 ? '< 1 mo' : months.toFixed(1) + ' mo';
   } else if (monthlyServiceCost > 0 && monthlySavings > monthlyServiceCost) {
-    paybackText = '绔嬪嵆锛堟瘡鏈堝噣璧氾級';
+    paybackText = 'Immediate';
   } else if (monthlySavings <= 0) {
-    paybackText = '姘歌繙涓嶅洖鏈?;
+    paybackText = 'Never pays back';
   } else {
-    paybackText = '姣斾緥涓嶅锛岄渶璋冩暣';
+    paybackText = 'Ratio off';
   }
 
-  // 12 涓湀鎬绘敹鐩?= 12 脳 鏈堣妭鐪?- 12 脳 鏈堟湇鍔¤垂 - 涓€娆℃€?  const yearlyTotal = 12 * monthlySavings - 12 * monthlyServiceCost - oneTimeCost;
+  var yearlyTotal = 12 * monthlySavings - 12 * monthlyServiceCost - oneTimeCost;
 
-  // 鏄剧ず
   document.getElementById('current-cost').textContent = fmt(currentMonthlyCost);
   document.getElementById('monthly-savings').textContent = fmt(monthlySavings);
-  document.getElementById('service-cost').textContent = (isOneTime ? '涓€娆℃€?' : '') + fmt(packageCost) + (isOneTime ? '' : '/mo);
+  document.getElementById('service-cost').textContent = (isOneTime ? 'one-time ' : '') + fmt(packageCost) + (isOneTime ? '' : '/mo');
   document.getElementById('net-roi').textContent = fmt(netROI) + '/mo';
   document.getElementById('payback').textContent = paybackText;
   document.getElementById('yearly-total').textContent = fmt(yearlyTotal);
 
-  // verdict
-  const verdictEl = document.getElementById('verdict');
-  const titleEl = document.getElementById('verdict-title');
-  const textEl = document.getElementById('verdict-text');
+  var verdictEl = document.getElementById('verdict');
+  var titleEl = document.getElementById('verdict-title');
+  var textEl = document.getElementById('verdict-text');
 
   if (yearlyTotal > 100000) {
     verdictEl.className = 'verdict';
-    titleEl.textContent = '鉁?寮虹儓鎺ㄨ崘鍋?;
-    textEl.textContent = '12 涓湀鍑€鏀剁泭 ' + fmt(yearlyTotal) + '鈥斺€旇繖鏄潪甯稿ソ鐨?ROI 鍖洪棿銆傚己鐑堝缓璁绾?30 min 鍏嶈垂鎽稿簳杩涗竴姝ラ獙璇佷綘鐨勬暟瀛楀亣璁俱€?;
+    titleEl.textContent = 'Strong ROI -- highly recommended';
+    textEl.textContent = '12-month net return of ' + fmt(yearlyTotal) + '. This is a very strong ROI. Strongly recommend booking a free 30-min diagnostic to validate your number assumptions.';
   } else if (yearlyTotal > 30000) {
     verdictEl.className = 'verdict';
-    titleEl.textContent = '鉁?鍊煎緱鍋?;
-    textEl.textContent = '12 涓湀鍑€鏀剁泭 ' + fmt(yearlyTotal) + '銆傛姇鍏ュ洖鏈懆鏈熷悎鐞嗭紝寤鸿鑷冲皯璇曚竴涓嬪惎鍔ㄥ寘锛埪?9锛夋懜搴曪紝鍐嶅喅瀹氭槸鍚﹀崌绾?retainer銆?;
+    titleEl.textContent = 'Worth testing';
+    textEl.textContent = '12-month net return of ' + fmt(yearlyTotal) + '. Payback period is reasonable. Recommend at least testing the starter pack ($99) before deciding whether to upgrade to a retainer.';
   } else if (yearlyTotal > 0) {
     verdictEl.className = 'verdict warn';
-    titleEl.textContent = '馃煛 杈归檯鍙仛';
-    textEl.textContent = '12 涓湀鍑€鏀剁泭 ' + fmt(yearlyTotal) + '鈥斺€旀湁 ROI 浣嗕笉澶с€傚缓璁厛璇曞惎鍔ㄥ寘锛埪?9 涓€娆℃€э級楠岃瘉锛屼笉瑕佺洿鎺ヤ笂 retainer銆傛垨鑰?*闄嶄竴妗ｆ湇鍔″寘**閲嶇畻銆?;
+    titleEl.textContent = 'Marginal -- test first';
+    textEl.textContent = '12-month net return of ' + fmt(yearlyTotal) + '. Positive but not large. Recommend testing the starter pack ($99 one-time) first, not jumping to a retainer.';
   } else {
     verdictEl.className = 'verdict bad';
-    titleEl.textContent = '馃敶 涓嶅垝绠?;
-    textEl.textContent = '褰撳墠鏁板瓧缁勫悎涓嬶紝鏈嶅姟璐?> 鑺傜渷閲戦銆傚彲鑳藉洜涓猴細(a) 鍥㈤槦瑙勬ā澶皬 / 娴佺▼澶交 (b) 浣犱及鐨勫帇缂╂瘮渚嬪お浣?(c) 閫変簡杩囬珮妗ｆ湇鍔°€傚缓璁敼鍚姩鍖?楼99 鍏堟懜搴曪紝鎴栭€夋洿灏忔祦绋嬪仛瀹為獙銆?;
+    titleEl.textContent = 'Does not pencil out';
+    textEl.textContent = 'With current numbers, service cost exceeds savings. Possible reasons: (a) team too small / process too quick (b) your reduction estimate too optimistic (c) picked the wrong service tier. Try the $99 starter first, or pick a smaller process to automate.';
   }
 
-  // CTA 鏂囨闅?verdict 鍙?  const ctaTitle = document.getElementById('cta-title');
-  const ctaText = document.getElementById('cta-text');
+  var ctaTitle = document.getElementById('cta-title');
+  var ctaText = document.getElementById('cta-text');
   if (yearlyTotal > 100000) {
-    ctaTitle.textContent = '馃幆 浣犵殑鏁板瓧闈炲父鏈夎鏈嶅姏';
-    ctaText.textContent = '鍒姽璞簡锛?0 min 鍏嶈垂鎽稿簳纭涓嬫柟妗堝悎涓嶅悎閫傘€傛垜浼氱粰浣?1 椤靛彲杞粰鑰佹澘鐪嬬殑 quote銆?;
+    ctaTitle.textContent = 'Your numbers are very compelling';
+    ctaText.textContent = "Let's validate: 30 min free diagnostic call -- I'll give you a 1-page quote you can show your manager.";
   } else if (yearlyTotal > 0) {
-    ctaTitle.textContent = '馃幆 鏁板瓧鏈?ROI 浣嗛渶瑕?fine-tune';
-    ctaText.textContent = '寤鸿鍏堣亰 30 min 鍏嶈垂鎽稿簳鈥斺€斿彲鑳借皟鏁存湇鍔℃。 OR 娴佺▼閫夋嫨鑳借 ROI 缈诲€嶃€?;
+    ctaTitle.textContent = 'Your numbers have ROI -- but need fine-tuning';
+    ctaText.textContent = "Recommend booking a 30-min free diagnostic -- we can either adjust the service tier OR help you find a process with better ROI.";
   } else {
-    ctaTitle.textContent = '馃 褰撳墠鏁板瓧缁勫悎涓嶅垝绠?鈥?浣嗗埆鏀惧純';
-    ctaText.textContent = '鍙兘鏄綘浼扮殑鏁板瓧杩囦繚瀹堬紝鎴栬€呴€夐敊浜嗘祦绋嬪仛瀹為獙銆?0 min 鍏嶈垂鎽稿簳鎴戝府浣犻噸鏂拌瘎浼扳€斺€斿彲鑳芥崲涓搴︽暟瀛楀氨濂界湅浜嗐€?;
+    ctaTitle.textContent = "Your current numbers don't pencil out -- but don't give up";
+    ctaText.textContent = "This might be your numbers are too optimistic, or you picked the wrong process to automate. 30 min free diagnostic -- I'll help you re-evaluate.";
+  }
+
+  // Show email capture when results are positive
+  var captureEl = document.getElementById('roi-email-capture');
+  if (yearlyTotal > 0) {
+    captureEl.style.display = 'block';
+    window._roiYearlyTotal = yearlyTotal;
+    window._roiMonthlySavings = monthlySavings;
+    window._roiTeamSize = teamSize;
+    window._roiAffected = affected;
+    window._roiHours = hoursPerWeek;
+    window._roiRate = hourlyRate;
+    window._roiReduction = reduction * 100;
+  } else {
+    captureEl.style.display = 'none';
   }
 }
 
-// 椤甸潰鍔犺浇鏃剁珛鍗崇畻涓€娆?calculate();
+function submitRoiEmail() {
+  var email = document.getElementById('roi-email').value;
+  if (!email || email.indexOf('@') === -1) { alert('Please enter a valid email'); return; }
+  var tier = 'cold';
+  if (window._roiYearlyTotal > 100000) tier = 'hot';
+  else if (window._roiYearlyTotal > 0) tier = 'warm';
+
+  var payload = {
+    source: 'roi-calculator',
+    email: email,
+    tier: tier,
+    yearly_total: window._roiYearlyTotal || null,
+    monthly_savings: window._roiMonthlySavings || null,
+    team_size: window._roiTeamSize || null,
+    affected: window._roiAffected || null,
+    hours_per_week: window._roiHours || null,
+    hourly_rate: window._roiRate || null,
+    reduction_pct: window._roiReduction || null,
+    utm_source: 'roi-calculator-page',
+    utm_medium: 'email-capture'
+  };
+
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || 'http://localhost:8787/capture').trim();
+  fetch(webhookUrl, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload)}).catch(function() {});
+
+  document.getElementById('roi-email').disabled = true;
+  document.getElementById('roi-email-success').style.display = 'block';
+  document.querySelector('#roi-email-capture button').disabled = true;
+  document.querySelector('#roi-email-capture button').textContent = 'Saved!';
+}
+
+// Run once on page load to fill defaults
+calculate();
 
 </script>
 
