@@ -1,10 +1,10 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Free AI Workflow Audit Checklist (47 questions, 12 min)</title>
-<meta name="description" content="The 47-question audit I run with paying clients ($99). Now free. Score yourself 0-100, get the same playbook. No signup, no email, just the checklist.">
+<meta name="description" content="The 47-question audit I run with paying clients (USD 99). Now free. Score yourself 0-100, get the same playbook. No signup, no email, just the checklist.">
 <meta property="og:title" content="Free AI Workflow Audit Checklist (47 questions, 12 min)">
 <meta property="og:description" content="The 47-question audit I run with paying clients. Score yourself 0-100. No signup, no email. Just the checklist.">
 <meta property="og:url" content="https://jiejuefuyou.github.io/free-ai-audit.html">
@@ -37,6 +37,10 @@ header .sub { color: var(--muted); margin-top: 10px; font-size: 1rem; }
 .score-tier.tier-a { background: rgba(248,113,113,.18); color: var(--bad); }
 .score-tier.tier-b { background: rgba(251,191,36,.18); color: var(--warn); }
 .score-tier.tier-c { background: rgba(74,222,128,.18); color: var(--good); }
+
+/* email capture */
+#audit-email-capture { display: none; background: linear-gradient(135deg, rgba(108,75,224,.15), rgba(192,132,252,.06)); border: 1px solid rgba(108,75,224,.3); padding: 20px 24px; border-radius: 12px; margin: 20px 0; text-align: center; }
+#audit-email-capture.visible { display: block; }
 
 /* sections */
 section.audit-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; margin-bottom: 20px; }
@@ -76,7 +80,7 @@ footer a { color: var(--muted); margin: 0 8px; }
 
 <header>
   <h1>Free AI Workflow Audit (47 Questions)</h1>
-  <p class="sub">The exact checklist I run with paying clients ($99 audit). Use it on your team in 12 minutes. Score 0-100. No signup, no email. Just check the boxes.</p>
+  <p class="sub">The exact checklist I run with paying clients (USD 99 audit). Use it on your team in 12 minutes. Score 0-100. No signup, no email. Just check the boxes.</p>
 </header>
 
 <div class="value-bar">
@@ -88,6 +92,16 @@ footer a { color: var(--muted); margin: 0 8px; }
   <div class="score-label">Check items as your team has them</div>
   <span class="score-tier" id="scoreTier">Score the checklist</span>
 </div>
+
+<!-- LEAD CAPTURE START -->
+<div id="audit-email-capture">
+  <p style="color:var(--accent-2);font-weight:600;margin-bottom:6px;font-size:.95rem">Get your personalized audit breakdown via email</p>
+  <p style="color:var(--muted);font-size:.82rem;margin-bottom:12px">I'll send your top 3 improvement areas + the 1 question most worth fixing for your score band. No spam, reply anytime to unsubscribe.</p>
+  <input type="email" id="audit-email" placeholder="your@email.com" style="width:100%;max-width:320px;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.9rem;margin-bottom:10px;box-sizing:border-box;display:inline-block">
+  <button onclick="submitAuditEmail()" style="padding:10px 20px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border:none;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer">Send my breakdown</button>
+  <p id="audit-email-success" style="display:none;color:var(--good);font-size:.88rem;margin-top:8px">Sent! Check your inbox for your personalized audit.</p>
+</div>
+<!-- LEAD CAPTURE END -->
 
 <div class="recommendation" id="rec"></div>
 
@@ -119,7 +133,7 @@ footer a { color: var(--muted); margin: 0 8px; }
 <h2>3. ROI tracking (max 16 pts)</h2>
 <p class="blurb">Can you prove AI is paying off?</p>
 <div class="q"><input type="checkbox" data-pts="4" id="q15"><label for="q15">You can answer "AI saved us X hours last week" with a number. <span class="points">4 pts</span></label></div>
-<div class="q"><input type="checkbox" data-pts="4" id="q16"><label for="q16">You've calculated AI cost per hour saved (e.g. $20/mo Claude Pro for 12 hr = $1.67/hr). <span class="points">4 pts</span></label></div>
+<div class="q"><input type="checkbox" data-pts="4" id="q16"><label for="q16">You've calculated AI cost per hour saved (e.g. USD 20/mo Claude Pro for 12 hr = USD 1.67/hr). <span class="points">4 pts</span></label></div>
 <div class="q"><input type="checkbox" data-pts="4" id="q17"><label for="q17">You've killed 1 tool because ROI didn't justify cost. <span class="points">4 pts</span></label></div>
 <div class="q"><input type="checkbox" data-pts="4" id="q18"><label for="q18">A board / investor / boss has seen your AI ROI numbers. <span class="points">4 pts</span></label></div>
 </section>
@@ -169,6 +183,28 @@ footer a { color: var(--muted); margin: 0 8px; }
 </div>
 
 <script>
+function submitAuditEmail() {
+  var email = document.getElementById('audit-email').value;
+  if (!email || !email.includes('@')) { alert('Please enter a valid email'); return; }
+  var score = parseInt(document.getElementById('scoreNum').textContent) || 0;
+  var tier = score < 35 ? 'tier_a' : (score < 70 ? 'tier_b' : 'tier_c');
+  var tierLabel = score < 35 ? 'Tier A: needs structure' : (score < 70 ? 'Tier B: solid foundation' : 'Tier C: leading pack');
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || 'http://localhost:8787/capture').trim();
+  var payload = {
+    source: 'free-ai-audit',
+    tier: tier,
+    tier_label: tierLabel,
+    score: score,
+    email: email,
+    utm_source: 'free-ai-audit',
+    utm_medium: 'email-capture'
+  };
+  fetch(webhookUrl, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload)}).catch(function() {});
+  document.getElementById('audit-email-success').style.display = 'block';
+  document.getElementById('audit-email').disabled = true;
+  document.querySelector('#audit-email-capture button').disabled = true;
+}
+
 function updateScore() {
   var checks = document.querySelectorAll('input[type=checkbox]');
   var score = 0;
@@ -178,6 +214,7 @@ function updateScore() {
   document.getElementById('scoreNum').textContent = score;
   var tierEl = document.getElementById('scoreTier');
   var rec = document.getElementById('rec');
+  var emailCapture = document.getElementById('audit-email-capture');
   tierEl.classList.remove('tier-a', 'tier-b', 'tier-c');
 
   if (score < 35) {
@@ -187,45 +224,44 @@ function updateScore() {
       '<h2>Tier A &mdash; structure is missing (score &lt; 35)</h2>' +
       '<p>Your team is using AI but without the systems that turn it into compounded value. Most common pattern: 5+ tools, no owner, no metrics, every employee invents their own workflow.</p>' +
       '<p>The fix isn\'t more tools &mdash; it\'s the audit + workflow doc + ROI tracker that ties them together.</p>' +
-      '<p><strong>Where I help:</strong> 4-week structured audit + workflow design + governance template. Fixed price $1,200/month, cancel anytime.</p>' +
+      '<p><strong>Where I help:</strong> 4-week structured audit + workflow design + governance template. Fixed price USD 1,200/month, cancel anytime.</p>' +
       '<div class="cta-row">' +
       '<a class="cta-btn" href="quick-quote.html">Get a quote (60 sec)</a>' +
       '<a class="cta-btn secondary" href="services.html">View pricing tiers</a>' +
       '</div>';
     rec.classList.add('visible');
+    emailCapture.classList.add('visible');
   } else if (score < 70) {
     tierEl.textContent = 'Tier B: solid foundation, scaling questions';
     tierEl.classList.add('tier-b');
     rec.innerHTML =
       '<h2>Tier B &mdash; solid foundation (score 35-69)</h2>' +
       '<p>You have the basics: tool inventory, some workflow integration, basic ROI awareness. The gap is usually scale &mdash; making the system work as the team grows from 5 to 20 to 50.</p>' +
-      '<p><strong>Where I help:</strong> 30-min strategic call ($99). Look at your specific scale-up bottleneck, give 3 prioritized actions. Most clients save $5-10k of implementation cost by ordering correctly.</p>' +
+      '<p><strong>Where I help:</strong> 30-min strategic call (USD 99). Look at your specific scale-up bottleneck, give 3 prioritized actions. Most clients save USD 5-10k of implementation cost by ordering correctly.</p>' +
       '<div class="cta-row">' +
-      '<a class="cta-btn" href="mailto:jiejuefuyou@gmail.com?subject=Tier%20B%20strategy%20call&body=Hi%20Sun%2C%0A%0AI%20scored%20Tier%20B%20on%20the%20free%20audit.%20My%20team%20size%20is%20%5BX%5D%20and%20main%20scale-up%20question%20is%20%5BY%5D.%0A%0AInterested%20in%20the%20%2499%20call.%0A%0AThanks">Book $99 strategy call</a>' +
-      '<a class="cta-btn secondary" href="https://jiejuefuyou.gumroad.com/l/prompt-vault-complete?utm_source=audit&utm_medium=tier-b&utm_campaign=bundle">$25 prompt bundle</a>' +
+      '<a class="cta-btn" href="mailto:jiejuefuyou@gmail.com?subject=Tier%20B%20strategy%20call&body=Hi%20Sun%2C%0A%0AI%20scored%20Tier%20B%20on%20the%20free%20audit.%20My%20team%20size%20is%20%5BX%5D%20and%20main%20scale-up%20question%20is%20%5BY%5D.%0A%0AInterested%20in%20the%20%2499%20call.%0A%0AThanks">Book USD 99 strategy call</a>' +
+      '<a class="cta-btn secondary" href="https://jiejuefuyou.gumroad.com/l/prompt-vault-complete?utm_source=audit&utm_medium=tier-b&utm_campaign=bundle">USD 25 prompt bundle</a>' +
       '</div>';
     rec.classList.add('visible');
+    emailCapture.classList.add('visible');
   } else {
     tierEl.textContent = 'Tier C: leading the pack';
     tierEl.classList.add('tier-c');
     rec.innerHTML =
       '<h2>Tier C &mdash; leading the pack (score 70+)</h2>' +
       '<p>You\'re ahead of 95% of teams I see. At this level, marginal returns from a generalist consultant are low.</p>' +
-      '<p><strong>Where I might help:</strong> niche optimization on 1 specific workflow you can\'t crack. Fixed-scope $2,500 engagement, 2-week deliverable. Or just stay subscribed to the newsletter.</p>' +
+      '<p><strong>Where I might help:</strong> niche optimization on 1 specific workflow you can\'t crack. Fixed-scope USD 2,500 engagement, 2-week deliverable. Or just stay subscribed to the newsletter.</p>' +
       '<div class="cta-row">' +
       '<a class="cta-btn secondary" href="https://autoappnotes.substack.com">Subscribe to newsletter</a>' +
       '<a class="cta-btn secondary" href="mailto:jiejuefuyou@gmail.com?subject=Tier%20C%20%E2%80%94%20specific%20workflow%20question">Email a specific question</a>' +
       '</div>';
     rec.classList.add('visible');
+    emailCapture.classList.add('visible');
   }
 }
 
 document.querySelectorAll('input[type=checkbox]').forEach(function(c) {
   c.addEventListener('change', updateScore);
-});
-
-document.querySelectorAll('.q label').forEach(function(label) {
-  // clicking the label toggles the checkbox (default browser behavior, but we want updateScore too)
 });
 </script>
 </body>
