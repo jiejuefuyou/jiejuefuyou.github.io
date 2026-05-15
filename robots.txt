@@ -1,4 +1,0 @@
-﻿User-agent: *
-Allow: /
-
-Sitemap: https://jiejuefuyou.github.io/sitemap.xml
