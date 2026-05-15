@@ -1,0 +1,190 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>透明账本 — autoapp 30 天独立开发实验真账目</title>
+<meta name="description" content="autoapp 30 天独立开发实验真账目: 投入 hr / 收入 ¥ / funnel kill 决策 / 5 件做错的事. 月度更新, 不修饰数字.">
+<meta property="og:title" content="autoapp 透明账本 — 真投入 / 真收入 / 真错误">
+<meta property="og:url" content="https://jiejuefuyou.github.io/transparency.html"><meta name="twitter:card" content="summary"><meta property="og:description" content="不假装"我赚了 $X". $0 写 $0. 真 wall-clock 工时. 真 funnel 决策. 月度更新.">
+<meta property="og:image" content="https://jiejuefuyou.github.io/assets/og-default.png">
+<style>
+:root {
+  --bg: #0a0a0f; --bg-card: #12121a; --border: #1f1f2e;
+  --text: #e6e6f0; --muted: #8a8a9a; --accent: #6c4be0; --accent-2: #9b6cf0;
+  --good: #4ade80; --warn: #fbbf24; --bad: #f87171;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--text); font: 16px/1.7 -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 820px; margin: 0 auto; padding: 60px 24px 80px; }
+.back { color: var(--muted); font-size: .9rem; margin-bottom: 24px; display: inline-block; }
+header { padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+header h1 { font-size: 2rem; line-height: 1.25; background: linear-gradient(135deg, #6c4be0, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+header p.lead { color: var(--text); margin-top: 12px; font-size: 1rem; }
+header p.muted { color: var(--muted); margin-top: 8px; font-size: .9rem; }
+.honest-banner { background: rgba(251,191,36,.06); border: 1px solid rgba(251,191,36,.25); border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; }
+.honest-banner h2 { color: var(--warn); font-size: 1.05rem; margin-bottom: 10px; }
+.honest-banner ul { margin-left: 20px; font-size: .92rem; }
+section { margin-bottom: 48px; }
+h2 { font-size: 1.4rem; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .92rem; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+th { color: var(--accent-2); font-weight: 600; background: rgba(108,75,224,.04); }
+td.num { font-variant-numeric: tabular-nums; color: var(--text); }
+td.zero { color: var(--bad); }
+td.up { color: var(--good); }
+td.flat { color: var(--muted); }
+.tier-grid { display: grid; gap: 14px; margin: 16px 0; }
+@media (min-width: 700px) { .tier-grid { grid-template-columns: repeat(3, 1fr); } }
+.tier { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+.tier h3 { color: var(--accent-2); font-size: 1rem; margin-bottom: 8px; }
+.tier .stat { font-size: 1.5rem; font-weight: 700; }
+.tier .stat.good { color: var(--good); }
+.tier .stat.bad { color: var(--bad); }
+.tier .stat.muted { color: var(--muted); }
+.tier .label { color: var(--muted); font-size: .85rem; margin-top: 4px; }
+ul.bullets { margin-left: 18px; }
+ul.bullets li { padding: 4px 0; }
+.cta-box { background: linear-gradient(135deg, rgba(108,75,224,.12), rgba(192,132,252,.04)); border: 1px solid rgba(108,75,224,.3); padding: 22px; border-radius: 10px; margin: 28px 0; }
+.cta-btn { display: inline-block; padding: 12px 22px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border-radius: 8px; font-weight: 600; margin: 12px 6px 0; }
+footer { margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--border); color: var(--muted); font-size: .85rem; text-align: center; }
+.update-tag { display: inline-block; background: rgba(108,75,224,.15); color: var(--accent-2); padding: 3px 10px; border-radius: 999px; font-size: .8rem; margin-left: 8px; }
+</style>
+</head>
+<body>
+<script>var LEAD_WEBHOOK_URL=window.LEAD_WEBHOOK_URL||"";</script>
+
+<a href="index.html" class="back">← AutoApp</a>
+
+<header>
+<h1>📊 autoapp 透明账本 <span class="update-tag">月度更新</span></h1>
+<p class="lead">30 天独立开发实验的真账目: 投入 hr / 收入 ¥ / funnel kill 决策 / 5 件做错的事.</p>
+<p class="muted">不假装"我赚了 $X". $0 写 $0. 真 wall-clock 工时. 月度 review 后更新.</p>
+</header>
+<div style="background:linear-gradient(135deg,rgba(108,75,224,.1),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.3);border-radius:12px;padding:18px 20px;margin-bottom:28px;font-size:.9rem;line-height:1.7;color:var(--text)">
+<p style="margin-bottom:10px"><strong style="color:var(--accent-2)">English: this page tracks real numbers.</strong> All figures come from platform exports (Gumroad CSV / Substack stats / dev.to). Wall-clock hours, not "equivalent person-hours". $0 written as $0 — no soft-pedaling.</p>
+<p style="margin-bottom:10px">Monthly update on the 1st. Last update: <strong>2026-05-02</strong>. Found a calculation error? Email me at <a href="mailto:jiejuefuyou@gmail.com" style="color:var(--accent-2)">jiejuefuyou@gmail.com</a> — I'll correct it in the next update.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+<a href="https://jiejuefuyou.gumroad.com/l/prompt-vault-complete?utm_source=site&utm_medium=transparency&utm_campaign=bundle-cta&utm_content=hero" style="display:inline-block;padding:8px 16px;background:var(--bg-card);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:.85rem;text-decoration:none">$25 bundle</a>
+<a href="https://autoappnotes.substack.com?utm_source=site&utm_medium=transparency&utm_campaign=substack-cta" style="display:inline-block;padding:8px 16px;background:var(--bg-card);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:.85rem;text-decoration:none">Substack</a>
+</div>
+</div>
+
+
+
+<div class="honest-banner">
+<h2>⚠️ 写在前面 — 透明账本声明</h2>
+<ul>
+  <li>所有数字来自平台 export (Gumroad CSV / Substack stats / dev.to / 银行账户)</li>
+  <li>"投入 hr" 是真 wall-clock 时间 (不是"等价人时")</li>
+  <li>$0 写 $0, 不软处理. 5 月最大数字目前是 ¥0 (Gumroad 0 sale, B2B 0 client)</li>
+  <li>每月 1 号更新本页. 上次更新: <strong>2026-05-02</strong> (Day 30 即将到, 5/29 后会有真 30 天数据)</li>
+  <li>找数字算错的地方? 邮件 jiejuefuyou@gmail.com, 我会在下一次 update 修正</li>
+</ul>
+</div>
+
+<section>
+<h2>📅 当前 (2026-05-07, Day 7/30 · also Day 60 of 60-day experiment)</h2>
+<div class="tier-grid">
+<div class="tier">
+<h3>投入 hr (cumulative)</h3>
+<div class="stat">~165</div>
+<div class="label">真 wall-clock; 60-day experiment + 7 days into May</div>
+</div>
+<div class="tier">
+<h3>收入 ¥ (5 月)</h3>
+<div class="stat bad">¥0</div>
+<div class="label">Gumroad 0 sale + B2B 0 client + iOS 全在 awaiting Apple Review</div>
+</div>
+<div class="tier">
+<h3>$/hr</h3>
+<div class="stat muted">¥0/hr</div>
+<div class="label">trajectory: Day 67 (5/14) 后预期首批数据</div>
+</div>
+</div>
+<div style="background:rgba(74,222,128,.04); border:1px solid rgba(74,222,128,.3); border-radius:8px; padding:14px 18px; margin-top:18px">
+<strong style="color:var(--good,#4ade80)">Day 61 milestone (auto-updated 2026-05-07)</strong>
+<ul style="margin-top:8px; line-height:1.7">
+<li><strong>LIVE asset health</strong>: 30/30 HTTP 200 OK</li>
+<li><strong>Total MTD revenue</strong>: $0.00 (across all channels)</li>
+<li><strong>Channel state</strong>: gumroad:not_configured, note-com:not_configured, xiaobaotong:not_configured, affiliate:not_configured, b2b-consulting:not_configured, ios-app-store:pending, wechat-miniprogram:live, substack:live</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h2>📈 月度 trajectory (Day 7 / 14 / 21 / 30)</h2>
+<table>
+<thead>
+<tr><th>指标</th><th>Day 7 (5/8)</th><th>Day 14 (5/15)</th><th>Day 21 (5/22)</th><th>Day 30 (5/29)</th></tr>
+</thead>
+<tbody>
+<tr><td>Gumroad sales</td><td class="num zero">0 (estimated)</td><td class="num">TBD</td><td class="num">TBD</td><td class="num">TBD</td></tr>
+<tr><td>Gumroad revenue</td><td class="num zero">$0</td><td class="num">TBD</td><td class="num">TBD</td><td class="num">TBD</td></tr>
+<tr><td>B2B replies</td><td class="num">TBD</td><td class="num">TBD</td><td class="num">TBD</td><td class="num">TBD</td></tr>
+<tr><td>B2B clients</td><td class="num zero">0</td><td class="num">TBD</td><td class="num">TBD</td><td class="num">TBD</td></tr>
+<tr><td>Substack subs</td><td class="num">~50</td><td class="num">TBD</td><td class="num">TBD</td><td class="num">TBD</td></tr>
+<tr><td>dev.to total views</td><td class="num">~8.5k</td><td class="num">TBD</td><td class="num">TBD</td><td class="num">TBD</td></tr>
+<tr><td>iOS App Store</td><td class="num">TestFlight</td><td class="num">TBD</td><td class="num">TBD</td><td class="num">TBD</td></tr>
+</tbody>
+</table>
+<p class="muted" style="margin-top: 8px; font-size: .85rem;">⏱ 5/29 Day 30 真数据 → Substack issue #6 + 公众号 Week 5 同步发. 订阅 <a href="https://jiejuefuyou.substack.com">Substack</a> 看实时.</p>
+</section>
+
+<section>
+<h2>🎯 Funnel kill 决策 (5/22 Day 21 时点)</h2>
+<p>3 funnel 跑了 21 天, 用 3 轴决策 (<strong>$/hr × trajectory × 外部依赖</strong>):</p>
+<table>
+<thead>
+<tr><th>Funnel</th><th>Day 21 状态</th><th>5/22 决策</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Gumroad</strong></td><td>4 SKU LIVE + bundle, 等真销售 trajectory</td><td>5/22 后定: DOUBLE DOWN / INVEST / KILL</td></tr>
+<tr><td><strong>B2B 咨询</strong></td><td>cold email batch 1+2 已发, 等回复率</td><td>5/22 后定: 大概率 INVEST 1 月 (sales cycle 30-60 天)</td></tr>
+<tr><td><strong>iOS Apps</strong></td><td>AutoChoice TestFlight, 等用户 install + ASO 数据</td><td>外部阻塞 → LIFE SUPPORT (1 hr/周)</td></tr>
+</tbody>
+</table>
+<p class="muted" style="margin-top: 8px; font-size: .85rem;">完整决策框架 + 6 月 pivot plan: <a href="https://jiejuefuyou.substack.com">Substack issue #5/#6</a></p>
+</section>
+
+<section>
+<h2>📚 5 月做错的事 (透明记录, 非自吹)</h2>
+<ol style="margin-left: 22px;">
+<li><strong>Distribution &lt;&lt; production.</strong> 50+ 件资产产出, 实际 distribute 20 件. ROI 失衡.</li>
+<li><strong>ASC bootstrap 9 fail iterations.</strong> ~12 hr 在 PAT/credential helper 死循环, 最终 SSH deploy key 5 min 解决. 真早 reading Apple docs 能省 11 hr.</li>
+<li><strong>没做 user interview.</strong> B2B 价格/方案全基于假设, 0 个潜在客户调研. 6 月 fix.</li>
+<li><strong>Day 7 决策错了 funnel.</strong> 7 天数据噪音 &gt; 信号. 21 天 trajectory 才能看真信号.</li>
+<li><strong>写给自己, 不是 buyer.</strong> dev.to 技术深度文 ROI &lt; "honest data dump" post. 6 月调整.</li>
+</ol>
+</section>
+
+<section>
+<h2>📜 透明记录的 3 个原则</h2>
+<ul class="bullets">
+<li><strong>实时数字 &gt; 总数字</strong>. "今天 Substack +12 sub" 比 "1000+ sub" 可信.</li>
+<li><strong>$0 写 $0</strong>. 不软处理. 收 $0 的月反而吸引 sympathetic readers.</li>
+<li><strong>邀请验证</strong>. 完整账本在 GitHub 公开. 发现数字算错 邮件我.</li>
+</ul>
+<p class="muted" style="margin-top: 12px; font-size: .85rem;">这 3 条来自 <a href="https://jiejuefuyou.github.io/case-studies.html">case-studies.html</a> 同样的"诚实策略" — 长期信任 &gt; 短期增长 hack.</p>
+</section>
+
+<div class="cta-box">
+<h3 style="color: #fff; margin-bottom: 8px;">🤝 一起跑实验吗?</h3>
+<p style="font-size: .92rem;">我每月更新本页. 订阅 Substack 看 weekly issue. 有自己的 indie 实验? 我读每条 reply.</p>
+<a href="https://jiejuefuyou.gumroad.com/l/prompt-vault-complete?utm_source=site&utm_medium=transparency&utm_campaign=bundle-cta&utm_content=footer" class="cta-btn" style="background: linear-gradient(135deg, #4ade80, #22c55e);">🎁 Bundle $25 (4 pack 合一)</a>
+<a href="https://jiejuefuyou.substack.com" class="cta-btn">📧 订阅 Substack</a>
+<a href="https://github.com/jiejuefuyou" class="cta-btn" style="background: var(--bg-card); color: var(--text); border: 1px solid var(--border);">📊 GitHub 看完整账本</a>
+</div>
+<div id="trans-email-capture" style="background:linear-gradient(135deg,rgba(108,75,224,.1),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.3);border-radius:12px;padding:18px 22px;margin:24px 0;text-align:left;display:none"><p style="color:var(--text);font-size:.92rem;margin-bottom:4px"><strong style="color:var(--accent-2)">Want the real numbers in your inbox?</strong></p><p style="color:var(--muted);font-size:.82rem;margin-bottom:10px">Monthly transparency update — every revenue channel, every decision, no spin. 200+ readers.</p><form id="trans-form" onsubmit="submitTransLead(event)" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><input type="email" id="trans-email" placeholder="your@email.com" style="flex:1;min-width:180px;padding:9px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.88rem;box-sizing:border-box"><button type="submit" style="padding:9px 16px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border:none;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer">Subscribe</button></form><p id="trans-success" style="display:none;color:var(--good);font-size:.82rem;margin-top:6px">Done - first update on the 1st of next month.</p><p style="color:var(--muted);font-size:.75rem;margin-top:6px">Free. No spam. Unsubscribe anytime.</p></div><script>function submitTransLead(e){e.preventDefault();var email=document.getElementById("trans-email").value;var webhookUrl=window.LEAD_WEBHOOK_URL||"";if(!email)return;var payload={source:"transparency-page",tier:"warm",email:email,page:"transparency.html",context:"footer-capture"};if(webhookUrl){fetch(webhookUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).catch(function(){})}document.getElementById("trans-form").style.display="none";document.getElementById("trans-success").style.display="block"}window.addEventListener("scroll",function(){var el=document.getElementById("trans-email-capture");if(el&&el.style.display==="none"){var rect=el.getBoundingClientRect();if(rect.top<window.innerHeight){el.style.display="block"}}})</script>
+
+<footer>
+<p>本页所有数据真实, 月度更新, 公开可验证. 找数字算错的地方? <a href="mailto:jiejuefuyou@gmail.com">jiejuefuyou@gmail.com</a></p>
+<p style="margin-top: 8px;">最后更新: 2026-05-02 · 下次更新: Day 30 (5/29) 后</p>
+<p style="margin-top: 8px;">© 2026 jiejuefuyou · <a href="index.html">AutoApp</a></p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>60-Second Quote — B2B AI Workflow Audit</title>
+<meta name="description" content="Get a same-day quote for AI workflow consulting in 60 seconds. 4 questions. We email you a price + 30-min call slot within 4 hrs (JST).">
+<meta property="og:title" content="60-Second Quote — B2B AI Workflow Audit">
+<meta property="og:description" content="4 questions. Same-day quote + call slot. No spam, no salescall.">
+<meta property="og:url" content="https://jiejuefuyou.github.io/quick-quote.html">
+<meta property="og:image" content="https://jiejuefuyou.github.io/assets/og-default.png">
+<meta name="twitter:card" content="summary">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg-card: #12121a;
+  --border: #1f1f2e;
+  --text: #e6e6f0;
+  --muted: #8a8a9a;
+  --accent: #6c4be0;
+  --accent-2: #9b6cf0;
+  --good: #4ade80;
+  --warn: #fbbf24;
+  --bad: #f87171;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--text); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
+.back { color: var(--muted); font-size: .9rem; margin-bottom: 24px; display: inline-block; }
+header { padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 40px; text-align: center; }
+header h1 { font-size: 2rem; line-height: 1.25; background: linear-gradient(135deg, #6c4be0, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+header .sub { color: var(--muted); margin-top: 12px; font-size: 1.05rem; }
+.trust-bar { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 20px; margin: 24px 0; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 12px; font-size: .85rem; color: var(--muted); }
+.trust-bar span { white-space: nowrap; }
+.trust-bar strong { color: var(--good); }
+
+/* progress bar */
+.progress { background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; height: 8px; overflow: hidden; margin-bottom: 24px; }
+.progress-fill { background: linear-gradient(90deg, var(--accent), var(--accent-2)); height: 100%; transition: width .3s ease; width: 25%; }
+.step-label { color: var(--muted); font-size: .85rem; text-align: center; margin-bottom: 16px; }
+
+/* form */
+.step { display: none; }
+.step.active { display: block; }
+.q-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; margin-bottom: 24px; }
+.q-card h2 { font-size: 1.3rem; margin-bottom: 8px; color: #fff; }
+.q-card .hint { color: var(--muted); font-size: .9rem; margin-bottom: 20px; }
+.opt { display: block; padding: 14px 18px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; cursor: pointer; transition: all .15s ease; }
+.opt:hover { border-color: var(--accent); transform: translateX(2px); }
+.opt input[type=radio] { margin-right: 10px; }
+.opt.selected { border-color: var(--accent); background: linear-gradient(135deg, rgba(108,75,224,.12), rgba(192,132,252,.05)); }
+.opt .label { font-weight: 600; color: var(--text); }
+.opt .desc { color: var(--muted); font-size: .85rem; margin-top: 4px; }
+
+input[type=text], input[type=email], textarea {
+  width: 100%; padding: 12px 16px; background: var(--bg); color: var(--text);
+  border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; font-family: inherit;
+}
+input:focus, textarea:focus { outline: none; border-color: var(--accent); }
+textarea { resize: vertical; min-height: 80px; }
+label { display: block; margin-bottom: 8px; color: var(--muted); font-size: .9rem; }
+
+.actions { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; gap: 12px; flex-wrap: wrap; }
+.btn { padding: 14px 28px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border: none; border-radius: 10px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: transform .15s; }
+.btn:hover { transform: translateY(-1px); }
+.btn:disabled { opacity: .4; cursor: not-allowed; }
+.btn.secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+
+/* outcome */
+.outcome { display: none; text-align: center; padding: 32px 24px; }
+.outcome.active { display: block; }
+.outcome h2 { font-size: 1.6rem; color: #fff; margin-bottom: 16px; }
+.outcome .price { font-size: 2.4rem; font-weight: 700; color: var(--accent-2); margin: 24px 0; }
+.outcome .price .period { color: var(--muted); font-size: 1rem; font-weight: 400; }
+.outcome .quote-summary { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; text-align: left; margin: 24px 0; font-size: .9rem; }
+.outcome .quote-summary dt { color: var(--muted); font-weight: 600; margin-top: 8px; }
+.outcome .quote-summary dd { color: var(--text); padding-left: 12px; }
+.outcome .next-step { color: var(--muted); margin: 20px 0; }
+.mailto-btn { display: inline-block; padding: 14px 28px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border-radius: 10px; font-weight: 600; margin: 12px; text-decoration: none; }
+.mailto-btn:hover { text-decoration: none; transform: translateY(-1px); }
+
+footer { margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--border); color: var(--muted); font-size: .9rem; text-align: center; }
+footer a { color: var(--muted); margin: 0 8px; }
+
+@media (max-width: 600px) {
+  .wrap { padding: 40px 16px 60px; }
+  header h1 { font-size: 1.6rem; }
+  .actions { flex-direction: column-reverse; }
+  .actions .btn { width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a href="services.html" class="back">&larr; B2B Consulting</a>
+
+<header>
+  <h1>60-Second Quote</h1>
+  <div class="sub">4 questions. Same-day reply (within 4 hrs JST). No salescall.</div>
+</header>
+
+<div class="trust-bar">
+  <span>14-day case study: <strong>4 iOS</strong>, <strong>11 repos</strong></span>
+  <span>Quote in <strong>4 hrs JST</strong></span>
+  <span>30-day money-back</span>
+</div>
+
+<div class="progress"><div class="progress-fill" id="progressBar" style="width: 25%"></div></div>
+<div class="step-label" id="stepLabel">Step 1 of 4</div>
+
+<form id="quoteForm" onsubmit="return submitQuote(event)">
+
+<!-- Step 1: Company size + role -->
+<div class="step active" data-step="1">
+  <div class="q-card">
+    <h2>Q1. What's your team size?</h2>
+    <div class="hint">Helps me match the right tier (solo vs team retainer).</div>
+    <label class="opt" data-value="solo"><input type="radio" name="size" value="solo" required><span class="label">Solo founder / freelancer</span><div class="desc">1 person. Mostly building alone.</div></label>
+    <label class="opt" data-value="micro"><input type="radio" name="size" value="micro"><span class="label">Micro team (2-5)</span><div class="desc">Small team, often early-stage.</div></label>
+    <label class="opt" data-value="small"><input type="radio" name="size" value="small"><span class="label">Small team (6-20)</span><div class="desc">Growing, may have ops/PM roles.</div></label>
+    <label class="opt" data-value="midsize"><input type="radio" name="size" value="midsize"><span class="label">Mid-size (21-100)</span><div class="desc">Multiple departments, dedicated AI lead.</div></label>
+    <label class="opt" data-value="enterprise"><input type="radio" name="size" value="enterprise"><span class="label">Enterprise (100+)</span><div class="desc">Need procurement / legal review.</div></label>
+  </div>
+  <div class="actions">
+    <button type="button" class="btn secondary" onclick="prev()" disabled>&larr; Back</button>
+    <button type="button" class="btn" onclick="next()">Next &rarr;</button>
+  </div>
+</div>
+
+<!-- Step 2: Pain point -->
+<div class="step" data-step="2">
+  <div class="q-card">
+    <h2>Q2. Biggest pain right now?</h2>
+    <div class="hint">Pick the one that hurts most. Multiple? Pick #1.</div>
+    <label class="opt"><input type="radio" name="pain" value="cant_ship" required><span class="label">Can't ship fast enough</span><div class="desc">Ideas pile up, code crawls, weeks lost on tooling.</div></label>
+    <label class="opt"><input type="radio" name="pain" value="ai_unclear"><span class="label">AI strategy is murky</span><div class="desc">Tried Cursor / Claude / Copilot — no clear ROI.</div></label>
+    <label class="opt"><input type="radio" name="pain" value="repeat_work"><span class="label">Repetitive ops eating time</span><div class="desc">Reports, deploys, customer responses — all manual.</div></label>
+    <label class="opt"><input type="radio" name="pain" value="cost_overrun"><span class="label">AI spend out of control</span><div class="desc">$X00/mo on tokens, unclear who/what consumes it.</div></label>
+    <label class="opt"><input type="radio" name="pain" value="other"><span class="label">Other (tell me below)</span></label>
+    <textarea name="pain_other" placeholder="(optional) Anything specific?" style="margin-top: 12px;"></textarea>
+  </div>
+  <div class="actions">
+    <button type="button" class="btn secondary" onclick="prev()">&larr; Back</button>
+    <button type="button" class="btn" onclick="next()">Next &rarr;</button>
+  </div>
+</div>
+
+<!-- Step 3: Budget -->
+<div class="step" data-step="3">
+  <div class="q-card">
+    <h2>Q3. Budget range for this quarter?</h2>
+    <div class="hint">No need to be exact. Helps me match tier — can always adjust.</div>
+    <label class="opt"><input type="radio" name="budget" value="under_500" required><span class="label">Under $500</span><div class="desc">One-off audit / starter pack ($99).</div></label>
+    <label class="opt"><input type="radio" name="budget" value="500_2k"><span class="label">$500 - $2k</span><div class="desc">Single-month retainer or fixed-scope project.</div></label>
+    <label class="opt"><input type="radio" name="budget" value="2k_10k"><span class="label">$2k - $10k</span><div class="desc">Quarterly retainer — 3-6 weeks of focused work.</div></label>
+    <label class="opt"><input type="radio" name="budget" value="10k_plus"><span class="label">$10k+</span><div class="desc">Enterprise: workshop + multi-quarter implementation.</div></label>
+    <label class="opt"><input type="radio" name="budget" value="not_sure"><span class="label">Not sure yet</span><div class="desc">No problem — I'll suggest based on Q1+Q2.</div></label>
+  </div>
+  <div class="actions">
+    <button type="button" class="btn secondary" onclick="prev()">&larr; Back</button>
+    <button type="button" class="btn" onclick="next()">Next &rarr;</button>
+  </div>
+</div>
+
+<!-- Step 4: Contact -->
+<div class="step" data-step="4">
+  <div class="q-card">
+    <h2>Q4. Where should I send the quote?</h2>
+    <div class="hint">Reply within 4 hrs JST (Mon-Fri). No spam, no resale, no list. Promise.</div>
+    <label for="emailInput">Email *</label>
+    <input id="emailInput" type="email" name="email" required placeholder="you@example.com" autocomplete="email">
+    <label for="nameInput" style="margin-top: 16px;">Name (optional)</label>
+    <input id="nameInput" type="text" name="name" placeholder="First name" autocomplete="given-name">
+    <label for="urlInput" style="margin-top: 16px;">Company URL (optional)</label>
+    <input id="urlInput" type="text" name="company" placeholder="https://yourco.com" autocomplete="url">
+  </div>
+  <div class="actions">
+    <button type="button" class="btn secondary" onclick="prev()">&larr; Back</button>
+    <button type="submit" class="btn">Get my quote &rarr;</button>
+  </div>
+</div>
+
+</form>
+
+<!-- Result page (shown after submit) -->
+<div class="outcome" id="outcome">
+  <h2>Done — your quote is ready</h2>
+  <div class="next-step">Based on your answers, here's a starting price:</div>
+  <div class="price" id="priceResult">$—<span class="period"></span></div>
+  <dl class="quote-summary" id="quoteSummary"></dl>
+  <p class="next-step">
+    Click below to send the quote details + 30-min call request. I'll reply within 4 hrs JST with a price confirmation and 3 time slots.
+  </p>
+  <a id="mailtoLink" class="mailto-btn" href="mailto:jiejuefuyou+quote@gmail.com?subject=B2B%20AI%20quote%20request">Email this quote &rarr;</a>
+  <p style="color: var(--muted); margin-top: 16px; font-size: .85rem;">
+    Mailto not opening on mobile? <button onclick="copyQuoteToClipboard()" style="background:transparent;color:var(--accent-2);border:none;padding:0;font-size:.85rem;cursor:pointer;text-decoration:underline">Copy quote details</button> and email <a href="mailto:jiejuefuyou+quote@gmail.com" style="color:var(--accent-2)">jiejuefuyou+quote@gmail.com</a> directly.
+  </p>
+  <p id="copySuccess" style="display:none;color:var(--good);font-size:.85rem;margin-top:8px">Copied to clipboard</p>
+  <p style="color: var(--muted); margin-top: 20px; font-size: .85rem;">
+    Prefer not to email? <a href="services.html">View full pricing tiers</a>.
+  </p>
+</div>
+
+<footer>
+  <a href="index.html">Home</a>&nbsp;&middot;&nbsp;
+  <a href="services.html">B2B Services</a>&nbsp;&middot;&nbsp;
+  <a href="pricing.html">Pricing tiers</a>&nbsp;&middot;&nbsp;
+  <a href="transparency.html">Transparency</a>&nbsp;&middot;&nbsp;
+  <a href="https://jiejuefuyou.gumroad.com/l/prompt-vault-complete">Gumroad bundle</a>
+</footer>
+
+</div>
+
+<script>
+let step = 1;
+const totalSteps = 4;
+
+function setStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.querySelector('.step[data-step="' + n + '"]').classList.add('active');
+  document.getElementById('progressBar').style.width = (n * 25) + '%';
+  document.getElementById('stepLabel').textContent = 'Step ' + n + ' of ' + totalSteps;
+  // Disable back on step 1
+  const backBtn = document.querySelector('.step.active .btn.secondary');
+  if (backBtn) backBtn.disabled = (n === 1);
+  step = n;
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function next() {
+  // Validate current step's required input
+  const cur = document.querySelector('.step.active');
+  const required = cur.querySelector('input[required]:not(:checked)');
+  if (required && required.type === 'radio') {
+    const name = required.name;
+    if (!cur.querySelector('input[name="' + name + '"]:checked')) {
+      alert('Please pick one option.');
+      return;
+    }
+  }
+  if (step < totalSteps) setStep(step + 1);
+}
+
+function prev() {
+  if (step > 1) setStep(step - 1);
+}
+
+// Highlight selected option visually
+document.querySelectorAll('.opt input[type=radio]').forEach(input => {
+  input.addEventListener('change', e => {
+    const name = e.target.name;
+    document.querySelectorAll('.opt input[name="' + name + '"]').forEach(other => {
+      other.closest('.opt').classList.remove('selected');
+    });
+    e.target.closest('.opt').classList.add('selected');
+  });
+});
+
+// Quote pricing logic — transparent rules so user sees how their answers map
+const PRICING = {
+  // (size, budget) -> [tier_label, price, period]
+  recommend: function(answers) {
+    const s = answers.size;
+    const b = answers.budget;
+    const p = answers.pain;
+    // Hard rules — budget caps tier regardless of size
+    if (b === 'under_500')   return ['Starter audit',     '$99',     'one-time'];
+    if (b === '500_2k')      return ['Single-month retainer', '$1,200', '/month'];
+    if (b === '2k_10k')      return ['Quarterly retainer', '$2,500', '/month'];
+    if (b === '10k_plus')    return ['Enterprise workshop', '$15,000', '/quarter'];
+    // budget=not_sure -> infer from size + pain
+    if (s === 'enterprise')  return ['Enterprise workshop', '$15,000', '/quarter'];
+    if (s === 'midsize')     return ['Quarterly retainer', '$2,500', '/month'];
+    if (s === 'small')       return ['Single-month retainer', '$1,200', '/month'];
+    if (s === 'micro')       return ['Starter + 30-min call', '$499', 'one-time'];
+    // solo
+    return ['Starter audit', '$99', 'one-time'];
+  }
+};
+
+function submitQuote(event) {
+  event.preventDefault();
+  const fd = new FormData(document.getElementById('quoteForm'));
+  const answers = Object.fromEntries(fd);
+  const [tier, price, period] = PRICING.recommend(answers);
+  // Hide form, show outcome
+  document.getElementById('quoteForm').style.display = 'none';
+  document.querySelector('.progress').style.display = 'none';
+  document.querySelector('.step-label').style.display = 'none';
+  document.getElementById('priceResult').innerHTML = price + ' <span class="period">' + period + '</span>';
+  // Build summary
+  const summary = document.getElementById('quoteSummary');
+  summary.innerHTML =
+    '<dt>Suggested tier</dt><dd>' + tier + '</dd>' +
+    '<dt>Team size</dt><dd>' + (answers.size || '?') + '</dd>' +
+    '<dt>Pain point</dt><dd>' + (answers.pain || '?') + (answers.pain_other ? ' &mdash; "' + escapeHtml(answers.pain_other) + '"' : '') + '</dd>' +
+    '<dt>Budget</dt><dd>' + (answers.budget || '?') + '</dd>' +
+    '<dt>Contact</dt><dd>' + escapeHtml(answers.email || '?') + (answers.name ? ' (' + escapeHtml(answers.name) + ')' : '') + '</dd>' +
+    (answers.company ? '<dt>Company</dt><dd>' + escapeHtml(answers.company) + '</dd>' : '');
+  // Build mailto link with all answers
+  const subj = encodeURIComponent('B2B AI quote: ' + tier);
+  const body = encodeURIComponent(
+    'Quote request from quick-quote.html\n\n' +
+    'Suggested tier: ' + tier + ' (' + price + ' ' + period + ')\n' +
+    'Team size: ' + (answers.size || '?') + '\n' +
+    'Pain point: ' + (answers.pain || '?') + (answers.pain_other ? '\n  Detail: ' + answers.pain_other : '') + '\n' +
+    'Budget: ' + (answers.budget || '?') + '\n' +
+    'Contact: ' + (answers.email || '?') + (answers.name ? ' (' + answers.name + ')' : '') + '\n' +
+    (answers.company ? 'Company: ' + answers.company + '\n' : '') +
+    '\nPlease confirm price + send 3 call slots within 4 hrs JST. Thanks!'
+  );
+  document.getElementById('mailtoLink').href = 'mailto:jiejuefuyou+quote@gmail.com?subject=' + subj + '&body=' + body;
+  document.getElementById('outcome').classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+
+  // Capture lead to b2b_lead pipeline via webhook (fire-and-forget after UI updated)
+  var tierMap={"starter audit":"starter","single-month retainer":"retainer","quarterly retainer":"retainer","enterprise workshop":"enterprise","enterprise audit":"enterprise","enterprise":"enterprise"};
+  var wTier=tierMap[tier]||tier.replace(/\s+/g,"_").toLowerCase().slice(0,20);
+  var payload={source:"quick-quote",email:answers.email||"",tier:wTier,tier_label:tier,tier_price:price,utm_source:"quick-quote-page",utm_medium:"form-capture",company:answers.company||"",pain_point:answers.pain||"",team_size:answers.size||"",budget:answers.budget||""};
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || "http://localhost:8787/capture").trim();
+  fetch(webhookUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).catch(function(){});
+
+  return false;
+}
+
+function escapeHtml(s) {
+  if (!s) return '';
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
+function copyQuoteToClipboard() {
+  // Decode the mailto URL body+subject so user can paste into any email app
+  var link = document.getElementById('mailtoLink');
+  var href = link.href;
+  var subj = decodeURIComponent((href.match(/subject=([^&]*)/) || [,''])[1]);
+  var body = decodeURIComponent((href.match(/body=([^&]*)/) || [,''])[1]);
+  var text = 'TO: jiejuefuyou+quote@gmail.com\nSUBJECT: ' + subj + '\n\n' + body;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() {
+      var el = document.getElementById('copySuccess');
+      el.style.display = 'block';
+      el.textContent = 'Copied to clipboard';
+      setTimeout(function() { el.style.display = 'none'; }, 4000);
+    }).catch(function() {
+      legacyCopy(text);
+    });
+  } else {
+    legacyCopy(text);
+  }
+}
+
+function legacyCopy(text) {
+  // Fallback for older mobile browsers
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    document.execCommand('copy');
+    var el = document.getElementById('copySuccess');
+    el.style.display = 'block';
+    el.textContent = 'Copied to clipboard';
+    setTimeout(function() { el.style.display = 'none'; }, 4000);
+  } catch (e) {
+    alert('Could not copy. Please screenshot and email us at jiejuefuyou+quote@gmail.com');
+  }
+  document.body.removeChild(ta);
+}
+</script>
+
+</body>
+</html>

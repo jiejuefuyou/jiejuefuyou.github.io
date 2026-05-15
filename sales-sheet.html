@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B2B AI Workflow Consulting -- One-Page Sales Sheet (PDF-ready)</title>
+<meta name="description" content="Print-ready 1-page B2B AI consulting overview. Hand to clients, attach to emails, share at meetups.">
+<meta property="og:title" content="B2B AI Workflow Consulting Sales Sheet">
+<meta property="og:description" content="Print-ready 1-page B2B AI consulting overview. $99 starter / $500-1200/mo retainer. 30-day money-back.">
+<meta property="og:url" content="https://jiejuefuyou.github.io/sales-sheet.html">
+<meta property="og:image" content="https://jiejuefuyou.github.io/assets/og-default.png">
+<meta name="twitter:card" content="summary">
+<style>
+:root {
+  --bg: #fff; --text: #0a0a0f; --muted: #555;
+  --accent: #6c4be0; --accent-2: #9b6cf0;
+  --good: #16a34a; --warn: #ca8a04; --bad: #dc2626;
+  --border: #e5e7eb; --bg-card: #f8f9fc;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--bg); color: var(--text);
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--accent); text-decoration: none; }
+.page {
+  max-width: 800px; margin: 0 auto;
+  padding: 40px;
+  min-height: 100vh;
+}
+
+/* print: keep page count = 1 */
+@media print {
+  body { background: white; }
+  .page { padding: 24px; max-width: none; min-height: auto; }
+  .no-print { display: none !important; }
+  @page { size: letter; margin: 0.5in; }
+}
+
+.no-print {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 6px; padding: 12px 16px; margin-bottom: 24px;
+  font-size: 13px; color: var(--muted);
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  flex-wrap: wrap;
+}
+.no-print button {
+  padding: 6px 14px; background: var(--accent); color: white;
+  border: none; border-radius: 6px; cursor: pointer; font-weight: 600;
+}
+
+header.sheet {
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 14px; margin-bottom: 18px;
+}
+header.sheet h1 { font-size: 24px; line-height: 1.2; color: var(--accent); }
+header.sheet .sub { color: var(--muted); margin-top: 4px; font-size: 13px; }
+
+.intro { margin-bottom: 16px; font-size: 14px; line-height: 1.55; }
+
+.proof-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 8px; margin: 14px 0;
+}
+.proof-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 6px; padding: 10px 12px;
+  text-align: center;
+}
+.proof-card .num { font-size: 20px; font-weight: 700; color: var(--accent); }
+.proof-card .label { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+h2 {
+  font-size: 14px; color: var(--accent);
+  margin: 16px 0 8px; padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+
+.tier-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 10px; margin: 8px 0 14px;
+}
+.tier-box {
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 10px 12px;
+}
+.tier-box.featured { border-color: var(--accent); background: rgba(108, 75, 224, 0.04); }
+.tier-box .tier-name { font-weight: 700; color: var(--accent); font-size: 13px; }
+.tier-box .tier-price { font-size: 17px; font-weight: 700; margin-top: 2px; color: var(--text); }
+.tier-box .tier-period { font-size: 11px; color: var(--muted); }
+.tier-box ul { list-style: none; margin-top: 6px; padding: 0; font-size: 11.5px; }
+.tier-box li { padding: 2px 0; padding-left: 12px; position: relative; }
+.tier-box li::before { content: "\2713"; color: var(--good); position: absolute; left: 0; font-weight: bold; }
+
+.process-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 6px; margin: 8px 0;
+}
+.process-step {
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 6px 8px; font-size: 11px; text-align: center;
+}
+.process-step .num {
+  display: inline-block; width: 18px; height: 18px;
+  background: var(--accent); color: white; border-radius: 50%;
+  font-weight: 700; line-height: 18px; margin-bottom: 4px;
+}
+.process-step .name { font-weight: 600; font-size: 11.5px; color: var(--text); }
+.process-step .when { color: var(--muted); font-size: 10px; margin-top: 2px; }
+
+.faq-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 10px; margin: 8px 0;
+}
+.faq-card {
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 8px 10px; font-size: 11px;
+}
+.faq-card strong { color: var(--accent); display: block; margin-bottom: 3px; font-size: 11.5px; }
+
+.email-capture { display: none; background: linear-gradient(135deg, #f0f4ff, #f8f8fc); border: 1px solid #c4b5fd; border-radius: 8px; padding: 16px 18px; margin-top: 16px; } .email-capture h3 { font-size: 14px; font-weight: 700; color: #6c4be0; margin-bottom: 4px; } .email-capture p { font-size: 11.5px; color: #555; margin-bottom: 8px; } .email-capture .row { display: flex; gap: 6px; align-items: center; } .email-capture input[type=email] { flex: 1; padding: 7px 10px; border: 1px solid #e5e7eb; border-radius: 6px; font-size: 12px; background: white; color: #0a0a0f; } .email-capture button { padding: 7px 14px; background: linear-gradient(135deg, #6c4be0, #9b6cf0); color: white; border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; } .email-success { color: #16a34a; font-size: 11px; margin-top: 6px; } .email-capture {
+  display: none;
+  background: linear-gradient(135deg, #f0f4ff, #f8f8fc);
+  border: 1px solid #c4b5fd;
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.email-capture h3 { font-size: 14px; font-weight: 700; color: #6c4be0; margin-bottom: 4px; }
+.email-capture p { font-size: 11.5px; color: #555; margin-bottom: 8px; }
+.email-capture .row { display: flex; gap: 6px; align-items: center; }
+.email-capture input[type=email] { flex: 1; padding: 7px 10px; border: 1px solid #e5e7eb; border-radius: 6px; font-size: 12px; background: white; color: #0a0a0f; }
+.email-capture button { padding: 7px 14px; background: linear-gradient(135deg, #6c4be0, #9b6cf0); color: white; border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.email-success { color: #16a34a; font-size: 11px; margin-top: 6px; }
+
+.cta {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white; padding: 14px 20px;
+  border-radius: 8px; text-align: center;
+  margin-top: 16px;
+}
+.cta h3 { font-size: 16px; margin-bottom: 6px; }
+.cta p { font-size: 12px; opacity: 0.95; margin-bottom: 4px; }
+.cta .links { font-size: 12px; margin-top: 8px; }
+.cta .links a {
+  display: inline-block; margin: 4px 8px;
+  padding: 5px 11px; background: rgba(255, 255, 255, 0.2);
+  color: white; border-radius: 4px; font-weight: 600;
+  text-decoration: none;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  margin-top: 16px; padding-top: 8px;
+  font-size: 10px; color: var(--muted);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="no-print">
+  <span><strong>Print this page</strong> as PDF (Cmd/Ctrl + P) for handouts. Letter size, fits 1 page.</span>
+  <button onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<header class="sheet">
+  <h1>B2B AI Workflow Consulting</h1>
+  <div class="sub">Audit -- Implementation -- Retainer -- Done in weeks, not quarters -- jiejuefuyou.github.io</div>
+</header>
+
+<div class="intro">
+  <strong>For founders &amp; ops leads:</strong> if your team uses 5+ AI tools but can't answer "what's our AI ROI?" -- you're not alone. I help teams of 5-100 turn fragmented AI usage into measured business outcomes. Most engagements ship in 2-4 weeks. 30-day money-back on Starter and first-month retainers.
+</div>
+
+<div class="proof-grid">
+  <div class="proof-card"><div class="num">14d</div><div class="label">avg engagement</div></div>
+  <div class="proof-card"><div class="num">4</div><div class="label">iOS apps shipped</div></div>
+  <div class="proof-card"><div class="num">11</div><div class="label">repos audited</div></div>
+  <div class="proof-card"><div class="num">$20</div><div class="label">/mo cost stack</div></div>
+</div>
+
+<h2>3 Tiers -- pick the right entry</h2>
+<div class="tier-grid">
+  <div class="tier-box">
+    <div class="tier-name">STARTER</div>
+    <div class="tier-price">$99 <span class="tier-period">one-time</span></div>
+    <ul>
+      <li>60-min video diagnosis</li>
+      <li>3-5 use case reports</li>
+      <li>1-week email Q&amp;A</li>
+      <li>Quote PDF for boss</li>
+    </ul>
+  </div>
+  <div class="tier-box featured">
+    <div class="tier-name">RETAINER</div>
+    <div class="tier-price">$500-1.2k <span class="tier-period">/month</span></div>
+    <ul>
+      <li>Build 1-2 workflows end-to-end</li>
+      <li>4-week setup + 1mo support</li>
+      <li>Team training (1-2 people)</li>
+      <li>Weekly metrics review</li>
+      <li>Cancel after 3 months</li>
+    </ul>
+  </div>
+  <div class="tier-box">
+    <div class="tier-name">ENTERPRISE</div>
+    <div class="tier-price">$2.5-5k+ <span class="tier-period">/month</span></div>
+    <ul>
+      <li>Multi-team rollout (3+ teams)</li>
+      <li>Strategy workshops</li>
+      <li>Governance + procurement</li>
+      <li>SLA + 24h response</li>
+      <li>NDA available</li>
+    </ul>
+  </div>
+</div>
+
+<h2>4-Week Engagement Process (Standard Retainer)</h2>
+<div class="process-grid">
+  <div class="process-step">
+    <div class="num">1</div>
+    <div class="name">Diagnose</div>
+    <div class="when">Week 1: 47-q audit + 60-min interview</div>
+  </div>
+  <div class="process-step">
+    <div class="num">2</div>
+    <div class="name">Design</div>
+    <div class="when">Week 2: Workflow doc + tool decisions</div>
+  </div>
+  <div class="process-step">
+    <div class="num">3</div>
+    <div class="name">Build</div>
+    <div class="when">Week 3: Implement + train 1-2 team</div>
+  </div>
+  <div class="process-step">
+    <div class="num">4</div>
+    <div class="name">Measure</div>
+    <div class="when">Week 4: Metrics review + iterate</div>
+  </div>
+</div>
+
+<h2>Frequently Asked</h2>
+<div class="faq-grid">
+  <div class="faq-card">
+    <strong>How is this different from a consulting firm?</strong>
+    Solo operator, fixed-fee, no minimum spend. You hire me for outcomes, not hours.
+  </div>
+  <div class="faq-card">
+    <strong>What if I don't see ROI?</strong>
+    30-day money-back on Starter + first-month Retainer. Full refund, no questions.
+  </div>
+  <div class="faq-card">
+    <strong>Do you work with non-tech teams?</strong>
+    Yes. Marketing agencies, eCommerce founders, content creators are 40% of clients.
+  </div>
+  <div class="faq-card">
+    <strong>Where are your case studies?</strong>
+    jiejuefuyou.github.io/case-studies.html -- 5 detailed B2B case studies with real numbers.
+  </div>
+</div>
+
+<div class="email-capture" id="ss-email-capture">
+  <h3>Get the PDF + sample workflow doc sent to your inbox</h3>
+  <p>No sales pitch. Just a PDF of this sheet + a 1-page AI workflow template. Leave your email and I will send both within 24 hrs.</p>
+  <div class="row">
+    <input type="email" id="ss-email" placeholder="your@email.com" autocomplete="email">
+    <button onclick="ssSubmitEmail()">Send it to me</button>
+  </div>
+  <div class="email-success" id="ss-email-success" style="display:none">Sent! Check your inbox (or spam). I send within 24 hrs.</div>
+</div>
+<div class="cta">
+  <h3>3 ways to get started (5 minutes)</h3>
+  <p>Take a quick assessment first or jump to a quote</p>
+  <div class="links">
+    <a href="https://jiejuefuyou.github.io/free-ai-audit.html">Free 47-q audit</a>
+    <a href="https://jiejuefuyou.github.io/b2b-quiz.html">90-sec tier quiz</a>
+    <a href="https://jiejuefuyou.github.io/quick-quote.html">60-sec quote</a>
+    <a href="mailto:jiejuefuyou@gmail.com">Email me directly</a>
+  </div>
+</div>
+
+<footer>
+  <p>jiejuefuyou.github.io -- jiejuefuyou@gmail.com -- Tokyo / Asia (JST) -- Reply within 4 hr business days</p>
+  <p style="margin-top:3px">All pricing in USD. Bank transfer, Wise, Stripe, or USDC accepted. Invoice on request.</p>
+</footer>
+
+</div>
+<script>
+function ssSubmitEmail() {
+  var email = document.getElementById("ss-email").value;
+  if (!email || !email.includes("@")) { alert("Please enter a valid email."); return; }
+  var payload = {
+    source: "sales-sheet",
+    email: email,
+    tier: "warm",
+    utm_source: "sales-sheet-digital",
+    utm_medium: "email-capture"
+  };
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || "http://localhost:8787/capture").trim();
+  fetch(webhookUrl, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(payload)}).catch(function() {});
+  document.getElementById("ss-email-success").style.display = "block";
+  document.getElementById("ss-email").disabled = true;
+  document.querySelector("#ss-email-capture button").disabled = true;
+}
+
+// Show email capture after user scrolls to FAQ section (warm signal)
+(function() {
+  var el = document.getElementById("ss-email-capture");
+  if (!el) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        el.style.display = "block";
+        observer.disconnect();
+      }
+    });
+  }, {threshold: 0.1});
+  var marker = document.querySelector(".faq-grid") || document.querySelector(".tier-grid");
+  if (marker) observer.observe(marker);
+})();
+</script>
+
+</html>

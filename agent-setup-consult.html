@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code 24/7 Setup Consulting — Let Me Teach You in 30 Min</title>
+<meta name="description" content="I teach you how to run Claude Code autonomously 24/7 without burning API credits. 99 USD starter / 499 USD private coaching / 2499 USD team onboarding. 36hr live test. MIT toolkit on GitHub.">
+<meta property="og:title" content="Claude Code 24/7 Setup — 30 Min Video Guide">
+<meta property="og:description" content="I spent 14 days building a system that runs Claude Code 24/7 without API costs. Now I teach it in 30 minutes. 99 USD starter, 499 USD private coaching.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jiejuefuyou.github.io/agent-setup-consult.html">
+<meta property="og:image" content="https://jiejuefuyou.github.io/assets/og-default.png">
+<meta name="twitter:card" content="summary">
+<style>
+:root{--bg:#0a0a0f;--bg-card:#12121a;--border:#1f1f2e;--text:#e6e6f0;--muted:#8a8a9a;--accent:#6c4be0;--accent-2:#9b6cf0;--good:#4ade80;--warn:#fbbf24}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+a{color:var(--accent-2);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:780px;margin:0 auto;padding:60px 24px 80px}
+header{padding-bottom:36px;border-bottom:1px solid var(--border);margin-bottom:44px}
+header h1{font-size:2.1rem;line-height:1.2;letter-spacing:-.02em;background:linear-gradient(135deg,#6c4be0,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+header p{color:var(--muted);margin-top:14px;font-size:1.05rem}
+.social-bar{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px;padding:14px 18px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;font-size:.82rem;color:var(--muted)}
+.social-bar span{display:flex;align-items:center;gap:5px}
+.social-bar .val{color:var(--text);font-weight:600}
+.nav-back{color:var(--muted);font-size:.9rem;margin-bottom:28px;display:inline-block}
+.nav-back:hover{color:var(--text);text-decoration:none}
+section{margin-bottom:52px}
+h2{font-size:1.45rem;margin-bottom:18px;letter-spacing:-.01em}
+h3{font-size:1.1rem;margin:22px 0 10px;color:var(--text)}
+p{margin-bottom:14px;line-height:1.7}
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin-bottom:14px}
+.card h3{margin-top:0}
+ul.bullets{list-style:none;padding:0;margin-bottom:16px}
+ul.bullets li{padding:7px 0;padding-left:20px;position:relative}
+ul.bullets li::before{content:"\2192";position:absolute;left:0;color:var(--accent);font-size:.9em}
+ul.bullets li strong{color:var(--accent-2)}
+.tier-grid{display:grid;gap:14px;margin:20px 0}
+@media(min-width:680px){.tier-grid{grid-template-columns:repeat(3,1fr)}}
+.tier{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:22px 20px}
+.tier.preferred{border:1px solid rgba(108,75,224,.5);background:linear-gradient(135deg,rgba(108,75,224,.08),rgba(192,132,252,.03))}
+.tier-label{font-size:.75rem;font-weight:700;letter-spacing:.8px;color:var(--muted);text-transform:uppercase;margin-bottom:8px}
+.tier.preferred .tier-label{color:var(--accent-2)}
+.price{font-size:1.9rem;font-weight:700;margin-bottom:4px}
+.price .strike{font-size:1.1rem;color:var(--muted);text-decoration:line-through;margin-right:6px;font-weight:400}
+.price .note{font-size:.8rem;color:var(--muted);font-weight:400}
+.desc{color:var(--muted);font-size:.88rem;margin-bottom:14px}
+.tier ul{list-style:none;padding:0}
+.tier ul li{font-size:.88rem;padding:5px 0;padding-left:16px;position:relative;color:var(--text)}
+.tier ul li::before{content:"\2713";position:absolute;left:0;color:var(--good);font-size:.85em}
+.tier .cta{display:block;text-align:center;padding:11px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border-radius:8px;font-weight:600;font-size:.9rem;margin-top:14px;text-decoration:none}
+.tier .cta:hover{transform:translateY(-1px)}
+.case-study{background:linear-gradient(135deg,rgba(108,75,224,.1),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.3);border-radius:14px;padding:28px;margin:24px 0}
+.case-study h3{color:var(--accent-2);margin-top:0;font-size:1.1rem;margin-bottom:14px}
+.metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+@media(max-width:500px){.metrics-row{grid-template-columns:1fr 1fr}}
+.metric{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 10px;text-align:center}
+.metric .num{font-size:1.5rem;font-weight:700;color:var(--good)}
+.metric .lbl{font-size:.72rem;color:var(--muted);margin-top:3px}
+.why-grid{display:grid;gap:12px;margin:16px 0}
+@media(min-width:600px){.why-grid{grid-template-columns:1fr 1fr}}
+.why-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px 18px;font-size:.9rem}
+.why-card strong{color:var(--accent-2);display:block;margin-bottom:4px;font-size:.92rem}
+
+.email-capture {
+  background: linear-gradient(135deg, rgba(108,75,224,.1), rgba(192,132,252,.04));
+  border: 1px solid rgba(108,75,224,.3);
+  border-radius: 12px;
+  padding: 20px 22px;
+  margin: 28px 0;
+}
+.email-capture h3 { color: var(--accent-2); font-size: 1rem; margin-bottom: 6px; }
+.email-capture p { color: var(--muted); font-size: .88rem; margin-bottom: 10px; }
+.email-capture .row { display: flex; gap: 8px; align-items: center; }
+.email-capture input[type=email] {
+  flex: 1; padding: 9px 12px; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; font-size: .9rem; color: var(--text);
+}
+.email-capture button {
+  padding: 9px 16px; background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white; border: none; border-radius: 8px; font-size: .9rem; font-weight: 600; cursor: pointer; white-space: nowrap;
+}
+.email-success { color: var(--good); font-size: .88rem; margin-top: 8px; }
+.cta-box{background:linear-gradient(135deg,rgba(108,75,224,.12),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.3);padding:26px;border-radius:12px;margin:32px 0;text-align:center}
+.cta-box h3{color:#fff;margin-top:0;font-size:1.15rem}
+.cta-box p{color:var(--muted);margin-bottom:16px}
+.btn-primary{display:inline-block;padding:13px 26px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border-radius:9px;font-weight:700;font-size:1rem}
+.btn-primary:hover{text-decoration:none;transform:translateY(-1px)}
+.btn-ghost{display:inline-block;padding:12px 22px;border:1px solid var(--border);color:var(--muted);border-radius:9px;font-size:.92rem;margin-left:10px}
+.btn-ghost:hover{color:var(--text);text-decoration:none}
+.faq-item{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:10px}
+.faq-item h4{color:var(--text);font-size:.95rem;margin-bottom:8px}
+.faq-item p{color:var(--muted);font-size:.9rem;margin-bottom:0}
+footer{margin-top:64px;padding-top:32px;border-top:1px solid var(--border);color:var(--muted);font-size:.88rem;text-align:center}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a href="index.html" class="nav-back">Back to jiejuefuyou.github.io</a>
+
+<div style="background:linear-gradient(90deg,rgba(74,222,128,.12),rgba(34,197,94,.04));border:1px solid rgba(74,222,128,.35);border-radius:8px;padding:10px 16px;margin-bottom:20px;font-size:.88rem;color:#4ade80;text-align:center">
+  <strong>First 10 clients only</strong> &mdash; Starter $99 (will be $199 after spot 10). 3/10 spots taken.
+</div>
+
+<header>
+<h1>Claude Code 24/7 - I Teach You How</h1>
+<p>A 150-line Python script plus 5 markdown templates that lets a Claude Code agent run continuously for 36-plus hours, outputting code commits or article drafts every hour -- for 20 USD/month (Pro subscription). No API billing. No VSCode open. I built it in 14 days. Now I teach you in 30 minutes.</p>
+<div class="social-bar">
+<span><span class="val">36-plus hr</span> continuous run (verified)</span>
+<span><span class="val">14 days</span> to build (your timeline too)</span>
+<span><span class="val">20 USD/mo</span> max cost (Pro subscription)</span>
+<span><span class="val">MIT</span> toolkit on GitHub</span>
+<span><span class="val">10 clients</span> first-batch capacity</span>
+</div>
+</header>
+
+<section>
+<h2>Why Claude Code Cannot Run 24/7 Out of the Box</h2>
+<div class="card">
+<p style="font-size:1.05rem;margin-bottom:12px"><strong style="color:var(--accent-2)">Root cause:</strong> Claude Code is an "IDE assistant" architecture -- not an "agent runtime." Close VSCode and it stops. Its CronCreate tasks die with the window. Memory evaporates when the session ends.</p>
+<p style="margin-bottom:12px">Most people hit one of these walls:</p>
+<ul class="bullets">
+<li><strong>VSCode-closed = agent-dead</strong> -- "24/7 autonomy" is marketing, not reality</li>
+<li><strong>API costs explode</strong> -- switching to API billing = 3000-plus CNY/month (vs 150 CNY/mo Pro subscription)</li>
+<li><strong>GitHub Actions kill context</strong> -- each run starts fresh, consuming 5-10x more tokens</li>
+<li><strong>PyAutoGUI steals focus</strong> -- fires抢窗口, disrupts your active work, screen flashes</li>
+<li><strong>Agents override each other</strong> -- continuous firing causes loops that overwrite prior work</li>
+</ul>
+<p><strong style="color:var(--accent-2)">The fix:</strong> Layer an orchestration system <em>outside</em> Claude Code. This is what Anthropic will not give you -- and it is the difference between "I tried agents" and "agents shipped my product."</p>
+</div>
+</section>
+
+<section>
+<h2>What This System Actually Shipped</h2>
+<div class="case-study">
+<h3>14-Day Real Case Study (April 2026)</h3>
+<div class="metrics-row">
+<div class="metric"><div class="num">4</div><div class="lbl">iOS Apps shipped</div></div>
+<div class="metric"><div class="num">11</div><div class="lbl">GitHub repos</div></div>
+<div class="metric"><div class="num">9</div><div class="lbl">dev.to articles</div></div>
+<div class="metric"><div class="num">20 USD</div><div class="lbl">monthly cost</div></div>
+</div>
+<p style="font-size:.9rem;color:var(--muted)">All verified on GitHub @jiejuefuyou. Privacy Manifest passed. Zero analytics SDKs. Zero network calls from apps.</p>
+<div style="margin-top:14px"><a href="https://github.com/jiejuefuyou/autoapp-toolkit" class="btn-ghost" style="font-size:.82rem;padding:8px 14px">View GitHub</a></div>
+</div>
+
+<div class="why-grid">
+<div class="why-card">
+<strong>Memory layer</strong>
+4 files (MEMORY.md / user_persona.md / autonomy_contract.md / token_economy.md) -- agent re-enters any session and immediately knows context.
+</div>
+<div class="why-card">
+<strong>State + decisions</strong>
+state.yml (multi-app status) plus decisions.md (9-plus ADR logs) -- agent never re-litigates prior choices.
+</div>
+<div class="why-card">
+<strong>Desktop loop</strong>
+150-line Python GUI automation -- idle detection, pause lock, 3-layer busy detection, focus restoration. Runs with VSCode closed.
+</div>
+<div class="why-card">
+<strong>Token economy</strong>
+Active / Conservative / Recovery tiers -- auto-degrades on rate-limit, never burns quota overnight.
+</div>
+</div>
+</section>
+
+<section>
+<h2>Three Ways to Get Started</h2>
+<div class="tier-grid">
+<div class="tier">
+<div class="tier-label">Starter</div>
+<div class="price"><span class="strike">199 CNY</span>99 CNY <span class="note">/ one-time</span></div>
+<div class="desc">First 10 clients only -- then back to 199 CNY</div>
+<ul>
+<li>30-min video walkthrough (Windows or macOS)</li>
+<li>CC input coordinate calibration</li>
+<li>Task Scheduler / launchd setup</li>
+<li>Your use-case cron-prompt template</li>
+<li>1-week email support</li>
+</ul>
+<a href="mailto:jiejuefuyou@gmail.com?subject=Starter+Package+99+CNY&body=Hi%2C%20I%27d%20like%20the%20Starter%20package%20for%20Claude%20Code%2024%2F7%20setup.%20My%20setup%3A%20Windows%20%2F%20macOS.%20Use%20case%3A%20" class="cta">Book 99 CNY Starter</a>
+</div>
+<div class="tier preferred">
+<div class="tier-label">Professional</div>
+<div class="price"><span class="strike">999 CNY</span>499 CNY <span class="note">/ one-time</span></div>
+<div class="desc">First 10 clients only -- then back to 999 CNY</div>
+<ul>
+<li>Everything in Starter</li>
+<li>4 weeks 1-on-1 WeChat group support</li>
+<li>Your agent decision-tree design</li>
+<li>Weekly runtime log diagnosis</li>
+<li>5 cron-prompt templates (dev.to / multi-repo / scrape / WeChat / knowledge)</li>
+<li>Monthly check-ins x 4</li>
+</ul>
+<a href="mailto:jiejuefuyou@gmail.com?subject=Professional+Package+499+CNY&body=Hi%2C%20I%27d%20like%20the%20Professional%20package%20for%20Claude%20Code%2024%2F7%20setup.%20My%20setup%3A%20Windows%20%2F%20macOS.%20Use%20case%3A%20" class="cta">Book 499 CNY Professional</a>
+</div>
+<div class="tier">
+<div class="tier-label">Enterprise</div>
+<div class="price"><span class="strike">4999 CNY</span>2499 CNY <span class="note">/ one-time</span></div>
+<div class="desc">First 10 clients only -- then back to 4999 CNY</div>
+<ul>
+<li>Everything in Professional</li>
+<li>4 x 60-min video sessions (weekly)</li>
+<li>Full orchestration customization for your team</li>
+<li>3-5 person team onboard (separate setups)</li>
+<li>Team agent collaboration playbook</li>
+<li>30-day architecture guarantee</li>
+</ul>
+<a href="mailto:jiejuefuyou@gmail.com?subject=Enterprise+Package+2499+CNY&body=Hi%2C%20I%27d%20like%20the%20Enterprise%20package%20for%20team%20Claude%20Code%2024%2F7%20setup.%20Team%20size%3A%20Location%3A%20" class="cta">Book 2499 CNY Enterprise</a>
+</div>
+</div>
+<p style="margin-top:16px;font-size:.85rem;color:var(--muted)">All prices in CNY. Pay via Alipay / Wise / PayPal. No contract. Monthly retainer available after onboarding.</p>
+</section>
+
+<section>
+<h2>What the Setup Looks Like</h2>
+<div class="card" style="margin-bottom:12px"><h3>Day 0 -- Contact plus Book</h3><p style="margin-bottom:0">Email me with your setup (Windows/macOS) plus use case. I send you a time or WeChat handle.</p></div>
+<div class="card" style="margin-bottom:12px"><h3>Day 1 -- 30-Min Session</h3><p style="margin-bottom:0">Screen-share walkthrough. Calibrate coordinates, set up Task Scheduler/launchd, run your first test fire. You will see it produce output within the session.</p></div>
+<div class="card" style="margin-bottom:12px"><h3>Day 2-7 -- Stabilize</h3><p style="margin-bottom:0">Your agent runs overnight. You see hourly commits in your GitHub. I review loop.log and send tweaks if needed.</p></div>
+<div class="card"><h3>Day 8-plus -- Ship</h3><p style="margin-bottom:0">Your agent handles backlog autonomously. You review and approve decisions. Time-to-market collapses. Pro clients get weekly log reviews for 4 weeks.</p></div>
+</section>
+
+<section>
+<h2>FAQ</h2>
+<div class="faq-item"><h4>I have zero coding experience -- can I do this?</h4><p>Starter gets you set up even without coding experience -- as long as you can install Python venv and edit a markdown file. If you cannot articulate "what I want the agent to do" in writing, go Professional.</p></div>
+<div class="faq-item"><h4>What is the difference vs. Anthropic API plus n8n?</h4><p>API plus workflow platforms are for teams (1000-plus USD/month). This is for solo indies (20 USD/month Pro subscription). Run both in parallel: API for high-priority tasks, desktop loop for low-priority overnight work.</p></div>
+<div class="faq-item"><h4>Will this get my account banned?</h4><p>Desktop-loop simulates your own keyboard and mouse into your own IDE -- not a violation of Anthropic TOS. I have run 36-plus hours with zero warnings. Rules: do not run 24/7 at full speed, do not share the account, do not market it as "unlimited automation."</p></div>
+<div class="faq-item"><h4>macOS or Windows -- which works better?</h4><p>Both work. Windows Task Scheduler has friendlier GUI; macOS launchd is cleaner but requires a one-time Accessibility permission. Pick whichever machine can stay on 24/7.</p></div>
+<div class="faq-item"><h4>What is the refund policy?</h4><p>Starter is non-refundable (99 CNY = 30 min of my time). Professional and Enterprise: if after 2 weeks it is genuinely not working, partial refund considered case-by-case.</p></div>
+<div class="faq-item"><h4>Can I resell this service to my clients?</h4><p>Starter/Professional: no. Enterprise includes a commercial license for internal deployment, but you cannot offer "Claude Code 24/7 consulting" as a service to others.</p></div>
+</section>
+
+<div class="email-capture" id="agent-email-capture">
+  <h3>Get the free Claude Code Readiness Checklist first</h3>
+  <p>6 questions to answer before the call -- tells you if $99 Starter, $499 Professional, or DIY is right for your setup. Sent within 24 hrs, no spam.</p>
+  <div class="row">
+    <input type="email" id="agent-email" placeholder="your@email.com" autocomplete="email">
+    <button onclick="submitAgentEmail()">Send checklist</button>
+  </div>
+  <div class="email-success" id="agent-email-success" style="display:none">Sent! Check your inbox.</div>
+</div>
+
+<div class="cta-box">
+
+<h3>GitHub is free. This service is not.</h3>
+<p>The full toolkit is MIT open source at <a href="https://github.com/jiejuefuyou/autoapp-toolkit">github.com/jiejuefuyou/autoapp-toolkit</a> -- read it, fork it, build it yourself.<br>
+What you are paying for is the 14 days of debugging I already did so you do not have to.</p>
+<div>
+<a href="mailto:jiejuefuyou@gmail.com?subject=Claude+Code+24%2F7+Setup+--+Interested&body=Hi%2C%20I%27m%20interested%20in%20Claude%20Code%2024%2F7%20setup.%20My%20setup%3A%20Windows%20%2F%20macOS.%20Use%20case%3A%20" class="btn-primary">Email jiejuefuyou@gmail.com</a>
+<a href="https://github.com/jiejuefuyou/autoapp-toolkit" class="btn-ghost">Browse Free GitHub</a>
+</div>
+</div>
+
+</div>
+
+<footer>
+<p><a href="index.html">jiejuefuyou.github.io</a> -- <a href="https://github.com/jiejuefuyou/autoapp-toolkit">autoapp-toolkit (MIT)</a> -- <a href="mailto:jiejuefuyou@gmail.com">jiejuefuyou@gmail.com</a></p>
+<p style="margin-top:8px">Built with Claude Code. No AI-washing -- just ship.</p>
+</footer>
+
+</div>
+<script>
+function submitAgentEmail() {
+  var email = document.getElementById("agent-email").value;
+  if (!email || !email.includes("@")) { alert("Please enter a valid email."); return; }
+  var payload = {
+    source: "agent-setup-consult",
+    email: email,
+    tier: "warm",
+    utm_source: "agent-setup-page",
+    utm_medium: "email-capture"
+  };
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || "http://localhost:8787/capture").trim();
+  fetch(webhookUrl, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(payload)}).catch(function() {});
+  document.getElementById("agent-email-success").style.display = "block";
+  document.getElementById("agent-email").disabled = true;
+  document.querySelector("#agent-email-capture button").disabled = true;
+}
+(function() {
+  var el = document.getElementById("agent-email-capture");
+  if (!el) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { el.style.display = "block"; observer.disconnect(); }
+    });
+  }, {threshold: 0.15});
+  var marker = document.querySelector(".faq-item:last-of-type") || document.querySelector(".tier-grid");
+  if (marker) observer.observe(marker);
+})();
+</script>
+
+</html>

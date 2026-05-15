@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AutoApp · All for sale — products, services, affiliate program</title>
+<meta name="description" content="One page, every revenue path: digital products ($15-$499), B2B consulting ($99-$2999), affiliate program (30%). For indie iOS devs and founders.">
+<meta property="og:title" content="AutoApp · Everything for sale">
+<meta property="og:description" content="Digital products, consulting, affiliate program — single source of truth.">
+<meta property="og:url" content="https://jiejuefuyou.github.io/sales.html">
+<style>
+:root { --bg:#0a0a0f; --bg-card:#12121a; --border:#1f1f2e; --text:#e6e6f0; --muted:#8a8a9a; --accent:#6c4be0; --accent-2:#9b6cf0; --good:#4ade80; --warn:#ffb547; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--text); font: 16px/1.6 -apple-system, system-ui, sans-serif; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 880px; margin: 0 auto; padding: 60px 24px 80px; }
+nav { font-size: .9rem; padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 28px; }
+nav a { color: var(--muted); }
+h1 { font-size: 2.2rem; line-height: 1.15; margin-bottom: 8px; background: linear-gradient(135deg,#6c4be0,#c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.lede { color: var(--muted); margin-bottom: 36px; font-size: 1.05rem; }
+.section { margin-bottom: 44px; }
+.section > h2 { font-size: 1.4rem; margin-bottom: 6px; letter-spacing: -.01em; }
+.section > .sec-lede { color: var(--muted); font-size: .9rem; margin-bottom: 16px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 14px; }
+.card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; }
+.card.featured { border-color: rgba(108,75,224,.5); background: linear-gradient(135deg, rgba(108,75,224,.08), rgba(192,132,252,.02)); }
+.card .price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+.card .price { font-size: 1.5rem; font-weight: 700; color: var(--accent-2); }
+.card .price-was { color: var(--muted); font-size: .9rem; text-decoration: line-through; }
+.card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.card p { color: var(--text); font-size: .9rem; margin-bottom: 12px; flex-grow: 1; }
+.card ul { margin: 6px 0 12px 18px; }
+.card li { color: var(--muted); font-size: .82rem; margin-bottom: 3px; }
+.cta { display: inline-block; padding: 9px 18px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white !important; border-radius: 8px; font-weight: 600; font-size: .88rem; text-align: center; margin-top: auto; }
+.cta:hover { text-decoration: none; transform: translateY(-1px); }
+.cta-soft { display: inline-block; padding: 9px 18px; background: var(--bg); border: 1px solid var(--border); color: var(--text) !important; border-radius: 8px; font-size: .88rem; text-align: center; margin-top: auto; }
+.tag { display: inline-block; font-size: .68rem; padding: 1px 8px; border-radius: 999px; background: var(--border); color: var(--muted); margin-left: 6px; vertical-align: middle; }
+.tag.live { background: rgba(74,222,128,.15); color: var(--good); }
+.tag.new { background: rgba(255,181,71,.15); color: var(--warn); }
+.tag.free { background: rgba(108,75,224,.15); color: var(--accent-2); }
+.affiliate-banner { background: linear-gradient(135deg, rgba(74,222,128,.08), rgba(74,222,128,.02)); border: 1px solid rgba(74,222,128,.4); border-radius: 12px; padding: 22px 24px; margin: 30px 0; }
+.affiliate-banner h2 { color: var(--good); margin-bottom: 6px; }
+footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: .85rem; text-align: center; }
+@media (max-width: 600px) { .wrap { padding: 40px 18px 60px; } h1 { font-size: 1.75rem; } }
+#sales-email-capture{display:none;background:linear-gradient(135deg,rgba(108,75,224,.12),rgba(192,132,252,.04));border:1px solid rgba(108,75,224,.35);border-radius:12px;padding:20px 24px;margin:24px 0;text-align:center;}
+#sales-email-capture.visible{display:block;}
+#sales-email-capture p{color:var(--text);font-size:.9rem;margin-bottom:12px;}
+#sales-email-capture input[type=email]{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:.9rem;width:220px;margin-right:8px;}
+#sales-email-capture button{padding:10px 18px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:.88rem;}
+#sales-email-capture button:hover{opacity:.9;}
+#sales-email-success{display:none;color:var(--good);font-weight:600;font-size:.9rem;}
+</style>
+<script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
+</head>
+<body>
+<div class="wrap">
+
+<nav><a href="index.html">← AutoApp home</a></nav>
+
+<h1>Everything for sale</h1>
+<p class="lede">One page. Every revenue path AutoApp offers — digital products, B2B consulting, affiliate program. From a 60-day indie iOS dev experiment.</p>
+
+<section class="section">
+<h2>Digital Products on Gumroad</h2>
+<p class="sec-lede">PDFs, templates, real numbers. 30-day refund guarantee.</p>
+
+<div class="grid">
+
+<div class="card featured">
+  <div class="price-row"><span class="price">$19</span><span class="price-was">$29 std</span><span class="tag new">NEW · LIVE</span></div>
+  <h3>iOS Indie Launch Playbook</h3>
+  <p>50-page PDF. The exact ASC playbook from shipping 4 iOS apps in 60 days. Real numbers, real timeline, real bugs.</p>
+  <ul>
+    <li>32-check pre-submission verifier</li>
+    <li>TestFlight install fail debug tree</li>
+    <li>IAP setup (StoreKit 2) walkthrough</li>
+    <li>ASC API V1/V2 trap reference</li>
+  </ul>
+  <a href="https://jiejuefuyou.gumroad.com/l/gncbck?utm_source=site&utm_medium=sales&utm_campaign=playbook" class="cta" target="_blank" rel="noopener">Get on Gumroad →</a>
+</div>
+
+<div class="card featured">
+  <div class="price-row"><span class="price">$15</span><span class="price-was">$25 std</span><span class="tag new">NEW · LIVE</span></div>
+  <h3>30-Day B2B Cold Email Templates</h3>
+  <p>5 ICPs × 5 templates = 25 paste-ready cold emails. From 60-day indie outreach.</p>
+  <ul>
+    <li>5 ICP profiles</li>
+    <li>30-day send calendar (CSV)</li>
+    <li>Reply rate benchmarks</li>
+    <li>Day 1 / 7 / 14 follow-ups</li>
+  </ul>
+  <a href="https://jiejuefuyou.gumroad.com/l/jdmmy?utm_source=site&utm_medium=sales&utm_campaign=b2b-email" class="cta" target="_blank" rel="noopener">Get on Gumroad →</a>
+</div>
+
+<div class="card">
+  <div class="price-row"><span class="price">FREE</span><span class="tag free">lead magnet</span></div>
+  <h3>14 iOS Rejection Reasons</h3>
+  <p>1-page PDF. The 14 most common iOS App Store rejection reasons + specific fixes.</p>
+  <a href="https://jiejuefuyou.gumroad.com/l/sphytu?utm_source=site&utm_medium=sales&utm_campaign=lead-magnet" class="cta-soft" target="_blank" rel="noopener">Free download →</a>
+</div>
+
+<div class="card">
+  <div class="price-row"><span class="price">$9.99</span><span class="tag live">LIVE</span></div>
+  <h3>AI Prompt Vault Master</h3>
+  <p>160 bilingual prompts (EN+ZH) across 8 categories. Coding, content, business, life. Variable substitution syntax.</p>
+  <a href="https://jiejuefuyou.gumroad.com/l/prompt-vault-master?utm_source=site&utm_medium=sales&utm_campaign=master" class="cta" target="_blank" rel="noopener">Get the Master Pack →</a>
+</div>
+
+<div class="card">
+  <div class="price-row"><span class="price">$25</span><span class="price-was">$39.96 sep</span><span class="tag live">LIVE</span></div>
+  <h3>Indie Toolkit Bundle</h3>
+  <p>Complete bundle — all 4 prompt packs. 330+ curated AI prompts for coding, content, marketing.</p>
+  <a href="https://jiejuefuyou.gumroad.com/l/prompt-vault-complete?utm_source=site&utm_medium=sales&utm_campaign=bundle" class="cta" target="_blank" rel="noopener">Get the Bundle →</a>
+</div>
+
+<div class="card">
+  <div class="price-row"><span class="price">$14.99</span><span class="tag">3 specialty packs</span></div>
+  <h3>Specialty Packs (each)</h3>
+  <p>Indie Dev Pack (65 prompts) · Content Creator Pack (49) · Marketer Pack (70). One pack at a time.</p>
+  <a href="https://jiejuefuyou.gumroad.com/" class="cta-soft" target="_blank" rel="noopener">See all on Gumroad →</a>
+</div>
+
+<div class="card featured">
+  <div class="price-row"><span class="price">$39</span><span class="tag new">NEW · LIVE</span></div>
+  <h3>AutoApp Dashboard — Manifest-Driven Indie Tool Stack</h3>
+  <p>Production-ready 3-panel indie dev dashboard. Auto-discovers assets via YAML frontmatter. Real-time revenue tracker.</p>
+  <ul>
+    <li>Flask backend (~480 LOC)</li>
+    <li>3-panel UI: TODO / Check / Run</li>
+    <li>Real-time /api/revenue endpoint</li>
+    <li>Cron-friendly cleanup</li>
+  </ul>
+  <a href="https://jiejuefuyou.gumroad.com/l/hmmzt?utm_source=site&utm_medium=sales&utm_campaign=dashboard-sku" class="cta" target="_blank" rel="noopener">Get the Dashboard →</a>
+</div>
+
+<div class="card featured">
+  <div class="price-row"><span class="price">$499</span><span class="tag new">NEW · LIVE</span><span class="tag">high-ticket</span></div>
+  <h3>ASC API Toolkit — 60+ Python scripts</h3>
+  <p>Production-tested ASC automation toolkit. Built shipping 4 iOS apps. Save 30-40 hours per launch cycle.</p>
+  <ul>
+    <li>IAP creation + price tier setup (CDP)</li>
+    <li>TestFlight install diagnostic (8-step debug)</li>
+    <li>16-channel revenue rollup</li>
+    <li>32-check pre-submission verifier</li>
+  </ul>
+  <a href="https://jiejuefuyou.gumroad.com/l/vszsui?utm_source=site&utm_medium=sales&utm_campaign=asc-toolkit" class="cta" target="_blank" rel="noopener">Get the Toolkit →</a>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<h2>B2B Consulting</h2>
+<p class="sec-lede">Done-for-you consulting on iOS launches and Claude Code agent setup.</p>
+
+<div class="grid">
+
+<div class="card featured">
+  <div class="price-row"><span class="price">$99</span><span class="tag">starter call</span></div>
+  <h3>iOS Launch Rescue · 30-min call</h3>
+  <p>I review your iOS launch plan + give you the exact debug tree for any blocker. Save 5-10 hours of ASC bureaucracy.</p>
+  <ul>
+    <li>30-day refund guarantee</li>
+    <li>USD or JPY accepted</li>
+    <li>Slot picker via Calendly</li>
+  </ul>
+  <a href="book-call.html" class="cta">Book a call →</a>
+</div>
+
+<div class="card">
+  <div class="price-row"><span class="price">$299-$2999</span><span class="tag">tiered packages</span></div>
+  <h3>iOS Launch Rescue · Full Service</h3>
+  <p>Pre-submission checklist + ASC bureaucracy + first IAP + first 100 lead funnel. Tier matched to your timeline.</p>
+  <a href="services.html" class="cta-soft">See full services →</a>
+</div>
+
+<div class="card">
+  <div class="price-row"><span class="price">$499-$5000</span><span class="tag">specialist</span></div>
+  <h3>Claude Code Agent Setup</h3>
+  <p>Set up an autonomous Claude Code agent for your team. Tools, prompts, memory templates, governance.</p>
+  <a href="agent-setup-consult.html" class="cta-soft">Agent setup details →</a>
+</div>
+
+<div class="card">
+  <div class="price-row"><span class="price">FREE</span><span class="tag free">qualifier</span></div>
+  <h3>B2B fit quiz · 7 questions</h3>
+  <p>2-min quiz to qualify if my consulting fits your situation. Tier scoring + custom roadmap email.</p>
+  <a href="b2b-quiz.html" class="cta-soft">Take the quiz →</a>
+</div>
+
+</div>
+</section>
+
+<div class="affiliate-banner">
+  <h2>💚 Affiliate Program — 30% commission</h2>
+  <p>5 products eligible. Lifetime tracking via Gumroad. $0 sign-up. Paid monthly.</p>
+  <p style="margin-top:10px"><a href="https://jiejuefuyou.gumroad.com/affiliates" class="cta" target="_blank" rel="noopener">Become an affiliate →</a></p>
+  <p class="muted" style="margin-top:8px;font-size:.85rem;color:var(--muted)">Read why I set this up at Day 60 (and should have done it Day 1): <a href="https://dev.to/snake_sun/setting-up-a-gumroad-affiliate-program-in-5-minutes-and-what-nobody-tells-you-3an6" target="_blank" rel="noopener">dev.to writeup</a></p>
+</div>
+
+<section class="section">
+<h2>iOS Apps (4 awaiting Apple Review)</h2>
+<p class="sec-lede">$1.99 one-time IAP. No subscriptions. Zero analytics SDKs. Verifiable privacy via <code>nm</code> on the binary.</p>
+<div class="grid">
+
+<div class="card">
+  <div class="price-row"><span class="price">$1.99</span><span class="tag">awaiting review</span></div>
+  <h3>AutoChoice</h3>
+  <p>Decision wheel for when "you decide" isn't an option. Type options, tap Spin.</p>
+  <a href="https://github.com/jiejuefuyou/autoapp-hello" class="cta-soft" target="_blank" rel="noopener">Source on GitHub →</a>
+</div>
+
+<div class="card">
+  <div class="price-row"><span class="price">$1.99</span><span class="tag">awaiting review</span></div>
+  <h3>AltitudeNow</h3>
+  <p>Live altitude + barometric pressure. Reads built-in sensor — no GPS, no network.</p>
+  <a href="https://github.com/jiejuefuyou/autoapp-altitude-now" class="cta-soft" target="_blank" rel="noopener">Source on GitHub →</a>
+</div>
+
+<div class="card">
+  <div class="price-row"><span class="price">$1.99</span><span class="tag">awaiting review</span></div>
+  <h3>DaysUntil</h3>
+  <p>Quiet countdown for dates that matter. Birthdays, deadlines, anniversaries. No notifications.</p>
+  <a href="https://github.com/jiejuefuyou/autoapp-days-until" class="cta-soft" target="_blank" rel="noopener">Source on GitHub →</a>
+</div>
+
+<div class="card">
+  <div class="price-row"><span class="price">$1.99</span><span class="tag">awaiting review</span></div>
+  <h3>PromptVault</h3>
+  <p>Save AI prompts you actually use. Variable substitution + tags + one-tap copy. 100+ starter prompts.</p>
+  <a href="https://github.com/jiejuefuyou/autoapp-prompt-vault" class="cta-soft" target="_blank" rel="noopener">Source on GitHub →</a>
+</div>
+
+</div>
+</section>
+
+<footer>
+<p><a href="index.html">← Home</a> · <a href="just-published.html">Latest launches</a> · <a href="press-kit.html">Press kit</a> · <a href="deals.html">May 2026 deals</a></p>
+</footer>
+
+
+<div id="sales-email-capture"><p>Get the latest updates + offers delivered to your inbox.</p><input type="email" id="sales-email" placeholder="your@email.com"><button onclick="submitSalesLead()">Notify me</button><span id="sales-email-success">Sent - check your inbox!</span></div>
+</div>
+<script>
+function submitSalesLead(){var e=document.getElementById('sales-email').value;if(!e||!e.includes('@')){alert('Please enter a valid email');return;}var w=(window.LEAD_WEBHOOK_URL||'http://localhost:8787/capture').trim();var p={source:'sales',tier:'newsletter',tier_label:'Newsletter subscriber',score:0,email:e,utm_source:'sales',utm_medium:'email-capture'};fetch(w,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}).catch(function(){});document.getElementById('sales-email-success').style.display='inline';document.getElementById('sales-email').disabled=true;document.querySelector('#sales-email-capture button').disabled=true;}(function(){var el=document.getElementById('sales-email-capture');var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)el.classList.add('visible');});},{threshold:0.1});obs.observe(document.querySelector('.wrap'));})();
+</script></body>
+</html>
