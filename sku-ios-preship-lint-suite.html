@@ -1,0 +1,225 @@
+﻿---
+id: sku-ios-preship-lint-suite
+title: "iOS Pre-Ship Lint Suite — Catch Apple rejections before you push"
+description: "6 Python lints + 8 integration wrappers. Catch the 5 most common Apple Review and CI rejection categories in ~20 seconds, before you push your tag. $79 one-time."
+category: product-landing
+status: draft
+created: 2026-05-17
+send_date: ""
+channel: Gumroad
+notes: |
+  Sales page for ios-preship-lint-suite-v1 ($79).
+  Gumroad slug: ios-preship-lint-suite
+  Spec: products/gumroad-sku-2-ios-preship-lint-suite-spec-2026-05-16.md
+  Site page: site/sku-ios-preship-lint-suite.html
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iOS Pre-Ship Lint Suite — Catch Apple rejections before you push</title>
+<meta name="description" content="6 Python lints + 8 integration wrappers. Catch the 5 most common Apple Review and CI rejection categories in ~20 seconds, before you push your tag. $79 one-time.">
+<style>
+  :root { --bg: #0a0a0f; --bg-card: #12121a; --border: #1f1f2e; --text: #e6e6f0; --muted: #8a8a9a; --accent: #6c4be0; --accent-2: #9b6cf0; --warn: #ffb547; --good: #4ade80; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--text); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 60px 24px 80px; }
+  .tag { font-size: .75rem; padding: 2px 8px; border-radius: 999px; background: var(--border); color: var(--muted); }
+  .tag.live { background: rgba(74,222,128,.15); color: var(--good); }
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; margin-bottom: 12px; }
+  .card h3 { margin: 20px 0 8px; }
+  ul.bullets { list-style: none; padding: 0; }
+  ul.bullets li { padding: 6px 0; padding-left: 18px; position: relative; }
+  ul.bullets li::before { content: "›"; position: absolute; left: 0; color: var(--accent); }
+  code { background: var(--border); padding: 2px 6px; border-radius: 4px; font-size: .9em; }
+  .cta { display: inline-block; padding: 14px 28px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border-radius: 8px; font-weight: 700; font-size: 1.1rem; text-decoration: none; margin-top: 16px; }
+  .cta:hover { text-decoration: none; transform: translateY(-1px); }
+  .cta-secondary { display: inline-block; padding: 12px 20px; background: transparent; border: 1px solid var(--border); color: var(--muted); border-radius: 8px; font-weight: 600; text-decoration: none; margin-top: 12px; }
+  .muted { color: var(--muted); font-size: .9rem; }
+  header { padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+  header h1 { font-size: 2rem; line-height: 1.2; letter-spacing: -.02em; background: linear-gradient(135deg, #6c4be0, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  nav { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 24px; font-size: .9rem; }
+  nav a { padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; }
+  h2 { font-size: 1.5rem; margin-bottom: 16px; letter-spacing: -.01em; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .9rem; }
+  th { text-align: left; padding: 10px 12px; background: var(--bg-card); border: 1px solid var(--border); color: var(--muted); }
+  td { padding: 10px 12px; border: 1px solid var(--border); }
+  .cmd-block { background: #000; border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .85rem; color: #a8ff78; overflow-x: auto; margin: 16px 0; }
+  .problem-block { background: rgba(248,113,113,.08); border: 1px solid rgba(248,113,113,.3); border-radius: 12px; padding: 24px 22px; margin-bottom: 40px; }
+  .problem-block h2 { color: #f87171; margin-bottom: 12px; }
+  .solution-block { background: rgba(74,222,128,.08); border: 1px solid rgba(74,222,128,.3); border-radius: 12px; padding: 24px 22px; margin-bottom: 40px; }
+  .solution-block h2 { color: var(--good); margin-bottom: 12px; }
+  .buy-box { background: var(--bg-card); border: 2px solid var(--accent); border-radius: 14px; padding: 32px; text-align: center; margin: 40px 0; }
+  .buy-box .price { font-size: 3rem; font-weight: 700; color: var(--good); }
+  .buy-box .price-sub { font-size: .9rem; color: var(--muted); margin-top: 4px; }
+  .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q { font-weight: 700; margin-bottom: 8px; }
+  .faq-a { color: var(--muted); font-size: .95rem; }
+  footer { margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--border); color: var(--muted); font-size: .9rem; text-align: center; }
+  @media (max-width: 600px) { .wrap { padding: 40px 18px 60px; } header h1 { font-size: 1.5rem; } .buy-box .price { font-size: 2.2rem; } }
+</style>
+<link rel="canonical" href="https://jiejuefuyou.github.io/sku-ios-preship-lint-suite.html"></head>
+<body>
+<div class="wrap">
+<header>
+  <nav>
+    <a href="index.html">← AutoApp home</a>
+    <a href="sales.html">All products</a>
+    <a href="index.html#digital-products">Prompt packs</a>
+    <a href="book-call.html">Consulting</a>
+  </nav>
+</header>
+
+<section style="margin-bottom:32px">
+  <span class="tag" style="background:rgba(108,75,224,.2);color:#c084fc">B2B iOS Dev Tool</span>
+  <span class="tag" style="margin-left:6px">6 Python scripts</span>
+  <span class="tag" style="margin-left:6px">macOS / Windows / Linux</span>
+</section>
+
+<h1 style="font-size:2.2rem;margin-bottom:16px;line-height:1.2">Catch Apple Rejections<br>Before You Push Your Tag</h1>
+<p style="color:var(--muted);font-size:1.15rem;margin-bottom:24px">6 Python lints + 8 integration wrappers. Catches the 5 most common Apple Review and CI rejection categories in ~20 seconds — while you still have time to fix them.</p>
+
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px">
+  <a href="https://jiejuefuyou.gumroad.com/l/ios-preship-lint-suite" class="cta">Buy on Gumroad — $79</a>
+  <a href="#what-you-get" class="cta-secondary">See what's inside</a>
+</div>
+
+<div class="cmd-block">
+  # Run all 5 lints in one shot — takes ~20 seconds<br>
+  python ios_preflight_master.py /path/to/your-ios-repo<br><br>
+  # Output: 5 categories checked. 0 surprises left.
+</div>
+
+<div class="problem-block">
+  <h2>The problem</h2>
+  <p class="muted" style="margin-bottom:16px">You submit. Apple rejects. You fix. You resubmit. Apple takes 24-48h to review. Each round-trip costs you 1-3 days and burns your review credits.</p>
+  <p class="muted">The worst part: most rejections fall into a handful of predictable categories. <strong>Signed integer overflow in accumulators. Bundle(for:) inside @testable import. Capability drift between Xcode and App Store Connect.</strong> These are all catchable — before you ever tag a build.</p>
+</div>
+
+<div class="solution-block">
+  <h2>The fix</h2>
+  <p class="muted" style="margin-bottom:16px"><strong>iOS Pre-Ship Lint Suite</strong> runs 6 targeted checks against your repo in ~20 seconds. It catches the 5 rejection categories that cause the most round-trips — so you fix them in your IDE, not after Apple's review cycle.</p>
+  <p class="muted">Works on any xcodegen-based iOS project. Fastlane match assumed but adaptable. Python 3.10+. Runs locally, in CI, or as a pre-commit hook.</p>
+</div>
+
+<section id="what-you-get" style="margin-bottom:48px">
+  <h2>What you get</h2>
+
+  <div class="card">
+    <h3>6 Core Lints</h3>
+    <table>
+      <thead><tr><th>Lint</th><th>Catches</th><th>Offline?</th></tr></thead>
+      <tbody>
+        <tr><td>swift_modular_lint.py</td><td><code>truncatingRemainder</code> + signed <code>%</code> on accumulators</td><td>✅</td></tr>
+        <tr><td>test_bundle_audit.py</td><td><code>Bundle(for:)</code> inside <code>@testable import</code></td><td>✅</td></tr>
+        <tr><td>match_audit.py</td><td>Matchfile vs project.yml bundle ID drift</td><td>✅</td></tr>
+        <tr><td>asc_capability_consistency.py</td><td>Code uses HealthKit/iCloud/App Group not registered on Apple</td><td>❌</td></tr>
+        <tr><td>asc_health_check_one_shot.py</td><td>Submission readiness (build attach / locales / IAP)</td><td>❌</td></tr>
+        <tr><td>ios_preflight_master.py</td><td>All 5 above in one command</td><td>❌</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="margin-top:12px">Lints marked ❌ require ASC API credentials (Key ID + Issuer ID + .p8 key file). Lints marked ✅ run fully offline — no network, no API key needed.</p>
+  </div>
+
+  <div class="card">
+    <h3>8 Integration Wrappers</h3>
+    <ul class="bullets">
+      <li><code>01_run_all_local.sh</code> — local dev loop (run after every build)</li>
+      <li><code>02_run_in_ci.sh</code> — GitHub Actions CI gate</li>
+      <li><code>03_lint_single_repo.py</code> — programmatic JSON output for tooling</li>
+      <li><code>04_run_swift_modular_with_filter.py</code> — false-positive suppression</li>
+      <li><code>05_run_asc_health_on_schedule.py</code> — cron snapshot before submission</li>
+      <li><code>06_pre_commit_hook.sh</code> — git hook drop-in (block bad tags)</li>
+      <li><code>07_verify_before_tag.sh</code> — pre-tag readiness probe</li>
+      <li><code>08_verify_i18n_kit_completeness.py</code> — companion to the i18n template kit</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Documentation</h3>
+    <ul class="bullets">
+      <li><strong>LESSONS.md</strong> — the 5 rejection case studies each lint encodes (real Apple rejection patterns)</li>
+      <li><strong>CHANGELOG.md</strong> — version history</li>
+      <li><strong>LICENSE</strong> — MIT, free for private and open-source projects</li>
+    </ul>
+  </div>
+</section>
+
+<section id="why-this" style="margin-bottom:48px">
+  <h2>Why this exists</h2>
+  <p class="muted" style="margin-bottom:16px">I shipped 4 iOS apps in 60 days using one Claude Code agent. The hardest part wasn't building — it was Apple's review cycle. Each rejection took 24-48h to hear back, and the fix was usually trivial once I knew what to look for.</p>
+  <p class="muted" style="margin-bottom:16px">I built these 6 lints after watching the same categories of rejections repeat across 4 different apps. They're the post-mortem of 60 days of Apple review cycles — encoded into scripts you can run in 20 seconds.</p>
+  <p class="muted">Built for iOS developers who ship fast and can't afford to burn review credits on preventable rejections.</p>
+</section>
+
+<section id="who" style="margin-bottom:48px">
+  <h2>Who this is for</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+    <div class="card" style="margin-bottom:0">
+      <h3 style="margin-top:0">Indie iOS devs</h3>
+      <p class="muted">Ship fast, burn fewer review credits. 5 rejections prevented = ~1 week saved.</p>
+    </div>
+    <div class="card" style="margin-bottom:0">
+      <h3 style="margin-top:0">Small studios</h3>
+      <p class="muted">CI gate prevents bad builds from reaching App Store review. Team-wide.</p>
+    </div>
+    <div class="card" style="margin-bottom:0">
+      <h3 style="margin-top:0">Agent-driven workflows</h3>
+      <p class="muted">Claude Code / Cursor / Copilot can run these lints between "build done" and "tag pushed".</p>
+    </div>
+  </div>
+</section>
+
+<div class="buy-box" id="buy">
+  <div class="price">$79</div>
+  <div class="price-sub">one-time purchase · MIT license · instant delivery</div>
+  <a href="https://jiejuefuyou.gumroad.com/l/ios-preship-lint-suite" class="cta" style="margin-top:24px">Buy on Gumroad →</a>
+  <p class="muted" style="margin-top:12px;font-size:.85rem">Gumroad processes payment. Download link arrives immediately.</p>
+</div>
+
+<section style="margin-bottom:48px">
+  <h2>FAQ</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Does this guarantee my app won't get rejected?</div>
+    <div class="faq-a">No. Apple reviews ~50 rejection categories. This suite catches the 5 most common ones based on 60 days of real submissions across 4 apps. It's the highest-value subset — not a complete solution.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Why Python and not Swift?</div>
+    <div class="faq-a">These lints run against your Xcode project structure, build outputs, and ASC API — not Swift source code. Python is the natural choice for tooling that bridges Xcode, Fastlane, and App Store Connect's REST API.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What about App Store Review Guideline checks?</div>
+    <div class="faq-a">Those are human judgment calls. This suite handles structural and technical checks (code patterns, bundle IDs, capability registration, IAP completeness).</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Can I use this with manual signing (no Fastlane)?</div>
+    <div class="faq-a">The match_audit.py assumes Fastlane match directory structure. The other 5 lints work with any signing setup. You can adapt match_audit.py for manual setups — it's ~50 lines.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Is there a trial version?</div>
+    <div class="faq-a">The offline lints (swift_modular_lint.py, test_bundle_audit.py, match_audit.py) are fully functional and don't require a license key. Run them directly against your repo to verify the quality before buying.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What's your refund policy?</div>
+    <div class="faq-a">If the product doesn't work as described, email me and I'll refund. No questions asked.</div>
+  </div>
+</section>
+
+<footer>
+  <p>Part of <a href="index.html">AutoApp</a> — 4 iOS apps, one AI agent, zero subscriptions.</p>
+  <p style="margin-top:6px"><a href="https://github.com/jiejuefuyou/autoapp-toolkit">autoapp-toolkit on GitHub</a> · <a href="https://jiejuefuyou.gumroad.com">Gumroad storefront</a></p>
+</footer>
+</div>
+</body>
+</html>
