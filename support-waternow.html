@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WaterNow — Support</title>
+<meta name="description" content="Support for WaterNow iOS — friction-free hydration tracking with offline storage and one-tap log. FAQ, troubleshooting, contact, privacy.">
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #1a1a1a; line-height: 1.6; }
+  h1 { font-size: 2em; margin-bottom: 0.2em; }
+  h2 { margin-top: 2em; border-bottom: 1px solid #eee; padding-bottom: 6px; }
+  h3 { margin-top: 1.4em; }
+  .subtitle { color: #666; margin-bottom: 2em; }
+  .contact-box { background: #f7f7f9; padding: 18px 20px; border-radius: 8px; margin: 1em 0; }
+  a { color: #0066cc; }
+  code { background: #f1f1f3; padding: 2px 6px; border-radius: 4px; font-size: 0.92em; }
+  ul { padding-left: 1.4em; }
+  li { margin: 0.4em 0; }
+  footer { margin-top: 4em; padding-top: 1em; border-top: 1px solid #eee; color: #888; font-size: 0.88em; }
+</style>
+</head>
+<body>
+
+<h1>WaterNow — Support</h1>
+<p class="subtitle">Help, FAQ, and contact for WaterNow iOS — track your daily hydration with a tap. Offline, zero ads, no subscription.</p>
+
+<div class="contact-box">
+  <strong>Need help? Contact us directly:</strong><br>
+  📧 Email: <a href="mailto:jiejuefuyou@gmail.com?subject=WaterNow%20support">jiejuefuyou@gmail.com</a><br>
+  ⏱ Response time: within 48 hours (Tokyo time, JST)<br>
+  🌐 App Store: <a href="https://apps.apple.com/app/waternow">WaterNow on the App Store</a> <em>(pending — initial review)</em>
+</div>
+
+<h2>FAQ</h2>
+
+<h3>What does WaterNow do?</h3>
+<p>WaterNow is a no-nonsense hydration tracker. Tap a button to log a glass / bottle / custom amount. See a daily progress ring. Get a friendly reminder every few hours (optional). That's it. No friend challenges. No streaks that punish you for missing a day. No subscription.</p>
+
+<h3>What's the daily target?</h3>
+<p>You set it. Default is 2000 mL (2 liters) — the widely cited general adult target — but real hydration needs vary by body size, activity, climate, and diet. The app lets you set anything from 500 mL to 6000 mL. WaterNow is not medical advice; consult a clinician if you have specific hydration needs.</p>
+
+<h3>Does WaterNow read or write to Apple Health?</h3>
+<p>Not in v1.0. We're considering adding optional HealthKit integration (read existing water entries, write WaterNow entries) in v1.1 — it'll be opt-in, and Apple's HealthKit privacy controls always apply. v1.0 has zero HealthKit access.</p>
+
+<h3>Where is my hydration data stored?</h3>
+<p>All entries are stored <strong>only on your device</strong> via iOS encrypted standard storage. No account, no cloud, no server. Deleting the app permanently removes all data.</p>
+
+<h3>How do I customize the reminder frequency?</h3>
+<p>Settings → Reminders → choose Off / Every 2 hours / Every 3 hours / Every 4 hours. You can also choose a Quiet Hours window (e.g., no reminders 22:00–07:00). Reminders use iOS local notifications — they fire even when the app is closed but never leave your device.</p>
+
+<h3>How do I restore my Pro purchase on a new device?</h3>
+<p>Open the app → Settings → tap <strong>Restore Purchases</strong>. Same Apple ID required.</p>
+
+<h3>The progress ring shows wrong total — bug?</h3>
+<p>Pull-to-refresh on the home screen usually fixes display lag. If the total stays wrong after a force-quit, email us a screenshot — there was a rounding bug in early TestFlight builds (fixed v1.0.1+).</p>
+
+<h3>Refund policy</h3>
+<p>App Store purchases are managed by Apple. To request a refund: <a href="https://support.apple.com/en-us/HT204084">Apple's standard refund process</a>.</p>
+
+<h2>Troubleshooting</h2>
+<ul>
+  <li><strong>Notifications don't fire:</strong> Settings → Notifications → WaterNow → confirm Allow Notifications is on, and Lock Screen / Notification Center is checked.</li>
+  <li><strong>Progress ring stuck:</strong> pull-to-refresh; if persists, force-quit and reopen.</li>
+  <li><strong>App crashes on launch:</strong> reboot, update iOS, contact us if it continues.</li>
+  <li><strong>Premium not unlocking:</strong> Settings → Restore Purchases.</li>
+</ul>
+
+<h2>Privacy &amp; Terms</h2>
+<ul>
+  <li><a href="https://github.com/jiejuefuyou/autoapp-waternow/blob/main/PRIVACY.md">Privacy Policy</a></li>
+</ul>
+
+<h2>System requirements</h2>
+<ul>
+  <li>iOS 17.0 or later</li>
+  <li>iPhone, iPad</li>
+  <li>~8 MB local storage</li>
+</ul>
+
+<footer>
+  WaterNow is a product of <a href="https://jiejuefuyou.github.io">jiejuefuyou.github.io</a> (Hao Sun, Tokyo). Built independently, no tracking, no ads, no subscriptions.
+</footer>
+
+</body>
+</html>
