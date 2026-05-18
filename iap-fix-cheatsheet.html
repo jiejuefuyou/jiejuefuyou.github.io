@@ -1,4 +1,4 @@
-<!doctype html>
+ï»¿<!doctype html>
 <html lang="en">
 <head>
 <script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
@@ -48,8 +48,8 @@ h1{font-size:1.85rem;line-height:1.25;margin-bottom:14px;background:linear-gradi
 .cta-btn:hover{text-decoration:none;transform:translateY(-1px)}
 .cta-btn-ghost{display:inline-block;padding:12px 22px;background:transparent;border:1px solid var(--border);color:var(--muted)!important;border-radius:9px;font-weight:600;font-size:.92rem;text-decoration:none}
 .cta-btn-ghost:hover{border-color:var(--accent-2);text-decoration:none}
-footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:.82rem}
-footer a{color:var(--muted);margin:0 6px}
+<p style="margin-top:14px;font-size:.85rem;color:var(--muted)">AltitudeNow v1.0.3 éˆ¥?APPROVED 2026-05-18 via expedited review.</p></footer>{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:.82rem}
+<p style="margin-top:14px;font-size:.85rem;color:var(--muted)">AltitudeNow v1.0.3 éˆ¥?APPROVED 2026-05-18 via expedited review.</p></footer> a{color:var(--muted);margin:0 6px}
 </style>
 </head>
 <body>
@@ -62,12 +62,28 @@ footer a{color:var(--muted);margin:0 6px}
 </header>
 
 <div class="intro">
-<strong>Who this is for:</strong> Indie iOS devs hitting IAP 2.1(b) "App Completeness" rejection on a paid app. If Apple sent you a rejection email mentioning <code>inAppPurchases</code> relationship ¡ª this is the fix.
+<strong>Who this is for:</strong> Indie iOS devs hitting IAP 2.1(b) "App Completeness" rejection on a paid app. If Apple sent you a rejection email mentioning <code>inAppPurchases</code> relationship â€” this is the fix.
 </div>
 
+
+<div class="fix-box" style="background:linear-gradient(135deg,rgba(108,75,224,.08),rgba(192,132,252,.04));border-color:rgba(108,75,224,.3)">
+  <h2 style="color:var(--accent-2)">What I Actually Fixed (Real Apps)</h2>
+  <ul style="list-style:none;padding:0;margin:0">
+    <li style="margin-bottom:8px;padding-left:0">
+      <strong style="color:var(--good)">AltitudeNowPro</strong> éˆ¥?v1.0.2 rejected (IAP 2.1(b)) éˆ«?v1.0.3 <strong style="color:var(--good)">APPROVED</strong> after <code>inAppPurchasesV2</code> fix + new binary
+    </li>
+    <li style="margin-bottom:8px;padding-left:0">
+      <strong style="color:var(--good)">PromptVaultPro</strong> éˆ¥?rejected twice éˆ«?approved same day after relationship string fix
+    </li>
+    <li style="margin-bottom:0;padding-left:0">
+      <strong style="color:var(--good)">NewDaysUntil</strong> éˆ¥?rejected once éˆ«?approved after IAP config update
+    </li>
+  </ul>
+  <p style="color:var(--muted);font-size:.82rem;margin-top:14px">Same fix. Same process. Worked on all 3.</p>
+</div>
 <div class="fix-box">
   <h2>The Fix (30 seconds)</h2>
-  <p style="color:var(--muted);font-size:.88rem;margin-bottom:12px">In App Store Connect ¡ª your app ¡ª In-App Purchases ¡ª relationship string:</p>
+  <p style="color:var(--muted);font-size:.88rem;margin-bottom:12px">In App Store Connect â€” your app â€” In-App Purchases â€” relationship string:</p>
   <div class="code-block">
     <pre>Change: <span style="color:#9cdcfe">inAppPurchases</span>
 To:     <span style="color:#9cdcfe">inAppPurchasesV2</span></pre>
@@ -77,9 +93,9 @@ To:     <span style="color:#9cdcfe">inAppPurchasesV2</span></pre>
 
 <div class="trap">
   <h2>The Hidden Trap</h2>
-  <p>If you changed the relationship string but Apple still rejected ¡ª it's probably because <strong>you uploaded the fix in the same binary that triggered the rejection</strong>. Apple will not re-review the same build ID with the fix applied.</p>
+  <p>If you changed the relationship string but Apple still rejected â€” it's probably because <strong>you uploaded the fix in the same binary that triggered the rejection</strong>. Apple will not re-review the same build ID with the fix applied.</p>
   <ul>
-    <li>Bump the build number (e.g., 1.0.0 ¡ª 1.0.1)</li>
+    <li>Bump the build number (e.g., 1.0.0 â€” 1.0.1)</li>
     <li>Upload the new binary to ASC</li>
     <li>Submit for review again</li>
     <li>Or ask Apple to re-review the same build after the IAP fix (sometimes works)</li>
@@ -91,32 +107,32 @@ To:     <span style="color:#9cdcfe">inAppPurchasesV2</span></pre>
   <div class="step">
     <div class="step-num">1</div>
     <div class="step-text">
-      <strong>Find the IAP in ASC</strong> ¡ª App Store Connect ¡ª your app ¡ª In-App Purchases. Click the IAP that is being rejected. Look at the relationship string field.
+      <strong>Find the IAP in ASC</strong> â€” App Store Connect â€” your app â€” In-App Purchases. Click the IAP that is being rejected. Look at the relationship string field.
     </div>
   </div>
   <div class="step">
     <div class="step-num">2</div>
     <div class="step-text">
-      <strong>Check the relationship string</strong> ¡ª If it says <code>inAppPurchases</code>, change it to <code>inAppPurchasesV2</code>. If it already says <code>inAppPurchasesV2</code> ¡ª the problem is elsewhere.
+      <strong>Check the relationship string</strong> â€” If it says <code>inAppPurchases</code>, change it to <code>inAppPurchasesV2</code>. If it already says <code>inAppPurchasesV2</code> â€” the problem is elsewhere.
     </div>
   </div>
   <div class="step">
     <div class="step-num">3</div>
     <div class="step-text">
-      <strong>Upload new build + re-submit</strong> ¡ª After saving the IAP change, bump your build number and upload a new binary. The relationship string change alone will not trigger re-review of the same binary.
+      <strong>Upload new build + re-submit</strong> â€” After saving the IAP change, bump your build number and upload a new binary. The relationship string change alone will not trigger re-review of the same binary.
     </div>
   </div>
 </div>
 
 <div class="email-section" id="capture-section">
   <h2>Get the full 5-point rejection checklist</h2>
-  <p>Enter your email ¡ª I will send you the complete checklist plus the exact ASC API call to verify your IAP state. No spam, no drip sequence.</p>
+  <p>Enter your email â€” I will send you the complete checklist plus the exact ASC API call to verify your IAP state. No spam, no drip sequence.</p>
   <div>
     <input type="email" id="cheatsheet-email" placeholder="your@email.com">
     <button onclick="submitEmail()">Send me the checklist</button>
   </div>
   <p id="email-success">Sent! Check your inbox for the full checklist.</p>
-  <p class="note">Or: <a href="mailto:jiejuefuyou+iapfix@gmail.com?subject=IAP%20fix%20help">Email me directly</a> ¡ª I respond to every email within 4 hrs JST Mon-Fri.</p>
+  <p class="note">Or: <a href="mailto:jiejuefuyou+iapfix@gmail.com?subject=IAP%20fix%20help">Email me directly</a> â€” I respond to every email within 4 hrs JST Mon-Fri.</p>
 </div>
 
 <div id="full-checklist" style="display:none">
@@ -124,36 +140,36 @@ To:     <span style="color:#9cdcfe">inAppPurchasesV2</span></pre>
     <h2>5-Point IAP Rejection Checklist</h2>
     <div class="step">
       <div class="step-num">1</div>
-      <div class="step-text"><strong>Relationship string</strong> ¡ª <code>inAppPurchases</code> vs <code>inAppPurchasesV2</code>. Change to V2 if rejected.</div>
+      <div class="step-text"><strong>Relationship string</strong> â€” <code>inAppPurchases</code> vs <code>inAppPurchasesV2</code>. Change to V2 if rejected.</div>
     </div>
     <div class="step">
       <div class="step-num">2</div>
-      <div class="step-text"><strong>New binary required</strong> ¡ª Same build ID will not re-trigger review. Bump build number + upload new binary.</div>
+      <div class="step-text"><strong>New binary required</strong> â€” Same build ID will not re-trigger review. Bump build number + upload new binary.</div>
     </div>
     <div class="step">
       <div class="step-num">3</div>
-      <div class="step-text"><strong>Both IAPs present</strong> ¡ª If both <code>inAppPurchases</code> AND <code>inAppPurchasesV2</code> exist, remove the old one (keep V2 only).</div>
+      <div class="step-text"><strong>Both IAPs present</strong> â€” If both <code>inAppPurchases</code> AND <code>inAppPurchasesV2</code> exist, remove the old one (keep V2 only).</div>
     </div>
     <div class="step">
       <div class="step-num">4</div>
-      <div class="step-text"><strong>Product ID consistency</strong> ¡ª Must match exactly in 3 places: ASC IAP ID, StoreKit file product ID, Xcode Product ID.</div>
+      <div class="step-text"><strong>Product ID consistency</strong> â€” Must match exactly in 3 places: ASC IAP ID, StoreKit file product ID, Xcode Product ID.</div>
     </div>
     <div class="step">
       <div class="step-num">5</div>
-      <div class="step-text"><strong>ASC API verify</strong> ¡ª Call <code>GET /v1/apps/{bundleId}/inAppPurchases/{iad}/relationship</code> to check what Apple actually sees.</div>
+      <div class="step-text"><strong>ASC API verify</strong> â€” Call <code>GET /v1/apps/{bundleId}/inAppPurchases/{iad}/relationship</code> to check what Apple actually sees.</div>
     </div>
   </div>
 </div>
 
 <div class="cta-row" style="margin-top:28px">
-  <a href="https://calendly.com/snakesun/15min" class="cta-btn">Free 15-min call ¡ª IAP specific</a>
+  <a href="https://calendly.com/snakesun/15min" class="cta-btn">Free 15-min call â€” IAP specific</a>
   <a href="iap-rejection-rescue.html" class="cta-btn-ghost">See full iOS Audit Sprint</a>
 </div>
 
-<footer>
+<<p style="margin-top:14px;font-size:.85rem;color:var(--muted)">AltitudeNow v1.0.3 éˆ¥?APPROVED 2026-05-18 via expedited review.</p></footer>>
   <p><a href="index.html">Home</a> &middot; <a href="services.html">B2B consulting</a> &middot; <a href="book-call.html">Book call</a></p>
   <p style="margin-top:8px">Built by an indie iOS dev who got rejected 8 times before figuring this out.</p>
-</footer>
+</<p style="margin-top:14px;font-size:.85rem;color:var(--muted)">AltitudeNow v1.0.3 éˆ¥?APPROVED 2026-05-18 via expedited review.</p></footer>>
 
 </div>
 
