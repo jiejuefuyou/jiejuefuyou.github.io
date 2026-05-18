@@ -1,0 +1,181 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Exact inAppPurchases Fix That Unblocked My Last 4 Apple Rejections</title>
+<meta name="description" content="Free 1-page cheatsheet: the exact relationship string fix for IAP 2.1(b) rejection. No PDF, no email course. Just the code.">
+<style>
+:root{--bg:#0a0a0f;--bg-card:#12121a;--border:#1f1f2e;--text:#e6e6f0;--muted:#8a8a9a;--accent:#6c4be0;--accent-2:#9b6cf0;--good:#4ade80;--warn:#ffb547;--danger:#f87171}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font:17px/1.65 -apple-system,system-ui,sans-serif;min-height:100vh}
+.wrap{max-width:640px;margin:0 auto;padding:48px 24px 80px}
+a{color:var(--accent-2);text-decoration:none}
+a:hover{text-decoration:underline}
+header{margin-bottom:36px}
+.badge{display:inline-block;font-size:.75rem;padding:3px 12px;border-radius:999px;background:rgba(108,75,224,.15);color:var(--accent-2);border:1px solid rgba(108,75,224,.3);margin-bottom:14px}
+h1{font-size:1.85rem;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,#6c4be0,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
+.lede{color:var(--muted);font-size:1rem;margin-bottom:0}
+.intro{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin:24px 0;font-size:.95rem;color:var(--muted)}
+.intro strong{color:var(--text)}
+.fix-box{background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(34,197,94,.03));border:1px solid rgba(74,222,128,.3);border-radius:12px;padding:22px 24px;margin:24px 0}
+.fix-box h2{font-size:1rem;color:var(--good);margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em;font-weight:700}
+.code-block{background:#0d0d12;border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:14px 0;font-size:.85rem;overflow-x:auto}
+.code-block pre{color:#a5d6a7;font-family:'SF Mono','Fira Code',monospace;margin:0;white-space:pre-wrap;line-height:1.6}
+.trap{background:linear-gradient(135deg,rgba(248,113,113,.08),rgba(239,68,68,.02));border:1px solid rgba(248,113,113,.3);border-radius:12px;padding:20px 22px;margin:24px 0}
+.trap h2{font-size:1rem;color:var(--danger);margin-bottom:10px;font-weight:700}
+.trap p{color:var(--muted);font-size:.88rem;margin-bottom:8px}
+.trap ul{margin:8px 0 0 18px}
+.trap li{color:var(--muted);font-size:.88rem;margin-bottom:5px}
+.steps{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin:24px 0}
+.steps h2{font-size:1.1rem;color:var(--accent-2);margin-bottom:16px}
+.step{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start}
+.step:last-child{margin-bottom:0}
+.step-num{background:var(--accent);color:white;font-size:.78rem;font-weight:700;min-width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.step-text{font-size:.92rem;color:var(--text)}
+.step-text strong{display:block;margin-bottom:3px}
+.step-text code{background:rgba(108,75,224,.15);padding:1px 5px;border-radius:4px;font-size:.82em}
+.email-section{background:linear-gradient(135deg,rgba(108,75,224,.12),rgba(192,132,252,.05));border:1px solid rgba(108,75,224,.35);border-radius:14px;padding:28px;margin:32px 0;text-align:center}
+.email-section h2{font-size:1.25rem;margin-bottom:8px;color:var(--accent-2)}
+.email-section p{color:var(--muted);font-size:.9rem;margin-bottom:18px}
+.email-section input[type=email]{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-size:.95rem;width:260px;margin-right:8px}
+.email-section button{padding:11px 20px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:.9rem}
+.email-section .note{color:var(--muted);font-size:.78rem;margin-top:10px}
+#email-success{display:none;color:var(--good);font-weight:600;font-size:1rem;padding:12px}
+.cta-row{display:flex;gap:12px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.cta-btn{display:inline-block;padding:12px 22px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white!important;border-radius:9px;font-weight:700;font-size:.92rem;text-decoration:none}
+.cta-btn:hover{text-decoration:none;transform:translateY(-1px)}
+.cta-btn-ghost{display:inline-block;padding:12px 22px;background:transparent;border:1px solid var(--border);color:var(--muted)!important;border-radius:9px;font-weight:600;font-size:.92rem;text-decoration:none}
+.cta-btn-ghost:hover{border-color:var(--accent-2);text-decoration:none}
+footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:.82rem}
+footer a{color:var(--muted);margin:0 6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="badge">Free cheatsheet</span>
+  <h1>The Exact inAppPurchases Fix That Unblocked My Last 4 Apple Rejections</h1>
+  <p class="lede">No PDF. No email course. Just the relationship string change that actually works.</p>
+</header>
+
+<div class="intro">
+<strong>Who this is for:</strong> Indie iOS devs hitting IAP 2.1(b) "App Completeness" rejection on a paid app. If Apple sent you a rejection email mentioning <code>inAppPurchases</code> relationship — this is the fix.
+</div>
+
+<div class="fix-box">
+  <h2>The Fix (30 seconds)</h2>
+  <p style="color:var(--muted);font-size:.88rem;margin-bottom:12px">In App Store Connect — your app — In-App Purchases — relationship string:</p>
+  <div class="code-block">
+    <pre>Change: <span style="color:#9cdcfe">inAppPurchases</span>
+To:     <span style="color:#9cdcfe">inAppPurchasesV2</span></pre>
+  </div>
+  <p style="color:var(--muted);font-size:.85rem;margin-top:10px">That's it. Save, then upload a new binary (or request Apple to re-review if you already have a clean build).</p>
+</div>
+
+<div class="trap">
+  <h2>The Hidden Trap</h2>
+  <p>If you changed the relationship string but Apple still rejected — it's probably because <strong>you uploaded the fix in the same binary that triggered the rejection</strong>. Apple will not re-review the same build ID with the fix applied.</p>
+  <ul>
+    <li>Bump the build number (e.g., 1.0.0 — 1.0.1)</li>
+    <li>Upload the new binary to ASC</li>
+    <li>Submit for review again</li>
+    <li>Or ask Apple to re-review the same build after the IAP fix (sometimes works)</li>
+  </ul>
+</div>
+
+<div class="steps">
+  <h2>3-Step Fix Process</h2>
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-text">
+      <strong>Find the IAP in ASC</strong> — App Store Connect — your app — In-App Purchases. Click the IAP that is being rejected. Look at the relationship string field.
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-text">
+      <strong>Check the relationship string</strong> — If it says <code>inAppPurchases</code>, change it to <code>inAppPurchasesV2</code>. If it already says <code>inAppPurchasesV2</code> — the problem is elsewhere.
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-text">
+      <strong>Upload new build + re-submit</strong> — After saving the IAP change, bump your build number and upload a new binary. The relationship string change alone will not trigger re-review of the same binary.
+    </div>
+  </div>
+</div>
+
+<div class="email-section" id="capture-section">
+  <h2>Get the full 5-point rejection checklist</h2>
+  <p>Enter your email — I will send you the complete checklist plus the exact ASC API call to verify your IAP state. No spam, no drip sequence.</p>
+  <div>
+    <input type="email" id="cheatsheet-email" placeholder="your@email.com">
+    <button onclick="submitEmail()">Send me the checklist</button>
+  </div>
+  <p id="email-success">Sent! Check your inbox for the full checklist.</p>
+  <p class="note">Or: <a href="mailto:jiejuefuyou+iapfix@gmail.com?subject=IAP%20fix%20help">Email me directly</a> — I respond to every email within 4 hrs JST Mon-Fri.</p>
+</div>
+
+<div id="full-checklist" style="display:none">
+  <div class="steps" style="margin-top:24px">
+    <h2>5-Point IAP Rejection Checklist</h2>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text"><strong>Relationship string</strong> — <code>inAppPurchases</code> vs <code>inAppPurchasesV2</code>. Change to V2 if rejected.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text"><strong>New binary required</strong> — Same build ID will not re-trigger review. Bump build number + upload new binary.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text"><strong>Both IAPs present</strong> — If both <code>inAppPurchases</code> AND <code>inAppPurchasesV2</code> exist, remove the old one (keep V2 only).</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text"><strong>Product ID consistency</strong> — Must match exactly in 3 places: ASC IAP ID, StoreKit file product ID, Xcode Product ID.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-text"><strong>ASC API verify</strong> — Call <code>GET /v1/apps/{bundleId}/inAppPurchases/{iad}/relationship</code> to check what Apple actually sees.</div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-row" style="margin-top:28px">
+  <a href="https://calendly.com/snakesun/15min" class="cta-btn">Free 15-min call — IAP specific</a>
+  <a href="iap-rejection-rescue.html" class="cta-btn-ghost">See full iOS Audit Sprint</a>
+</div>
+
+<footer>
+  <p><a href="index.html">Home</a> &middot; <a href="services.html">B2B consulting</a> &middot; <a href="book-call.html">Book call</a></p>
+  <p style="margin-top:8px">Built by an indie iOS dev who got rejected 8 times before figuring this out.</p>
+</footer>
+
+</div>
+
+<script>
+function submitEmail(){
+  var email = document.getElementById("cheatsheet-email").value;
+  if(!email || !email.includes("@")){ alert("Enter a valid email"); return; }
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || "http://localhost:8787/capture").trim();
+  var payload = {
+    source:"iap-fix-cheatsheet",
+    tier:"lead-magnet",
+    tier_label:"free IAP checklist",
+    email:email,
+    utm_source:"iap-fix-cheatsheet",
+    utm_medium:"landing-page"
+  };
+  fetch(webhookUrl, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload)}).catch(function(){});
+  document.getElementById("email-success").style.display = "block";
+  document.getElementById("cheatsheet-email").disabled = true;
+  document.querySelector(".email-section button").disabled = true;
+  document.getElementById("full-checklist").style.display = "block";
+}
+</script>
+</body>
+</html>
