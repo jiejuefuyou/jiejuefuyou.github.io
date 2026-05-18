@@ -83,7 +83,7 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color
 </header>
 
 <div class="alert">
-  <h2>If you see IAP 2.1(b) completeness rejection — read this first</h2>
+  <h2>If you see IAP 2.1(b) completeness - relationship string rejection — read this first</h2>
   <p>Apple's rejection message says <code>Missing Metadata</code> or <code>In-App Purchase completeness issue</code>. The real cause is almost always one thing: the relationship string in your <code>reviewSubmissions</code> endpoint.</p>
   <p>Not in any Apple documentation. Caught 3 of my 4 apps. Takes 15 min to fix.</p>
 </div>
@@ -91,11 +91,11 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color
 <div class="problem-box">
   <h3>The 5 rejection patterns that look like metadata problems</h3>
   <ul>
-    <li><strong>IAP 2.1(b) completeness</strong> — relationship string wrong in reviewSubmissions</li>
+    <li><strong>IAP 2.1(b) completeness - relationship string</strong> — relationship string wrong in reviewSubmissions</li>
     <li><strong>Missing metadata</strong> — screenshot ratio wrong, not the screenshot itself</li>
     <li><strong>Guideline 4.3</strong> — App Store Connect build vs Xcode build bundle ID mismatch</li>
     <li><strong>IAP not enabled</strong> — capability drift between Xcode project and ASC portal</li>
-    <li><strong>Binary rejected</strong> — Swift modular arithmetic or signed overflow in release builds</li>
+    <li><strong>Binary rejected (Swift)</strong> — truncatingRemainder on signed accumulator in release build</li>
   </ul>
 </div>
 
@@ -176,7 +176,8 @@ GET https://api.appstoreconnect.apple.com/v2/apps/{app_id}/appStoreVersions/{ver
 
 <div class="pricing">
   <div class="tier">
-    <div class="price">Free</div>`n    <h3>12-Point Rejection Checklist</h3>
+    <div class="price">Free</div>
+    <h3>12-Point Rejection Checklist</h3>
     <ul><li>12-point rejection diagnostic</li><li>5 pattern reference table</li><li>Code snippet cheat sheet</li></ul>
     <a href="#email-capture" class="cta-small">Get free</a>
   </div>
