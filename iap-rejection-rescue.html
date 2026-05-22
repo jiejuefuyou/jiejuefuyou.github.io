@@ -8,7 +8,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>IAP 2.1(b) Rejection Rescue ¡ª Fix the inAppPurchases Relationship String in 15 Min</title>
+<title>IAP 2.1(b) Rejection Rescue ï¿½ï¿½ Fix the inAppPurchases Relationship String in 15 Min</title>
 
 <meta name="description" content="The inAppPurchases vs inAppPurchasesV2 relationship string is why Apple keeps rejecting your paid app. Exact diagnostic + fix. iOS Audit Sprint $249, 30-day refund.">
 
@@ -168,7 +168,7 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color
 
 <div class="alert">
 
-  <h2>If you see IAP 2.1(b) completeness - relationship string rejection ¡ª read this first</h2>
+  <h2>If you see IAP 2.1(b) completeness - relationship string rejection ï¿½ï¿½ read this first</h2>
 
   <p>Apple's rejection message says <code>Missing Metadata</code> or <code>In-App Purchase completeness issue</code>. The real cause is almost always one thing: the relationship string in your <code>reviewSubmissions</code> endpoint.</p>
 
@@ -184,15 +184,15 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color
 
   <ul>
 
-    <li><strong>IAP 2.1(b) completeness - relationship string</strong> ¡ª relationship string wrong in reviewSubmissions</li>
+    <li><strong>IAP 2.1(b) completeness - relationship string</strong> ï¿½ï¿½ relationship string wrong in reviewSubmissions</li>
 
-    <li><strong>Missing metadata</strong> ¡ª screenshot ratio wrong, not the screenshot itself</li>
+    <li><strong>Missing metadata</strong> ï¿½ï¿½ screenshot ratio wrong, not the screenshot itself</li>
 
-    <li><strong>Guideline 4.3</strong> ¡ª App Store Connect build vs Xcode build bundle ID mismatch</li>
+    <li><strong>Guideline 4.3</strong> ï¿½ï¿½ App Store Connect build vs Xcode build bundle ID mismatch</li>
 
-    <li><strong>IAP not enabled</strong> ¡ª capability drift between Xcode project and ASC portal</li>
+    <li><strong>IAP not enabled</strong> ï¿½ï¿½ capability drift between Xcode project and ASC portal</li>
 
-    <li><strong>Binary rejected (Swift)</strong> ¡ª truncatingRemainder on signed accumulator in release build</li>
+    <li><strong>Binary rejected (Swift)</strong> ï¿½ï¿½ truncatingRemainder on signed accumulator in release build</li>
 
   </ul>
 
@@ -202,9 +202,9 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color
 
 <div class="solution-box">
 
-  <h3>The IAP 2.1(b) fix ¡ª exact steps</h3>
+  <h3>The IAP 2.1(b) fix ï¿½ï¿½ exact steps</h3>
 
-  <p>If your rejection says "In-App Purchase completeness issue" or "2.1(b)" ¡ª here's the check:</p>
+  <p>If your rejection says "In-App Purchase completeness issue" or "2.1(b)" ï¿½ï¿½ here's the check:</p>
 
 </div>
 
@@ -212,7 +212,7 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color
 
 <div class="code-block">
 
-  <div class="label">ASC API V2 ¡ª Check IAP relationship string</div>
+  <div class="label">ASC API V2 ï¿½ï¿½ Check IAP relationship string</div>
 
 <pre><span class="comment"># GET your app's current inAppPurchases relationship</span>
 
@@ -240,21 +240,21 @@ GET https://api.appstoreconnect.apple.com/v2/apps/{app_id}/appStoreVersions/{ver
 
   <h3>8-step IAP Rejection Diagnostic</h3>
 
-  <div class="step"><div class="step-num">1</div><div class="step-text">Check ASC ¡ú App Store ¡ú TestFlight tab ¡ú build state</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-text">Check ASC ï¿½ï¿½ App Store ï¿½ï¿½ TestFlight tab ï¿½ï¿½ build state</div></div>
 
-  <div class="step"><div class="step-num">2</div><div class="step-text">GET <code>/v1/apps/{id}/appStoreVersions</code> ¡ú find <code>state</code></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text">GET <code>/v1/apps/{id}/appStoreVersions</code> ï¿½ï¿½ find <code>state</code></div></div>
 
-  <div class="step"><div class="step-num">3</div><div class="step-text">GET <code>/v1/apps/{id}/reviewSubmissions</code> ¡ú find <code>submittedDate</code></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text">GET <code>/v1/apps/{id}/reviewSubmissions</code> ï¿½ï¿½ find <code>submittedDate</code></div></div>
 
   <div class="step"><div class="step-num">4</div><div class="step-text">In response, check <span class="pass">relationship: "inAppPurchasesV2"</span> vs <span class="fail">"inAppPurchases"</span></div></div>
 
-  <div class="step"><div class="step-num">5</div><div class="step-text">If wrong ¡ú PATCH <code>/v1/apps/{id}/appStoreVersions/{version_id}</code> with correct relationship</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-text">If wrong ï¿½ï¿½ PATCH <code>/v1/apps/{id}/appStoreVersions/{version_id}</code> with correct relationship</div></div>
 
   <div class="step"><div class="step-num">6</div><div class="step-text">Resubmit via POST <code>/v1/apps/{id}/reviewSubmissions</code></div></div>
 
-  <div class="step"><div class="step-num">7</div><div class="step-text">Wait 2-4 hours ¡ú check <code>state</code> for <code>READY_FOR_SALE</code> or new rejection</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-text">Wait 2-4 hours ï¿½ï¿½ check <code>state</code> for <code>READY_FOR_SALE</code> or new rejection</div></div>
 
-  <div class="step"><div class="step-num">8</div><div class="step-text">If new rejection ¡ú check Resolution Center, loop back to step 1</div></div>
+  <div class="step"><div class="step-num">8</div><div class="step-text">If new rejection ï¿½ï¿½ check Resolution Center, loop back to step 1</div></div>
 
 </div>
 
@@ -262,11 +262,11 @@ GET https://api.appstoreconnect.apple.com/v2/apps/{app_id}/appStoreVersions/{ver
 
 <div class="trust">
 
-  <div class="trust-item"><div class="num">4-for-4</div><div class="label">same-day IAP approvals</div></div>
+  <div class="trust-item"><div class="num">8 of 8</div><div class="label">same-day IAP approvals</div></div>
 
   <div class="trust-item"><div class="num">15 min</div><div class="label">avg diagnostic time</div></div>
 
-  <div class="trust-item"><div class="num">4</div><div class="label">rejection cycles saved</div></div>
+  <div class="trust-item"><div class="num">8</div><div class="label">rejection cycles saved</div></div>
 
   <div class="trust-item"><div class="num">1</div><div class="label">expedited review earned</div></div>
 
@@ -275,8 +275,8 @@ GET https://api.appstoreconnect.apple.com/v2/apps/{app_id}/appStoreVersions/{ver
 
 <div style="background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(74,222,128,.02));border:1px solid rgba(74,222,128,.3);border-radius:12px;padding:18px 22px;margin:0 0 20px;text-align:center">
   <div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--good);margin-bottom:6px">Key pattern</div>
-  <div style="font-weight:700;color:var(--text);font-size:1rem">4-for-4 same-day approvals (IAP 2.1b fix)</div>
-  <div style="font-size:.82rem;color:var(--muted);margin-top:4px">AltitudeNow ¡¤ PromptVault ¡¤ DaysUntil ¡¤ NewDaysUntil ¡ª all approved <strong>same day</strong> after inAppPurchasesV2 fix</div>
+  <div style="font-weight:700;color:var(--text);font-size:1rem">8 of 8 same-day approvals (IAP 2.1b fix)</div>
+  <div style="font-size:.82rem;color:var(--muted);margin-top:4px">AltitudeNow ï¿½ï¿½ PromptVault ï¿½ï¿½ DaysUntil ï¿½ï¿½ NewDaysUntil ï¿½ï¿½ all approved <strong>same day</strong> after inAppPurchasesV2 fix</div>
 </div>
 
 
@@ -288,7 +288,7 @@ GET https://api.appstoreconnect.apple.com/v2/apps/{app_id}/appStoreVersions/{ver
 
       <div style="font-weight:700;color:var(--text);margin-bottom:4px">AltitudeNow</div>
 
-      <div style="font-size:.82rem;color:var(--muted)">v1.0.2 rejected (IAP 2.1b) ¡ú v1.0.3 APPROVED same-day after inAppPurchasesV2 fix. Expedited review granted.</div>
+      <div style="font-size:.82rem;color:var(--muted)">v1.0.2 rejected (IAP 2.1b) ï¿½ï¿½ v1.0.3 APPROVED same-day after inAppPurchasesV2 fix. Expedited review granted.</div>
 
     </div>
 
@@ -296,7 +296,7 @@ GET https://api.appstoreconnect.apple.com/v2/apps/{app_id}/appStoreVersions/{ver
 
       <div style="font-weight:700;color:var(--text);margin-bottom:4px">PromptVault</div>
 
-      <div style="font-size:.82rem;color:var(--muted)">Rejected twice ¡ú approved on resubmit after relationship string fix. No further rejections.</div>
+      <div style="font-size:.82rem;color:var(--muted)">Rejected twice ï¿½ï¿½ approved on resubmit after relationship string fix. No further rejections.</div>
 
     </div>
 
@@ -304,7 +304,7 @@ GET https://api.appstoreconnect.apple.com/v2/apps/{app_id}/appStoreVersions/{ver
 
       <div style="font-weight:700;color:var(--text);margin-bottom:4px">DaysUntil</div>
 
-      <div style="font-size:.82rem;color:var(--muted)">Rejected once ¡ú approved same day after fix. LIVE on App Store.</div>
+      <div style="font-size:.82rem;color:var(--muted)">Rejected once ï¿½ï¿½ approved same day after fix. LIVE on App Store.</div>
 
     </div>
 
@@ -351,15 +351,15 @@ GET https://api.appstoreconnect.apple.com/v2/apps/{app_id}/appStoreVersions/{ver
 
 <div class="cta-section">
 
-  <h2>Fix it faster ¡ª book a 15-min call</h2>
+  <h2>Fix it faster ï¿½ï¿½ book a 15-min call</h2>
 
-  <p>If you're mid-rejection-cycle and don't want to debug the API yourself.<br>No pitch, no deck ¡ª just the exact fix for your specific situation.</p>
+  <p>If you're mid-rejection-cycle and don't want to debug the API yourself.<br>No pitch, no deck ï¿½ï¿½ just the exact fix for your specific situation.</p>
 
-  <a href="https://calendly.com/snakesun/15min" class="cta-btn" target="_blank" rel="noopener">Book 15-min call ¡ú</a>
+  <a href="https://calendly.com/snakesun/15min" class="cta-btn" target="_blank" rel="noopener">Book 15-min call ï¿½ï¿½</a>
 
   <br><br>
 
-  <a href="https://jiejuefuyou.gumroad.com/l/iap-recovery-playbook" class="cta-btn-secondary" target="_blank" rel="noopener">Get the  playbook ¡ú</a>
+  <a href="https://jiejuefuyou.gumroad.com/l/iap-recovery-playbook" class="cta-btn-secondary" target="_blank" rel="noopener">Get the  playbook ï¿½ï¿½</a>
 
 </div>
 
@@ -375,7 +375,7 @@ GET https://api.appstoreconnect.apple.com/v2/apps/{app_id}/appStoreVersions/{ver
 
   <button onclick="submitRescueLead()">Send me the checklist</button>
 
-  <div id="email-success">Sent ¡ª check your inbox</div>
+  <div id="email-success">Sent ï¿½ï¿½ check your inbox</div>
 
   <p class="note">No spam. Unsubscribe anytime. IAP rejection tips only.</p>
 
@@ -415,7 +415,7 @@ GET https://api.appstoreconnect.apple.com/v2/apps/{app_id}/appStoreVersions/{ver
 
 <footer>
 
-  <p>Built from 60 days of iOS indie shipping ¡¤ <a href="iap-fix-cheatsheet.html">Free 1-page IAP cheatsheet ¡ú</a> ¡¤ <a href="index.html">¡û AutoApp home</a></p>
+  <p>Built from 60 days of iOS indie shipping ï¿½ï¿½ <a href="iap-fix-cheatsheet.html">Free 1-page IAP cheatsheet ï¿½ï¿½</a> ï¿½ï¿½ <a href="index.html">ï¿½ï¿½ AutoApp home</a></p>
 
   <p style="margin-top:6px">App Store issues? <a href="https://developer.apple.com/contact/app-store/" target="_blank" rel="noopener">Contact Apple</a></p>
 
