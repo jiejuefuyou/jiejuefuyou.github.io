@@ -33,7 +33,7 @@ header .sub { color: var(--muted); margin-top: 10px; font-size: 1rem; }
 /* score */
 .score-display { background: linear-gradient(135deg, var(--bg-card), rgba(108,75,224,0.05)); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; margin: 24px 0; position: sticky; top: 12px; z-index: 10; backdrop-filter: blur(8px); }
 .score-num { font-size: 2.5rem; font-weight: 700; color: var(--accent-2); line-height: 1; }
-.score-label { color: var(--muted); font-size: .85rem; margin-top: 4px; }
+.score-label { color: var(--muted); font-size: .85rem; margin-top: 4px; } .sticky-cta { display: none; position: sticky; top: 12px; z-index: 20; background: linear-gradient(135deg, rgba(108,75,224,.25), rgba(192,132,252,.12)); border: 1px solid rgba(108,75,224,.5); border-radius: 10px; padding: 10px 16px; margin: 12px 0 24px; text-align: center; backdrop-filter: blur(8px); } .sticky-cta.visible { display: block; } .sticky-cta p { font-size: .85rem; color: var(--text); margin-bottom: 6px; } .sticky-cta a { display: inline-block; padding: 8px 18px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border-radius: 7px; font-weight: 700; font-size: .85rem; text-decoration: none; } .sticky-cta a:hover { text-decoration: none; transform: translateY(-1px); }
 .score-tier { display: inline-block; margin-top: 10px; padding: 4px 14px; border-radius: 999px; font-size: .8rem; font-weight: 600; background: var(--border); color: var(--text); }
 .score-tier.tier-a { background: rgba(248,113,113,.18); color: var(--bad); }
 .score-tier.tier-b { background: rgba(251,191,36,.18); color: var(--warn); }
@@ -82,6 +82,7 @@ footer a { color: var(--muted); margin: 0 8px; }
 <header>
   <h1>Free AI Workflow Audit (47 Questions)</h1>
   <p class="sub">The exact checklist I run with paying clients (USD 99 audit). Use it on your team in 12 minutes. Score 0-100. No signup, no email. Just check the boxes.</p>
+  <div class="sticky-cta" id="sticky-cta"><p>Scoring takes 12 min. Book a call while the gaps are fresh.</p><a href="https://calendly.com/snakesun/15min" target="_blank" rel="noopener">Book free 15-min call &rarr;</a></div>
 </header>
 
 <div class="value-bar">
@@ -231,6 +232,7 @@ function updateScore() {
       '<a class="cta-btn secondary" href="services.html">View pricing tiers</a>' +
       '</div>';
     rec.classList.add('visible');
+    document.getElementById('sticky-cta').classList.add('visible');
     emailCapture.classList.add('visible');
   } else if (score < 70) {
     tierEl.textContent = 'Tier B: solid foundation, scaling questions';
