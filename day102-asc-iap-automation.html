@@ -1,0 +1,116 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 102 — The ASC web step that breaks IAP automation</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Apple's rejection emails name the category, never the field. The hidden 'Add for review' step in App Store Connect breaks every IAP submission automation.">
+<style>
+:root{--bg:#0a0a0f;--bg-card:#12121a;--border:#1f1f2e;--text:#e6e6f0;--muted:#8a8a9a;--accent:#9b6cf0;--accent-2:#c084fc;--good:#4ade80;--warn:#fbbf24}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:16px/1.7 -apple-system,BlinkMacSystemFont,sans-serif;min-height:100vh}
+.wrap{max-width:640px;margin:0 auto;padding:60px 24px 80px}
+a{color:var(--accent-2);text-decoration:none}
+a:hover{text-decoration:underline}
+header{margin-bottom:40px;padding-bottom:28px;border-bottom:1px solid var(--border)}
+header p.back{color:var(--muted);font-size:.9rem;margin-bottom:20px}
+header .tag{display:inline-block;background:rgba(108,75,224,.15);color:var(--accent-2);border:1px solid rgba(108,75,224,.3);padding:3px 12px;border-radius:999px;font-size:.75rem;font-weight:600;margin-bottom:16px}
+h1{font-size:1.9rem;line-height:1.25;margin-bottom:14px;color:#fff}
+.lead{color:var(--muted);font-size:1rem;margin-bottom:32px;line-height:1.6}
+section{margin:32px 0}
+h2{font-size:1rem;color:var(--accent-2);margin:0 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.callout{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin:20px 0}
+.callout h3{color:var(--warn);font-size:.95rem;margin-bottom:10px}
+.callout p{color:var(--text);font-size:.88rem;line-height:1.6;margin-bottom:10px}
+.code-block{background:#000;border:1px solid var(--border);border-radius:8px;padding:16px;margin:14px 0;font-family:monospace;font-size:.82rem;color:#a5f3fc;overflow-x:auto;white-space:pre}
+.answer{background:linear-gradient(135deg,rgba(74,222,128,.06),rgba(74,222,128,.02));border:1px solid rgba(74,222,128,.25);border-radius:12px;padding:20px 22px;margin:20px 0}
+.answer h3{color:var(--good);font-size:.95rem;margin-bottom:10px}
+.answer p{color:var(--text);font-size:.88rem;line-height:1.6}
+.proof-bar{background:linear-gradient(135deg,rgba(74,222,128,.07),rgba(74,222,128,.02));border:1px solid rgba(74,222,128,.25);border-radius:12px;padding:18px 22px;margin:28px 0;text-align:center}
+.proof-bar p{color:var(--muted);font-size:.9rem}
+.proof-bar strong{color:var(--good)}
+.cta-section{text-align:center;margin:40px 0}
+.cta-section h2{color:#fff;border:none;padding:0;font-size:1.2rem;margin-bottom:8px}
+.cta-section p{color:var(--muted);font-size:.9rem;margin-bottom:18px}
+.cta-btn{display:inline-block;padding:14px 28px;background:linear-gradient(135deg,#9b6cf0,#c084fc);color:white;border-radius:10px;font-weight:700;font-size:1rem;text-decoration:none}
+.cta-btn:hover{transform:translateY(-2px);text-decoration:none}
+.cta-btn-free{display:inline-block;padding:14px 28px;background:linear-gradient(135deg,#4ade80,#22c55e);color:#0a0a0f;border-radius:10px;font-weight:700;font-size:1rem;text-decoration:none;margin-left:8px}
+.cta-fallback{color:var(--muted);font-size:.82rem;margin-top:12px}
+footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:.8rem;text-align:center}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="back"><a href="index.html">&larr; AutoApp home</a></p>
+<span class="tag">Day 102 &middot; Substack</span>
+
+<header>
+<h1>The one ASC web step that breaks every IAP submission automation</h1>
+<p class="lead">Apple's rejection emails name the category, never the field. Here's the hidden step that costs indie devs weeks &mdash; and why the REST API can't do it for you.</p>
+</header>
+
+<section>
+<div class="callout">
+<h3>The trap: "In-App Purchase completeness issue."</h3>
+<p>You check your IAP code. The code is fine. Product IDs match. So what's actually wrong?</p>
+<p>Your IAP was never attached to <em>this</em> review submission. Apple literally never saw it.</p>
+</div>
+</section>
+
+<section>
+<h2>The hidden "Add for review" step</h2>
+<p style="color:var(--muted);font-size:.9rem;margin-bottom:14px">App Store Connect has a separate toggle on the app version page. Miss it, and Apple's automated check flags 2.1(b) &mdash; before a human ever opens your build.</p>
+<div class="code-block">Before every submission:
+1. GET /v1/apps/{id}/inAppPurchasesV2
+   -> every IAP state must read WAITING_FOR_REVIEW or APPROVED
+   -> NEVER READY_TO_SUBMIT (30-min auto-reject loop)
+
+2. On ASC version page: toggle each IAP "Add for review"
+   -> The REST API cannot do this step.
+   -> POST /v1/reviewSubmissionItems accepts exactly:
+      appStoreVersion / appCustomProductPageVersion / appEvent
+   -> Every IAP relationship type -> 409 error.</div>
+</section>
+
+<section>
+<div class="answer">
+<h3>Why the API can't help</h3>
+<p>If you automate submissions through the API (many indie devs do), the "Add for review" step is the one thing you still have to do by hand in the web UI. That's the gap that burns weeks &mdash; not your code, not your IAP configuration, just the missing checkbox.</p>
+</div>
+</section>
+
+<section>
+<div class="proof-bar">
+<p><strong>7 of 8 apps</strong> live on the App Store. The 8th is in its first review. Every one taught me a different way Apple's rejection emails hide the actual field.</p>
+</div>
+</section>
+
+<section>
+<h2>Pre-flight that would have saved me weeks</h2>
+<p style="color:var(--muted);font-size:.88rem;margin-bottom:16px;line-height:1.6">Before every submission:</p>
+<ul style="color:var(--muted);font-size:.9rem;margin-left:20px;line-height:1.8">
+<li><code style="background:rgba(108,75,224,.15);padding:2px 8px;border-radius:4px;font-size:.82rem">GET /v1/apps/{id}/inAppPurchasesV2</code> &mdash; check every IAP state</li>
+<li>On ASC version page: confirm each IAP is toggled into the review submission</li>
+<li>Confirm the IAP review screenshot is uploaded</li>
+<li>Then submit</li>
+</ul>
+</section>
+
+<div class="cta-section">
+<h2>Break the rejection loop</h2>
+<p>14-point rejection checklist &mdash; exact API calls + web-UI steps. Or a 60-min iOS Audit Sprint for , refunded if Apple still rejects.</p>
+<a href="https://jiejuefuyou.gumroad.com/l/sphytu" class="cta-btn-free" target="_blank" rel="noopener"> checklist</a>
+<a href="mailto:jiejuefuyou+audit@gmail.com?subject=iOS%20Audit%20Sprint" class="cta-btn" style="margin-left:0;margin-top:8px"> Sprint</a>
+<p class="cta-fallback">Full refund if Apple still rejects. <a href="index.html">&larr; back to AutoApp</a></p>
+</div>
+
+<footer>
+<p><a href="index.html">Home</a> &middot; <a href="ios-audit-sprint.html">iOS Audit Sprint</a> &middot; <a href="iap-rejection-rescue.html">IAP Rejection Rescue</a></p>
+</footer>
+
+</div>
+</body>
+</html>
