@@ -1,11 +1,11 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Exact inAppPurchases Fix That Unblocked My Last 4 Apple Rejections</title>
-<meta name="description" content="Free 1-page cheatsheet: the exact relationship string fix for IAP 2.1(b) rejection. No PDF, no email course. Just the code.">
+<title>The Real Fix for IAP 2.1(b) "App Completeness" Rejection</title>
+<meta name="description" content="Free 1-page cheatsheet: why Apple rejects paid apps for 2.1(b) IAP completeness — and the actual ASC step that clears it. The cause is IAP submission state, not a config string.">
 <style>
 :root{--bg:#0a0a0f;--bg-card:#12121a;--border:#1f1f2e;--text:#e6e6f0;--muted:#8a8a9a;--accent:#6c4be0;--accent-2:#9b6cf0;--good:#4ade80;--warn:#ffb547;--danger:#f87171}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -48,7 +48,8 @@ h1{font-size:1.85rem;line-height:1.25;margin-bottom:14px;background:linear-gradi
 .cta-btn:hover{text-decoration:none;transform:translateY(-1px)}
 .cta-btn-ghost{display:inline-block;padding:12px 22px;background:transparent;border:1px solid var(--border);color:var(--muted)!important;border-radius:9px;font-weight:600;font-size:.92rem;text-decoration:none}
 .cta-btn-ghost:hover{border-color:var(--accent-2);text-decoration:none}
-<p style="margin-top:14px;font-size:.85rem;color:var(--muted)">AltitudeNow v1.0.3 鈥?APPROVED 2026-05-18 via expedited review. a{color:var(--muted);margin:0 6px}
+footer{margin-top:24px;text-align:center;color:var(--muted);font-size:.85rem}
+footer a{margin:0 6px}
 </style>
 </head>
 <body>
@@ -56,48 +57,43 @@ h1{font-size:1.85rem;line-height:1.25;margin-bottom:14px;background:linear-gradi
 
 <header>
   <span class="badge">Free cheatsheet</span>
-  <h1>The Exact inAppPurchases Fix That Unblocked My Last 4 Apple Rejections</h1>
-  <p class="lede">No PDF. No email course. Just the relationship string change that actually works.</p>
+  <h1>The Real Fix for IAP 2.1(b) "App Completeness" Rejection</h1>
+  <p class="lede">No PDF. No email course. Just the actual cause — and the one App Store Connect step that clears it.</p>
 </header>
 
 <div class="intro">
-<strong>Who this is for:</strong> Indie iOS devs hitting IAP 2.1(b) "App Completeness" rejection on a paid app. If Apple sent you a rejection email mentioning <code>inAppPurchases</code> relationship — this is the fix.
+<strong>Who this is for:</strong> Indie iOS devs whose paid app keeps getting rejected for Guideline <strong>2.1(b) — App Completeness</strong> ("we were unable to review the in-app purchases"). If you fixed your StoreKit code and it <em>still</em> bounces — usually within ~30 minutes — the problem is not your code. It's that the in-app purchase was never actually submitted for review alongside the build.
 </div>
-
 
 <div class="fix-box" style="background:linear-gradient(135deg,rgba(108,75,224,.08),rgba(192,132,252,.04));border-color:rgba(108,75,224,.3)">
-  <h2 style="color:var(--accent-2)">What I Actually Fixed (Real Apps)</h2>
+  <h2 style="color:var(--accent-2)">What this fixed (real apps)</h2>
   <ul style="list-style:none;padding:0;margin:0">
-    <li style="margin-bottom:8px;padding-left:0">
-      <strong style="color:var(--good)">AltitudeNowPro</strong> 鈥?v1.0.2 rejected (IAP 2.1(b)) 鈫?v1.0.3 <strong style="color:var(--good)">APPROVED</strong> after <code>inAppPurchasesV2</code> fix + new binary
-    </li>
-    <li style="margin-bottom:8px;padding-left:0">
-      <strong style="color:var(--good)">PromptVaultPro</strong> 鈥?rejected twice 鈫?approved same day after relationship string fix
-    </li>
-    <li style="margin-bottom:0;padding-left:0">
-      <strong style="color:var(--good)">NewDaysUntil</strong> 鈥?rejected once 鈫?approved after IAP config update
-    </li>
+    <li style="margin-bottom:8px;padding-left:0">Seven paid apps in my portfolio (AutoChoice, DaysUntil, PromptVault, HabitHash, FocusFlow Lite, TipJar Now, WaterNow) all carry a non-consumable IAP and are live today.</li>
+    <li style="margin-bottom:0;padding-left:0">Every one of them hit 2.1(b) at least once. The thing that actually cleared it was never a code change — it was attaching the IAP to the version's review submission so its state moves to <strong>Waiting for Review</strong>.</li>
   </ul>
-  <p style="color:var(--muted);font-size:.82rem;margin-top:14px">Same fix. Same process. Worked on all 3.</p>
+  <p style="color:var(--muted);font-size:.82rem;margin-top:14px">Same root cause every time: an IAP stuck in <code>Ready to Submit</code> while the build went to review without it.</p>
 </div>
+
 <div class="fix-box">
-  <h2>The Fix (30 seconds)</h2>
-  <p style="color:var(--muted);font-size:.88rem;margin-bottom:12px">In App Store Connect — your app — In-App Purchases — relationship string:</p>
+  <h2>The Fix (in App Store Connect)</h2>
+  <p style="color:var(--muted);font-size:.88rem;margin-bottom:12px">Your IAP has to be submitted <em>with</em> the app version. Apple's first IAP for an app can only be submitted on a version, not on its own. In ASC:</p>
   <div class="code-block">
-    <pre>Change: <span style="color:#9cdcfe">inAppPurchases</span>
-To:     <span style="color:#9cdcfe">inAppPurchasesV2</span></pre>
+    <pre>App Store Connect → your app → the version you're submitting
+  → "In-App Purchases and Subscriptions" section
+  → "Add for Review" / "Select an In-App Purchase"
+  → tick your IAP → submit it together with the version</pre>
   </div>
-  <p style="color:var(--muted);font-size:.85rem;margin-top:10px">That's it. Save, then upload a new binary (or request Apple to re-review if you already have a clean build).</p>
+  <p style="color:var(--muted);font-size:.85rem;margin-top:10px">After that, the IAP state moves from <code>Ready to Submit</code> to <code>Waiting for Review</code>. If it's still <code>Ready to Submit</code> when you submit the build, Apple's automated check rejects 2.1(b) — often within 30 minutes.</p>
 </div>
 
 <div class="trap">
-  <h2>The Hidden Trap</h2>
-  <p>If you changed the relationship string but Apple still rejected — it's probably because <strong>you uploaded the fix in the same binary that triggered the rejection</strong>. Apple will not re-review the same build ID with the fix applied.</p>
+  <h2>The Hidden Trap (this is the one that wastes days)</h2>
+  <p>You cannot do this step with the App Store Connect <strong>API</strong>. The <code>reviewSubmissionItems</code> endpoint only accepts <code>appStoreVersion</code>, <code>appCustomProductPageVersion</code>, and <code>appEvent</code> — every in-app-purchase relationship name (<code>inAppPurchase</code>, <code>inAppPurchaseV2</code>, etc.) returns <code>409 ENTITY_ERROR.RELATIONSHIP.UNKNOWN</code>.</p>
   <ul>
-    <li>Bump the build number (e.g., 1.0.0 — 1.0.1)</li>
-    <li>Upload the new binary to ASC</li>
-    <li>Submit for review again</li>
-    <li>Or ask Apple to re-review the same build after the IAP fix (sometimes works)</li>
+    <li>The IAP attach is a <strong>web-UI-only</strong> action — the "Add for Review" toggle on the version page.</li>
+    <li>Submitting the version alone (API or web) leaves the IAP behind → 2.1(b).</li>
+    <li>An IAP left in <code>Ready to Submit</code> auto-rejects; it must reach <code>Waiting for Review</code> or <code>Approved</code> before the build clears review.</li>
+    <li>Don't trust the rejection email's wording — it paraphrases. Verify the IAP <em>state</em> directly (step 3 below).</li>
   </ul>
 </div>
 
@@ -106,26 +102,26 @@ To:     <span style="color:#9cdcfe">inAppPurchasesV2</span></pre>
   <div class="step">
     <div class="step-num">1</div>
     <div class="step-text">
-      <strong>Find the IAP in ASC</strong> — App Store Connect — your app — In-App Purchases. Click the IAP that is being rejected. Look at the relationship string field.
+      <strong>Check the IAP state first</strong> — In ASC, open the in-app purchase. If its status is <code>Ready to Submit</code> (not <code>Waiting for Review</code> / <code>Approved</code>), that is why review fails. Code changes won't move this state.
     </div>
   </div>
   <div class="step">
     <div class="step-num">2</div>
     <div class="step-text">
-      <strong>Check the relationship string</strong> — If it says <code>inAppPurchases</code>, change it to <code>inAppPurchasesV2</code>. If it already says <code>inAppPurchasesV2</code> — the problem is elsewhere.
+      <strong>Attach the IAP to the version</strong> — On the version page, in "In-App Purchases and Subscriptions", use "Add for Review" and tick the IAP, then submit the version <em>with</em> the IAP. (Make sure the IAP has its review screenshot + review note filled in, or it can't be added.)
     </div>
   </div>
   <div class="step">
     <div class="step-num">3</div>
     <div class="step-text">
-      <strong>Upload new build + re-submit</strong> — After saving the IAP change, bump your build number and upload a new binary. The relationship string change alone will not trigger re-review of the same binary.
+      <strong>Verify the state changed</strong> — Confirm the IAP now reads <code>Waiting for Review</code>. Via API you can read (not write) it: <code>GET /v2/inAppPurchases/{id}</code> and check <code>attributes.state</code>.
     </div>
   </div>
 </div>
 
 <div class="email-section" id="capture-section">
   <h2>Get the full 5-point rejection checklist</h2>
-  <p>Enter your email — I will send you the complete checklist plus the exact ASC API call to verify your IAP state. No spam, no drip sequence.</p>
+  <p>Enter your email — I'll send the complete checklist plus the exact ASC API call to verify your IAP state. No spam, no drip sequence.</p>
   <div>
     <input type="email" id="cheatsheet-email" placeholder="your@email.com">
     <button onclick="submitEmail()">Send me the checklist</button>
@@ -139,34 +135,36 @@ To:     <span style="color:#9cdcfe">inAppPurchasesV2</span></pre>
     <h2>5-Point IAP Rejection Checklist</h2>
     <div class="step">
       <div class="step-num">1</div>
-      <div class="step-text"><strong>Relationship string</strong> — <code>inAppPurchases</code> vs <code>inAppPurchasesV2</code>. Change to V2 if rejected.</div>
+      <div class="step-text"><strong>IAP state</strong> — Must be <code>Waiting for Review</code> or <code>Approved</code> before you submit the build. <code>Ready to Submit</code> = auto-reject.</div>
     </div>
     <div class="step">
       <div class="step-num">2</div>
-      <div class="step-text"><strong>New binary required</strong> — Same build ID will not re-trigger review. Bump build number + upload new binary.</div>
+      <div class="step-text"><strong>Attached to the version</strong> — Use the ASC web "Add for Review" toggle so the IAP is submitted <em>with</em> the version (web-only; the API can't do it).</div>
     </div>
     <div class="step">
       <div class="step-num">3</div>
-      <div class="step-text"><strong>Both IAPs present</strong> — If both <code>inAppPurchases</code> AND <code>inAppPurchasesV2</code> exist, remove the old one (keep V2 only).</div>
+      <div class="step-text"><strong>Review screenshot + note</strong> — An IAP with no review screenshot can't be added for review. Upload one (it can show the paywall).</div>
     </div>
     <div class="step">
       <div class="step-num">4</div>
-      <div class="step-text"><strong>Product ID consistency</strong> — Must match exactly in 3 places: ASC IAP ID, StoreKit file product ID, Xcode Product ID.</div>
+      <div class="step-text"><strong>Product ID consistency</strong> — Must match exactly in 3 places: the ASC IAP product ID, your <code>.storekit</code> config, and the ID your app requests in <code>Product.products(for:)</code>.</div>
     </div>
     <div class="step">
       <div class="step-num">5</div>
-      <div class="step-text"><strong>ASC API verify</strong> — Call <code>GET /v1/apps/{bundleId}/inAppPurchases/{iad}/relationship</code> to check what Apple actually sees.</div>
+      <div class="step-text"><strong>New build if previously rejected</strong> — A build that was already reviewed won't re-trigger review on its own; bump the build number and upload a fresh binary, then re-submit with the IAP attached.</div>
     </div>
   </div>
 </div>
 
 <div class="cta-row" style="margin-top:28px">
-  <a href="https://calendly.com/snakesun/15min" class="cta-btn">Free 15-min call — IAP specific</a>
+  <a href="mailto:jiejuefuyou@gmail.com?subject=IAP%20rejection%20help%20(15-min%20call)" class="cta-btn">Free 15-min call — IAP specific</a>
   <a href="iap-rejection-rescue.html" class="cta-btn-ghost">See full iOS Audit Sprint</a>
-  <footer>
+</div>
+
+<footer>
   <p><a href="index.html">Home</a> &middot; <a href="services.html">B2B consulting</a> &middot; <a href="book-call.html">Book call</a></p>
-  <p style="margin-top:8px">Built by an indie iOS dev who got rejected 8 times before figuring this out.</p>
-  </footer>
+  <p style="margin-top:8px">Built by an indie iOS dev who got rejected enough times to find the real cause.</p>
+</footer>
 
 </div>
 

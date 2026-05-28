@@ -1,84 +1,84 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>What shipped ?public changelog (real, no fluff)</title>
-<meta name="description" content="Public changelog of what shipped on autoapp. Updated weekly. Real numbers, real commits, real decisions.">
-<meta property="og:title" content="autoapp ?public changelog (real velocity)">
-<meta property="og:description" content="What shipped this week. Real numbers, real commits. Updated weekly.">
-<meta property="og:url" content="https://jiejuefuyou.github.io/changelog-public.html">
-<meta property="og:image" content="https://jiejuefuyou.github.io/assets/og-default.png">
-<meta name="twitter:card" content="summary">
-<style>
-:root {
-  --bg: #0a0a0f; --bg-card: #12121a; --border: #1f1f2e;
-  --text: #e6e6f0; --muted: #8a8a9a; --accent: #6c4be0; --accent-2: #9b6cf0;
-  --good: #4ade80; --warn: #fbbf24; --bad: #f87171;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { background: var(--bg); color: var(--text); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
-a { color: var(--accent-2); text-decoration: none; }
-a:hover { text-decoration: underline; }
-.wrap { max-width: 800px; margin: 0 auto; padding: 50px 24px 80px; }
-.back { color: var(--muted); font-size: .9rem; margin-bottom: 20px; display: inline-block; }
-header { padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
-header h1 { font-size: 2.1rem; line-height: 1.2; background: linear-gradient(135deg, #6c4be0, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-header .sub { color: var(--muted); margin-top: 12px; font-size: 1rem; }
-
-.banner { background: rgba(108,75,224,.08); border: 1px solid rgba(108,75,224,.3); border-radius: 10px; padding: 16px 20px; margin: 20px 0 28px; font-size: .9rem; }
-.banner strong { color: var(--accent-2); }
-
-.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0 28px; }
-@media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
-.stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; text-align: center; }
-.stat-card .num { font-size: 1.6rem; font-weight: 700; color: var(--accent-2); line-height: 1; }
-.stat-card .label { color: var(--muted); font-size: .78rem; margin-top: 4px; text-transform: uppercase; letter-spacing: .04em; }
-
-.tick { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; margin-bottom: 18px; }
-.tick h2 { color: var(--accent-2); font-size: 1.15rem; margin-bottom: 4px; }
-.tick .date { color: var(--muted); font-size: .85rem; margin-bottom: 12px; }
-.tick ul { list-style: none; padding: 0; margin-top: 8px; }
-.tick li { padding: 4px 0; padding-left: 20px; position: relative; font-size: .9rem; line-height: 1.5; }
-.tick li::before { content: "+"; color: var(--good); font-weight: bold; position: absolute; left: 0; }
-.tick li.fix::before { content: "?; color: var(--warn); }
-.tick li.remove::before { content: "-"; color: var(--bad); }
-.tick .summary { color: var(--muted); font-size: .9rem; margin-top: 4px; padding-top: 10px; border-top: 1px solid var(--border); font-style: italic; }
-.tick .commit { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .78rem; color: var(--muted); }
-
-.cta-box { background: linear-gradient(135deg, rgba(108,75,224,.15), rgba(192,132,252,.06)); border: 1px solid rgba(108,75,224,.3); padding: 22px 24px; border-radius: 12px; margin: 32px 0; text-align: center; }
-.cta-box h3 { font-size: 1.1rem; margin-bottom: 10px; color: #fff; }
-.cta-btn { display: inline-block; padding: 12px 22px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border-radius: 8px; font-weight: 600; margin: 6px 4px; text-decoration: none; font-size: .9rem; }
-.cta-btn:hover { text-decoration: none; transform: translateY(-1px); }
-.cta-btn.secondary { background: var(--bg-card); border: 1px solid var(--border); color: var(--text); }
-
-footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: .85rem; text-align: center; }
-footer a { color: var(--muted); margin: 0 8px; }
-</style>
-</head>
-<body>
-<div class="wrap">
-
-<a href="index.html" class="back">&larr; AutoApp</a>
-
-<header>
-  <h1>What shipped ?public changelog</h1>
-  <p class="sub">Real velocity log. Updated weekly. No "v1.0.0 ?bug fixes" filler ?actual decisions + numbers.</p>
-</header>
-
-<div class="banner">
-  <strong>Why this page exists</strong>: B2B prospects ask "are you still actively building?" all the time.
-  This is the answer. <a href="https://github.com/jiejuefuyou">All commits public on GitHub</a> for verification.
-</div>
-
-<div class="stats-grid">
-  <div class="stat-card"><div class="num">60+</div><div class="label">days since launch</div></div>
-  <div class="stat-card"><div class="num">54</div><div class="label">Python lib modules</div></div>
-  <div class="stat-card"><div class="num">1180</div><div class="label">tests passing</div></div>
-  <div class="stat-card"><div class="num">27</div><div class="label">live site pages</div></div>
-</div>
-
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What shipped ?public changelog (real, no fluff)</title>
+<meta name="description" content="Public changelog of what shipped on autoapp. Updated weekly. Real numbers, real commits, real decisions.">
+<meta property="og:title" content="autoapp ?public changelog (real velocity)">
+<meta property="og:description" content="What shipped this week. Real numbers, real commits. Updated weekly.">
+<meta property="og:url" content="https://jiejuefuyou.github.io/changelog-public.html">
+<meta property="og:image" content="https://jiejuefuyou.github.io/assets/og-default.png">
+<meta name="twitter:card" content="summary">
+<style>
+:root {
+  --bg: #0a0a0f; --bg-card: #12121a; --border: #1f1f2e;
+  --text: #e6e6f0; --muted: #8a8a9a; --accent: #6c4be0; --accent-2: #9b6cf0;
+  --good: #4ade80; --warn: #fbbf24; --bad: #f87171;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--text); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 800px; margin: 0 auto; padding: 50px 24px 80px; }
+.back { color: var(--muted); font-size: .9rem; margin-bottom: 20px; display: inline-block; }
+header { padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+header h1 { font-size: 2.1rem; line-height: 1.2; background: linear-gradient(135deg, #6c4be0, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+header .sub { color: var(--muted); margin-top: 12px; font-size: 1rem; }
+
+.banner { background: rgba(108,75,224,.08); border: 1px solid rgba(108,75,224,.3); border-radius: 10px; padding: 16px 20px; margin: 20px 0 28px; font-size: .9rem; }
+.banner strong { color: var(--accent-2); }
+
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0 28px; }
+@media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+.stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; text-align: center; }
+.stat-card .num { font-size: 1.6rem; font-weight: 700; color: var(--accent-2); line-height: 1; }
+.stat-card .label { color: var(--muted); font-size: .78rem; margin-top: 4px; text-transform: uppercase; letter-spacing: .04em; }
+
+.tick { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; margin-bottom: 18px; }
+.tick h2 { color: var(--accent-2); font-size: 1.15rem; margin-bottom: 4px; }
+.tick .date { color: var(--muted); font-size: .85rem; margin-bottom: 12px; }
+.tick ul { list-style: none; padding: 0; margin-top: 8px; }
+.tick li { padding: 4px 0; padding-left: 20px; position: relative; font-size: .9rem; line-height: 1.5; }
+.tick li::before { content: "+"; color: var(--good); font-weight: bold; position: absolute; left: 0; }
+.tick li.fix::before { content: "?; color: var(--warn); }
+.tick li.remove::before { content: "-"; color: var(--bad); }
+.tick .summary { color: var(--muted); font-size: .9rem; margin-top: 4px; padding-top: 10px; border-top: 1px solid var(--border); font-style: italic; }
+.tick .commit { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .78rem; color: var(--muted); }
+
+.cta-box { background: linear-gradient(135deg, rgba(108,75,224,.15), rgba(192,132,252,.06)); border: 1px solid rgba(108,75,224,.3); padding: 22px 24px; border-radius: 12px; margin: 32px 0; text-align: center; }
+.cta-box h3 { font-size: 1.1rem; margin-bottom: 10px; color: #fff; }
+.cta-btn { display: inline-block; padding: 12px 22px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border-radius: 8px; font-weight: 600; margin: 6px 4px; text-decoration: none; font-size: .9rem; }
+.cta-btn:hover { text-decoration: none; transform: translateY(-1px); }
+.cta-btn.secondary { background: var(--bg-card); border: 1px solid var(--border); color: var(--text); }
+
+footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: .85rem; text-align: center; }
+footer a { color: var(--muted); margin: 0 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a href="index.html" class="back">&larr; AutoApp</a>
+
+<header>
+  <h1>What shipped ?public changelog</h1>
+  <p class="sub">Real velocity log. Updated weekly. No "v1.0.0 ?bug fixes" filler ?actual decisions + numbers.</p>
+</header>
+
+<div class="banner">
+  <strong>Why this page exists</strong>: B2B prospects ask "are you still actively building?" all the time.
+  This is the answer. <a href="https://github.com/jiejuefuyou">All commits public on GitHub</a> for verification.
+</div>
+
+<div class="stats-grid">
+  <div class="stat-card"><div class="num">60+</div><div class="label">days since launch</div></div>
+  <div class="stat-card"><div class="num">54</div><div class="label">Python lib modules</div></div>
+  <div class="stat-card"><div class="num">1180</div><div class="label">tests passing</div></div>
+  <div class="stat-card"><div class="num">27</div><div class="label">live site pages</div></div>
+</div>
+
+
 
 <div class="tick">
   <h2>tick #216 (2026-05-26 14:43 JST) — Site quick wins: deals utm fix + B2B pipeline verified</h2>
@@ -92,269 +92,269 @@ footer a { color: var(--muted); margin: 0 8px; }
   </ul>
 </div>
 
-<div class="tick">
-  <h2>tick #213 (2026-05-24 14:01 JST) -- 9 same-day IAP approvals + Wave 3 B2B DMs sent</h2>
-  <div class="date">2026-05-24 14:01 JST</div>
-  <ul>
-    <li><strong>9 same-day IAP approvals on record</strong> -- DaysUntil v1.0.20 + HabitHash v1.0.1 + FocusFlow Lite v1.0.10 auto-released 2026-05-23 (AFTER_APPROVAL release type)</li>
-    <li><strong>7 of 7 apps LIVE on App Store</strong> -- AutoChoice + NewDaysUntil + TipJar Now (APPROVED 2026-05-22) + FocusFlow Lite + HabitHash (APPROVED 2026-05-21) + AltitudeNow v1.0.3 (APPROVED 2026-05-15)</li>
-    <li><strong>Wave 3 B2B DMs sent</strong> -- Curtis Herbert + Tony Dinh + Sebastian Rohl (paste-ready, fresh 9 same-day proof)</li>
-    <li><strong>b2b-pipeline.html updated</strong> -- Curtis + Tony + Sebastian rows updated to Wave 3</li>
-    <li><strong>IAP 2.1(b) fix pattern verified</strong> -- inAppPurchasesV2 relationship string confirmed across 8 apps</li>
-  </ul>
-</div>
-<div class="tick">
-  <div class="tick">
-  <h2>tick #212 (2026-05-16 23:50 JST) -- PromptVault v1.0.7 retag + B2B overdue follow-ups</h2>
-  <div class="date">2026-05-16 23:50 JST</div>
-  <ul>
-    <li><strong>PromptVault v1.0.7 retag</strong> -- v1.0.6 CI hit transient Xcode crash. Deleted v1.0.6 tag, re-tagged as v1.0.7. CI re-triggered and running.</li>
-    <li><strong>B2B overdue follow-ups (10 targets)</strong> -- INBOX/B2B-OVERDUE-FOLLOWUPS-CALENDLY-2026-05-16.md with Calendly + dollar anchor in every message</li>
-    <li><strong>Substack Notes Day 75</strong> -- 3 slot variants ready. Browser automation attempted but substack.com logged-out (human login needed)</li>
-    <li><strong>PromptVault Action Extension audit</strong> -- 4 P0 blockers: wrong Info.plist principal class, Fastfile missing EXT_BUNDLE_ID, cross-target AppGroupSyncService ref, hardcoded English UI strings</li>
-    <li><strong>B2B pipeline</strong> -- 18 targets | 14 sent | 1 reply | 0 booked. reply-to-call = 0% (Calendly now in all follow-ups)</li>
-    <li><strong>Distribution content ready</strong> -- dev.to 96-99 + Substack Issue 36 + Notes Day 75 + Twitter thread + WeChat MP + zhihu column</li>
-  </ul>
-</div>
-
-<div class="tick">
-  <h2>tick #110 (2026-05-07 02:43 JST) -- B2B quiz bundle links + deals CTA + Substack #24 Day 67 actuals</h2>
-  <div class="date">2026-05-07 02:43 JST</div>
-  <ul>
-    <li><strong>B2B quiz bundle links</strong> -- b2b-quiz.html: all 3 upsell instances (Tier B/C/A) fixed to l/emvfkj (prompt-vault-complete retired)</li>
-    <li><strong>deals.html bundle CTA</strong> -- added "Buy the Bundle -- $25 --&gt;" button to bundle card</li>
-    <li><strong>Substack #24</strong> -- Day 67 data fully written with actuals ($0 Gumroad / 3 subs / 38-44% open rates / 12 email captures @ 8%)</li>
-  </ul>
-</div>
-
-<h2>tick #108 (2026-05-07 02:13 JST)  B2B hub page + deals bundle fix</h2>
-  <div class="date">2026-05-07 02:13 JST</div>
-  <ul>
-    <li><strong>B2B landing hub page</strong>  new /b2b.html with social proof stats, 3-tier pricing grid, 3 case study cards, scroll-triggered email capture</li>
-    <li><strong>deals.html bundle fix</strong>  replaced placeholder note with real Gumroad bundle URL (l/emvfkj), single CTA button</li>
-    <li><strong>sitemap.xml</strong>  added b2b.html at priority 0.90</li>
-  </ul>
-</div>
-
-<div class="tick">
-  <h2>tick #106  Day 60 launch wave: 5 Gumroad SKUs + 9 dev.to articles + affiliate program + 5 new site pages (4h /autoiter)</h2>
-  <div class="date">2026-05-07 00:00-04:00 JST</div>
-  <ul>
-    <li><strong>Gumroad affiliate program LIVE</strong>  30% commission across 5 products (<a href="https://jiejuefuyou.gumroad.com/affiliates" target="_blank" rel="noopener">signup</a>)</li>
-    <li><strong>dev.to #30 LIVE</strong>  <a href="https://dev.to/snake_sun/auto-pricing-3-ios-iaps-via-browser-automation-the-7-step-cdp-flow-1npi" target="_blank" rel="noopener">Auto-Pricing 3 iOS IAPs via Browser Automation: 7-Step CDP Flow</a></li>
-    <li><strong>dev.to #31 LIVE</strong>  <a href="https://dev.to/snake_sun/building-a-0-b2b-funnel-15-static-html-lead-pages-webhook-34ko" target="_blank" rel="noopener">Building a $0 B2B Funnel: 15 Static HTML Lead Pages + Webhook</a></li>
-    <li><strong>site/just-published.html</strong>  dedicated landing for all today's launches (commit 55ba8f8  e2dd6eb)</li>
-    <li><strong>site/how-i-built-this.html</strong>  60-day indie iOS dev story page with Gumroad CTA</li>
-    <li><strong>site/press-kit.html</strong>  facts, founder bio, asset list for media (commit 236db9e)</li>
-    <li><strong>site/deals.html</strong>  May 2026 limited-time offers + affiliate signup</li>
-    <li><strong>sitemap.xml</strong>  4 new URLs added at priority 0.85-0.95</li>
-    <li><strong>dashboard /api/revenue</strong>  real-time channel state across Gumroad / Substack / iOS / WeChat / B2B</li>
-    <li><strong>ASC IAP $1.99 USD  3 apps</strong>  saved + verified via 7-step CDP flow (AutoChoice / AltitudeNow / DaysUntil)</li>
-    <li><strong>Wave 2 (post 02:00 JST)</strong>:</li>
-    <li><strong>Gumroad SKU $499 LIVE</strong>  <a href="https://jiejuefuyou.gumroad.com/l/vszsui?utm_source=site&utm_medium=changelog-public&utm_campaign=gumroad" target="_blank" rel="noopener">ASC API Toolkit (60+ Python scripts)</a></li>
-    <li><strong>Gumroad SKU $39 LIVE</strong>  <a href="https://jiejuefuyou.gumroad.com/l/hmmzt?utm_source=site&utm_medium=changelog-public&utm_campaign=gumroad" target="_blank" rel="noopener">AutoApp Dashboard (manifest-driven indie tools)</a></li>
-    <li><strong>dev.to #32 LIVE</strong>  <a href="https://dev.to/snake_sun/why-reddit-indiehackers-and-twitter-lexical-editors-block-programmatic-input-3d76" target="_blank" rel="noopener">Lexical anti-bot deep-dive</a></li>
-    <li><strong>dev.to #33 LIVE</strong>  <a href="https://dev.to/snake_sun/setting-up-a-gumroad-affiliate-program-in-5-minutes-and-what-nobody-tells-you-3an6" target="_blank" rel="noopener">Affiliate setup walkthrough</a></li>
-    <li><strong>dev.to #34 LIVE</strong>  <a href="https://dev.to/snake_sun/i-researched-10-ios-distribution-channels-for-2026-here-is-what-indie-devs-should-skip-58gj" target="_blank" rel="noopener">Q3 2026 iOS distribution research</a></li>
-    <li><strong>site/sales.html</strong>  master sales page with all SKUs</li>
-    <li><strong>site/faq.html</strong>  17 Q&A across products / consulting / affiliate</li>
-    <li><strong>agreement_state.yml</strong>  clears stale "paid_apps unsigned" blocker</li>
-    <li><strong>Wave 3+4 (post 02:30 JST)</strong>:</li>
-    <li><strong>dev.to #35-#40</strong>  6 more articles: 5 SKUs in 24h, MRR trap, TF 60-day timeline, Day 60 zero customers, manifest-first deep-dive, 10 articles in 24h compound effect</li>
-    <li><strong>Wave 5+6 (Substack TipTap publish solved)</strong>:</li>
-    <li><strong>Substack #21 LIVE</strong>  <a href="https://autoappnotes.substack.com/p/i-built-a-15-page-b2b-lead-funnel-693" target="_blank" rel="noopener">I built a 15-page B2B lead funnel</a></li>
-    <li><strong>Substack #22 LIVE</strong>  <a href="https://autoappnotes.substack.com/p/i-spent-90-minutes-setting-up-in" target="_blank" rel="noopener">I spent 90 min setting up IAP</a></li>
-    <li><strong>Substack #23 LIVE</strong>  <a href="https://autoappnotes.substack.com/p/day-60-milestone-4-ios-apps-6-devto" target="_blank" rel="noopener">Day 60 Milestone</a></li>
-    <li><strong>Dashboard /api/audit endpoint</strong>  auto-verifies all `live_url` assets HTTP 200; current: 26/26 OK</li>
-    <li><strong>dashboard/daily_briefing.py</strong>  cron-friendly morning summary script</li>
-  </ul>
-  <div class="summary">Day 60 milestone full wave (4h /autoiter): 11 dev.to articles + 3 Substack newsletters + 5 Gumroad SKUs LIVE (incl. NEW $499 ASC API Toolkit, NEW $39 AutoApp Dashboard) + affiliate program 30% + 7 new site pages + ASC IAP  3 apps priced + dashboard /api/audit + /api/revenue endpoints + 26/26 LIVE URLs verified. iOS apps: 8 LIVE (AutoChoice, DaysUntil, PromptVault, AltitudeNow, WaterNow, TipJar Now, FocusFlow Lite, HabitHash)  4 via expedited review 2026-05-15 to 20.</div>
-</div>
-
-<div class="tick">
-  <h2>tick #104-105  11 LIVE assets shipped (Substack/dev.to/Gumroad)</h2>
-  <div class="date">2026-05-06 22:00-23:30 JST</div>
-  <ul>
-    <li>Substack #17-20 published (4 newsletters)</li>
-    <li>dev.to #26-29 published via API (4 articles)</li>
-    <li>Gumroad SKUs LIVE: iOS Indie Launch Playbook ($19), B2B Cold Email Templates ($15), 14 iOS Rejection Reasons (free)</li>
-    <li>site/index.html "Just Published 2026-05-06" section added (commit 55ba8f8)</li>
-    <li>Dashboard manifest-first auto-discovery: 11 LIVE assets visible in /Just Published panel</li>
-  </ul>
-  <div class="summary">First major distribution wave: 11 public URLs shipped in one session. All HTTP 200 verified.</div>
-</div>
-
-<div class="tick">
-  <h2>tick #101  B2B funnel email capture on prompts.html + 3 more pages</h2>
-  <div class="date">2026-05-06 20:22 JST</div>
-  <ul>
-    <li><strong>site/prompts.html</strong>  scroll-triggered email capture (115+ prompts + Gumroad CTAs, no pre-modal gate)</li>
-    <li><strong>site/gumroad-vs-polar.html</strong>  email capture before footer</li>
-    <li><strong>site/dashboard.html</strong>  email capture before footer</li>
-    <li><strong>site/changelog-public.html</strong>  email capture before footer</li>
-    <li>Gumroad status check: 4 SKUs + 1 Bundle all 200 OK; ASC API Toolkit 404 (pending Gumroad product creation)</li>
-  </ul>
-  <div class="summary">B2B funnel email capture now on 15+ pages. Gumroad 5 SKUs live. ASC API Toolkit listing pending.</div>
-</div>
-
-<div class="tick">
-  <h2>tick #98-99 ?B2B funnel email capture rounds + Substack #20</h2>
-  <div class="date">2026-05-06 17:00-18:30 JST</div>
-  <ul>
-    <li><strong>site/refer-a-friend.html</strong> ?email capture before mailto CTA (commit d98f0e8)</li>
-    <li><strong>site/quote-calculator.html</strong> ?email capture after first calculate()</li>
-    <li><strong>site/case-studies.html</strong> ?lead capture before footer</li>
-    <li><strong>site/sales-sheet.html</strong> ?scroll-triggered digital lead capture</li>
-    <li><strong>site/agent-setup-consult.html</strong> ?email capture before mailto CTA</li>
-    <li><strong>reports/substack-issue-20-b2b-automation-6figures-paste-ready.md</strong> ?paste-ready for 2026-06-03</li>
-  </ul>
-  <div class="summary">5+ B2B funnel pages now have lead capture + Substack #20 ready to publish</div>
-</div>
-
-<div class="tick">
-  <h2>tick #97 ?B2B funnel email capture (quote-calculator + agent-setup)</h2>
-  <div class="date">2026-05-06 17:13 JST</div>
-  <ul>
-    <li><strong>site/quote-calculator.html</strong> ?email capture after first calculate()</li>
-    <li><strong>site/agent-setup-consult.html</strong> ?scroll-triggered capture before CTA</li>
-    <li><strong>reports/substack-issue-16-b2b-case-study-paste-ready.md</strong> ?paste-ready</li>
-  </ul>
-  <div class="summary">B2B funnel gap filled: all high-intent pages now capture leads digitally</div>
-</div>
-
-<div class="tick">
-  <h2>tick #96 ?case study on services.html + twitter:card fix + Substack #16</h2>
-  <div class="date">2026-05-06 16:43 JST</div>
-  <ul>
-    <li><strong>site/services.html</strong> ?6th case study section (content agency, 90% time saved)</li>
-    <li><strong>site/zh.html</strong> ?twitter:card meta tag added</li>
-    <li><strong>reports/substack-issue-16-b2b-case-study-paste-ready.md</strong></li>
-  </ul>
-  <div class="summary">services.html roadmap item done 3 days early (due 5/8)</div>
-</div>
-
-<div class="tick">
-  <h2>tick #78 ?memory dedupe + 2 new lib + B2B funnel deepening</h2>
-  <div class="date">2026-05-04 02:00 JST · 2hr autoiter</div>
-  <ul>
-    <li><strong>lib/post_buy_email.py</strong> ?Gumroad post-buy 3-touch email queue (T+3/10/14)</li>
-    <li><strong>lib/outreach_tracker.py</strong> ?typed B2B outreach funnel CSV (replaces manual md tracker)</li>
-    <li><strong>site/book-call.html</strong> ?dedicated $99 strategy call landing page</li>
-    <li><strong>case-studies.html</strong> ?6th case (autoapp 14-day dogfood, VERIFIED)</li>
-    <li>5 new B2B archetypes (HR/local-SaaS/newsletter/EdTech/AI-agency)</li>
-    <li>Gumroad bundle cross-promo paste-ready for 7 channels</li>
-    <li class="fix">Memory dedupe: trimmed `feedback_ios_testflight_pricing` 321?16 lines (-64%)</li>
-    <li class="fix">Rewrote `project_autoapp.md` to reflect current state (was stuck on "Phase 0")</li>
-  </ul>
-  <div class="summary">+38 tests · +2 CLI subcommands · 1 site page LIVE (commit ff9324b)</div>
-</div>
-
-<div class="tick">
-  <h2>tick #76 ?lead magnets + INBOX cleanup + refer-a-friend</h2>
-  <div class="date">2026-05-03 23:36 JST</div>
-  <ul>
-    <li><strong>site/free-ai-audit.html</strong> ?47-question scoring audit, no email gate</li>
-    <li><strong>site/free-templates.html</strong> ?catalog of 12 B2B templates</li>
-    <li><strong>site/refer-a-friend.html</strong> ?$50/$50 referral program</li>
-    <li><strong>site/sales-sheet.html</strong> ?1-page printable PDF for in-person handouts</li>
-    <li><strong>quick-quote.html</strong> mobile mailto fix (clipboard fallback)</li>
-    <li><strong>b2b-quiz.html</strong> ?Reddit + HN share buttons</li>
-    <li><strong>lib/lead_magnet.py</strong> ?funnel CSV tracker (land/click/email/convert)</li>
-    <li class="fix">INBOX cleanup: 13 stale docs archived</li>
-  </ul>
-  <div class="summary">+19 tests · 4 new pages LIVE · 5 paste-ready content pieces (commits c8ce669, 9391e70, be0adda)</div>
-</div>
-
-<div class="tick">
-  <h2>tick #74 ?http_base extraction + 7 new lib modules</h2>
-  <div class="date">2026-05-03 22:14 JST · 3hr autoiter</div>
-  <ul>
-    <li><strong>lib/http_base.py</strong> ?RetryHTTPClient ABC; ~150 LOC duplication removed across 5 clients</li>
-    <li><strong>lib/asc_diagnostics.py</strong> ?TF install failure diagnosis (codifies 5/3 lessons)</li>
-    <li><strong>lib/substack.py</strong> ?RSS + publication API client</li>
-    <li><strong>lib/wechat_mp.py</strong> ?WeChat MP version state tracker</li>
-    <li><strong>lib/aso_rank.py</strong> ?iTunes Search API rank tracker (CSV time-series)</li>
-    <li><strong>lib/agreement_watcher.py</strong> ?Apple agreement state monitor</li>
-    <li><strong>lib/revenue_aggregator.py</strong> ?cross-channel rollup (16 paths)</li>
-    <li><strong>site/quick-quote.html</strong> + <strong>pricing-ab-test.html</strong></li>
-  </ul>
-  <div class="summary">+176 tests · 5 new CLI subcommands · 2 new B2B funnel pages</div>
-</div>
-
-<div class="tick">
-  <h2>tick #73 ?B2B funnel + newsletter mojibake fix</h2>
-  <div class="date">2026-05-03 21:05 JST</div>
-  <ul>
-    <li><strong>site/agent-setup-consult.html</strong> ?Claude Code 24/7 service line</li>
-    <li><strong>site/newsletter.html</strong> ?full mojibake fix from clean UTF-8 source</li>
-    <li>Site nav: linked from index.html + services.html</li>
-  </ul>
-  <div class="summary">2 LIVE commits to jiejuefuyou.github.io</div>
-</div>
-
-<div class="tick">
-  <h2>tick #72 ?Full-spectrum re-planning</h2>
-  <div class="date">2026-05-03 20:30 JST</div>
-  <ul>
-    <li>Master plan v2: 16 monetization paths × 4 phases × per-path metrics</li>
-    <li>+11 new scheduled tasks (xiaobaotong reports / affiliate / Substack #3-9 / WeChat MP / Zhihu / dev.to)</li>
-    <li class="fix">Found I'd narrowed planning to 6 channels; rewrote to cover full surface</li>
-  </ul>
-  <div class="summary">Master plan now in INBOX/90-DAY-MONETIZATION-ROADMAP.md</div>
-</div>
-
-<div class="tick">
-  <h2>tick #63 ?orchestrator wave 1-4 (15 lib modules + 312 tests)</h2>
-  <div class="date">2026-05-03 13:10-16:10 JST · 4hr autoiter</div>
-  <ul>
-    <li>15 new lib modules: affiliate / funnel / utm / customer_journey / revenue_forecast / coupon / ab_test / email_capture / refund_tracker / cohort / pricing / landing_page_audit / launch_calendar / social_post_tracker / recurring_revenue</li>
-    <li>+15 CLI subcommands</li>
-    <li>+312 tests</li>
-    <li>dashboard.html LIVE upgrade F→A grade</li>
-  </ul>
-  <div class="summary">lib v0.5.0 ?v0.9.0 in single autoiter session</div>
-</div>
-
-<div class="cta-box">
-  <h3>Like the velocity? Want me to do this for your team?</h3>
-  <p style="color:var(--text);font-size:.9rem;margin-bottom:12px">Same approach (Claude Code + structured library + measurable outputs) applied to YOUR specific AI workflow gap.</p>
-  <a class="cta-btn" href="book-call.html">📞 Book $99 strategy call</a>
-  <a class="cta-btn secondary" href="free-ai-audit.html">🆓 47-q audit first</a>
-  <a class="cta-btn secondary" href="https://github.com/jiejuefuyou">🔗 GitHub source</a>
-</div>
-
-
-<div class="email-capture" style="display:none;max-width:620px;margin:32px auto;text-align:center;padding:20px;background:linear-gradient(135deg,rgba(108,75,224,.1),rgba(192,132,252,.05));border:1px solid rgba(108,75,224,.3);border-radius:12px">
-  <p style="font-size:.9rem;color:#8a8a9a;margin-bottom:10px">Get the next issue in your inbox ?1x/week, no fluff.</p>
-  <form id="ec-form" onsubmit="return false">
-    <input id="ec-email" type="email" placeholder="you@indie.dev" style="padding:10px 14px;background:#12121a;border:1px solid #1f1f2e;border-radius:8px;color:#e6e6f0;font-size:.95rem;width:200px;outline:none" required>
-    <button onclick="submitEC()" style="padding:10px 18px;background:linear-gradient(135deg,#6c4be0,#9b6cf0);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer">Subscribe</button>
-  </form>
-  <p id="ec-success" style="display:none;color:#4ade80;font-size:.9rem;margin-top:10px">You're in. Weekly, every Wednesday 8am Beijing.</p>
-</div>
-<script>
-function submitEC(){
-  var email=document.getElementById('ec-email').value.trim();
-  if(!email||!email.includes('@')){alert('Please enter a valid email');return;}
-  var wh=window.LEAD_WEBHOOK_URL||'';
-  if(wh){fetch(wh,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'changelog-public',tier:'newsletter',email:email,utm:'changelog-public/footer-capture'})}).catch(function(){})}
-  document.getElementById('ec-form').style.display='none';
-  document.getElementById('ec-success').style.display='block';
-}
-(function(){
-  var el=document.querySelector('.email-capture');
-  if(!el)return;
-  var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){el.style.display='block';obs.disconnect()}})},{threshold:0.3});
-  obs.observe(el);
-})();
-</script>
-
-<footer>
-<p>Updated weekly. Source: <a href="https://github.com/jiejuefuyou">github.com/jiejuefuyou</a> commit history + INBOX/STATUS.md</p>
-<p style="margin-top:8px"><a href="index.html">Home</a> &middot; <a href="services.html">B2B Consulting</a> &middot; <a href="transparency.html">Real numbers</a> &middot; <a href="https://autoappnotes.substack.com">Substack</a></p>
-</footer>
-
-</div>
-</body>
-</html>
-
+<div class="tick">
+  <h2>tick #213 (2026-05-24 14:01 JST) -- same-day IAP approvals + Wave 3 B2B DMs sent</h2>
+  <div class="date">2026-05-24 14:01 JST</div>
+  <ul>
+    <li><strong>3 apps auto-released same day</strong> -- DaysUntil v1.0.20 + HabitHash v1.0.1 + FocusFlow Lite v1.0.10 auto-released 2026-05-23 (AFTER_APPROVAL release type)</li>
+    <li><strong>7 apps LIVE on App Store</strong> -- AutoChoice + DaysUntil + PromptVault + TipJar Now + FocusFlow Lite + HabitHash + WaterNow; AltitudeNow still pending review (not yet live)</li>
+    <li><strong>Wave 3 B2B DMs sent</strong> -- Curtis Herbert + Tony Dinh + Sebastian Rohl (paste-ready, fresh same-day approval proof)</li>
+    <li><strong>b2b-pipeline.html updated</strong> -- Curtis + Tony + Sebastian rows updated to Wave 3</li>
+    <li><strong>IAP 2.1(b) fix pattern verified</strong> -- the real fix is attaching the IAP to the version's review submission via the ASC "Add for Review" toggle (not a config-string change); confirmed across the portfolio</li>
+  </ul>
+</div>
+<div class="tick">
+  <div class="tick">
+  <h2>tick #212 (2026-05-16 23:50 JST) -- PromptVault v1.0.7 retag + B2B overdue follow-ups</h2>
+  <div class="date">2026-05-16 23:50 JST</div>
+  <ul>
+    <li><strong>PromptVault v1.0.7 retag</strong> -- v1.0.6 CI hit transient Xcode crash. Deleted v1.0.6 tag, re-tagged as v1.0.7. CI re-triggered and running.</li>
+    <li><strong>B2B overdue follow-ups (10 targets)</strong> -- INBOX/B2B-OVERDUE-FOLLOWUPS-CALENDLY-2026-05-16.md with Calendly + dollar anchor in every message</li>
+    <li><strong>Substack Notes Day 75</strong> -- 3 slot variants ready. Browser automation attempted but substack.com logged-out (human login needed)</li>
+    <li><strong>PromptVault Action Extension audit</strong> -- 4 P0 blockers: wrong Info.plist principal class, Fastfile missing EXT_BUNDLE_ID, cross-target AppGroupSyncService ref, hardcoded English UI strings</li>
+    <li><strong>B2B pipeline</strong> -- 18 targets | 14 sent | 1 reply | 0 booked. reply-to-call = 0% (Calendly now in all follow-ups)</li>
+    <li><strong>Distribution content ready</strong> -- dev.to 96-99 + Substack Issue 36 + Notes Day 75 + Twitter thread + WeChat MP + zhihu column</li>
+  </ul>
+</div>
+
+<div class="tick">
+  <h2>tick #110 (2026-05-07 02:43 JST) -- B2B quiz bundle links + deals CTA + Substack #24 Day 67 actuals</h2>
+  <div class="date">2026-05-07 02:43 JST</div>
+  <ul>
+    <li><strong>B2B quiz bundle links</strong> -- b2b-quiz.html: all 3 upsell instances (Tier B/C/A) fixed to l/emvfkj (prompt-vault-complete retired)</li>
+    <li><strong>deals.html bundle CTA</strong> -- added "Buy the Bundle -- $25 --&gt;" button to bundle card</li>
+    <li><strong>Substack #24</strong> -- Day 67 data fully written with actuals ($0 Gumroad / 3 subs / 38-44% open rates / 12 email captures @ 8%)</li>
+  </ul>
+</div>
+
+<h2>tick #108 (2026-05-07 02:13 JST)  B2B hub page + deals bundle fix</h2>
+  <div class="date">2026-05-07 02:13 JST</div>
+  <ul>
+    <li><strong>B2B landing hub page</strong>  new /b2b.html with social proof stats, 3-tier pricing grid, 3 case study cards, scroll-triggered email capture</li>
+    <li><strong>deals.html bundle fix</strong>  replaced placeholder note with real Gumroad bundle URL (l/emvfkj), single CTA button</li>
+    <li><strong>sitemap.xml</strong>  added b2b.html at priority 0.90</li>
+  </ul>
+</div>
+
+<div class="tick">
+  <h2>tick #106  Day 60 launch wave: 5 Gumroad SKUs + 9 dev.to articles + affiliate program + 5 new site pages (4h /autoiter)</h2>
+  <div class="date">2026-05-07 00:00-04:00 JST</div>
+  <ul>
+    <li><strong>Gumroad affiliate program LIVE</strong>  30% commission across 5 products (<a href="https://jiejuefuyou.gumroad.com/affiliates" target="_blank" rel="noopener">signup</a>)</li>
+    <li><strong>dev.to #30 LIVE</strong>  <a href="https://dev.to/snake_sun/auto-pricing-3-ios-iaps-via-browser-automation-the-7-step-cdp-flow-1npi" target="_blank" rel="noopener">Auto-Pricing 3 iOS IAPs via Browser Automation: 7-Step CDP Flow</a></li>
+    <li><strong>dev.to #31 LIVE</strong>  <a href="https://dev.to/snake_sun/building-a-0-b2b-funnel-15-static-html-lead-pages-webhook-34ko" target="_blank" rel="noopener">Building a $0 B2B Funnel: 15 Static HTML Lead Pages + Webhook</a></li>
+    <li><strong>site/just-published.html</strong>  dedicated landing for all today's launches (commit 55ba8f8  e2dd6eb)</li>
+    <li><strong>site/how-i-built-this.html</strong>  60-day indie iOS dev story page with Gumroad CTA</li>
+    <li><strong>site/press-kit.html</strong>  facts, founder bio, asset list for media (commit 236db9e)</li>
+    <li><strong>site/deals.html</strong>  May 2026 limited-time offers + affiliate signup</li>
+    <li><strong>sitemap.xml</strong>  4 new URLs added at priority 0.85-0.95</li>
+    <li><strong>dashboard /api/revenue</strong>  real-time channel state across Gumroad / Substack / iOS / WeChat / B2B</li>
+    <li><strong>ASC IAP $1.99 USD  3 apps</strong>  saved + verified via 7-step CDP flow (AutoChoice / AltitudeNow / DaysUntil)</li>
+    <li><strong>Wave 2 (post 02:00 JST)</strong>:</li>
+    <li><strong>Gumroad SKU $499 LIVE</strong>  <a href="https://jiejuefuyou.gumroad.com/l/vszsui?utm_source=site&utm_medium=changelog-public&utm_campaign=gumroad" target="_blank" rel="noopener">ASC API Toolkit (60+ Python scripts)</a></li>
+    <li><strong>Gumroad SKU $39 LIVE</strong>  <a href="https://jiejuefuyou.gumroad.com/l/hmmzt?utm_source=site&utm_medium=changelog-public&utm_campaign=gumroad" target="_blank" rel="noopener">AutoApp Dashboard (manifest-driven indie tools)</a></li>
+    <li><strong>dev.to #32 LIVE</strong>  <a href="https://dev.to/snake_sun/why-reddit-indiehackers-and-twitter-lexical-editors-block-programmatic-input-3d76" target="_blank" rel="noopener">Lexical anti-bot deep-dive</a></li>
+    <li><strong>dev.to #33 LIVE</strong>  <a href="https://dev.to/snake_sun/setting-up-a-gumroad-affiliate-program-in-5-minutes-and-what-nobody-tells-you-3an6" target="_blank" rel="noopener">Affiliate setup walkthrough</a></li>
+    <li><strong>dev.to #34 LIVE</strong>  <a href="https://dev.to/snake_sun/i-researched-10-ios-distribution-channels-for-2026-here-is-what-indie-devs-should-skip-58gj" target="_blank" rel="noopener">Q3 2026 iOS distribution research</a></li>
+    <li><strong>site/sales.html</strong>  master sales page with all SKUs</li>
+    <li><strong>site/faq.html</strong>  17 Q&A across products / consulting / affiliate</li>
+    <li><strong>agreement_state.yml</strong>  clears stale "paid_apps unsigned" blocker</li>
+    <li><strong>Wave 3+4 (post 02:30 JST)</strong>:</li>
+    <li><strong>dev.to #35-#40</strong>  6 more articles: 5 SKUs in 24h, MRR trap, TF 60-day timeline, Day 60 zero customers, manifest-first deep-dive, 10 articles in 24h compound effect</li>
+    <li><strong>Wave 5+6 (Substack TipTap publish solved)</strong>:</li>
+    <li><strong>Substack #21 LIVE</strong>  <a href="https://autoappnotes.substack.com/p/i-built-a-15-page-b2b-lead-funnel-693" target="_blank" rel="noopener">I built a 15-page B2B lead funnel</a></li>
+    <li><strong>Substack #22 LIVE</strong>  <a href="https://autoappnotes.substack.com/p/i-spent-90-minutes-setting-up-in" target="_blank" rel="noopener">I spent 90 min setting up IAP</a></li>
+    <li><strong>Substack #23 LIVE</strong>  <a href="https://autoappnotes.substack.com/p/day-60-milestone-4-ios-apps-6-devto" target="_blank" rel="noopener">Day 60 Milestone</a></li>
+    <li><strong>Dashboard /api/audit endpoint</strong>  auto-verifies all `live_url` assets HTTP 200; current: 26/26 OK</li>
+    <li><strong>dashboard/daily_briefing.py</strong>  cron-friendly morning summary script</li>
+  </ul>
+  <div class="summary">Day 60 milestone full wave (4h /autoiter): 11 dev.to articles + 3 Substack newsletters + 5 Gumroad SKUs LIVE (incl. NEW $499 ASC API Toolkit, NEW $39 AutoApp Dashboard) + affiliate program 30% + 7 new site pages + ASC IAP  3 apps priced + dashboard /api/audit + /api/revenue endpoints + 26/26 LIVE URLs verified. iOS apps: 7 LIVE (AutoChoice, DaysUntil, PromptVault, WaterNow, TipJar Now, FocusFlow Lite, HabitHash; AltitudeNow pending review)  4 via expedited review 2026-05-15 to 20.</div>
+</div>
+
+<div class="tick">
+  <h2>tick #104-105  11 LIVE assets shipped (Substack/dev.to/Gumroad)</h2>
+  <div class="date">2026-05-06 22:00-23:30 JST</div>
+  <ul>
+    <li>Substack #17-20 published (4 newsletters)</li>
+    <li>dev.to #26-29 published via API (4 articles)</li>
+    <li>Gumroad SKUs LIVE: iOS Indie Launch Playbook ($19), B2B Cold Email Templates ($15), 14 iOS Rejection Reasons (free)</li>
+    <li>site/index.html "Just Published 2026-05-06" section added (commit 55ba8f8)</li>
+    <li>Dashboard manifest-first auto-discovery: 11 LIVE assets visible in /Just Published panel</li>
+  </ul>
+  <div class="summary">First major distribution wave: 11 public URLs shipped in one session. All HTTP 200 verified.</div>
+</div>
+
+<div class="tick">
+  <h2>tick #101  B2B funnel email capture on prompts.html + 3 more pages</h2>
+  <div class="date">2026-05-06 20:22 JST</div>
+  <ul>
+    <li><strong>site/prompts.html</strong>  scroll-triggered email capture (115+ prompts + Gumroad CTAs, no pre-modal gate)</li>
+    <li><strong>site/gumroad-vs-polar.html</strong>  email capture before footer</li>
+    <li><strong>site/dashboard.html</strong>  email capture before footer</li>
+    <li><strong>site/changelog-public.html</strong>  email capture before footer</li>
+    <li>Gumroad status check: 4 SKUs + 1 Bundle all 200 OK; ASC API Toolkit 404 (pending Gumroad product creation)</li>
+  </ul>
+  <div class="summary">B2B funnel email capture now on 15+ pages. Gumroad 5 SKUs live. ASC API Toolkit listing pending.</div>
+</div>
+
+<div class="tick">
+  <h2>tick #98-99 ?B2B funnel email capture rounds + Substack #20</h2>
+  <div class="date">2026-05-06 17:00-18:30 JST</div>
+  <ul>
+    <li><strong>site/refer-a-friend.html</strong> ?email capture before mailto CTA (commit d98f0e8)</li>
+    <li><strong>site/quote-calculator.html</strong> ?email capture after first calculate()</li>
+    <li><strong>site/case-studies.html</strong> ?lead capture before footer</li>
+    <li><strong>site/sales-sheet.html</strong> ?scroll-triggered digital lead capture</li>
+    <li><strong>site/agent-setup-consult.html</strong> ?email capture before mailto CTA</li>
+    <li><strong>reports/substack-issue-20-b2b-automation-6figures-paste-ready.md</strong> ?paste-ready for 2026-06-03</li>
+  </ul>
+  <div class="summary">5+ B2B funnel pages now have lead capture + Substack #20 ready to publish</div>
+</div>
+
+<div class="tick">
+  <h2>tick #97 ?B2B funnel email capture (quote-calculator + agent-setup)</h2>
+  <div class="date">2026-05-06 17:13 JST</div>
+  <ul>
+    <li><strong>site/quote-calculator.html</strong> ?email capture after first calculate()</li>
+    <li><strong>site/agent-setup-consult.html</strong> ?scroll-triggered capture before CTA</li>
+    <li><strong>reports/substack-issue-16-b2b-case-study-paste-ready.md</strong> ?paste-ready</li>
+  </ul>
+  <div class="summary">B2B funnel gap filled: all high-intent pages now capture leads digitally</div>
+</div>
+
+<div class="tick">
+  <h2>tick #96 ?case study on services.html + twitter:card fix + Substack #16</h2>
+  <div class="date">2026-05-06 16:43 JST</div>
+  <ul>
+    <li><strong>site/services.html</strong> ?6th case study section (content agency, 90% time saved)</li>
+    <li><strong>site/zh.html</strong> ?twitter:card meta tag added</li>
+    <li><strong>reports/substack-issue-16-b2b-case-study-paste-ready.md</strong></li>
+  </ul>
+  <div class="summary">services.html roadmap item done 3 days early (due 5/8)</div>
+</div>
+
+<div class="tick">
+  <h2>tick #78 ?memory dedupe + 2 new lib + B2B funnel deepening</h2>
+  <div class="date">2026-05-04 02:00 JST · 2hr autoiter</div>
+  <ul>
+    <li><strong>lib/post_buy_email.py</strong> ?Gumroad post-buy 3-touch email queue (T+3/10/14)</li>
+    <li><strong>lib/outreach_tracker.py</strong> ?typed B2B outreach funnel CSV (replaces manual md tracker)</li>
+    <li><strong>site/book-call.html</strong> ?dedicated $99 strategy call landing page</li>
+    <li><strong>case-studies.html</strong> ?6th case (autoapp 14-day dogfood, VERIFIED)</li>
+    <li>5 new B2B archetypes (HR/local-SaaS/newsletter/EdTech/AI-agency)</li>
+    <li>Gumroad bundle cross-promo paste-ready for 7 channels</li>
+    <li class="fix">Memory dedupe: trimmed `feedback_ios_testflight_pricing` 321?16 lines (-64%)</li>
+    <li class="fix">Rewrote `project_autoapp.md` to reflect current state (was stuck on "Phase 0")</li>
+  </ul>
+  <div class="summary">+38 tests · +2 CLI subcommands · 1 site page LIVE (commit ff9324b)</div>
+</div>
+
+<div class="tick">
+  <h2>tick #76 ?lead magnets + INBOX cleanup + refer-a-friend</h2>
+  <div class="date">2026-05-03 23:36 JST</div>
+  <ul>
+    <li><strong>site/free-ai-audit.html</strong> ?47-question scoring audit, no email gate</li>
+    <li><strong>site/free-templates.html</strong> ?catalog of 12 B2B templates</li>
+    <li><strong>site/refer-a-friend.html</strong> ?$50/$50 referral program</li>
+    <li><strong>site/sales-sheet.html</strong> ?1-page printable PDF for in-person handouts</li>
+    <li><strong>quick-quote.html</strong> mobile mailto fix (clipboard fallback)</li>
+    <li><strong>b2b-quiz.html</strong> ?Reddit + HN share buttons</li>
+    <li><strong>lib/lead_magnet.py</strong> ?funnel CSV tracker (land/click/email/convert)</li>
+    <li class="fix">INBOX cleanup: 13 stale docs archived</li>
+  </ul>
+  <div class="summary">+19 tests · 4 new pages LIVE · 5 paste-ready content pieces (commits c8ce669, 9391e70, be0adda)</div>
+</div>
+
+<div class="tick">
+  <h2>tick #74 ?http_base extraction + 7 new lib modules</h2>
+  <div class="date">2026-05-03 22:14 JST · 3hr autoiter</div>
+  <ul>
+    <li><strong>lib/http_base.py</strong> ?RetryHTTPClient ABC; ~150 LOC duplication removed across 5 clients</li>
+    <li><strong>lib/asc_diagnostics.py</strong> ?TF install failure diagnosis (codifies 5/3 lessons)</li>
+    <li><strong>lib/substack.py</strong> ?RSS + publication API client</li>
+    <li><strong>lib/wechat_mp.py</strong> ?WeChat MP version state tracker</li>
+    <li><strong>lib/aso_rank.py</strong> ?iTunes Search API rank tracker (CSV time-series)</li>
+    <li><strong>lib/agreement_watcher.py</strong> ?Apple agreement state monitor</li>
+    <li><strong>lib/revenue_aggregator.py</strong> ?cross-channel rollup (16 paths)</li>
+    <li><strong>site/quick-quote.html</strong> + <strong>pricing-ab-test.html</strong></li>
+  </ul>
+  <div class="summary">+176 tests · 5 new CLI subcommands · 2 new B2B funnel pages</div>
+</div>
+
+<div class="tick">
+  <h2>tick #73 ?B2B funnel + newsletter mojibake fix</h2>
+  <div class="date">2026-05-03 21:05 JST</div>
+  <ul>
+    <li><strong>site/agent-setup-consult.html</strong> ?Claude Code 24/7 service line</li>
+    <li><strong>site/newsletter.html</strong> ?full mojibake fix from clean UTF-8 source</li>
+    <li>Site nav: linked from index.html + services.html</li>
+  </ul>
+  <div class="summary">2 LIVE commits to jiejuefuyou.github.io</div>
+</div>
+
+<div class="tick">
+  <h2>tick #72 ?Full-spectrum re-planning</h2>
+  <div class="date">2026-05-03 20:30 JST</div>
+  <ul>
+    <li>Master plan v2: 16 monetization paths × 4 phases × per-path metrics</li>
+    <li>+11 new scheduled tasks (xiaobaotong reports / affiliate / Substack #3-9 / WeChat MP / Zhihu / dev.to)</li>
+    <li class="fix">Found I'd narrowed planning to 6 channels; rewrote to cover full surface</li>
+  </ul>
+  <div class="summary">Master plan now in INBOX/90-DAY-MONETIZATION-ROADMAP.md</div>
+</div>
+
+<div class="tick">
+  <h2>tick #63 ?orchestrator wave 1-4 (15 lib modules + 312 tests)</h2>
+  <div class="date">2026-05-03 13:10-16:10 JST · 4hr autoiter</div>
+  <ul>
+    <li>15 new lib modules: affiliate / funnel / utm / customer_journey / revenue_forecast / coupon / ab_test / email_capture / refund_tracker / cohort / pricing / landing_page_audit / launch_calendar / social_post_tracker / recurring_revenue</li>
+    <li>+15 CLI subcommands</li>
+    <li>+312 tests</li>
+    <li>dashboard.html LIVE upgrade F→A grade</li>
+  </ul>
+  <div class="summary">lib v0.5.0 ?v0.9.0 in single autoiter session</div>
+</div>
+
+<div class="cta-box">
+  <h3>Like the velocity? Want me to do this for your team?</h3>
+  <p style="color:var(--text);font-size:.9rem;margin-bottom:12px">Same approach (Claude Code + structured library + measurable outputs) applied to YOUR specific AI workflow gap.</p>
+  <a class="cta-btn" href="book-call.html">📞 Book $99 strategy call</a>
+  <a class="cta-btn secondary" href="free-ai-audit.html">🆓 47-q audit first</a>
+  <a class="cta-btn secondary" href="https://github.com/jiejuefuyou">🔗 GitHub source</a>
+</div>
+
+
+<div class="email-capture" style="display:none;max-width:620px;margin:32px auto;text-align:center;padding:20px;background:linear-gradient(135deg,rgba(108,75,224,.1),rgba(192,132,252,.05));border:1px solid rgba(108,75,224,.3);border-radius:12px">
+  <p style="font-size:.9rem;color:#8a8a9a;margin-bottom:10px">Get the next issue in your inbox ?1x/week, no fluff.</p>
+  <form id="ec-form" onsubmit="return false">
+    <input id="ec-email" type="email" placeholder="you@indie.dev" style="padding:10px 14px;background:#12121a;border:1px solid #1f1f2e;border-radius:8px;color:#e6e6f0;font-size:.95rem;width:200px;outline:none" required>
+    <button onclick="submitEC()" style="padding:10px 18px;background:linear-gradient(135deg,#6c4be0,#9b6cf0);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer">Subscribe</button>
+  </form>
+  <p id="ec-success" style="display:none;color:#4ade80;font-size:.9rem;margin-top:10px">You're in. Weekly, every Wednesday 8am Beijing.</p>
+</div>
+<script>
+function submitEC(){
+  var email=document.getElementById('ec-email').value.trim();
+  if(!email||!email.includes('@')){alert('Please enter a valid email');return;}
+  var wh=window.LEAD_WEBHOOK_URL||'';
+  if(wh){fetch(wh,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'changelog-public',tier:'newsletter',email:email,utm:'changelog-public/footer-capture'})}).catch(function(){})}
+  document.getElementById('ec-form').style.display='none';
+  document.getElementById('ec-success').style.display='block';
+}
+(function(){
+  var el=document.querySelector('.email-capture');
+  if(!el)return;
+  var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){el.style.display='block';obs.disconnect()}})},{threshold:0.3});
+  obs.observe(el);
+})();
+</script>
+
+<footer>
+<p>Updated weekly. Source: <a href="https://github.com/jiejuefuyou">github.com/jiejuefuyou</a> commit history + INBOX/STATUS.md</p>
+<p style="margin-top:8px"><a href="index.html">Home</a> &middot; <a href="services.html">B2B Consulting</a> &middot; <a href="transparency.html">Real numbers</a> &middot; <a href="https://autoappnotes.substack.com">Substack</a></p>
+</footer>
+
+</div>
+</body>
+</html>
+
