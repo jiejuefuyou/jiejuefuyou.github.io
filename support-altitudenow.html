@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AltitudeNow — Support</title>
+  <style>
+    body{max-width:720px;margin:40px auto;padding:0 20px;font:16px/1.7 -apple-system,system-ui,sans-serif;color:#1d1d1f}
+    h1{font-size:26px}h2{font-size:19px;margin-top:1.7em}a{color:#06c}
+    .card{background:#f5f7f7;border-radius:12px;padding:14px 16px;margin:14px 0}
+    code{background:#f1f1f1;padding:2px 5px;border-radius:4px}
+  </style>
+</head>
+<body>
+<h1>AltitudeNow Support</h1>
+<p>AltitudeNow is a barometric altimeter and elevation-session logger for supported iPhones running iOS 17 or later.</p>
+
+<div class="card">
+  <b>Need help?</b><br>
+  Email <a href="mailto:jiejuefuyou@gmail.com">jiejuefuyou@gmail.com</a>. Please include “AltitudeNow”, your iOS version, device model, and a short description or screenshot of the issue.
+</div>
+
+<h2>Why does AltitudeNow need Motion &amp; Fitness access?</h2>
+<p>AltitudeNow uses Apple's Core Motion framework to access the built-in barometric pressure sensor. The permission is needed for live relative-altitude and pressure readings. AltitudeNow does not use that permission to upload motion data.</p>
+
+<h2>Why do I see “No barometric sensor”?</h2>
+<p>Real live readings require a supported physical device with a barometric pressure sensor. The iOS Simulator and devices without supported barometer hardware cannot produce real CMAltimeter readings. AltitudeNow shows an explicit unsupported-device screen instead of inventing altitude values.</p>
+
+<h2>Motion access was denied</h2>
+<p>Open the iOS Settings app and review AltitudeNow's Motion &amp; Fitness permission, then return to AltitudeNow. The app re-checks permission when it becomes active again.</p>
+
+<h2>What is included for free?</h2>
+<p>Live altitude and pressure recording is available without Premium. Free users can browse their 3 most recent saved sessions and use the mountain/peak reference features.</p>
+
+<h2>What does Premium unlock?</h2>
+<ul>
+  <li>Unlimited session history</li>
+  <li>Detailed altitude charts for saved sessions</li>
+  <li>CSV export</li>
+  <li>Custom calibration offset</li>
+</ul>
+<p>Premium is a one-time non-consumable purchase. There is no subscription.</p>
+
+<h2>Restore a previous purchase</h2>
+<p>Open AltitudeNow → Settings → Premium → Restore Purchase while signed into the Apple ID that made the original purchase.</p>
+
+<h2>Does AltitudeNow use Apple Health?</h2>
+<p>No. AltitudeNow 1.0.6 does not integrate with HealthKit, does not request Health access, and does not read or write Apple Health data.</p>
+
+<h2>Does AltitudeNow use GPS or upload my sessions?</h2>
+<p>GPS is not required for the core altitude recorder. Recorded sessions remain in the app's local storage. CSV files are created locally and leave the app only when you explicitly choose a destination in the system share sheet.</p>
+
+<h2>Safety</h2>
+<p>AltitudeNow is an informational elevation tool. It is not a certified navigation, aviation, emergency, or safety instrument.</p>
+
+<hr>
+<p><a href="/privacy/altitude-now.html">Privacy Policy</a> · <a href="/">Developer home</a></p>
+</body>
+</html>
