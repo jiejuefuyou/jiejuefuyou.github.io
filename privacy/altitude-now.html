@@ -1,36 +1,50 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AltitudeNow — Privacy Policy</title><style>body{max-width:720px;margin:40px auto;padding:0 20px;font:16px/1.7 -apple-system,system-ui,sans-serif;color:#1d1d1f}h1{font-size:24px}h2{font-size:19px;margin-top:1.6em}a{color:#06c}</style></head><body><h1>Privacy Policy</h1>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AltitudeNow — Privacy Policy</title>
+  <style>
+    body{max-width:720px;margin:40px auto;padding:0 20px;font:16px/1.7 -apple-system,system-ui,sans-serif;color:#1d1d1f}
+    h1{font-size:24px}h2{font-size:19px;margin-top:1.6em}a{color:#06c}
+    .summary{background:#f5f7f7;border-radius:12px;padding:14px 16px}
+  </style>
+</head>
+<body>
+<h1>Privacy Policy</h1>
+<p><b>AltitudeNow</b> — last updated 2026-08-10</p>
 
-<p><b>AltitudeNow</b> — last updated 2026-06-27</p>
+<p class="summary"><b>Short version:</b> AltitudeNow has no account, no advertising or analytics SDKs, and no developer-operated cloud. Your altitude sessions stay on your device unless you explicitly export a file with the system share sheet.</p>
 
 <h2>What we collect</h2>
+<p><b>Nothing.</b> AltitudeNow does not collect, store, transmit, sell, or share personal information with the developer. The app does not create a user profile and does not send altitude-session data to a developer-operated server.</p>
 
-<p><b>Nothing.</b> AltitudeNow does not collect, store, transmit, or share any personal information. The app does not require an account, makes no network requests, includes no analytics SDKs, and includes no third-party advertising or tracking SDKs.</p>
+<h2>Barometric and motion data</h2>
+<p>AltitudeNow uses Core Motion only to access the device's built-in barometric pressure sensor and calculate relative altitude and atmospheric pressure. Measurements are processed on-device. Recorded sessions are stored only in the app's local sandbox.</p>
+<p>AltitudeNow does not require GPS location for its core altitude-recording feature.</p>
 
-<h2>Sensor data</h2>
+<h2>Apple Health</h2>
+<p><b>AltitudeNow 1.0.6 does not integrate with Apple Health or HealthKit.</b> This release does not request Health access and does not read or write Health data.</p>
 
-<p>AltitudeNow reads the device&#x27;s built-in barometric pressure sensor (`CMAltimeter`) to compute relative altitude. This sensor data is processed entirely on-device and stored only locally in the app&#x27;s sandboxed Documents directory. It is never transmitted off the device. Deleting the app removes all stored data.</p>
-
-<h2>Apple Health (HealthKit)</h2>
-
-<p>AltitudeNow integrates with Apple Health (the HealthKit framework) for a single, optional purpose: <b>with your explicit permission</b>, it can save the elevation you gain during a recorded session to Apple Health as workout data, so your climbs appear in the Health and Fitness apps.</p>
-
-<ul><li>**We do not read any health data from Apple Health.** AltitudeNow only *writes* the elevation/workout you record in the app.</li>
-<li>**Health data never leaves your device through AltitudeNow.** It is written into Apple Health&#x27;s on-device, OS-protected store; AltitudeNow does not collect, transmit, share, or sell any health data, and has no servers to send it to.</li>
-<li>**It is entirely optional.** AltitudeNow works fully without Health access. You grant or revoke this permission at any time in the Apple Health app (Sharing → Apps), and revoking it never affects the rest of the app.</li>
-<li>Health data written to Apple Health is governed by Apple&#x27;s Health privacy protections and your device passcode/biometrics.</li>
-</ul>
 <h2>Purchases</h2>
+<p>The optional Premium upgrade is a one-time non-consumable purchase processed by Apple through StoreKit. AltitudeNow receives only the entitlement state needed to unlock Premium features. Payment information is handled by Apple.</p>
 
-<p>In-app purchases are processed by Apple via StoreKit. AltitudeNow receives only the entitlement status (purchased / not purchased). Apple&#x27;s own privacy policy governs purchase information: <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a>.</p>
+<h2>Local export</h2>
+<p>Premium users can export a recorded session as CSV using the system share sheet. AltitudeNow creates the CSV locally. You choose the destination in the system share sheet; AltitudeNow does not upload the file itself.</p>
+
+<h2>Data deletion</h2>
+<p>Deleting a session removes it from AltitudeNow's local storage. Deleting the app removes AltitudeNow's locally stored app data from the device. There is no AltitudeNow cloud copy maintained by the developer.</p>
 
 <h2>Children</h2>
-
-<p>AltitudeNow is rated 4+ and is suitable for all ages. We do not collect any data, so no data about children is ever processed.</p>
+<p>AltitudeNow is rated 4+. The app has no account system, advertising, analytics, or developer-operated data collection.</p>
 
 <h2>Changes</h2>
-
 <p>If this policy changes, the updated version will appear at this URL with the revised date.</p>
 
 <h2>Contact</h2>
+<p>Questions about privacy or support: <a href="/support-altitudenow.html">AltitudeNow Support</a> or email <a href="mailto:jiejuefuyou@gmail.com">jiejuefuyou@gmail.com</a>.</p>
 
-<p>Questions about privacy or support: <a href="https://jiejuefuyou.github.io/support.html">https://jiejuefuyou.github.io/support.html</a> or email <b>jiejuefuyou@gmail.com</b>.</p><hr><p><a href="/">← AutoApp</a></p></body></html>
+<hr>
+<p><a href="/support-altitudenow.html">AltitudeNow Support</a> · <a href="/">Developer home</a></p>
+</body>
+</html>
