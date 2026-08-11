@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script defer src="/assets/lead-capture.js"></script>
 <script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -191,7 +192,7 @@ function submitAuditEmail() {
   var score = parseInt(document.getElementById('scoreNum').textContent) || 0;
   var tier = score < 35 ? 'tier_a' : (score < 70 ? 'tier_b' : 'tier_c');
   var tierLabel = score < 35 ? 'Tier A: needs structure' : (score < 70 ? 'Tier B: solid foundation' : 'Tier C: leading pack');
-  var webhookUrl = (window.LEAD_WEBHOOK_URL || 'http://localhost:8787/capture').trim();
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || '').trim();
   var payload = {
     source: 'free-ai-audit',
     tier: tier,

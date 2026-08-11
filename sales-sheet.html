@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script defer src="/assets/lead-capture.js"></script>
 <script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -300,7 +301,7 @@ function ssSubmitEmail() {
     utm_source: "sales-sheet-digital",
     utm_medium: "email-capture"
   };
-  var webhookUrl = (window.LEAD_WEBHOOK_URL || "http://localhost:8787/capture").trim();
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || "").trim();
   fetch(webhookUrl, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(payload)}).catch(function() {});
   document.getElementById("ss-email-success").style.display = "block";
   document.getElementById("ss-email").disabled = true;
@@ -324,4 +325,5 @@ function ssSubmitEmail() {
 })();
 </script>
 
+</body>
 </html>

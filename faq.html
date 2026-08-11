@@ -3,12 +3,13 @@
 <html lang="en">
 
 <head>
+<script defer src="/assets/lead-capture.js"></script>
 
 <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>AutoApp · FAQ �?common questions about consulting, products, affiliate</title>
+<title>AutoApp · FAQ — common questions about consulting, products, affiliate</title>
 
 <meta name="description" content="Frequently asked questions about AutoApp's iOS apps, Gumroad products, B2B consulting, and affiliate program. Honest answers.">
 
@@ -90,7 +91,7 @@ footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border
 
 
 
-<nav><a href="index.html">�?AutoApp home</a></nav>
+<nav><a href="index.html">← AutoApp home</a></nav>
 
 
 
@@ -188,11 +189,11 @@ footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border
 
 <ul>
 
-<li><strong>$99</strong> �?single 30-min call, one specific blocker</li>
+<li><strong>$99</strong> — single 30-min call, one specific blocker</li>
 
-<li><strong>$299</strong> �?pre-submission audit + 1 week of email support</li>
+<li><strong>$299</strong> — pre-submission audit + 1 week of email support</li>
 
-<li><strong>$2999</strong> �?full done-for-you launch (ASC setup + first IAP + first 100 lead funnel + 30 days support)</li>
+<li><strong>$2999</strong> — full done-for-you launch (ASC setup + first IAP + first 100 lead funnel + 30 days support)</li>
 
 </ul>
 
@@ -210,7 +211,7 @@ footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border
 
 <div class="answer">
 
-<p>Not currently. I prefer fixed-scope project work over retainers �?keeps both sides accountable to specific outcomes. If you need a recurring relationship, the closest fit is multiple project engagements over time.</p>
+<p>Not currently. I prefer fixed-scope project work over retainers — keeps both sides accountable to specific outcomes. If you need a recurring relationship, the closest fit is multiple project engagements over time.</p>
 
 </div>
 
@@ -292,7 +293,7 @@ footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border
 
 <div class="answer">
 
-<p>All 7 apps are now LIVE on the App Store (AutoChoice, DaysUntil, PromptVault, TipJar Now, WaterNow, HabitHash, FocusFlow Lite); AltitudeNow is pending review.. TestFlight build available on request �� email me your Apple ID.</p>
+<p>All 7 apps are now LIVE on the App Store (AutoChoice, DaysUntil, PromptVault, TipJar Now, WaterNow, HabitHash, FocusFlow Lite); AltitudeNow is pending review.. TestFlight build available on request — email me your Apple ID.</p>
 
 <p>For TestFlight access, email me directly with the Apple ID you want added.</p>
 
@@ -330,7 +331,7 @@ footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border
 
 <pre style="background:rgba(255,255,255,.04);padding:8px 10px;border-radius:4px;font-size:.82rem;overflow-x:auto"><code>$ nm -gU AutoChoice.app/AutoChoice | grep -iE 'URL|HTTP|Network'
 
-# (no output �?no networking symbols in the binary)</code></pre>
+# (no output — no networking symbols in the binary)</code></pre>
 
 <p>You can verify yourself after downloading from the App Store. The source is public on GitHub for all 4 apps.</p>
 
@@ -394,9 +395,9 @@ footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border
 
 <h3>Still have questions?</h3>
 
-<p>Email <a href="mailto:jiejuefuyou@gmail.com">jiejuefuyou@gmail.com</a> �?typical response within 24h JST.</p>
+<p>Email <a href="mailto:jiejuefuyou@gmail.com">jiejuefuyou@gmail.com</a> — typical response within 24h JST.</p>
 
-<p style="margin-top:10px"><a href="book-call.html">Or book a $99 starter call �?/a></p>
+<p style="margin-top:10px"><a href="book-call.html">Or book a $99 starter call →</a></p>
 
 </div>
 
@@ -404,7 +405,7 @@ footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border
 
 <footer>
 
-<p><a href="index.html">�?Home</a> · <a href="just-published.html">Latest launches</a> · <a href="press-kit.html">Press kit</a> · <a href="sales.html">All products</a></p>
+<p><a href="index.html">← Home</a> · <a href="just-published.html">Latest launches</a> · <a href="press-kit.html">Press kit</a> · <a href="sales.html">All products</a></p>
 
 </footer>
 
@@ -418,9 +419,8 @@ footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border
 
 <script>
 
-function submitFaqLead(){var e=document.getElementById('faq-email').value;if(!e||!e.includes('@')){alert('Please enter a valid email');return;}var w=(window.LEAD_WEBHOOK_URL||'http://localhost:8787/capture').trim();var p={source:'faq',tier:'newsletter',tier_label:'Newsletter subscriber',score:0,email:e,utm_source:'faq',utm_medium:'email-capture'};fetch(w,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}).catch(function(){});document.getElementById('faq-email-success').style.display='inline';document.getElementById('faq-email').disabled=true;document.querySelector('#faq-email-capture button').disabled=true;}(function(){var el=document.getElementById('faq-email-capture');var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)el.classList.add('visible');});},{threshold:0.1});obs.observe(document.querySelector('.wrap'));})();
+function submitFaqLead(){var e=document.getElementById('faq-email').value;if(!e||!e.includes('@')){alert('Please enter a valid email');return;}var w=(window.LEAD_WEBHOOK_URL||'').trim();var p={source:'faq',tier:'newsletter',tier_label:'Newsletter subscriber',score:0,email:e,utm_source:'faq',utm_medium:'email-capture'};fetch(w,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}).catch(function(){});document.getElementById('faq-email-success').style.display='inline';document.getElementById('faq-email').disabled=true;document.querySelector('#faq-email-capture button').disabled=true;}(function(){var el=document.getElementById('faq-email-capture');var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)el.classList.add('visible');});},{threshold:0.1});obs.observe(document.querySelector('.wrap'));})();
 
 </script></body>
 
 </html>
-

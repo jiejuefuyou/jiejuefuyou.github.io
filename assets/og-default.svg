@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">AutoApp by jiejuefuyou</title>
+  <desc id="description">Eight focused iOS apps, practical AI tools, and independent product notes.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#080810"/>
+      <stop offset="0.56" stop-color="#121225"/>
+      <stop offset="1" stop-color="#211441"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6c4be0"/>
+      <stop offset="1" stop-color="#c084fc"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#9b6cf0" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#9b6cf0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <circle cx="1050" cy="86" r="330" fill="url(#glow)"/>
+  <circle cx="118" cy="585" r="260" fill="url(#glow)" opacity="0.55"/>
+  <rect x="72" y="66" width="1056" height="498" rx="34" fill="#11111b" fill-opacity="0.72" stroke="#393050" stroke-width="2"/>
+  <rect x="112" y="111" width="76" height="76" rx="20" fill="url(#accent)"/>
+  <path d="M136 163l14-31h8l14 31h-10l-3-8h-12l-3 8zm14-16h7l-3.5-10z" fill="#fff"/>
+  <text x="216" y="164" fill="#f4f2ff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="52" font-weight="760" letter-spacing="-1">AutoApp</text>
+  <text x="112" y="286" fill="#f7f6ff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="64" font-weight="760" letter-spacing="-2">Small apps. Useful tools.</text>
+  <text x="112" y="360" fill="#c5bfd6" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="34" font-weight="450">iOS products, practical AI workflows, and honest build notes.</text>
+  <rect x="112" y="418" width="470" height="4" rx="2" fill="url(#accent)"/>
+  <text x="112" y="494" fill="#a99fc3" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28">jiejuefuyou.github.io</text>
+  <text x="1088" y="494" fill="#a99fc3" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="25">Build in public</text>
+</svg>

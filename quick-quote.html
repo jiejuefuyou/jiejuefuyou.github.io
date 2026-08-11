@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script defer src="/assets/lead-capture.js"></script>
 <script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,7 +54,7 @@ header .sub { color: var(--muted); margin-top: 12px; font-size: 1.05rem; }
 .opt input[type=radio] { margin-right: 10px; }
 .opt.selected { border-color: var(--accent); background: linear-gradient(135deg, rgba(108,75,224,.12), rgba(192,132,252,.05)); }
 .opt .label { font-weight: 600; color: var(--text); }
-.opt .desc { color: var(--muted); font-size: .85rem; margin-top: 4px; }
+.opt .desc { display: block; color: var(--muted); font-size: .85rem; margin-top: 4px; }
 
 input[type=text], input[type=email], textarea {
   width: 100%; padding: 12px 16px; background: var(--bg); color: var(--text);
@@ -119,11 +120,11 @@ footer a { color: var(--muted); margin: 0 8px; }
   <div class="q-card">
     <h2>Q1. What's your team size?</h2>
     <div class="hint">Helps me match the right tier (solo vs team retainer).</div>
-    <label class="opt" data-value="solo"><input type="radio" name="size" value="solo" required><span class="label">Solo founder / freelancer</span><div class="desc">1 person. Mostly building alone.</div></label>
-    <label class="opt" data-value="micro"><input type="radio" name="size" value="micro"><span class="label">Micro team (2-5)</span><div class="desc">Small team, often early-stage.</div></label>
-    <label class="opt" data-value="small"><input type="radio" name="size" value="small"><span class="label">Small team (6-20)</span><div class="desc">Growing, may have ops/PM roles.</div></label>
-    <label class="opt" data-value="midsize"><input type="radio" name="size" value="midsize"><span class="label">Mid-size (21-100)</span><div class="desc">Multiple departments, dedicated AI lead.</div></label>
-    <label class="opt" data-value="enterprise"><input type="radio" name="size" value="enterprise"><span class="label">Enterprise (100+)</span><div class="desc">Need procurement / legal review.</div></label>
+    <label class="opt" data-value="solo"><input type="radio" name="size" value="solo" required><span class="label">Solo founder / freelancer</span><span class="desc">1 person. Mostly building alone.</span></label>
+    <label class="opt" data-value="micro"><input type="radio" name="size" value="micro"><span class="label">Micro team (2-5)</span><span class="desc">Small team, often early-stage.</span></label>
+    <label class="opt" data-value="small"><input type="radio" name="size" value="small"><span class="label">Small team (6-20)</span><span class="desc">Growing, may have ops/PM roles.</span></label>
+    <label class="opt" data-value="midsize"><input type="radio" name="size" value="midsize"><span class="label">Mid-size (21-100)</span><span class="desc">Multiple departments, dedicated AI lead.</span></label>
+    <label class="opt" data-value="enterprise"><input type="radio" name="size" value="enterprise"><span class="label">Enterprise (100+)</span><span class="desc">Need procurement / legal review.</span></label>
   </div>
   <div class="actions">
     <button type="button" class="btn secondary" onclick="prev()" disabled>&larr; Back</button>
@@ -136,10 +137,10 @@ footer a { color: var(--muted); margin: 0 8px; }
   <div class="q-card">
     <h2>Q2. Biggest pain right now?</h2>
     <div class="hint">Pick the one that hurts most. Multiple? Pick #1.</div>
-    <label class="opt"><input type="radio" name="pain" value="cant_ship" required><span class="label">Can't ship fast enough</span><div class="desc">Ideas pile up, code crawls, weeks lost on tooling.</div></label>
-    <label class="opt"><input type="radio" name="pain" value="ai_unclear"><span class="label">AI strategy is murky</span><div class="desc">Tried Cursor / Claude / Copilot — no clear ROI.</div></label>
-    <label class="opt"><input type="radio" name="pain" value="repeat_work"><span class="label">Repetitive ops eating time</span><div class="desc">Reports, deploys, customer responses — all manual.</div></label>
-    <label class="opt"><input type="radio" name="pain" value="cost_overrun"><span class="label">AI spend out of control</span><div class="desc">$X00/mo on tokens, unclear who/what consumes it.</div></label>
+    <label class="opt"><input type="radio" name="pain" value="cant_ship" required><span class="label">Can't ship fast enough</span><span class="desc">Ideas pile up, code crawls, weeks lost on tooling.</span></label>
+    <label class="opt"><input type="radio" name="pain" value="ai_unclear"><span class="label">AI strategy is murky</span><span class="desc">Tried Cursor / Claude / Copilot — no clear ROI.</span></label>
+    <label class="opt"><input type="radio" name="pain" value="repeat_work"><span class="label">Repetitive ops eating time</span><span class="desc">Reports, deploys, customer responses — all manual.</span></label>
+    <label class="opt"><input type="radio" name="pain" value="cost_overrun"><span class="label">AI spend out of control</span><span class="desc">$X00/mo on tokens, unclear who/what consumes it.</span></label>
     <label class="opt"><input type="radio" name="pain" value="other"><span class="label">Other (tell me below)</span></label>
     <textarea name="pain_other" placeholder="(optional) Anything specific?" style="margin-top: 12px;"></textarea>
   </div>
@@ -154,11 +155,11 @@ footer a { color: var(--muted); margin: 0 8px; }
   <div class="q-card">
     <h2>Q3. Budget range for this quarter?</h2>
     <div class="hint">No need to be exact. Helps me match tier — can always adjust.</div>
-    <label class="opt"><input type="radio" name="budget" value="under_500" required><span class="label">Under $500</span><div class="desc">One-off audit / starter pack ($99).</div></label>
-    <label class="opt"><input type="radio" name="budget" value="500_2k"><span class="label">$500 - $2k</span><div class="desc">Single-month retainer or fixed-scope project.</div></label>
-    <label class="opt"><input type="radio" name="budget" value="2k_10k"><span class="label">$2k - $10k</span><div class="desc">Quarterly retainer — 3-6 weeks of focused work.</div></label>
-    <label class="opt"><input type="radio" name="budget" value="10k_plus"><span class="label">$10k+</span><div class="desc">Enterprise: workshop + multi-quarter implementation.</div></label>
-    <label class="opt"><input type="radio" name="budget" value="not_sure"><span class="label">Not sure yet</span><div class="desc">No problem — I'll suggest based on Q1+Q2.</div></label>
+    <label class="opt"><input type="radio" name="budget" value="under_500" required><span class="label">Under $500</span><span class="desc">One-off audit / starter pack ($99).</span></label>
+    <label class="opt"><input type="radio" name="budget" value="500_2k"><span class="label">$500 - $2k</span><span class="desc">Single-month retainer or fixed-scope project.</span></label>
+    <label class="opt"><input type="radio" name="budget" value="2k_10k"><span class="label">$2k - $10k</span><span class="desc">Quarterly retainer — 3-6 weeks of focused work.</span></label>
+    <label class="opt"><input type="radio" name="budget" value="10k_plus"><span class="label">$10k+</span><span class="desc">Enterprise: workshop + multi-quarter implementation.</span></label>
+    <label class="opt"><input type="radio" name="budget" value="not_sure"><span class="label">Not sure yet</span><span class="desc">No problem — I'll suggest based on Q1+Q2.</span></label>
   </div>
   <div class="actions">
     <button type="button" class="btn secondary" onclick="prev()">&larr; Back</button>
@@ -317,12 +318,14 @@ function submitQuote(event) {
   document.getElementById('outcome').classList.add('active');
   window.scrollTo({top: 0, behavior: 'smooth'});
 
-  // Capture lead to b2b_lead pipeline via webhook (fire-and-forget after UI updated)
+  // Optionally mirror the browser-local quote to a configured lead webhook.
   var tierMap={"starter audit":"starter","single-month retainer":"retainer","quarterly retainer":"retainer","enterprise workshop":"enterprise","enterprise audit":"enterprise","enterprise":"enterprise"};
   var wTier=tierMap[tier]||tier.replace(/\s+/g,"_").toLowerCase().slice(0,20);
   var payload={source:"quick-quote",email:answers.email||"",tier:wTier,tier_label:tier,tier_price:price,utm_source:"quick-quote-page",utm_medium:"form-capture",company:answers.company||"",pain_point:answers.pain||"",team_size:answers.size||"",budget:answers.budget||""};
-  var webhookUrl = (window.LEAD_WEBHOOK_URL || "http://localhost:8787/capture").trim();
-  fetch(webhookUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).catch(function(){});
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || "").trim();
+  if(webhookUrl){
+    fetch(webhookUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).catch(function(){});
+  }
 
   return false;
 }

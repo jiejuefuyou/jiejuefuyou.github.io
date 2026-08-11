@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script defer src="/assets/lead-capture.js"></script>
 <script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -172,7 +173,7 @@ footer a{margin:0 6px}
 function submitEmail(){
   var email = document.getElementById("cheatsheet-email").value;
   if(!email || !email.includes("@")){ alert("Enter a valid email"); return; }
-  var webhookUrl = (window.LEAD_WEBHOOK_URL || "http://localhost:8787/capture").trim();
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || "").trim();
   var payload = {
     source:"iap-fix-cheatsheet",
     tier:"lead-magnet",

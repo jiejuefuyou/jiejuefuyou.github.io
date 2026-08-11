@@ -1,6 +1,7 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
+<script defer src="/assets/lead-capture.js"></script>
 <meta charset="utf-8">
 <script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -416,7 +417,7 @@ function submitQuoteLead(){
     utm_source: 'quote-calculator-page',
     utm_medium: 'email-capture'
   };
-  var webhookUrl = (window.LEAD_WEBHOOK_URL || 'http://localhost:8787/capture').trim();
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || '').trim();
   fetch(webhookUrl, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)}).catch(function(){});
   document.getElementById('quote-email-success').style.display = 'block';
   document.getElementById('quote-lead-email').disabled = true;

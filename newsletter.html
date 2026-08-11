@@ -1,6 +1,7 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
+<script defer src="/assets/lead-capture.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AutoAppNotes 中文 #1 — AI 商业化的图穷匕见周</title>
@@ -79,7 +80,7 @@ footer a{color:var(--muted)}
 <ul>
 <li><strong>4 月 27 日</strong>：GitHub 宣布 Copilot <strong>改成按用量计费</strong>（759 分上 HN）。同一天微软和 OpenAI <strong>结束独家协议</strong>（975 分），结束了 ChatGPT 时代以来最大的婚姻。</li>
 <li><strong>4 月 28 日</strong>：GitHub Copilot Code Review 也要<strong>消耗 GitHub Actions minutes</strong>（302 分），意味着每个 PR 的 AI 自动审查从此<strong>变成成本中心</strong>。</li>
-<li><strong>4 月 29 日</strong>：HN 头条曝出 Anthropic 一个 bug——`HERMES.md` 在 commit message 里会<strong>被 Claude Code 重新读取并算作新 token 用量</strong>（991 分），用户合理 commit 习惯被 silently 计费。</li>
+<li><strong>4 月 29 日</strong>：HN 头条曝出 Anthropic 一个 bug ——`HERMES.md` 在 commit message 里会<strong>被 Claude Code 重新读取并算作新 token 用量</strong>（991 分），用户合理 commit 习惯被 silently 计费。</li>
 </ul>
 <p>三件事拼起来，一个判断浮出水面：<strong>AI 工具公司的"全包月"幻觉正在被撕掉。</strong> 接下来不是"再加个免费功能"的时代，是"每个动作都明码标价"的时代。</p>
 <p>如果你还在用 fixed-price 订阅 + 不关心 token 流向，<strong>这一周你的成本结构已经被 silently 改写了</strong>——你只是还没收到对账单。</p>
@@ -107,7 +108,7 @@ footer a{color:var(--muted)}
 <hr>
 <h2>主线 #2｜MSFT-OpenAI 分手：AI 巨头格局重组的开始</h2>
 <p>Bloomberg 4 月 27 日独家：<strong>微软和 OpenAI 结束 revenue-sharing 独家协议</strong>（HN 975 分，第 2 高）。</p>
-<p>简单说：以前微软对 ChatGPT 的每笔收入抽成 + OpenAI 模型独家供给 Azure。现在两条都解除——OpenAI 模型可以上 AWS（4 月 28 日另一头条 #12 已确认 Bedrock 接 OpenAI），微软可以做自己的 frontier model（已在做，Phi 系列 + 收购 Inflection）。</p>
+<p>简单说：以前微软对 ChatGPT 的每笔收入抽成 + OpenAI 模型独家供给 Azure。现在两条都解除—— OpenAI 模型可以上 AWS（4 月 28 日另一头条 #12 已确认 Bedrock 接 OpenAI），微软可以做自己的 frontier model（已在做，Phi 系列 + 收购 Inflection）。</p>
 <p>中文圈的解读普遍偏地缘政治（"美国 AI 内斗"），但更准确的产业解读是：<strong>生态正在从"双寡头"转向"多极平台"</strong>。</p>
 <p>短期影响：</p>
 <ul>
@@ -141,7 +142,7 @@ footer a{color:var(--muted)}
 <ol>
 <li><strong>Mistral Medium 3.5 发布</strong>（HN 430 分）：欧洲模型阵营反扑，Mistral 估值 $14B 不靠美国市场，"非美国 AI 公司"的选项越来越多。</li>
 <li><strong>AI 经济学不成立</strong>（wheresyoured.at，HN 229 分）：Ed Zitron 一贯的悲观分析，但数据点扎实——值得读完判断你自己的 AI ROI 假设。</li>
-<li><strong>27000 次 carb count，AI 给不出一致答案</strong>（HN 233 分）：用 GPT 算糖尿病饮食的医生实测——determinism 缺失对 production 部署的硬伤。</li>
+<li><strong>27000 次 carb count，AI 给不出一致答案</strong>（HN 233 分）：用 GPT 算糖尿病饮食的医生实测—— determinism 缺失对 production 部署的硬伤。</li>
 <li><strong>Anthropic 加入 Blender 开发基金</strong>（HN 255 分）：Anthropic 第一次成为非 AI 开源项目的赞助商，可能预示更广 corporate giving 策略。</li>
 <li><strong>OpenAI CEO 身份验证公司诈骗 Bruno Mars</strong>（HN 282 分）：World ID 的最新公关灾难，identity verification 这条赛道<strong>信任成本远高于技术成本</strong>。</li>
 </ol>
@@ -161,7 +162,7 @@ footer a{color:var(--muted)}
 <hr>
 <h2>我自己这周做了什么（个人 update）</h2>
 <p>我用 Claude Code Pro 订阅（<strong>$20/月</strong>）跑了 36+ 小时连续自主任务——通过一套外挂的 <strong>desktop-loop</strong> 桌面自动化，让 agent 在我关掉 IDE 之后还能接着干活。</p>
-<p>这不是 hack——这是当 fixed-price plan 还存在时的<strong>最后红利窗口</strong>。如果 Anthropic 下半年改 throttling 模式，整套玩法可能要重写。</p>
+<p>这不是 hack ——这是当 fixed-price plan 还存在时的<strong>最后红利窗口</strong>。如果 Anthropic 下半年改 throttling 模式，整套玩法可能要重写。</p>
 <p>如果你想看这套 setup 怎么搭：开源在 <a href="https://github.com/jiejuefuyou/autoapp-toolkit">github.com/jiejuefuyou/autoapp-toolkit</a> （MIT）。完整 SETUP.md 走过 Windows + Mac 两个平台。</p>
 <p>如果你不想自己折腾，1-on-1 setup 服务 ¥99 起（首批 50% off）。</p>
 <hr>

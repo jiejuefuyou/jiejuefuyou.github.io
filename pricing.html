@@ -1,6 +1,8 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
-<head><script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>\n<meta charset="utf-8">
+<head>
+<script defer src="/assets/lead-capture.js"></script><script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pricing — B2B AI Workflow Consulting</title>
 <meta name="description" content="$99 starter / $500-1200/mo retainer / $2.5k+ enterprise · 30-day money-back · no long contracts">
@@ -211,7 +213,7 @@ Not sure? Start with the half-price first month ($250-600) and decide based on a
 
 <div class="faq">
 <h3>How does data security work?</h3>
-<p>By default, none of my solutions upload sensitive data to GPT/Claude. For workflows involving customer privacy or financial data, we use local models (Qwen / DeepSeek private deployment). All client data is deleted after 30 days (see service-agreement-en.md Section 6).</p>
+<p>By default, none of my solutions upload sensitive data to GPT/Claude. For workflows involving customer privacy or financial data, we use local models (Qwen / DeepSeek private deployment). The applicable data-retention terms are stated in each signed service agreement.</p>
 </div>
 
 <div class="faq">
@@ -226,7 +228,7 @@ Not sure? Start with the half-price first month ($250-600) and decide based on a
 
 <div class="faq">
 <h3>Can overseas companies use this?</h3>
-<p>Yes. International clients pay in USD (Starter $99 / Retainer $500-1.2k/mo / Enterprise $2.5k+/mo). Contracts use <a href="../products/b2b-ai-consulting/service-agreement-en.md">English version</a>, SIAC arbitration. Contact jiejuefuyou@gmail.com.</p>
+<p>Yes. International clients pay in USD (Starter $99 / Retainer $500-1.2k/mo / Enterprise $2.5k+/mo). <a href="mailto:jiejuefuyou@gmail.com?subject=Request%20English%20service%20agreement">Request the current English service agreement</a> before booking. Contact jiejuefuyou@gmail.com.</p>
 </div>
 
 <div class="faq">
@@ -263,7 +265,7 @@ Not sure? Start with the half-price first month ($250-600) and decide based on a
 function submitPrEmail(){
   var email = document.getElementById("pr-email").value;
   if(!email || !email.includes("@")){ alert("Please enter a valid email"); return; }
-  var webhookUrl = (window.LEAD_WEBHOOK_URL || "http://localhost:8787/capture").trim();
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || "").trim();
   var payload = {source:"pricing",tier:"direct",tier_label:"free discovery call",email:email,utm_source:"pricing-page",utm_medium:"email-capture"};
   fetch(webhookUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).catch(function(){});
   document.getElementById("pr-email-success").style.display = "block";

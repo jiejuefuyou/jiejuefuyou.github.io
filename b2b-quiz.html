@@ -1,6 +1,7 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
+<script defer src="/assets/lead-capture.js"></script>
 <script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -209,7 +210,7 @@ var TIERS=[
    nextItems:["Pre-book the 30 min call to go deeper (you're ready, save time)","Pre-book an hour call if you want to understand the real ROI","Next level: review the AI workflow map + execution timeline + next steps"],
    cta:"Book 30 min now -- save time",ctaHref:"mailto:jiejuefuyou@gmail.com?subject=30min%20Consulting%20%E2%80%94%20Tier%20C%20AI%20Workflow%20Assessment&body=Hi%20Sun%2C%0A%0AI%20took%20the%20AI%20Workflow%20Quiz%20and%20got%20Tier%20C.%20I%20already%20have%20structure%20and%20want%20to%20go%20deeper.%0A%0AUse%20case%3A%20%5Bcustomer-facing%2Fcontent%2Freports%2C%20etc%5D%0ABudget%3A%20%5Byour%20range%5D%0A%0AInterested%20in%20a%2030-minute%20session.%0A%0AThanks",
    alt:"Also try the <a href='quote-calculator.html' style='color:var(--accent-2)'>ROI calculator</a> to estimate your ROI",
-   bundleNote:"<div style='margin-top:12px;padding:12px 14px;background:rgba(192,132,252,.08);border:1px solid rgba(192,132,252,.25);border-radius:10px;font-size:.82rem;color:var(--text);text-align:left'><strong style='color:#c084fc'>Also: the prompt bundle</strong> &mdash; 344 prompts for your team. <a href='https://jiejuefuyou.gumroad.com/l/emvfkj?utm_source=site&utm_medium=b2b-quiz&utm_campaign=bundle-cta-tier-c' target='_blank' rel='noopener' style='color:#c084fc;font-size:.82rem'>$25, instant access &rarr;</a></div>"
+   bundleNote:"<div style='margin-top:12px;padding:12px 14px;background:rgba(192,132,252,.08);border:1px solid rgba(192,132,252,.25);border-radius:10px;font-size:.82rem;color:var(--text);text-align:left'><strong style='color:#c084fc'>Also: the prompt bundle</strong> &mdash; 344 prompts for your team. <a href='https://jiejuefuyou.gumroad.com/l/emvfkj?utm_source=site&utm_medium=b2b-quiz&utm_campaign=bundle-cta-tier-c' target='_blank' rel='noopener' style='color:#c084fc;font-size:.82rem'>$25, instant access &rarr;</a></div>"}
 ];
 var currentQ=0,answers=[];
 function renderQuestion(){
@@ -223,7 +224,7 @@ function renderQuestion(){
   document.getElementById('quiz').innerHTML=html;
   window.scrollTo({top:0,behavior:'smooth'});
 }
-function selectAnswer(v){answers[currentQ]=v;setTimeout(function(){if(currentQ<QUESTIONS.length){renderQuestion();}else{showResult();}},300);}
+function selectAnswer(v){answers[currentQ]=v;currentQ+=1;setTimeout(function(){if(currentQ<QUESTIONS.length){renderQuestion();}else{showResult();}},300);}
 function showResult(){
   document.getElementById('progress').style.width='100%';
   var total=0;
@@ -268,7 +269,7 @@ function submitEmail(){
   var tier="tier_b";
   if(window._quizScore!==undefined){tier=window._quizScore<=3?"tier_a":window._quizScore<=6?"tier_b":"tier_c";}
   var payload={source:"b2b-quiz",email:email,tier:tier,tier_label:tierText,score:window._quizScore||null,utm_source:"b2b-quiz-page",utm_medium:"email-capture"};
-  var webhookUrl = (window.LEAD_WEBHOOK_URL || "http://localhost:8787/capture").trim();
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || "").trim();
   fetch(webhookUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).catch(function(){});
   document.getElementById("email-success").style.display="block";
   document.getElementById("quiz-email").disabled=true;
@@ -301,4 +302,3 @@ renderQuestion();
 </script>
 </body>
 </html>
-

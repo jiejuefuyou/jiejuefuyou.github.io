@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script defer src="/assets/lead-capture.js"></script>
 <script>window.LEAD_WEBHOOK_URL = window.LEAD_WEBHOOK_URL || "";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -127,7 +128,7 @@ footer a{color:var(--muted)}
 <li><strong>VSCode-closed = agent-dead</strong> -- "24/7 autonomy" is marketing, not reality</li>
 <li><strong>API costs explode</strong> -- switching to API billing = 3000-plus CNY/month (vs 150 CNY/mo Pro subscription)</li>
 <li><strong>GitHub Actions kill context</strong> -- each run starts fresh, consuming 5-10x more tokens</li>
-<li><strong>PyAutoGUI steals focus</strong> -- fires抢窗口, disrupts your active work, screen flashes</li>
+<li><strong>GUI automation steals focus</strong> -- grabs the active window, disrupts your work, and flashes the screen</li>
 <li><strong>Agents override each other</strong> -- continuous firing causes loops that overwrite prior work</li>
 </ul>
 <p><strong style="color:var(--accent-2)">The fix:</strong> Layer an orchestration system <em>outside</em> Claude Code. This is what Anthropic will not give you -- and it is the difference between "I tried agents" and "agents shipped my product."</p>
@@ -255,8 +256,6 @@ What you are paying for is the 14 days of debugging I already did so you do not 
 </div>
 </div>
 
-</div>
-
 <footer>
 <p><a href="index.html">jiejuefuyou.github.io</a> -- <a href="https://github.com/jiejuefuyou/autoapp-toolkit">autoapp-toolkit (MIT)</a> -- <a href="mailto:jiejuefuyou@gmail.com">jiejuefuyou@gmail.com</a></p>
 <p style="margin-top:8px">Built with Claude Code. No AI-washing -- just ship.</p>
@@ -274,7 +273,7 @@ function submitAgentEmail() {
     utm_source: "agent-setup-page",
     utm_medium: "email-capture"
   };
-  var webhookUrl = (window.LEAD_WEBHOOK_URL || "http://localhost:8787/capture").trim();
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || "").trim();
   fetch(webhookUrl, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(payload)}).catch(function() {});
   document.getElementById("agent-email-success").style.display = "block";
   document.getElementById("agent-email").disabled = true;
@@ -293,4 +292,5 @@ function submitAgentEmail() {
 })();
 </script>
 
+</body>
 </html>

@@ -3,14 +3,15 @@
 <html lang="en">
 
 <head>
+<script defer src="/assets/lead-capture.js"></script>
 
 <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>IAP Rejection Rescue �� The Hidden ASC Step Apple Won't Tell You</title>
+<title>IAP Rejection Rescue — The Hidden ASC Step Apple Won't Tell You</title>
 
-<meta name="description" content="Apple's rejection emails name the category, never the field. The hidden 'Add for review' step breaks IAP submission automation. 7 apps cleared review �� here's the fix.">
+<meta name="description" content="Apple's rejection emails name the category, never the field. The hidden 'Add for review' step breaks IAP submission automation. 7 apps cleared review — here's the fix.">
 
 <link rel="canonical" href="https://jiejuefuyou.github.io/iap-rejection-rescue.html">
 
@@ -158,7 +159,7 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color
 
   <span class="badge">IAP rejection rescue</span>
 
-  <h1>The Hidden App Store Connect Web Step That Breaks IAP Submission �� And Why the REST API Can't Fix It</h1>
+  <h1>The Hidden App Store Connect Web Step That Breaks IAP Submission — And Why the REST API Can't Fix It</h1>
 
   <p class="lede">Exact diagnostic flow + same-day fix. iOS Audit Sprint starts at $249.</p><p style="margin-top:14px"><a href="mailto:jiejuefuyou@gmail.com?subject=iOS%20Audit%20Sprint%20Booking" style="display:inline-block;padding:10px 22px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border-radius:8px;font-weight:700;font-size:.92rem;text-decoration:none">Book free 15-min call &rarr;</a></p>
 
@@ -168,9 +169,9 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color
 
 <div class="alert">
 
-  <h2>If you see IAP 2.1(b) completeness rejection 锟斤�??read this first</h2>
+  <h2>If you see IAP 2.1(b) completeness rejection — read this first</h2>
 
-  <p>Apple's rejection message says <code>Missing Metadata</code> or <code>In-App Purchase completeness issue</code>. The real cause is almost always one thing: your IAP was never attached to the current review submission, and/or it is stuck at state <code>READY_TO_SUBMIT</code> �� Apple auto-rejects within ~30 minutes.</p>
+  <p>Apple's rejection message says <code>Missing Metadata</code> or <code>In-App Purchase completeness issue</code>. The real cause is almost always one thing: your IAP was never attached to the current review submission, and/or it is stuck at state <code>READY_TO_SUBMIT</code> — Apple auto-rejects within ~30 minutes.</p>
 
   <p>Not in any Apple documentation. The fix is an App Store Connect web step the REST API cannot perform. Caught 3 of my 4 apps. Takes 15 min to fix once you know where to look.</p>
 
@@ -184,15 +185,15 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color
 
   <ul>
 
-    <li><strong>IAP 2.1(b) completeness</strong> 锟斤�??IAP not attached to review submission, or IAP stuck in <code>READY_TO_SUBMIT</code> state</li>
+    <li><strong>IAP 2.1(b) completeness</strong> — IAP not attached to review submission, or IAP stuck in <code>READY_TO_SUBMIT</code> state</li>
 
-    <li><strong>Missing metadata</strong> 锟斤�??screenshot ratio wrong, not the screenshot itself</li>
+    <li><strong>Missing metadata</strong> — screenshot ratio wrong, not the screenshot itself</li>
 
-    <li><strong>Guideline 4.3</strong> 锟斤�??App Store Connect build vs Xcode build bundle ID mismatch</li>
+    <li><strong>Guideline 4.3</strong> — App Store Connect build vs Xcode build bundle ID mismatch</li>
 
-    <li><strong>IAP not enabled</strong> 锟斤�??capability drift between Xcode project and ASC portal</li>
+    <li><strong>IAP not enabled</strong> — capability drift between Xcode project and ASC portal</li>
 
-    <li><strong>Binary rejected (Swift)</strong> 锟斤�??truncatingRemainder on signed accumulator in release build</li>
+    <li><strong>Binary rejected (Swift)</strong> — truncatingRemainder on signed accumulator in release build</li>
 
   </ul>
 
@@ -202,9 +203,9 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color
 
 <div class="solution-box">
 
-  <h3>The IAP 2.1(b) fix 锟斤�??exact steps</h3>
+  <h3>The IAP 2.1(b) fix — exact steps</h3>
 
-  <p>If your rejection says "In-App Purchase completeness issue" or "2.1(b)" 锟斤�??here's the check:</p>
+  <p>If your rejection says "In-App Purchase completeness issue" or "2.1(b)" — here's the check:</p>
 
 </div>
 
@@ -212,7 +213,7 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color
 
 <div class="code-block">
 
-  <div class="label">ASC API V1 锟斤�??Pre-flight IAP state check</div>
+  <div class="label">ASC API V1 — Pre-flight IAP state check</div>
 
 <pre><span class="comment"># Step 1: Verify every IAP is in the right state before submitting</span>
 
@@ -239,21 +240,21 @@ GET https://api.appstoreconnect.apple.com/v1/apps/{app_id}/inAppPurchasesV2
 
   <h3>8-step IAP Rejection Diagnostic</h3>
 
-  <div class="step"><div class="step-num">1</div><div class="step-text">Check ASC 锟斤�??App Store 锟斤�??TestFlight tab 锟斤�??build state</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-text">Check ASC → App Store → TestFlight tab → build state</div></div>
 
-  <div class="step"><div class="step-num">2</div><div class="step-text">GET <code>/v1/apps/{id}/appStoreVersions</code> 锟斤�??find <code>state</code></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text">GET <code>/v1/apps/{id}/appStoreVersions</code> → find <code>state</code></div></div>
 
-  <div class="step"><div class="step-num">3</div><div class="step-text">GET <code>/v1/apps/{id}/inAppPurchasesV2</code> 锟斤�??confirm every IAP <code>state</code> is <span class="pass">WAITING_FOR_REVIEW</span> or <span class="pass">APPROVED</span>, never <span class="fail">READY_TO_SUBMIT</span></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text">GET <code>/v1/apps/{id}/inAppPurchasesV2</code> → confirm every IAP <code>state</code> is <span class="pass">WAITING_FOR_REVIEW</span> or <span class="pass">APPROVED</span>, never <span class="fail">READY_TO_SUBMIT</span></div></div>
 
-  <div class="step"><div class="step-num">4</div><div class="step-text">In App Store Connect web UI: version page 锟斤�??"In-App Purchases" section 锟斤�??toggle each IAP with "Add for review" (the REST API cannot do this step)</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-text">In App Store Connect web UI: version page → "In-App Purchases" section → toggle each IAP with "Add for review" (the REST API cannot do this step)</div></div>
 
   <div class="step"><div class="step-num">5</div><div class="step-text">Confirm IAP review screenshot is uploaded in ASC web UI</div></div>
 
   <div class="step"><div class="step-num">6</div><div class="step-text">Resubmit: POST <code>/v1/apps/{id}/reviewSubmissions</code> with <code>appStoreVersion</code> item only</div></div>
 
-  <div class="step"><div class="step-num">7</div><div class="step-text">Wait 2-4 hours 锟斤�??check <code>state</code> for <code>READY_FOR_SALE</code> or new rejection</div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-text">Wait 2-4 hours → check <code>state</code> for <code>READY_FOR_SALE</code> or new rejection</div></div>
 
-  <div class="step"><div class="step-num">8</div><div class="step-text">If new rejection 锟斤�??check Resolution Center, loop back to step 1</div></div>
+  <div class="step"><div class="step-num">8</div><div class="step-text">If new rejection → check Resolution Center, loop back to step 1</div></div>
 
 </div>
 
@@ -274,9 +275,9 @@ GET https://api.appstoreconnect.apple.com/v1/apps/{app_id}/inAppPurchasesV2
 
 <div style="background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(74,222,128,.02));border:1px solid rgba(74,222,128,.3);border-radius:12px;padding:18px 22px;margin:0 0 20px;text-align:center">
   <div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--good);margin-bottom:6px">Key pattern</div>
-  <div style="font-weight:700;color:var(--text);font-size:1rem">7 of 7 apps approved on resubmit after the correct fix �� typically same-day</div>
-  <div style="font-size:.82rem;color:var(--muted);margin-top:4px">AltitudeNow v1.0.3 �?PromptVault �?DaysUntil �?AutoChoice �?NewDaysUntil �?TipJar Now �?FocusFlow Lite �?HabitHash</div>
-  <div style="font-size:.75rem;color:var(--muted);margin-top:6px">All verified on App Store; approvals were same-day on the resubmit after the fix. <a href="b2b-pipeline.html" style="color:var(--accent-2)">Full pipeline �?/a>
+  <div style="font-weight:700;color:var(--text);font-size:1rem">7 of 7 apps approved on resubmit after the correct fix — typically same-day</div>
+  <div style="font-size:.82rem;color:var(--muted);margin-top:4px">AltitudeNow v1.0.3 · PromptVault · DaysUntil · AutoChoice · NewDaysUntil · TipJar Now · FocusFlow Lite · HabitHash</div>
+  <div style="font-size:.75rem;color:var(--muted);margin-top:6px">All verified on App Store; approvals were same-day on the resubmit after the fix. <a href="b2b-pipeline.html" style="color:var(--accent-2)">Full pipeline →</a>
 </div>
 
 
@@ -288,7 +289,7 @@ GET https://api.appstoreconnect.apple.com/v1/apps/{app_id}/inAppPurchasesV2
 
       <div style="font-weight:700;color:var(--text);margin-bottom:4px">AltitudeNow</div>
 
-      <div style="font-size:.82rem;color:var(--muted)">v1.0.2 rejected (IAP 2.1b) 锟斤�??v1.0.3 APPROVED same-day after ASC web "Add for review" fix + expedited review. v1.0.4 in Apple Review (1st cycle).</div>
+      <div style="font-size:.82rem;color:var(--muted)">v1.0.2 rejected (IAP 2.1b) → v1.0.3 APPROVED same-day after ASC web "Add for review" fix + expedited review. v1.0.4 in Apple Review (1st cycle).</div>
 
     </div>
 
@@ -296,7 +297,7 @@ GET https://api.appstoreconnect.apple.com/v1/apps/{app_id}/inAppPurchasesV2
 
       <div style="font-weight:700;color:var(--text);margin-bottom:4px">PromptVault</div>
 
-      <div style="font-size:.82rem;color:var(--muted)">Rejected twice 锟斤�??approved on resubmit after ASC web "Add for review" fix. No further rejections.</div>
+      <div style="font-size:.82rem;color:var(--muted)">Rejected twice → approved on resubmit after ASC web "Add for review" fix. No further rejections.</div>
 
     </div>
 
@@ -304,7 +305,7 @@ GET https://api.appstoreconnect.apple.com/v1/apps/{app_id}/inAppPurchasesV2
 
       <div style="font-weight:700;color:var(--text);margin-bottom:4px">DaysUntil</div>
 
-      <div style="font-size:.82rem;color:var(--muted)">Rejected once 锟斤�??approved same day after fix. LIVE on App Store.</div>
+      <div style="font-size:.82rem;color:var(--muted)">Rejected once → approved same day after fix. LIVE on App Store.</div>
 
     </div>
 
@@ -351,15 +352,15 @@ GET https://api.appstoreconnect.apple.com/v1/apps/{app_id}/inAppPurchasesV2
 
 <div class="cta-section">
 
-  <h2>Fix it faster 锟斤�??book a 15-min call</h2>
+  <h2>Fix it faster — book a 15-min call</h2>
 
-  <p>If you're mid-rejection-cycle and don't want to debug the API yourself.<br>No pitch, no deck 锟斤�??just the exact fix for your specific situation.</p>
+  <p>If you're mid-rejection-cycle and don't want to debug the API yourself.<br>No pitch, no deck — just the exact fix for your specific situation.</p>
 
-  <a href="mailto:jiejuefuyou@gmail.com?subject=iOS%20Audit%20Sprint%20Booking" class="cta-btn" target="_blank" rel="noopener">Book 15-min call 锟斤�??/a>
+  <a href="mailto:jiejuefuyou@gmail.com?subject=iOS%20Audit%20Sprint%20Booking" class="cta-btn" target="_blank" rel="noopener">Book 15-min call →</a>
 
   <br><br>
 
-  <a href="https://jiejuefuyou.gumroad.com/l/iap-recovery-playbook" class="cta-btn-secondary" target="_blank" rel="noopener">Get the  playbook 锟斤�??/a>
+  <a href="https://jiejuefuyou.gumroad.com/l/iap-recovery-playbook" class="cta-btn-secondary" target="_blank" rel="noopener">Get the playbook →</a>
 
 </div>
 
@@ -375,7 +376,7 @@ GET https://api.appstoreconnect.apple.com/v1/apps/{app_id}/inAppPurchasesV2
 
   <button onclick="submitRescueLead()">Send me the checklist</button>
 
-  <div id="email-success">Sent 锟斤�??check your inbox</div>
+  <div id="email-success">Sent — check your inbox</div>
 
   <p class="note">No spam. Unsubscribe anytime. IAP rejection tips only.</p>
 
@@ -384,7 +385,7 @@ GET https://api.appstoreconnect.apple.com/v1/apps/{app_id}/inAppPurchasesV2
 
 
 <div style="margin:36px 0;padding:28px 24px;background:linear-gradient(135deg,rgba(74,222,128,.07),rgba(74,222,128,.02));border:1px solid rgba(74,222,128,.3);border-radius:12px">
-<h3 style="font-size:1.05rem;color:var(--good);margin-bottom:14px">What I actually fixed ??real App Store approvals</h3>
+<h3 style="font-size:1.05rem;color:var(--good);margin-bottom:14px">What I actually fixed — real App Store approvals</h3>
 <div style="display:flex;flex-direction:column;gap:12px">
 <div style="display:flex;gap:10px;align-items:flex-start">
 <span style="color:var(--muted)">AltitudeNow v1.0.3</span>
@@ -424,45 +425,45 @@ GET https://api.appstoreconnect.apple.com/v1/apps/{app_id}/inAppPurchasesV2
     <div style="display:flex;gap:12px;align-items:flex-start">
       <div style="display:inline-block;padding:4px 10px;background:rgba(155,108,240,.2);color:var(--accent-2);border-radius:6px;font-size:.75rem;font-weight:700;white-space:nowrap;margin-top:2px">$249</div>
       <div>
-        <div style="font-size:.9rem;color:var(--text);font-weight:600;margin-bottom:3px">iOS Audit Sprint ??best for same-day urgency</div>
+        <div style="font-size:.9rem;color:var(--text);font-weight:600;margin-bottom:3px">iOS Audit Sprint — best for same-day urgency</div>
         <div style="font-size:.82rem;color:var(--muted)">If Apple already rejected you and you have a launch window. 60-min call + written audit + the exact fix. 30-day refund if it does not resolve. <a href="mailto:jiejuefuyou@gmail.com?subject=iOS%20Audit%20Sprint%20Booking" target="_blank" rel="noopener" style="color:var(--accent-2)">Book a 15-min call &#8594;</a></div>
       </div>
     </div>
     <div style="display:flex;gap:12px;align-items:flex-start">
       <div style="display:inline-block;padding:4px 10px;background:rgba(251,191,36,.15);color:#fbbf24;border-radius:6px;font-size:.75rem;font-weight:700;white-space:nowrap;margin-top:2px">$890</div>
       <div>
-        <div style="font-size:.9rem;color:var(--text);font-weight:600;margin-bottom:3px">Operator Sprint ??full hands-off recovery</div>
+        <div style="font-size:.9rem;color:var(--text);font-weight:600;margin-bottom:3px">Operator Sprint — full hands-off recovery</div>
         <div style="font-size:.82rem;color:var(--muted)">If you want me to handle the entire resubmission: diagnostic + fix + API submit + reply to Apple. You do nothing. Best for agency owners or devs with no time.</div>
       </div>
     </div>
   </div>
-  <p style="margin-top:14px;font-size:.82rem;color:var(--muted)">Not sure which? Book a 15-min call and I will tell you honestly ??if the free checklist is enough, I will say so.</p>
+  <p style="margin-top:14px;font-size:.82rem;color:var(--muted)">Not sure which? Book a 15-min call and I will tell you honestly — if the free checklist is enough, I will say so.</p>
 </div>
 <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px;margin:28px 0">
-  <h3 style="font-size:1.05rem;color:var(--accent-2);margin-bottom:16px">Common questions before booking</h3>  <div style="display:flex;flex-direction:column;gap:14px">    <div>      <div style="font-size:.9rem;color:var(--text);font-weight:600;margin-bottom:4px">What exactly do I get for $249?</div>      <div style="font-size:.85rem;color:var(--muted)">60-min screen share. You show me the rejection email, I walk through the ASC API response to find the broken field. Written audit + 14-point checklist after the call. 30-day Slack follow-up. If Apple rejects again after applying the fix, you get a full refund.</div>    </div>    <div>      <div style="font-size:.9rem;color:var(--text);font-weight:600;margin-bottom:4px">How long does the actual fix take?</div>      <div style="font-size:.85rem;color:var(--muted)">IAP 2.1(b) fix (ASC web "Add for review" toggle + IAP state preflight): 15 minutes once you know the pattern. The 7 approvals above are all on this fix �� typically same-day after the correct ASC web step. Other rejection types (4.3, 5.1.1, 2.3.3) vary ??the diagnostic call tells you exactly what you are facing.</div>    </div>    <div>      <div style="font-size:.9rem;color:var(--text);font-weight:600;margin-bottom:4px">What if the fix does not work?</div>      <div style="font-size:.85rem;color:var(--muted)">30-day full refund. No questions asked. Apple rejected 4 of my own apps before I found the patterns ??I know what it feels like and I am not going to profit from a rejection that does not resolve.</div>    </div>    <div>      <div style="font-size:.9rem;color:var(--text);font-weight:600;margin-bottom:4px">Do you handle non-IAP rejections (4.3, 2.3.3, etc.)?</div>      <div style="font-size:.85rem;color:var(--muted)">Yes. I have fixed screenshot 2.3.3 rejections (FocusFlow Lite + HabitHash), metadata 4.3 duplicates (PromptVault), and capability drift issues. The diagnostic call identifies the exact pattern before you pay anything.</div>    </div>
+  <h3 style="font-size:1.05rem;color:var(--accent-2);margin-bottom:16px">Common questions before booking</h3>  <div style="display:flex;flex-direction:column;gap:14px">    <div>      <div style="font-size:.9rem;color:var(--text);font-weight:600;margin-bottom:4px">What exactly do I get for $249?</div>      <div style="font-size:.85rem;color:var(--muted)">60-min screen share. You show me the rejection email, I walk through the ASC API response to find the broken field. Written audit + 14-point checklist after the call. 30-day Slack follow-up. If Apple rejects again after applying the fix, you get a full refund.</div>    </div>    <div>      <div style="font-size:.9rem;color:var(--text);font-weight:600;margin-bottom:4px">How long does the actual fix take?</div>      <div style="font-size:.85rem;color:var(--muted)">IAP 2.1(b) fix (ASC web "Add for review" toggle + IAP state preflight): 15 minutes once you know the pattern. The 7 approvals above are all on this fix — typically same-day after the correct ASC web step. Other rejection types (4.3, 5.1.1, 2.3.3) vary — the diagnostic call tells you exactly what you are facing.</div>    </div>    <div>      <div style="font-size:.9rem;color:var(--text);font-weight:600;margin-bottom:4px">What if the fix does not work?</div>      <div style="font-size:.85rem;color:var(--muted)">30-day full refund. No questions asked. Apple rejected 4 of my own apps before I found the patterns — I know what it feels like and I am not going to profit from a rejection that does not resolve.</div>    </div>    <div>      <div style="font-size:.9rem;color:var(--text);font-weight:600;margin-bottom:4px">Do you handle non-IAP rejections (4.3, 2.3.3, etc.)?</div>      <div style="font-size:.85rem;color:var(--muted)">Yes. I have fixed screenshot 2.3.3 rejections (FocusFlow Lite + HabitHash), metadata 4.3 duplicates (PromptVault), and capability drift issues. The diagnostic call identifies the exact pattern before you pay anything.</div>    </div>
 <div style="background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(74,222,128,.03));border:1px solid rgba(74,222,128,.25);border-radius:12px;padding:24px;margin:28px 0">
-<div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--good);margin-bottom:12px">Actual Fixes ??Same Day</div>
+<div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--good);margin-bottom:12px">Actual Fixes — Same Day</div>
 <div style="display:flex;flex-direction:column;gap:16px">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
 <div style="background:rgba(255,255,255,.03);border-radius:8px;padding:16px">
 <div style="font-size:.88rem;font-weight:700;color:#fff;margin-bottom:4px">AutoChoice + DaysUntil</div>
-<div style="font-size:.78rem;color:var(--good);margin-bottom:6px">Approved 2026-05-22 ??IAP "Add for review" fix + correct IAP state</div>
-<div style="font-size:.78rem;color:var(--muted)">Rejected for IAP completeness ??ASC web step applied, same-day release</div>
+<div style="font-size:.78rem;color:var(--good);margin-bottom:6px">Approved 2026-05-22 → IAP "Add for review" fix + correct IAP state</div>
+<div style="font-size:.78rem;color:var(--muted)">Rejected for IAP completeness → ASC web step applied, same-day release</div>
 </div>
 <div style="background:rgba(255,255,255,.03);border-radius:8px;padding:16px">
 <div style="font-size:.88rem;font-weight:700;color:#fff;margin-bottom:4px">FocusFlow Lite + HabitHash</div>
-<div style="font-size:.78rem;color:var(--good);margin-bottom:6px">Approved 2026-05-21 ??Screenshot 2.3.3 fix</div>
-<div style="font-size:.78rem;color:var(--muted)">Rejected for screenshot issues ??screenshots updated + resubmitted, same day</div>
+<div style="font-size:.78rem;color:var(--good);margin-bottom:6px">Approved 2026-05-21 → Screenshot 2.3.3 fix</div>
+<div style="font-size:.78rem;color:var(--muted)">Rejected for screenshot issues → screenshots updated + resubmitted, same day</div>
 </div>
 </div>
 <div style="background:rgba(255,255,255,.03);border-radius:8px;padding:16px">
-<div style="font-size:.88rem;font-weight:700;color:#fff;margin-bottom:4px">AltitudeNow v1.0.2 ??v1.0.3</div>
-<div style="font-size:.78rem;color:var(--warn);margin-bottom:6px">Submitted for review ??v1.0.4 in Apple Review (1st cycle)</div>
+<div style="font-size:.88rem;font-weight:700;color:#fff;margin-bottom:4px">AltitudeNow v1.0.2 → v1.0.3</div>
+<div style="font-size:.78rem;color:var(--warn);margin-bottom:6px">Submitted for review → v1.0.4 in Apple Review (1st cycle)</div>
 <div style="font-size:.78rem;color:var(--muted)">4 app binary updates shipped same week. 7 apps approved on resubmit after the correct fix.</div>
 </div>
 </div>
 <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(74,222,128,.2);text-align:center">
-<div style="font-size:.82rem;color:var(--muted)">7 of 7 iOS apps LIVE on the App Store ??<strong style="color:var(--good)">7 apps approved on resubmit after the correct fix �� typically same-day</strong></div>
+<div style="font-size:.82rem;color:var(--muted)">7 of 7 iOS apps LIVE on the App Store — <strong style="color:var(--good)">7 apps approved on resubmit after the correct fix — typically same-day</strong></div>
 </div>
 </div>
   </div></div><div class="pricing">
@@ -497,7 +498,7 @@ GET https://api.appstoreconnect.apple.com/v1/apps/{app_id}/inAppPurchasesV2
 
 <footer>
 
-  <p>Built from 60 days of iOS indie shipping 锟斤�??<a href="iap-fix-cheatsheet.html">Free 1-page IAP cheatsheet 锟斤�??/a> 锟斤�??<a href="index.html">锟斤�??AutoApp home</a></p>
+  <p>Built from 60 days of iOS indie shipping · <a href="iap-fix-cheatsheet.html">Free 1-page IAP cheatsheet →</a> · <a href="index.html">← AutoApp home</a></p>
 
   <p style="margin-top:6px">App Store issues? <a href="https://developer.apple.com/contact/app-store/" target="_blank" rel="noopener">Contact Apple</a></p>
 
@@ -511,14 +512,13 @@ GET https://api.appstoreconnect.apple.com/v1/apps/{app_id}/inAppPurchasesV2
 
 window.LEAD_WEBHOOK_URL=window.LEAD_WEBHOOK_URL||"";
 
-function submitRescueLead(){var e=document.getElementById('rescue-email').value;if(!e||!e.includes('@')){alert('Please enter a valid email');return;}var w=(window.LEAD_WEBHOOK_URL||'http://localhost:8787/capture').trim();var p={source:'iap-rescue',tier:'lead-magnet',tier_label:'IAP checklist subscriber',score:15,email:e,utm_source:'iap-rejection-rescue',utm_medium:'email-capture'};fetch(w,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}).catch(function(){});document.getElementById('email-success').style.display='block';document.getElementById('rescue-email').disabled=true;document.querySelector('.email-capture button').disabled=true;}
+function submitRescueLead(){var e=document.getElementById('rescue-email').value;if(!e||!e.includes('@')){alert('Please enter a valid email');return;}var w=(window.LEAD_WEBHOOK_URL||'').trim();var p={source:'iap-rescue',tier:'lead-magnet',tier_label:'IAP checklist subscriber',score:15,email:e,utm_source:'iap-rejection-rescue',utm_medium:'email-capture'};fetch(w,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}).catch(function(){});document.getElementById('email-success').style.display='block';document.getElementById('rescue-email').disabled=true;document.querySelector('.email-capture button').disabled=true;}
 
 </script>
 
 </body>
 
 </html>
-
 
 
 

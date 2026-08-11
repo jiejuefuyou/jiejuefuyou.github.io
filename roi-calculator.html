@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script defer src="/assets/lead-capture.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI Workflow ROI Calculator -- See How Much Your Team Can Save</title>
@@ -392,7 +393,7 @@ function submitRoiEmail() {
     utm_medium: 'email-capture'
   };
 
-  var webhookUrl = (window.LEAD_WEBHOOK_URL || 'http://localhost:8787/capture').trim();
+  var webhookUrl = (window.LEAD_WEBHOOK_URL || '').trim();
   fetch(webhookUrl, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload)}).catch(function() {});
 
   document.getElementById('roi-email').disabled = true;
